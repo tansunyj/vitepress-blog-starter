@@ -1,12 +1,16 @@
 <script setup lang='ts'>
+import { computed, ref } from 'vue'
 import { useData, useRoute } from 'vitepress'
-import { computed } from 'vue'
 import usePosts from '../../composables/usePosts'
 import Post from './Post.vue'
+import TagFilter from './TagFilter.vue'
 
 const { allPosts } = usePosts()
 const route = useRoute()
 const { frontmatter } = useData()
+
+// 选中的标签
+const selectedTags = ref<string[]>([])
 
 // 获取当前路径对应的分类文章
 const categoryPosts = computed(() => {
@@ -26,6 +30,24 @@ const categoryPosts = computed(() => {
 
   return filtered
 })
+
+// 过滤后的文章（按标签过滤）
+const filteredPosts = computed(() => {
+  if (selectedTags.value.length === 0) {
+    return categoryPosts.value
+  }
+
+  return categoryPosts.value.filter((post) => {
+    const postTags = post.frontmatter?.tags || []
+    // 文章需要包含所有选中的标签
+    return selectedTags.value.every(tag => postTags.includes(tag))
+  })
+})
+
+// 处理标签过滤
+function handleTagFilter(tags: string[]) {
+  selectedTags.value = tags
+}
 
 // 获取分类信息（从frontmatter或根据路径判断）
 const categoryInfo = computed(() => {
@@ -67,15 +89,21 @@ function getCategoryIcon(): string {
       <p v-if="categoryInfo.description" class="category-description" v-html="categoryInfo.description" />
     </div>
 
+    <!-- 标签过滤器 -->
+    <TagFilter :posts="categoryPosts" @filter="handleTagFilter" />
+
     <!-- 文章列表 -->
-    <div v-if="categoryPosts.length > 0" class="posts-grid">
-      <Post v-for="post in categoryPosts" :key="post.href" :post="post" />
+    <div v-if="filteredPosts.length > 0" class="posts-grid">
+      <Post v-for="post in filteredPosts" :key="post.href" :post="post" />
     </div>
 
     <!-- 空状态 -->
     <div v-else class="empty-state">
       <p class="empty-text">
-        暂无文章
+        {{ selectedTags.length > 0 ? '😔 没有找到匹配的文章' : '暂无文章' }}
+      </p>
+      <p v-if="selectedTags.length > 0" class="empty-hint">
+        请尝试选择其他标签组合
       </p>
     </div>
   </div>
@@ -151,7 +179,14 @@ function getCategoryIcon(): string {
 
 .empty-text {
   font-size: 1.125rem;
+  font-weight: 600;
   color: var(--vp-c-text-2);
+  margin: 0 0 0.5rem 0;
+}
+
+.empty-hint {
+  font-size: 0.875rem;
+  color: var(--vp-c-text-3);
   margin: 0;
 }
 
