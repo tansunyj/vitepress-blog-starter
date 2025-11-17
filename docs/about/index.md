@@ -26,7 +26,7 @@ layout: doc
 ## 📮 联系方式
 
 - QQ群：[749827914](https://qm.qq.com/q/rvVkbpLGlc)
-- TG个人：@yangjerry666
+
 - TG群组：[杰哥的技术小站](https://t.me/jerry_tech_club)
 
 ### 📱 微信公众号
