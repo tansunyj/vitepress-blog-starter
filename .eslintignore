@@ -1,0 +1,13 @@
+# 忽略Markdown文件的lint检查
+*.md
+
+# 忽略构建输出
+docs/.vitepress/dist
+docs/.vitepress/cache
+docs/.vitepress/.temp
+
+# 忽略依赖
+node_modules
+
+# 忽略公共资源
+docs/public

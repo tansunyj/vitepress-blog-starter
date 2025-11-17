@@ -1,0 +1,18 @@
+# 允许所有搜索引擎爬取
+User-agent: *
+Allow: /
+
+# 网站地图位置（部署后替换为你的域名）
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# 禁止爬取这些路径
+Disallow: /admin/
+Disallow: /.vitepress/
+Disallow: /node_modules/
+
+# 特定爬虫速率限制
+User-agent: Googlebot
+Crawl-delay: 0
+
+User-agent: Baiduspider
+Crawl-delay: 1

@@ -1,0 +1,6 @@
+# Google AdSense
+# 部署后替换为你的发布商ID
+# 格式: google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+
+# 示例（请替换为你的真实ID）:
+# google.com, pub-1234567890123456, DIRECT, f08c47fec0942fa0

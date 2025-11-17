@@ -43,7 +43,9 @@
 - 🔧 **自定义组件** - 丰富的自定义 Vue 组件
 - 🎭 **Banner横幅** - 可自定义的首页横幅
 - 🏷️ **标签系统** - 文章标签分类和筛选
-- 📊 **Google服务** - 支持GA4、AdSense、Search Console
+- 📊 **SEO完善** - 支持GA4、AdSense、Search Console、sitemap
+- 🤖 **爬虫友好** - robots.txt、sitemap.xml自动生成
+- ⚙️ **开箱即用** - 预配置所有SEO工具，只需填入你的ID
 
 ---
 
@@ -94,6 +96,15 @@ pnpm dev
 ```
 
 启动成功后，访问：`http://localhost:5173`
+
+#### 4. 配置Google服务（可选）
+
+查看 **[CONFIGURATION.md](./CONFIGURATION.md)** 了解如何配置：
+- Google Analytics (GA4)
+- Google AdSense  
+- Google Search Console
+- 百度站长验证
+- robots.txt 和 sitemap
 
 ---
 
