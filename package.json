@@ -17,6 +17,8 @@
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
     "serve": "vitepress serve docs",
+    "sitemap": "node scripts/generate-sitemap.js",
+    "prebuild": "node scripts/generate-sitemap.js",
     "clean": "powershell -ExecutionPolicy Bypass -File ./clean.ps1",
     "clean:build": "npm run clean && npm run build",
     "lint": "eslint .",
