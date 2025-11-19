@@ -1,7 +1,11 @@
+import fs from 'node:fs'
+import path from 'node:path'
 import Unocss from 'unocss/vite'
 import { defineConfig } from 'vitepress'
 
-export default defineConfig({
+// @ts-expect-error - VitePress支持函数形式的配置
+export default defineConfig(({ command }: { command: 'serve' | 'build' }) => ({
+  // command: 'serve' (开发环境 pnpm dev) 或 'build' (构建环境 pnpm build)
   base: '/',
   lang: 'zh-CN',
   title: '杰哥的技术小站',
@@ -59,7 +63,7 @@ export default defineConfig({
     search: {
       provider: 'local',
     },
-    nav: nav(),
+    nav: nav(command),
     sidebar: {
       '/posts/vpn-proxy/': sidebarVpn(),
       '/posts/ai/': sidebarAi(),
@@ -81,53 +85,82 @@ export default defineConfig({
       }),
     ],
   },
-})
+}))
 
-function nav() {
-  return [
-    {
-      text: '🚀 网络加速',
-      activeMatch: '/posts/vpn-proxy/',
-      items: [
-        { text: '每日节点', link: '/posts/vpn-proxy/free-nodes/', activeMatch: '/posts/vpn-proxy/free-nodes/' },
-        { text: 'VPN教程', link: '/posts/vpn-proxy/tutorial/', activeMatch: '/posts/vpn-proxy/tutorial/' },
-        { text: '机场', link: '/posts/vpn-proxy/airport-review/', activeMatch: '/posts/vpn-proxy/airport-review/' },
-      ],
-    },
-    {
-      text: '🤖 AI',
-      activeMatch: '/posts/ai/',
-      items: [
-        { text: 'AI工具', link: '/posts/ai/tools/ai-tools-navigation', activeMatch: '/posts/ai/tools/' },
-        { text: '提示词', link: '/posts/ai/prompts/', activeMatch: '/posts/ai/prompts/' },
-        { text: 'AI教程', link: '/posts/ai/tutorial/', activeMatch: '/posts/ai/tutorial/' },
-        { text: '进阶', link: '/posts/ai/advanced/', activeMatch: '/posts/ai/advanced/' },
-        { text: '大模型', link: '/posts/ai/llm/', activeMatch: '/posts/ai/llm/' },
-        { text: '工作流', link: '/posts/ai/workflow/', activeMatch: '/posts/ai/workflow/' },
-      ],
-    },
-    {
-      text: '📚 博客',
-      activeMatch: '/posts/blog/',
-      items: [
-        { text: '教程', link: '/posts/blog/tutorials/', activeMatch: '/posts/blog/tutorials/' },
-        { text: '白嫖', link: '/posts/blog/freebies/', activeMatch: '/posts/blog/freebies/' },
-        { text: '推荐', link: '/posts/blog/recommendations/', activeMatch: '/posts/blog/recommendations/' },
-      ],
-    },
-    {
-      text: '📦 资源宝库',
-      activeMatch: '/posts/resources/',
-      items: [
-        { text: '夸克资料', link: '/posts/resources/quark/', activeMatch: '/posts/resources/quark/' },
-        { text: '学习资料', link: '/posts/resources/learning-materials/', activeMatch: '/posts/resources/learning-materials/' },
-      ],
-    },
-    {
-      text: 'ℹ️ 关于',
-      link: '/about/',
-    },
-  ]
+function nav(command: 'serve' | 'build') {
+  // 从JSON文件读取导航配置
+  const navConfigPath = path.join(__dirname, '../../nav-config.json')
+  let navConfig = []
+
+  try {
+    const configContent = fs.readFileSync(navConfigPath, 'utf-8')
+    navConfig = JSON.parse(configContent)
+  }
+  catch (error) {
+    console.error('❌ 读取导航配置失败:', error)
+  }
+
+  // 转换为VitePress格式
+  const navItems = navConfig
+    .filter((item: any) => {
+      // 过滤掉既没有link也没有有效items的菜单
+      return item.link || (item.items && item.items.length > 0)
+    })
+    .map((item: any) => {
+      const navItem: any = {
+        text: item.text,
+      }
+
+      // 如果有直接的link，使用它
+      if (item.link) {
+        navItem.link = item.link
+      }
+
+      // 如果有子菜单，递归转换
+      if (item.items && item.items.length > 0) {
+        // 添加activeMatch
+        if (item.folder) {
+          navItem.activeMatch = `/posts/${item.folder}/`
+        }
+
+        navItem.items = item.items.map((subItem: any) => {
+          const converted: any = {
+            text: subItem.text,
+          }
+
+          // 优先使用自定义link，否则根据folder生成
+          if (subItem.link) {
+            converted.link = subItem.link
+          }
+          else if (subItem.folder) {
+            converted.link = `/posts/${subItem.folder}/`
+          }
+
+          // 添加activeMatch
+          if (subItem.folder) {
+            converted.activeMatch = `/posts/${subItem.folder}/`
+          }
+          else if (subItem.link) {
+            converted.activeMatch = subItem.link
+          }
+
+          return converted
+        })
+      }
+
+      return navItem
+    })
+
+  // 仅在开发环境显示管理工具菜单
+  if (command === 'serve') {
+    navItems.push({
+      text: '🛠️ 管理工具',
+      link: '/tools/admin',
+      editable: false,
+    })
+  }
+
+  return navItems
 }
 
 function sidebarVpn() {

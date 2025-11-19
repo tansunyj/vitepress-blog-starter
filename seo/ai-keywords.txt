@@ -1,0 +1,208 @@
+# AI人工智能 SEO关键词库
+# 使用方法：复制关键词到SEMrush进行批量查询
+
+# ========== 核心关键词（高搜索量）==========
+ChatGPT
+AI工具
+人工智能
+大语言模型
+AI绘画
+Prompt提示词
+AI应用
+Claude
+Midjourney
+AI写作
+AI编程
+Stable Diffusion
+GPT-4
+文心一言
+通义千问
+AI助手
+AIGC
+生成式AI
+机器学习
+深度学习
+
+# ========== 长尾关键词 - AI工具 ==========
+免费AI工具推荐
+ChatGPT替代品
+最好用的AI工具
+AI写作工具
+AI编程助手
+AI设计工具
+在线AI工具大全
+免费GPT网站
+国产AI工具
+免费ChatGPT
+ChatGPT免费版
+AI工具排行榜
+实用AI工具
+免费AI助手
+AI办公工具
+AI绘画工具
+AI视频工具
+AI音频工具
+AI图片工具
+文字生成AI
+
+# ========== 长尾关键词 - 提示词库 ==========
+ChatGPT提示词大全
+AI绘画提示词
+Midjourney咒语
+高效Prompt模板
+AI提示词技巧
+中文提示词库
+实用Prompt合集
+Stable Diffusion提示词
+ChatGPT中文提示词
+万能提示词模板
+AI写作提示词
+AI编程提示词
+提示词工程
+Prompt优化
+提示词生成器
+AI绘画关键词
+Midjourney参数
+提示词案例
+高质量提示词
+提示词教程
+
+# ========== 长尾关键词 - AI教程 ==========
+ChatGPT使用教程
+AI绘画入门教程
+Claude使用指南
+AI工具使用技巧
+零基础学AI
+AI提示词教程
+Midjourney教程
+Stable Diffusion教程
+ChatGPT完整教程
+AI绘画教程
+如何使用ChatGPT
+AI工具入门
+人工智能教程
+AI新手指南
+ChatGPT技巧
+AI应用教程
+免费学AI
+AI实战教程
+AI从入门到精通
+ChatGPT注册教程
+
+# ========== 长尾关键词 - 高手进阶 ==========
+ChatGPT高级技巧
+Prompt工程
+AI自动化工作流
+GPT-4应用案例
+AI提示词优化
+ChatGPT API使用
+AI模型微调
+提示词高级技巧
+AI工作流优化
+ChatGPT插件开发
+AI自动化方案
+GPT-4 Turbo
+Claude API
+AI效率提升
+高级Prompt技巧
+AI应用开发
+ChatGPT Plus技巧
+AI商业应用
+AI生产力工具
+专业级AI应用
+
+# ========== 长尾关键词 - 大模型 ==========
+国产大模型对比
+免费大模型API
+本地部署大模型
+开源大模型推荐
+LLM模型排行榜
+大语言模型对比
+文心一言 vs ChatGPT
+通义千问使用
+百度文心大模型
+阿里通义大模型
+讯飞星火
+智谱清言
+ChatGLM
+Llama 2
+Mistral AI
+Claude 3
+GPT-4o
+大模型评测
+国产AI对比
+开源LLM
+
+# ========== 长尾关键词 - AI工作流 ==========
+AI自动化方案
+ComfyUI教程
+Stable Diffusion工作流
+AI批量处理
+AI工作流程
+ComfyUI安装
+SD工作流
+AI绘画工作流
+自动化AI流程
+AI批处理
+Stable Diffusion插件
+ControlNet教程
+Lora模型
+AI模型训练
+工作流优化
+自动化绘图
+批量AI生成
+AI流程设计
+Stable Diffusion扩展
+ComfyUI节点
+
+# ========== LSI关键词（语义相关）==========
+人工智能应用
+智能助手
+AI聊天机器人
+自然语言处理
+计算机视觉
+图像生成
+文本生成
+AI对话
+智能创作
+AI绘图
+AI配音
+AI剪辑
+AI翻译
+AI润色
+AI问答
+智能写作
+AI设计
+AI编程
+代码生成
+AI助理
+
+# ========== 品牌/工具名称 ==========
+ChatGPT
+Claude
+Midjourney
+Stable Diffusion
+DALL-E
+GPT-4
+GPT-3.5
+文心一言
+通义千问
+星火大模型
+智谱清言
+Poe
+Character.AI
+Jasper
+Copy.ai
+Writesonic
+Notion AI
+Copilot
+Gemini
+Bard
+Perplexity
+AutoGPT
+LangChain
+ComfyUI
+ControlNet
+Lora
+Civitai
+Hugging Face

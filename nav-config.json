@@ -1,0 +1,103 @@
+[
+  {
+    "text": "🚀 网络加速",
+    "folder": "vpn-proxy",
+    "items": [
+      {
+        "text": "每日节点",
+        "folder": "vpn-proxy/free-nodes"
+      },
+      {
+        "text": "VPN教程",
+        "folder": "vpn-proxy/tutorial"
+      },
+      {
+        "text": "机场",
+        "folder": "vpn-proxy/airport-review"
+      }
+    ]
+  },
+  {
+    "text": "🤖 AI",
+    "folder": "ai",
+    "items": [
+      {
+        "text": "AI工具",
+        "folder": "ai/tools",
+        "link": "/posts/ai/tools/ai-tools-navigation"
+      },
+      {
+        "text": "提示词",
+        "folder": "ai/prompts"
+      },
+      {
+        "text": "AI教程",
+        "folder": "ai/tutorial"
+      },
+      {
+        "text": "进阶",
+        "folder": "ai/advanced"
+      },
+      {
+        "text": "大模型",
+        "folder": "ai/llm"
+      },
+      {
+        "text": "工作流",
+        "folder": "ai/workflow"
+      }
+    ]
+  },
+  {
+    "text": "📚 博客",
+    "folder": "blog",
+    "items": [
+      {
+        "text": "教程",
+        "folder": "blog/tutorials"
+      },
+      {
+        "text": "白嫖",
+        "folder": "blog/freebies"
+      },
+      {
+        "text": "推荐",
+        "folder": "blog/recommendations"
+      }
+    ]
+  },
+  {
+    "text": "📦 资源宝库",
+    "folder": "resources",
+    "items": [
+      {
+        "text": "夸克资料",
+        "folder": "resources/quark"
+      },
+      {
+        "text": "学习资料",
+        "folder": "resources/learning-materials"
+      }
+    ]
+  },
+  {
+    "text": "ℹ️ 关于",
+    "link": "/about/"
+  },
+  {
+    "text": "测试菜单",
+    "folder": "test",
+    "items": [
+      {
+        "text": "测试子菜单",
+        "folder": "test/test01"
+      },
+      {
+        "text": "测试子菜单2",
+        "link": "test02",
+        "folder": "test/test02",
+        "items": null
+      }
+    ]
+  }
+]

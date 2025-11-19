@@ -825,6 +825,25 @@ pnpm build
 
 生成的文件：`docs/public/sitemap.xml`
 
+### 文章爬取工具 🆕
+
+从微信公众号等平台爬取文章并转换为Markdown：
+
+```bash
+# 启动文章爬取工具
+pnpm fetch
+```
+
+**功能特点：**
+- ✅ 支持微信公众号、知乎、CSDN等平台
+- ✅ 自动下载文章中的图片到本地
+- ✅ HTML转Markdown格式
+- ✅ 自动生成Frontmatter头部
+- ✅ 交互式选择分类和标签
+- ✅ 一键保存到指定目录
+
+**详细使用教程：** [scripts/FETCH-ARTICLE-GUIDE.md](./scripts/FETCH-ARTICLE-GUIDE.md)
+
 ### 清理缓存
 
 如果遇到构建问题，运行清理脚本：
