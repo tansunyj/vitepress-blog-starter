@@ -1,6 +1,13 @@
 ---
-title: 推荐
-description: <strong>🌟 精选推荐</strong> | 好用的工具、网站和资源推荐。<strong>亲测好用</strong>，值得收藏！
+layout: doc
+title: "精选推荐"
+description: "🌟 精选推荐 | 好用的工具、网站和资源推荐"
 ---
 
-<CategoryPosts />
+# 🌟 精选推荐
+
+好用的工具、网站和资源推荐
+
+## 📚 文章列表
+
+<PostList folder="blog/recommendations" />

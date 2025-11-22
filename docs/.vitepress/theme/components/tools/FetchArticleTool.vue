@@ -127,6 +127,9 @@ https://blog.csdn.net/xxxxxxxx"
         <li><strong>注意事项：</strong>部分网站有反爬虫机制，可能需要多次尝试</li>
       </ul>
     </div>
+
+    <!-- 底部占位符，防止被页脚遮挡 -->
+    <div class="bottom-spacer"></div>
   </div>
 </template>
 
@@ -246,7 +249,7 @@ function handleReset() {
 .fetch-tool-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 6rem 1rem;
 }
 
 .fetch-tool-header {
@@ -568,5 +571,11 @@ function handleReset() {
   .result-label {
     min-width: auto;
   }
+}
+
+.bottom-spacer {
+  height: 120px;
+  width: 100%;
+  flex-shrink: 0;
 }
 </style>

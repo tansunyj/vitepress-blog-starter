@@ -61,22 +61,84 @@ const stats = ref([
   { label: '垃圾箱', value: '0', icon: '🗑️', loading: true },
 ])
 
+// 递归统计文件夹下的 .md 文件数量（排除 index.md 和文件夹）
+function countMarkdownFiles(nodes) {
+  if (!nodes || !Array.isArray(nodes)) {
+    console.warn('⚠️ [countMarkdownFiles] nodes 不是数组:', nodes)
+    return 0
+  }
+
+  let count = 0
+  for (const node of nodes) {
+    if (!node)
+      continue
+
+    if (node.type === 'file') {
+      // 只统计 .md 文件，排除 index.md
+      if (node.name && node.name.endsWith('.md') && node.name.toLowerCase() !== 'index.md') {
+        count++
+        console.warn('📝 统计文件:', node.name)
+      }
+    }
+    else if (node.type === 'folder' && node.children) {
+      // 递归统计子文件夹
+      count += countMarkdownFiles(node.children)
+    }
+  }
+  return count
+}
+
 // 加载统计数据
 async function loadStats() {
   try {
-    // 这里可以调用API获取真实统计数据
-    // 暂时使用模拟数据
-    setTimeout(() => {
-      stats.value = [
-        { label: '总文章数', value: '12', icon: '📄', loading: false },
-        { label: '草稿数', value: '3', icon: '📝', loading: false },
-        { label: '已发布', value: '8', icon: '✅', loading: false },
-        { label: '垃圾箱', value: '1', icon: '🗑️', loading: false },
-      ]
-    }, 500)
+    // 并行加载三个数据源
+    const [draftsRes, publishedRes, trashRes] = await Promise.all([
+      fetch('http://localhost:3456/api/drafts/tree'),
+      fetch('http://localhost:3456/api/posts/tree'),
+      fetch('http://localhost:3456/api/trash/tree'),
+    ])
+
+    const [draftsData, publishedData, trashData] = await Promise.all([
+      draftsRes.json(),
+      publishedRes.json(),
+      trashRes.json(),
+    ])
+
+    console.warn('📊 [AdminHome] 加载的数据:', {
+      draftsData,
+      publishedData,
+      trashData,
+    })
+
+    // 统计各个类型的文章数量
+    const draftsCount = countMarkdownFiles(draftsData.tree || [])
+    const publishedCount = countMarkdownFiles(publishedData.tree || [])
+    const trashCount = countMarkdownFiles(trashData.tree || [])
+    const totalCount = draftsCount + publishedCount
+
+    console.warn('📊 [AdminHome] 统计结果:', {
+      draftsCount,
+      publishedCount,
+      trashCount,
+      totalCount,
+    })
+
+    stats.value = [
+      { label: '总文章数', value: String(totalCount), icon: '📄', loading: false },
+      { label: '草稿数', value: String(draftsCount), icon: '📝', loading: false },
+      { label: '已发布', value: String(publishedCount), icon: '✅', loading: false },
+      { label: '垃圾箱', value: String(trashCount), icon: '🗑️', loading: false },
+    ]
   }
   catch (error) {
-    console.error('Failed to load stats:', error)
+    console.error('❌ [AdminHome] 加载统计失败:', error)
+    // 出错时显示 0
+    stats.value = [
+      { label: '总文章数', value: '0', icon: '📄', loading: false },
+      { label: '草稿数', value: '0', icon: '📝', loading: false },
+      { label: '已发布', value: '0', icon: '✅', loading: false },
+      { label: '垃圾箱', value: '0', icon: '🗑️', loading: false },
+    ]
   }
 }
 

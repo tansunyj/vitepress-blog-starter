@@ -1,6 +1,6 @@
 ---
-name: Peter Parker
-avatar: https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/thomas-lean.png
+name: "Peter Parker"
+avatar: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/thomas-lean.png"
 ---
 
 <AuthorDetail>

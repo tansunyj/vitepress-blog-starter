@@ -1,6 +1,6 @@
 ---
-name: Louis Lane
-avatar: https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/roberta-casas.png
+name: "Louis Lane"
+avatar: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/roberta-casas.png"
 ---
 
 <AuthorDetail>

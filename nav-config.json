@@ -24,7 +24,7 @@
       {
         "text": "AI工具",
         "folder": "ai/tools",
-        "link": "/posts/ai/tools/ai-tools-navigation"
+        "link": "/posts/ai/tools/"
       },
       {
         "text": "提示词",
@@ -83,21 +83,5 @@
   {
     "text": "ℹ️ 关于",
     "link": "/about/"
-  },
-  {
-    "text": "测试菜单",
-    "folder": "test",
-    "items": [
-      {
-        "text": "测试子菜单",
-        "folder": "test/test01"
-      },
-      {
-        "text": "测试子菜单2",
-        "link": "test02",
-        "folder": "test/test02",
-        "items": null
-      }
-    ]
   }
 ]

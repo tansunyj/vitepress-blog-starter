@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: 网站配置管理
+title: "网站配置管理"
 ---
 
 <script setup>

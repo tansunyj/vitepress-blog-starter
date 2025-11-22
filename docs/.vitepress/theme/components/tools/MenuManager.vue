@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue'
+import ConfirmDialog from './ConfirmDialog.vue'
 
 const menuItems = ref([])
 const message = ref('')
@@ -9,6 +10,30 @@ const showAddDialog = ref(false)
 const editingItem = ref(null)
 const editingParentIndex = ref(-1)
 const newMenuItem = ref({ text: '', link: '', folder: '', items: null })
+
+// 确认对话框状态
+const showConfirmDialog = ref(false)
+const confirmTitle = ref('')
+const confirmMessage = ref('')
+const confirmType = ref('warning')
+const pendingAction = ref(null)
+
+// 显示确认对话框
+function showConfirm(title, msg, action, type = 'warning') {
+  confirmTitle.value = title
+  confirmMessage.value = msg
+  pendingAction.value = action
+  confirmType.value = type
+  showConfirmDialog.value = true
+}
+
+// 执行确认的操作
+function handleConfirmAction() {
+  if (pendingAction.value) {
+    pendingAction.value()
+    pendingAction.value = null
+  }
+}
 
 // 加载菜单配置
 async function loadMenus(showSuccessMsg = false) {
@@ -48,37 +73,40 @@ async function saveMenus() {
 }
 
 // 创建文件夹
-async function createFolders() {
-  if (!window.confirm('确定要为所有菜单创建对应的文件夹吗？\n\n这将为每个配置了 folder 的菜单项创建文件夹和 index.md 文件。')) {
-    return
-  }
+function createFolders() {
+  showConfirm(
+    '创建文件夹',
+    '确定要为所有菜单创建对应的文件夹吗？\n\n这将为每个配置了 folder 的菜单项创建文件夹和 index.md 文件。',
+    async () => {
+      showMessage('正在创建文件夹...', 'info')
 
-  showMessage('正在创建文件夹...', 'info')
-
-  try {
-    const response = await fetch('http://localhost:3456/api/config/menus/create-folders', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ menus: menuItems.value }),
-    })
-    const data = await response.json()
-    if (data.success) {
-      let message = data.message
-      if (data.createdFolders && data.createdFolders.length > 0) {
-        message += `\n\n创建的文件夹：\n${data.createdFolders.map(f => `📁 ${f}`).join('\n')}`
+      try {
+        const response = await fetch('http://localhost:3456/api/config/menus/create-folders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ menus: menuItems.value }),
+        })
+        const data = await response.json()
+        if (data.success) {
+          let message = data.message
+          if (data.createdFolders && data.createdFolders.length > 0) {
+            message += `\n\n创建的文件夹：\n${data.createdFolders.map(f => `📁 ${f}`).join('\n')}`
+          }
+          if (data.errors && data.errors.length > 0) {
+            message += `\n\n错误：\n${data.errors.map(e => `❌ ${e.folder}: ${e.error}`).join('\n')}`
+          }
+          showMessage(message, 'success')
+        }
+        else {
+          showMessage(`创建失败: ${data.error}`, 'error')
+        }
       }
-      if (data.errors && data.errors.length > 0) {
-        message += `\n\n错误：\n${data.errors.map(e => `❌ ${e.folder}: ${e.error}`).join('\n')}`
+      catch (error) {
+        showMessage(`创建失败: ${error.message}`, 'error')
       }
-      showMessage(message, 'success')
-    }
-    else {
-      showMessage(`创建失败: ${data.error}`, 'error')
-    }
-  }
-  catch (error) {
-    showMessage(`创建失败: ${error.message}`, 'error')
-  }
+    },
+    'info'
+  )
 }
 
 // 编辑菜单项
@@ -106,7 +134,6 @@ async function confirmEdit() {
 
   showEditDialog.value = false
   editingItem.value = null
-  showMessage('✅ 修改成功，正在保存...', 'success')
 
   // 自动保存
   await saveMenus()
@@ -157,14 +184,13 @@ async function confirmAdd() {
   }
 
   showAddDialog.value = false
-  showMessage('✅ 添加成功，正在保存...', 'success')
 
   // 自动保存
   await saveMenus()
 }
 
 // 删除菜单
-async function deleteMenu(index, parentIndex = -1) {
+function deleteMenu(index, parentIndex = -1) {
   const item = parentIndex === -1
     ? menuItems.value[index]
     : menuItems.value[parentIndex].items[index]
@@ -174,21 +200,22 @@ async function deleteMenu(index, parentIndex = -1) {
     return
   }
 
-  if (!window.confirm(`确定删除菜单"${item.text}"吗？`)) {
-    return
-  }
+  showConfirm(
+    '删除菜单',
+    `确定删除菜单"${item.text}"吗？`,
+    async () => {
+      if (parentIndex === -1) {
+        menuItems.value.splice(index, 1)
+      }
+      else {
+        menuItems.value[parentIndex].items.splice(index, 1)
+      }
 
-  if (parentIndex === -1) {
-    menuItems.value.splice(index, 1)
-  }
-  else {
-    menuItems.value[parentIndex].items.splice(index, 1)
-  }
-
-  showMessage('✅ 删除成功，正在保存...', 'success')
-
-  // 自动保存
-  await saveMenus()
+      // 自动保存
+      await saveMenus()
+    },
+    'danger'
+  )
 }
 
 // 显示消息
@@ -311,40 +338,49 @@ onMounted(() => {
         </div>
         <div class="dialog-body">
           <div class="form-group">
-            <label>菜单名称：</label>
+            <label>菜单名称<span style="color: red;">*</span>：</label>
             <input
               v-model="editingItem.text"
               type="text"
               class="form-input"
               placeholder="例如：📚 博客"
             >
+            <span class="form-hint">💡 必填项。支持使用 emoji 图标，会显示在导航栏上。</span>
           </div>
           <div class="form-group">
-            <label>链接地址：</label>
+            <label>链接地址（可选）：</label>
             <input
               v-model="editingItem.link"
               type="text"
               class="form-input"
-              placeholder="例如：/posts/blog/"
+              placeholder="通常留空即可"
             >
-            <span class="form-hint">访问此菜单时跳转的页面地址，如有子菜单可留空</span>
+            <span class="form-hint">
+              ⚠️ <strong>如需添加子菜单，请保持此字段为空。</strong><br>
+              💡 仅在创建直接跳转菜单时填写：<br>
+              &nbsp;&nbsp;&nbsp;• 站内链接：/about/ 或 /posts/blog/<br>
+              &nbsp;&nbsp;&nbsp;• 外部链接：https://github.com 或 https://google.com
+            </span>
           </div>
           <div class="form-group">
-            <label>文件夹名称：</label>
+            <label>文件夹名称（推荐填写）：</label>
             <input
               v-model="editingItem.folder"
               type="text"
               class="form-input"
               placeholder="例如：blog 或 ai/tools"
             >
-            <span class="form-hint">文章保存的文件夹名称，支持多级路径</span>
+            <span class="form-hint">
+              💡 指定文章保存的文件夹路径。<br>
+              📂 支持多级路径（如：ai/tools），用于组织文章结构。
+            </span>
           </div>
         </div>
         <div class="dialog-footer">
-          <button class="btn-secondary" @click="showEditDialog = false">
+          <button type="button" class="btn-secondary" @click="showEditDialog = false">
             取消
           </button>
-          <button class="btn-success" @click="confirmEdit">
+          <button type="button" class="btn-success" @click="confirmEdit">
             确认
           </button>
         </div>
@@ -362,26 +398,32 @@ onMounted(() => {
         </div>
         <div class="dialog-body">
           <div class="form-group">
-            <label>菜单名称：</label>
+            <label>菜单名称<span style="color: red;">*</span>：</label>
             <input
               v-model="newMenuItem.text"
               type="text"
               class="form-input"
               placeholder="例如：📚 博客"
             >
+            <span class="form-hint">💡 必填项。支持使用 emoji 图标，会显示在导航栏上。</span>
           </div>
           <div class="form-group">
-            <label>链接地址：</label>
+            <label>链接地址（可选）：</label>
             <input
               v-model="newMenuItem.link"
               type="text"
               class="form-input"
-              placeholder="例如：/posts/blog/"
+              placeholder="通常留空即可"
             >
-            <span class="form-hint">访问此菜单时跳转的页面地址，如要添加子菜单可留空</span>
+            <span class="form-hint">
+              ⚠️ <strong>如需添加子菜单，请保持此字段为空。</strong><br>
+              💡 仅在创建直接跳转菜单时填写：<br>
+              &nbsp;&nbsp;&nbsp;• 站内链接：/about/ 或 /posts/blog/<br>
+              &nbsp;&nbsp;&nbsp;• 外部链接：https://github.com 或 https://google.com
+            </span>
           </div>
           <div class="form-group">
-            <label>文件夹名称：</label>
+            <label>文件夹名称（推荐填写）：</label>
             <div v-if="newMenuItem.folderPrefix" class="folder-prefix-hint">
               📁 父级路径: <code>{{ newMenuItem.folderPrefix }}/</code>
             </div>
@@ -389,23 +431,33 @@ onMounted(() => {
               v-model="newMenuItem.folder"
               type="text"
               class="form-input"
-              :placeholder="newMenuItem.folderPrefix ? `例如：tools（将保存到 ${newMenuItem.folderPrefix}/tools）` : '例如：blog'"
+              :placeholder="newMenuItem.folderPrefix ? `例如：tools（将保存到 ${newMenuItem.folderPrefix}/tools）` : '例如：blog 或 ai/tools'"
             >
             <span class="form-hint">
-              {{ newMenuItem.folderPrefix ? '只需填写当前文件夹名称，会自动添加到父级路径下' : '文章保存的文件夹名称' }}
+              💡 {{ newMenuItem.folderPrefix ? '只需填写当前文件夹名称，会自动添加到父级路径下。' : '指定文章保存的文件夹路径。' }}<br>
+              📂 支持多级路径（如：ai/tools），用于组织文章结构。
             </span>
           </div>
         </div>
         <div class="dialog-footer">
-          <button class="btn-secondary" @click="showAddDialog = false">
+          <button type="button" class="btn-secondary" @click="showAddDialog = false">
             取消
           </button>
-          <button class="btn-success" @click="confirmAdd">
+          <button type="button" class="btn-success" @click="confirmAdd">
             确认添加
           </button>
         </div>
       </div>
     </div>
+
+    <!-- 确认对话框 -->
+    <ConfirmDialog
+      v-model="showConfirmDialog"
+      :title="confirmTitle"
+      :message="confirmMessage"
+      :type="confirmType"
+      @confirm="handleConfirmAction"
+    />
 
     <!-- 状态提示 -->
     <div v-if="message" class="message" :class="messageType">

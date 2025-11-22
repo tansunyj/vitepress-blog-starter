@@ -1,6 +1,13 @@
 ---
-title: 学习资料
-description: <strong>📚 学习资源</strong> | 精选优质学习资料，包括在线课程、电子书、视频教程等。<strong>助力成长</strong>！
+layout: doc
+title: "学习资源"
+description: "📚 学习资源 | 精选优质学习资料"
 ---
 
-<CategoryPosts />
+# 📚 学习资源
+
+精选优质学习资料
+
+## 📚 文章列表
+
+<PostList folder="resources/learning-materials" />

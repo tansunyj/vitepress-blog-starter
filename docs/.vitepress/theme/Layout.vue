@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRoute } from 'vitepress'
+import { useRoute, useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { computed, provide, ref } from 'vue'
 import PostDetail from './components/blog/PostDetail.vue'
@@ -10,10 +10,16 @@ import usePosts from './composables/usePosts'
 
 const { Layout } = DefaultTheme
 const route = useRoute()
+const { frontmatter, site } = useData()
 const { allPosts } = usePosts()
 
 // 检测是否是文章页面（/posts/ 或 /blog/posts/ 路径下的具体文章）
 const isPostPage = computed(() => {
+  // 如果 frontmatter 中指定 isArticle: false，则不视为文章详情页
+  if (frontmatter.value.isArticle === false) {
+    return false
+  }
+
   const path = route.path
   // 检测是否包含 /posts/ 且以 .html 结尾（具体文章页面）
   return path.includes('/posts/') && path.endsWith('.html')
@@ -78,6 +84,11 @@ useSidebarHighlight()
 
 <template>
   <Layout>
+    <!-- 导航栏 - 添加自定义标题（在搜索框左侧） -->
+    <template #nav-bar-content-before>
+      <a href="/" class="custom-nav-title">{{ site?.title || '杰哥的技术小站' }}</a>
+    </template>
+
     <!-- 侧边栏底部 - 添加Tags过滤（关于页面不显示） -->
     <template #sidebar-nav-after>
       <div v-if="showTagFilter" class="sidebar-tags-wrapper">

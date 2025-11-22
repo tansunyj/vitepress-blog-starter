@@ -182,5 +182,28 @@ Write-Host ""
 Write-Host "Press Ctrl+C to stop" -ForegroundColor Yellow
 Write-Host ""
 
+# Start browser in background after 8 seconds
+$null = Start-Job -ScriptBlock {
+    Start-Sleep -Seconds 8
+    $maxRetries = 10
+    $retries = 0
+    while ($retries -lt $maxRetries) {
+        try {
+            $tcpClient = New-Object System.Net.Sockets.TcpClient
+            $tcpClient.Connect("localhost", 5173)
+            $tcpClient.Close()
+            Start-Process "http://localhost:5173"
+            break
+        }
+        catch {
+            Start-Sleep -Seconds 1
+            $retries++
+        }
+    }
+}
+
+Write-Host "Browser will open in 8 seconds..." -ForegroundColor Yellow
+Write-Host ""
+
 # Start dev server
 pnpm dev

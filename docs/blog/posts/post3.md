@@ -1,8 +1,8 @@
 ---
-date: 2022-10-01
-title: Those HTML attributes you never use
-category: Document
-author: 杰哥
+date: "2022-10-01"
+title: "Those HTML attributes you never use"
+category: "Document"
+author: "杰哥"
 ---
 Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools that even influence both web designers and developers influence both web designers and developers.
 

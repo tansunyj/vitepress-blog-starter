@@ -25,7 +25,8 @@ const categoryPosts = computed(() => {
     // 获取文章所在的目录路径
     const postDir = postPath.substring(0, postPath.lastIndexOf('/'))
     // 检查文章目录是否匹配当前分类路径
-    return postDir === currentPath
+    // 并且排除当前文章自己
+    return postDir === currentPath && post.href !== route.path
   })
 
   // 如果有选中的tags，进行过滤（OR逻辑）
@@ -156,10 +157,8 @@ function getCategoryIcon(): string {
 /* 空状态 */
 .empty-state {
   text-align: center;
-  padding: 4rem 2rem;
-  background-color: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  border: 1px dashed var(--vp-c-divider);
+  padding: 2rem 0;
+  color: var(--vp-c-text-3);
 }
 
 .empty-text {

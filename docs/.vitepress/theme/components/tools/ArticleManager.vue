@@ -1,6 +1,7 @@
 <script setup>
 import { MdEditor } from 'md-editor-v3'
 import { onMounted, ref } from 'vue'
+import ConfirmDialog from './ConfirmDialog.vue'
 import FileTree from './FileTree.vue'
 
 import 'md-editor-v3/lib/style.css'
@@ -12,6 +13,13 @@ const messageType = ref('success')
 const showSidebar = ref(true)
 const showViewer = ref(false) // 是否显示查看器
 const articleContent = ref('') // 文章内容
+
+// 确认对话框状态
+const showConfirmDialog = ref(false)
+const confirmTitle = ref('')
+const confirmMessage = ref('')
+const confirmType = ref('warning')
+const pendingAction = ref(null)
 
 // 加载文档树（后端已经构建好导航树结构）
 async function loadFileTree() {
@@ -58,34 +66,54 @@ async function viewArticle(filepath) {
   }
 }
 
+// 显示确认对话框
+function showConfirm(title, msg, action, type = 'warning') {
+  confirmTitle.value = title
+  confirmMessage.value = msg
+  pendingAction.value = action
+  confirmType.value = type
+  showConfirmDialog.value = true
+}
+
+// 处理确认操作
+function handleConfirmAction() {
+  if (pendingAction.value) {
+    pendingAction.value()
+  }
+  showConfirmDialog.value = false
+  pendingAction.value = null
+}
+
 // 下架文章（移动到草稿箱）
-async function unpublishArticle(filepath) {
-  // eslint-disable-next-line no-alert
-  if (!window.confirm(`确定要下架文章"${filepath}"吗？\n文章将移动到草稿箱。`)) {
-    return
-  }
+function unpublishArticle(filepath) {
+  showConfirm(
+    '下架文章',
+    `确定要下架文章"${filepath}"吗？\n文章将移动到草稿箱。`,
+    async () => {
+      try {
+        const response = await fetch('http://localhost:3456/api/article/unpublish', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ file: filepath }),
+        })
 
-  try {
-    const response = await fetch('http://localhost:3456/api/article/unpublish', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ file: filepath }),
-    })
-
-    const data = await response.json()
-    if (data.success) {
-      showMessage('✅ 文章已下架到草稿箱', 'success')
-      currentFile.value = '' // 清空选择
-      showViewer.value = false // 关闭查看器
-      loadFileTree() // 重新加载文档树
-    }
-    else {
-      showMessage(`❌ 下架失败: ${data.error}`, 'error')
-    }
-  }
-  catch (error) {
-    showMessage(`❌ 下架失败: ${error.message}`, 'error')
-  }
+        const data = await response.json()
+        if (data.success) {
+          showMessage('✅ 文章已下架到草稿箱', 'success')
+          currentFile.value = '' // 清空选择
+          showViewer.value = false // 关闭查看器
+          loadFileTree() // 重新加载文档树
+        }
+        else {
+          showMessage(`❌ 下架失败: ${data.error}`, 'error')
+        }
+      }
+      catch (error) {
+        showMessage(`❌ 下架失败: ${error.message}`, 'error')
+      }
+    },
+    'warning',
+  )
 }
 
 function showMessage(msg, type = 'success') {
@@ -177,6 +205,15 @@ onMounted(() => {
     <div v-if="message" class="message" :class="messageType">
       {{ message }}
     </div>
+
+    <!-- 确认对话框 -->
+    <ConfirmDialog
+      v-model="showConfirmDialog"
+      :title="confirmTitle"
+      :message="confirmMessage"
+      :type="confirmType"
+      @confirm="handleConfirmAction"
+    />
   </div>
 </template>
 

@@ -1,6 +1,7 @@
-<script setup>
+<script setup lang="ts">
 import { MdEditor } from 'md-editor-v3'
 import { computed, nextTick, onMounted, ref } from 'vue'
+import ConfirmDialog from './ConfirmDialog.vue'
 
 import FileTree from './FileTree.vue'
 
@@ -8,20 +9,47 @@ import 'md-editor-v3/lib/style.css'
 
 const content = ref('')
 const currentFile = ref('')
-const files = ref([])
-const drafts = ref([])
 const fileTree = ref([])
-const showFileSelector = ref(false)
+// const showFileSelector = ref(false) // Removed
 const message = ref('')
 const messageType = ref('success')
-const searchKeyword = ref('')
+// const searchKeyword = ref('') // Removed
 const showSidebar = ref(true)
+
+// 文章元数据字段
+const articleTitle = ref('新文章标题')
+const articleDescription = ref('文章描述')
+const articleAuthor = ref('杰哥')
+
+// 编辑器内容：只包含正文，不包含 frontmatter
+const editorContent = computed({
+  get() {
+    const match = content.value.match(/^---\n[\s\S]*?\n---\n?/)
+    if (match) {
+      let body = content.value.substring(match[0].length)
+      // 删除开头多余的空行或单独的 #
+      body = body.replace(/^\s*#\s*\n/, '')
+      return body
+    }
+    return content.value
+  },
+  set(newValue) {
+    // 更新正文内容，保留 frontmatter
+    const match = content.value.match(/^---\n[\s\S]*?\n---\n?/)
+    if (match) {
+      content.value = match[0] + (match[0].endsWith('\n') ? '' : '\n') + newValue
+    }
+    else {
+      content.value = newValue
+    }
+  },
+})
 const showSaveDialog = ref(false)
 const showPublishDialog = ref(false)
 const saveFileName = ref('')
 const saveCategory = ref('')
 const categories = ref([])
-const activeTab = ref('published') // 'published' | 'drafts'
+// const activeTab = ref('published') // Removed
 const isDraft = ref(false) // 当前是否是草稿
 const currentDraftId = ref('') // 当前草稿ID，用于图片上传
 const showCreateFolderDialog = ref(false) // 显示新建文件夹对话框
@@ -33,115 +61,53 @@ const renameType = ref('') // 'file' 或 'folder'
 const newName = ref('') // 新名称
 const fileInput = ref(null) // 文件输入元素引用
 
+// 封面图片相关
+const coverImage = ref('') // 当前封面图片 URL
+const selectedCoverFile = ref(null) // 选中的封面文件
+const uploadingCover = ref(false) // 上传中状态
+const coverFileInput = ref(null) // 封面文件输入引用
+
+// 标签管理相关
+const availableTags = ref([]) // 所有可用标签
+const selectedTags = ref([]) // 当前选中的标签
+const showTagSelector = ref(false) // 显示标签选择器
+
+// 确认对话框状态
+const showConfirmDialog = ref(false)
+const confirmTitle = ref('')
+const confirmMessage = ref('')
+const confirmType = ref('warning')
+const pendingAction = ref(null)
+
+// 显示确认对话框
+function showConfirm(title, msg, action, type = 'warning') {
+  confirmTitle.value = title
+  confirmMessage.value = msg
+  pendingAction.value = action
+  confirmType.value = type
+  showConfirmDialog.value = true
+}
+
+// 执行确认的操作
+function handleConfirmAction() {
+  if (pendingAction.value) {
+    pendingAction.value()
+    pendingAction.value = null
+  }
+}
+
 // 计算保存按钮是否可用
 const canSave = computed(() => {
-  // 文件选择器显示时不能保存
-  if (showFileSelector.value) {
-    return false
-  }
+  // 文件选择器显示时不能保存 - Removed
+  // if (showFileSelector.value) {
+  //   return false
+  // }
   // 内容为空不能保存
   if (!content.value.trim()) {
     return false
   }
   return true
 })
-
-// 过滤后的文章列表
-const filteredFiles = computed(() => {
-  if (!searchKeyword.value.trim()) {
-    return files.value
-  }
-  const keyword = searchKeyword.value.toLowerCase()
-  return files.value.filter(file =>
-    file.name.toLowerCase().includes(keyword)
-    || file.path.toLowerCase().includes(keyword),
-  )
-})
-
-// 按日期分组的草稿（年/月）
-const groupedDrafts = computed(() => {
-  const groups = {}
-
-  drafts.value.forEach((draft) => {
-    const date = new Date(draft.modifiedAt)
-    const year = date.getFullYear()
-    const month = String(date.getMonth() + 1).padStart(2, '0')
-    const key = `${year}-${month}`
-
-    if (!groups[key]) {
-      groups[key] = {
-        year,
-        month,
-        label: `${year}年${month}月`,
-        files: [],
-      }
-    }
-    groups[key].files.push(draft)
-  })
-
-  // 转换为数组并按时间倒序排序
-  return Object.values(groups).sort((a, b) => {
-    const dateA = new Date(a.year, a.month - 1)
-    const dateB = new Date(b.year, b.month - 1)
-    return dateB - dateA
-  })
-})
-
-// 格式化日期
-function formatDate(dateString) {
-  const date = new Date(dateString)
-  const now = new Date()
-  const diff = now - date
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24))
-
-  if (days === 0)
-    return '今天'
-  if (days === 1)
-    return '昨天'
-  if (days < 7)
-    return `${days}天前`
-  if (days < 30)
-    return `${Math.floor(days / 7)}周前`
-
-  return date.toLocaleDateString('zh-CN', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  })
-}
-
-// 格式化文件大小
-function formatSize(bytes) {
-  if (bytes < 1024)
-    return `${bytes} B`
-  if (bytes < 1024 * 1024)
-    return `${(bytes / 1024).toFixed(1)} KB`
-  return `${(bytes / 1024 / 1024).toFixed(1)} MB`
-}
-
-// 加载文章列表
-async function loadFiles() {
-  try {
-    const response = await fetch('http://localhost:3456/api/markdown/list')
-    const data = await response.json()
-    files.value = data.files
-  }
-  catch {
-    showMessage('加载文章列表失败', 'error')
-  }
-}
-
-// 加载草稿列表
-async function loadDrafts() {
-  try {
-    const response = await fetch('http://localhost:3456/api/draft/list')
-    const data = await response.json()
-    drafts.value = data.files
-  }
-  catch {
-    showMessage('加载草稿列表失败', 'error')
-  }
-}
 
 // 加载树形结构（草稿箱加载drafts文件夹）
 async function loadFileTree() {
@@ -165,7 +131,6 @@ async function loadPublishCategories() {
     }
 
     const navConfig = await response.json()
-    console.log('📋 导航配置:', navConfig)
 
     const cats = []
 
@@ -197,16 +162,10 @@ async function loadPublishCategories() {
         })
       }
     })
-
-    console.log('📂 生成的分类列表:', cats)
-    console.log('📂 分类详情:', JSON.stringify(cats, null, 2))
     categories.value = cats
 
     if (cats.length === 0) {
       showMessage('未找到发布分类', 'warning')
-    }
-    else {
-      console.log('📂 第一个分类:', cats[0])
     }
   }
   catch (error) {
@@ -229,8 +188,8 @@ async function openFile(filepath) {
 
     const data = await response.json()
 
-    // 先关闭文件选择器
-    showFileSelector.value = false
+    // 先关闭文件选择器 - Removed
+    // showFileSelector.value = false
 
     // 等待DOM更新后设置内容
     await nextTick()
@@ -239,6 +198,10 @@ async function openFile(filepath) {
     currentFile.value = filepath
     isDraft.value = true // 草稿箱始终是草稿模式
     currentDraftId.value = filepath.replace('.md', '')
+    
+    // 提取封面图片和标签
+    extractCoverFromContent()
+    extractTagsFromContent()
 
     console.warn('[MarkdownEditor] 文件打开完成:', {
       filepath,
@@ -281,7 +244,11 @@ async function handleFileImport(event) {
         currentFile.value = file.name
         isDraft.value = true
         currentDraftId.value = file.name.replace(/\.(md|markdown)$/, '')
-        showFileSelector.value = false
+        // showFileSelector.value = false - Removed
+        
+        // 提取封面图片和标签
+        extractCoverFromContent()
+        extractTagsFromContent()
 
         showMessage(`✅ 已导入文件：${file.name}`, 'success')
         console.warn('[MarkdownEditor] 文件导入成功:', {
@@ -306,30 +273,248 @@ async function handleFileImport(event) {
   event.target.value = ''
 }
 
+// 从内容中提取封面图片
+function extractCoverFromContent() {
+  const match = content.value.match(/cover:\s*(.+)/i)
+  if (match) {
+    const extracted = match[1].trim()
+    // 只有真正有内容时才设置，避免空字符串
+    coverImage.value = extracted || ''
+  }
+  else {
+    coverImage.value = ''
+  }
+}
+
+// 处理封面图片加载错误
+function handleCoverImageError() {
+  // 只有在用户已经设置了封面图片的情况下才提示
+  if (coverImage.value && coverImage.value.trim() !== '') {
+    // 图片加载失败，清空coverImage以显示占位符
+    coverImage.value = ''
+    showMessage('封面图片加载失败，请重新上传', 'warning')
+  }
+}
+
+// 处理封面文件选择
+async function handleCoverFileSelect(event) {
+  const file = event.target.files?.[0]
+  if (file) {
+    selectedCoverFile.value = file
+    // 创建预览URL
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      coverImage.value = e.target.result
+    }
+    reader.readAsDataURL(file)
+    
+    // 自动上传封面
+    await uploadCoverImage()
+  }
+}
+
+// 上传封面图片
+async function uploadCoverImage() {
+  if (!selectedCoverFile.value) {
+    showMessage('❌ 请先选择封面图片', 'error')
+    return
+  }
+
+  uploadingCover.value = true
+
+  try {
+    const formData = new FormData()
+    formData.append('cover', selectedCoverFile.value)
+
+    // 发送草稿ID，后端会使用它命名封面文件
+    const draftId = currentDraftId.value || `${Date.now()}`
+    formData.append('draftId', draftId)
+    console.log('[uploadCoverImage] 上传封面，草稿ID:', draftId)
+
+    const response = await fetch('http://localhost:3456/api/upload/cover', {
+      method: 'POST',
+      body: formData,
+    })
+
+    const data = await response.json()
+
+    if (data.success) {
+      const coverUrl = data.path
+      coverImage.value = coverUrl
+      console.log('[uploadCoverImage] 封面URL:', coverUrl)
+
+      // 更新 frontmatter 中的 cover 字段
+      updateCoverInContent(coverUrl)
+
+      selectedCoverFile.value = null
+      showMessage('✅ 封面上传成功！', 'success')
+    }
+    else {
+      showMessage(`❌ 上传失败: ${data.error}`, 'error')
+    }
+  }
+  catch (error) {
+    showMessage(`❌ 上传失败: ${error.message}`, 'error')
+  }
+  finally {
+    uploadingCover.value = false
+  }
+}
+
+// 更新内容中的 cover 字段
+function updateCoverInContent(coverUrl) {
+  const yamlMatch = content.value.match(/^---\n([\s\S]*?)\n---/)
+  if (yamlMatch) {
+    let yaml = yamlMatch[1]
+
+    // 检查是否已有 cover 字段（包括空值）
+    if (yaml.match(/cover:/i)) {
+      // 替换现有的 cover（包括 "cover: " 这种空值）
+      // 使用 [^\n]* 只匹配到行尾，不包括换行符
+      yaml = yaml.replace(/cover:\s*[^\n]*/i, `cover: ${coverUrl}`)
+    }
+    else {
+      // 在 author 后面添加 cover 字段
+      if (yaml.match(/author:/i)) {
+        yaml = yaml.replace(/author:.*\n/, match => `${match}cover: ${coverUrl}\n`)
+      }
+      else {
+        yaml = yaml.replace(/description:.*\n/, match => `${match}cover: ${coverUrl}\n`)
+      }
+    }
+
+    content.value = content.value.replace(/^---\n[\s\S]*?\n---/, `---\n${yaml}\n---`)
+  }
+}
+
+// 格式化日期为 yyyy-MM-dd HH:mm:ss
+function formatDateTime(date) {
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  const hours = String(date.getHours()).padStart(2, '0')
+  const minutes = String(date.getMinutes()).padStart(2, '0')
+  const seconds = String(date.getSeconds()).padStart(2, '0')
+  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
+}
+
+// 生成安全的文件名（基于文章标题）
+function generateFileName(title) {
+  // 如果标题为空或者是默认标题，使用时间戳
+  if (!title || title.trim() === '' || title === '新文章标题') {
+    return `article-${Date.now()}.md`
+  }
+
+  // 清理标题，移除或替换不安全的文件名字符
+  let safeName = title.trim()
+    .replace(/[\\/:*?"<>|]/g, '-') // 替换Windows文件名非法字符
+    .replace(/\s+/g, '-') // 空格替换为连字符
+    .replace(/-+/g, '-') // 多个连字符合并为一个
+    .replace(/^-+|-+$/g, '') // 移除首尾连字符
+
+  // 限制文件名长度（避免过长）
+  if (safeName.length > 50) {
+    safeName = safeName.substring(0, 50)
+  }
+
+  // 如果清理后为空，使用时间戳
+  if (!safeName) {
+    return `article-${Date.now()}.md`
+  }
+
+  return `${safeName}.md`
+}
+
+// 更新内容中的 date 字段为当前时间
+function updateDateInContent() {
+  const yamlMatch = content.value.match(/^---\n([\s\S]*?)\n---/)
+  if (yamlMatch) {
+    let yaml = yamlMatch[1]
+    const currentDate = formatDateTime(new Date())
+
+    // 检查是否已有 date 字段
+    if (yaml.match(/date:/i)) {
+      // 替换现有的 date
+      yaml = yaml.replace(/date:\s*.+/i, `date: ${currentDate}`)
+    }
+    else {
+      // 在 description 后面添加 date 字段
+      yaml = yaml.replace(/description:.*\n/, match => `${match}date: ${currentDate}\n`)
+    }
+
+    content.value = content.value.replace(/^---\n[\s\S]*?\n---/, `---\n${yaml}\n---`)
+  }
+}
+
+// 将一级标题转换为二级标题（发布时使用）
+function convertH1ToH2() {
+  // 分离 frontmatter 和正文
+  const match = content.value.match(/^---\n[\s\S]*?\n---\n?/)
+  if (!match)
+    return
+
+  const frontmatter = match[0]
+  let body = content.value.substring(frontmatter.length)
+
+  // 将所有一级标题 # 转换为二级标题 ##
+  // 匹配行首的 # (后面必须有空格或直接换行)
+  body = body.replace(/^# (.*)$/gm, '## $1')
+
+  content.value = frontmatter + body
+  console.warn('[MarkdownEditor] 已将一级标题转换为二级标题')
+}
+
+// 规范化文件末尾的换行符（确保有且只有一个换行符）
+function normalizeFileEnding() {
+  // 移除末尾所有的空白字符（包括多余的换行符）
+  content.value = content.value.trimEnd()
+  // 在末尾添加一个换行符
+  content.value += '\n'
+  console.warn('[MarkdownEditor] 已规范化文件末尾换行符')
+}
+
+// 转换图片URL，使编辑器预览能正确显示图片
+function transformImgUrl(url: string) {
+  // 如果是以 / 开头的绝对路径，添加当前页面的 origin
+  if (url.startsWith('/')) {
+    return `${window.location.origin}${url}`
+  }
+  return url
+}
+
 // 保存草稿
 async function saveDraft() {
   console.warn('[MarkdownEditor] saveDraft调用, 当前状态:', {
-    showFileSelector: showFileSelector.value,
+    // showFileSelector: showFileSelector.value,
     contentLength: content.value.length,
     hasContent: !!content.value.trim(),
     canSave: canSave.value,
   })
 
   // 检查是否可以保存
-  if (showFileSelector.value) {
-    showMessage('请先关闭文件选择器或打开一个文件', 'warning')
-    return
-  }
+  // if (showFileSelector.value) {
+  //   showMessage('请先关闭文件选择器或打开一个文件', 'warning')
+  //   return false
+  // }
 
   if (!content.value.trim()) {
     showMessage('内容为空，无法保存', 'error')
-    return
+    return false
   }
+
+  // 如果已选择封面但未上传，先上传封面
+  if (selectedCoverFile.value && !uploadingCover.value) {
+    console.warn('[MarkdownEditor] 检测到未上传的封面，自动上传中...')
+    await uploadCoverImage()
+  }
+
+  // 保存前更新所有元数据到 frontmatter
+  updateMetadataInContent()
 
   let filename = currentFile.value
   if (!filename || !isDraft.value) {
-    // 新建草稿，生成文件名
-    const draftName = `draft-${Date.now()}.md`
+    // 新建草稿，使用文章标题生成文件名
+    const draftName = generateFileName(articleTitle.value)
     // 如果选中了文件夹，保存到该文件夹下
     if (selectedFolder.value) {
       filename = `${selectedFolder.value}/${draftName}`
@@ -350,8 +535,10 @@ async function saveDraft() {
   const draftId = filename.replace('.md', '')
   currentDraftId.value = draftId
 
-  // 显示保存中提示
-  showMessage('正在保存草稿...', 'info')
+  // 显示保存中提示（使用 key 以便后续更新）
+  if (window.$toast) {
+    window.$toast('正在保存草稿...', 'info', 3000, 'save-draft')
+  }
 
   try {
     const response = await fetch('http://localhost:3456/api/draft/save', {
@@ -372,24 +559,35 @@ async function saveDraft() {
     if (data.success) {
       currentFile.value = filename
       isDraft.value = true
-      showMessage('草稿保存成功！', 'success')
+      // 更新为成功提示（使用相同的 key，会替换掉"保存中"的提示）
+      if (window.$toast) {
+        window.$toast('草稿保存成功！', 'success', 3000, 'save-draft')
+      }
       // 刷新文档树以显示新保存的文件
       loadFileTree()
+      return true
     }
     else {
-      showMessage(`保存失败: ${data.error || '未知错误'}`, 'error')
+      // 更新为失败提示
+      if (window.$toast) {
+        window.$toast(`保存失败: ${data.error || '未知错误'}`, 'error', 3000, 'save-draft')
+      }
+      return false
     }
   }
   catch (error) {
-    showMessage(`保存失败: ${error.message}`, 'error')
+    // 更新为失败提示
+    if (window.$toast) {
+      window.$toast(`保存失败: ${error.message}`, 'error', 3000, 'save-draft')
+    }
     console.error('[MarkdownEditor] Save draft error:', error)
+    return false
   }
 }
 
 // 图片上传处理函数（md-editor-v3使用）
-async function handleUploadImage(files) {
-  const file = files[0]
-  if (!file) {
+async function handleUploadImage(files: File[], callback: (urls: string[]) => void) {
+  if (!files || files.length === 0) {
     return
   }
 
@@ -398,36 +596,47 @@ async function handleUploadImage(files) {
     await saveDraft()
   }
 
-  const formData = new FormData()
-  formData.append('image', file)
-  formData.append('draftId', currentDraftId.value)
+  const uploadPromises = files.map(async (file) => {
+    const formData = new FormData()
+    formData.append('image', file)
 
-  try {
-    const response = await fetch('http://localhost:3456/api/draft/upload-image', {
-      method: 'POST',
-      body: formData,
-    })
+    try {
+      const response = await fetch('http://localhost:3456/api/upload/image', {
+        method: 'POST',
+        body: formData,
+      })
 
-    const data = await response.json()
-    if (data.success) {
-      showMessage('✅ 图片上传成功！', 'success')
-      return data.path
+      const data = await response.json()
+      if (data.success) {
+        return data.url
+      }
+      else {
+        showMessage(`❌ 图片上传失败: ${data.error}`, 'error')
+        return ''
+      }
     }
-    else {
-      showMessage(`❌ 图片上传失败: ${data.error}`, 'error')
+    catch (error) {
+      showMessage(`❌ 图片上传失败: ${error.message}`, 'error')
       return ''
     }
-  }
-  catch (error) {
-    showMessage(`❌ 图片上传失败: ${error.message}`, 'error')
-    return ''
+  })
+
+  const urls = await Promise.all(uploadPromises)
+  const successUrls = urls.filter(url => url !== '')
+  
+  if (successUrls.length > 0) {
+    showMessage(`✅ 成功上传 ${successUrls.length} 张图片！`, 'success')
+    callback(successUrls)
   }
 }
 
 // 打开发布对话框
 async function openPublishDialog() {
-  if (!content.value.trim()) {
-    showMessage('内容为空，无法发布', 'error')
+  // 发布前先保存草稿，确保所有修改（包括标签、封面等）都被保存
+  showMessage('正在保存修改...', 'info')
+  const saved = await saveDraft()
+  if (!saved) {
+    showMessage('保存失败，无法发布', 'error')
     return
   }
 
@@ -435,6 +644,9 @@ async function openPublishDialog() {
     showMessage('请先保存为草稿', 'error')
     return
   }
+
+  // 从保存后的内容中重新提取标签，确保数据同步
+  extractMetadataFromContent()
 
   // 加载发布分类（从posts目录，对应网站导航栏）
   await loadPublishCategories()
@@ -457,20 +669,41 @@ async function confirmPublish() {
     return
   }
 
+  // 检查是否选择了标签
+  if (selectedTags.value.length === 0) {
+    showMessage('⚠️ 请至少选择一个标签', 'warning')
+    return
+  }
+
+  // 如果已选择封面但未上传，先上传封面
+  if (selectedCoverFile.value && !uploadingCover.value) {
+    console.warn('[MarkdownEditor] 发布前检测到未上传的封面，自动上传中...')
+    showMessage('正在上传封面...', 'info')
+    await uploadCoverImage()
+  }
+
+  // 更新日期为当前时间
+  updateDateInContent()
+
+  // 将一级标题转换为二级标题（VitePress需要二级标题才能生成目录）
+  convertH1ToH2()
+
+  // 规范化文件末尾换行符（确保有且只有一个换行符）
+  normalizeFileEnding()
+
+  // 保存更新后的内容到草稿
+  const saved = await saveDraft()
+  if (!saved) {
+    showMessage('更新日期失败', 'error')
+    return
+  }
+
   let filename = saveFileName.value.trim()
   if (!filename.endsWith('.md')) {
     filename += '.md'
   }
 
   const targetPath = `${saveCategory.value}/${filename}`
-
-  console.log('📤 准备发布:', {
-    draftFile: currentFile.value,
-    targetPath,
-    category: saveCategory.value,
-    filename,
-  })
-
   try {
     const response = await fetch('http://localhost:3456/api/draft/publish', {
       method: 'POST',
@@ -485,14 +718,24 @@ async function confirmPublish() {
     const data = await response.json()
     if (data.success) {
       showPublishDialog.value = false
+      // 使用 Toast key 更新提示
+      if (window.$toast) {
+        window.$toast('✅ 发布成功！\n\n📌 下一步操作：\n1️⃣ 重启服务查看本地效果（可选）\n2️⃣ 运行推送脚本部署到线上：\n   • Windows: 双击 推送文章.bat\n   • Linux/Mac: 运行 ./推送文章.sh', 'success', 8000, 'publish-article')
+      }
+
+      // 清空当前编辑的内容
+      content.value = ''
+      currentFile.value = ''
       isDraft.value = false
-      currentFile.value = targetPath
-      showMessage('✅ 发布成功！', 'success')
-      loadFiles()
+      coverImage.value = ''
+
+      // 重新加载文档树
       loadFileTree()
     }
     else {
-      showMessage(`❌ 发布失败: ${data.error}`, 'error')
+      if (window.$toast) {
+        window.$toast(`❌ 发布失败: ${data.error}`, 'error', 3000, 'publish-article')
+      }
     }
   }
   catch (error) {
@@ -512,19 +755,17 @@ function cancelSave() {
 
 // 新建
 function createNew() {
-  // 先关闭文件选择器
-  showFileSelector.value = false
+  // 先关闭文件选择器 - Removed
+  // showFileSelector.value = false
 
   // 使用nextTick确保DOM更新后再设置内容
   nextTick(() => {
     content.value = `---
 title: 新文章标题
 description: 文章描述
-date: ${new Date().toISOString().split('T')[0]}
+date: ${formatDateTime(new Date())}
 author: 杰哥
-category: blog/tutorials
-tags:
-  - 默认
+cover:
 ---
 
 # 新文章
@@ -533,13 +774,18 @@ tags:
 `
     currentFile.value = ''
     isDraft.value = true // 新建默认为草稿
-    currentDraftId.value = '' // 清空草稿ID
+    // 为新文章生成草稿ID（用于封面命名）
+    currentDraftId.value = `draft-${Date.now()}`
+
+    // 清空封面和标签
+    coverImage.value = ''
+    selectedTags.value = []
 
     console.warn('[MarkdownEditor] createNew完成, state:', {
       contentLength: content.value.length,
-      showFileSelector: showFileSelector.value,
+      // showFileSelector: showFileSelector.value,
       isDraft: isDraft.value,
-      canSave: content.value.trim() && !showFileSelector.value,
+      canSave: content.value.trim(), // && !showFileSelector.value,
     })
   })
 }
@@ -602,69 +848,73 @@ function cancelCreateFolder() {
 
 // 删除草稿
 async function deleteDraft(filepath) {
-  // eslint-disable-next-line no-alert
-  if (!window.confirm(`确定要删除草稿"${filepath}"吗？`)) {
-    return
-  }
+  showConfirm(
+    '删除草稿',
+    `确定要删除草稿"${filepath}"吗？`,
+    async () => {
+      try {
+        const response = await fetch('http://localhost:3456/api/draft/delete', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ file: filepath }),
+        })
 
-  try {
-    const response = await fetch('http://localhost:3456/api/draft/delete', {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ file: filepath }),
-    })
-
-    const data = await response.json()
-    if (data.success) {
-      showMessage('草稿删除成功', 'success')
-      // 如果删除的是当前文件，清空编辑器
-      if (currentFile.value === filepath) {
-        currentFile.value = ''
-        content.value = ''
+        const data = await response.json()
+        if (data.success) {
+          showMessage('草稿删除成功', 'success')
+          // 如果删除的是当前文件，清空编辑器
+          if (currentFile.value === filepath) {
+            currentFile.value = ''
+            content.value = ''
+          }
+          loadFileTree()
+        }
+        else {
+          showMessage(`删除失败: ${data.error}`, 'error')
+        }
       }
-      loadFileTree()
-    }
-    else {
-      showMessage(`删除失败: ${data.error}`, 'error')
-    }
-  }
-  catch (error) {
-    showMessage(`删除失败: ${error.message}`, 'error')
-  }
+      catch (error) {
+        showMessage(`删除失败: ${error.message}`, 'error')
+      }
+    },
+    'danger'
+  )
 }
 
 // 删除文件夹
 async function deleteFolder(folderPath) {
-  // eslint-disable-next-line no-alert
-  if (!window.confirm(`确定要删除文件夹"${folderPath}"及其所有内容吗？`)) {
-    return
-  }
+  showConfirm(
+    '删除文件夹',
+    `确定要删除文件夹"${folderPath}"及其所有内容吗？`,
+    async () => {
+      try {
+        const response = await fetch('http://localhost:3456/api/draft/delete', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ file: folderPath }),
+        })
 
-  try {
-    const response = await fetch('http://localhost:3456/api/draft/delete', {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ file: folderPath }),
-    })
+        if (!response.ok) {
+          throw new Error(`HTTP错误: ${response.status}`)
+        }
 
-    if (!response.ok) {
-      throw new Error(`HTTP错误: ${response.status}`)
-    }
-
-    const data = await response.json()
-    if (data.success) {
-      showMessage('文件夹删除成功', 'success')
-      selectedFolder.value = '' // 清空选中状态
-      loadFileTree()
-    }
-    else {
-      showMessage(`删除失败: ${data.error}`, 'error')
-    }
-  }
-  catch (error) {
-    showMessage(`删除失败: ${error.message}`, 'error')
-    console.error('[MarkdownEditor] Delete folder error:', error)
-  }
+        const data = await response.json()
+        if (data.success) {
+          showMessage('文件夹删除成功', 'success')
+          selectedFolder.value = '' // 清空选中状态
+          loadFileTree()
+        }
+        else {
+          showMessage(`删除失败: ${data.error}`, 'error')
+        }
+      }
+      catch (error) {
+        showMessage(`删除失败: ${error.message}`, 'error')
+        console.error('[MarkdownEditor] Delete folder error:', error)
+      }
+    },
+    'danger'
+  )
 }
 
 // 打开重命名对话框
@@ -736,6 +986,46 @@ function cancelRename() {
   showRenameDialog.value = false
 }
 
+// 修复 YAML 格式
+async function fixYamlFormat() {
+  showConfirm(
+    '修复 YAML 格式',
+    '确定要修复所有草稿的 YAML frontmatter 吗？\n\n这将为所有字段值添加引号，避免包含特殊字符（如 # : - 等）时的解析错误。',
+    async () => {
+      showMessage('正在修复...', 'info')
+
+      try {
+        const response = await fetch('http://localhost:3456/api/drafts/fix-yaml', {
+          method: 'POST',
+        })
+
+        if (!response.ok) {
+          throw new Error(`HTTP错误: ${response.status}`)
+        }
+
+        const data = await response.json()
+
+        if (data.success) {
+          let message = data.message
+          if (data.fixed && data.fixed.length > 0) {
+            message += `\n\n修复的文件：\n${data.fixed.join('\n')}`
+          }
+          showMessage(message, 'success')
+          // 重新加载文件树
+          loadFileTree()
+        }
+        else {
+          showMessage(`修复失败: ${data.error}`, 'error')
+        }
+      }
+      catch (error) {
+        showMessage(`修复失败: ${error.message}`, 'error')
+      }
+    },
+    'info'
+  )
+}
+
 // 显示消息（使用全局Toast）
 function showMessage(msg, type = 'success') {
   if (window.$toast) {
@@ -752,6 +1042,218 @@ function showMessage(msg, type = 'success') {
   }
 }
 
+// 加载所有可用标签
+async function loadAvailableTags() {
+  try {
+    const response = await fetch('http://localhost:3456/api/tags')
+    const data = await response.json()
+    if (data.success) {
+      availableTags.value = data.tags
+    }
+  }
+  catch (error) {
+    console.error('加载标签失败:', error)
+  }
+}
+
+// 从 frontmatter 中提取所有元数据
+function extractMetadataFromContent() {
+  const yamlMatch = content.value.match(/^---\n([\s\S]*?)\n---/)
+  if (yamlMatch) {
+    const yaml = yamlMatch[1]
+
+    // 提取 title
+    const titleMatch = yaml.match(/title:\s*["']?(.*?)["']?\n/)
+    if (titleMatch) {
+      articleTitle.value = titleMatch[1].trim()
+    }
+
+    // 提取 description
+    const descMatch = yaml.match(/description:\s*["']?(.*?)["']?\n/)
+    if (descMatch) {
+      articleDescription.value = descMatch[1].trim()
+    }
+
+    // 提取 author
+    const authorMatch = yaml.match(/author:\s*["']?(.*?)["']?\n/)
+    if (authorMatch) {
+      articleAuthor.value = authorMatch[1].trim()
+    }
+
+    // 提取 tags（改进的正则，支持更多格式）
+    selectedTags.value = []
+    const tagsMatch = yaml.match(/tags:\s*\n((?:\s+-\s+.+\n?)+)/)
+    if (tagsMatch) {
+      const tagsList = tagsMatch[1].match(/^\s*-\s+(.+)$/gm)
+      if (tagsList && tagsList.length > 0) {
+        selectedTags.value = tagsList.map(t => t.replace(/^\s*-\s+/, '').trim())
+      }
+    }
+
+    console.warn('[MarkdownEditor] 提取元数据完成:', {
+      title: articleTitle.value,
+      description: articleDescription.value,
+      author: articleAuthor.value,
+      tags: selectedTags.value,
+    })
+  }
+}
+
+// 从 frontmatter 中提取标签（向后兼容）
+function extractTagsFromContent() {
+  extractMetadataFromContent()
+}
+
+// 更新所有元数据到 frontmatter
+function updateMetadataInContent() {
+  // 清理所有字段的前后空格
+  const cleanTitle = articleTitle.value.trim()
+  const cleanDescription = articleDescription.value.trim()
+  const cleanAuthor = articleAuthor.value.trim()
+  const cleanCover = coverImage.value.trim()
+  const cleanTags = selectedTags.value.map(t => t.trim()).filter(t => t)
+
+  console.warn('[MarkdownEditor] 更新元数据:', {
+    cleanTitle,
+    cleanDescription,
+    cleanAuthor,
+    cleanCover,
+    cleanTags,
+    selectedTagsRaw: selectedTags.value,
+  })
+
+  const yamlMatch = content.value.match(/^---\n([\s\S]*?)\n---/)
+  if (yamlMatch) {
+    let yaml = yamlMatch[1]
+
+    // 更新 title
+    if (yaml.match(/title:/i)) {
+      yaml = yaml.replace(/title:\s*.+/i, `title: ${cleanTitle}`)
+    }
+    else {
+      yaml = `title: ${cleanTitle}\n` + yaml
+    }
+
+    // 更新 description
+    if (yaml.match(/description:/i)) {
+      yaml = yaml.replace(/description:\s*.+/i, `description: ${cleanDescription}`)
+    }
+    else {
+      yaml = yaml.replace(/title:.*\n/, match => `${match}description: ${cleanDescription}\n`)
+    }
+
+    // 更新 author
+    if (yaml.match(/author:/i)) {
+      yaml = yaml.replace(/author:\s*.+/i, `author: ${cleanAuthor}`)
+    }
+    else {
+      yaml = yaml.replace(/description:.*\n/, match => `${match}author: ${cleanAuthor}\n`)
+    }
+
+    // 更新 tags
+    yaml = yaml.replace(/tags:\s*\n((?:\s+-\s+.+\n?)+)/, '')
+    
+    console.warn('[MarkdownEditor] 准备更新 tags:', {
+      cleanTagsLength: cleanTags.length,
+      cleanTags,
+      hasCover: yaml.match(/cover:/i) !== null,
+      hasAuthor: yaml.match(/author:/i) !== null,
+    })
+    
+    if (cleanTags.length > 0) {
+      const tagsYaml = 'tags:\n' + cleanTags.map(t => `  - ${t}`).join('\n')
+      console.warn('[MarkdownEditor] 生成的 tagsYaml:', tagsYaml)
+
+      if (yaml.match(/cover:/i)) {
+        const oldYaml = yaml
+        // 修复：cover 后面可能没有换行符，在 yaml 末尾
+        yaml = yaml.replace(/cover:\s*[^\n]*/, match => `${match}\n${tagsYaml}`)
+        console.warn('[MarkdownEditor] cover 分支执行:', {
+          replaced: oldYaml !== yaml,
+          oldYaml,
+          newYaml: yaml,
+        })
+      }
+      else if (yaml.match(/author:/i)) {
+        yaml = yaml.replace(/author:\s*[^\n]*/, match => `${match}\n${tagsYaml}`)
+        console.warn('[MarkdownEditor] author 分支执行')
+      }
+      else {
+        yaml += '\n' + tagsYaml
+        console.warn('[MarkdownEditor] 追加到末尾')
+      }
+    }
+    else {
+      console.warn('[MarkdownEditor] ⚠️ cleanTags 为空，跳过 tags 更新')
+    }
+
+    content.value = content.value.replace(/^---\n[\s\S]*?\n---/, `---\n${yaml}\n---`)
+  }
+  else {
+    // 没有 frontmatter，创建新的
+    const date = formatDateTime(new Date())
+    let frontmatter = `---\ntitle: ${cleanTitle}\ndescription: ${cleanDescription}\ndate: ${date}\nauthor: ${cleanAuthor}\n`
+    if (cleanCover) {
+      frontmatter += `cover: ${cleanCover}\n`
+    }
+    if (cleanTags.length > 0) {
+      frontmatter += `tags:\n${cleanTags.map(t => `  - ${t}`).join('\n')}\n`
+    }
+    frontmatter += `---\n`
+    content.value = frontmatter + content.value
+  }
+}
+
+// 更新 frontmatter 中的标签（向后兼容）
+function updateTagsInContent() {
+  const yamlMatch = content.value.match(/^---\n([\s\S]*?)\n---/)
+  if (yamlMatch) {
+    let yaml = yamlMatch[1]
+    
+    // 移除旧的 tags 字段
+    yaml = yaml.replace(/tags:\s*\n((?:\s+-\s+.+\n?)+)/, '')
+    
+    // 添加新的 tags 字段
+    if (selectedTags.value.length > 0) {
+      const tagsYaml = 'tags:\n' + selectedTags.value.map(t => `  - ${t}`).join('\n') + '\n'
+      // 在 cover 后面添加 tags
+      if (yaml.match(/cover:/i)) {
+        yaml = yaml.replace(/cover:\s*[^\n]*\n/, match => `${match}${tagsYaml}`)
+      }
+      else if (yaml.match(/author:/i)) {
+        yaml = yaml.replace(/author:.*\n/, match => `${match}${tagsYaml}`)
+      }
+      else {
+        yaml = yaml.replace(/description:.*\n/, match => `${match}${tagsYaml}`)
+      }
+    }
+    
+    content.value = content.value.replace(/^---\n[\s\S]*?\n---/, `---\n${yaml}\n---`)
+  }
+}
+
+// 切换标签选择
+function toggleTag(tag) {
+  const index = selectedTags.value.indexOf(tag)
+  if (index > -1) {
+    selectedTags.value.splice(index, 1)
+  }
+  else {
+    selectedTags.value.push(tag)
+  }
+  // 更新 frontmatter
+  updateTagsInContent()
+}
+
+// 移除标签
+function removeTag(tag) {
+  const index = selectedTags.value.indexOf(tag)
+  if (index > -1) {
+    selectedTags.value.splice(index, 1)
+    updateTagsInContent()
+  }
+}
+
 // 快捷键
 function handleKeydown(e) {
   if ((e.ctrlKey || e.metaKey) && e.key === 's') {
@@ -760,10 +1262,45 @@ function handleKeydown(e) {
   }
 }
 
+// 处理图片上传
+async function onUploadImg(files: File[], callback: (urls: string[]) => void) {
+  const res = await Promise.all(
+    files.map((file) => {
+      return new Promise((resolve, reject) => {
+        const form = new FormData()
+        form.append('image', file)
+
+        // 使用 fetch-server.js 提供的API
+        fetch('http://localhost:3456/api/upload/image', {
+          method: 'POST',
+          body: form,
+        })
+          .then(res => res.json())
+          .then((res) => {
+            if (res.success) {
+              resolve(res.url)
+            }
+            else {
+              reject(res.error)
+            }
+          })
+          .catch((err) => {
+            console.error(err)
+            reject('上传失败')
+          })
+      })
+    }),
+  )
+
+  callback(res.map((item: any) => item))
+}
+
+// 监听快捷键
 onMounted(() => {
-  loadFiles()
-  loadDrafts()
+  // loadFiles()
+  // loadDrafts()
   loadFileTree()
+  loadAvailableTags()
   window.addEventListener('keydown', handleKeydown)
 })
 </script>
@@ -781,9 +1318,9 @@ onMounted(() => {
           <button class="btn-secondary" @click="createNew">
             ➕ 新增
           </button>
-          <button class="btn-primary" @click="showFileSelector = !showFileSelector">
+          <!-- <button class="btn-primary" @click="showFileSelector = !showFileSelector">
             📂 打开草稿
-          </button>
+          </button> -->
           <button class="btn-info" @click="triggerFileImport">
             📥 导入MD文档
           </button>
@@ -817,9 +1354,14 @@ onMounted(() => {
       <div v-if="showSidebar" class="sidebar">
         <div class="sidebar-header">
           <h3>📚 草稿目录</h3>
-          <button class="btn-icon" title="新建文件夹" @click="openCreateFolderDialog">
-            📁+
-          </button>
+          <div class="sidebar-actions">
+            <button class="btn-icon" title="修复 YAML 格式" @click="fixYamlFormat">
+              🔧
+            </button>
+            <button class="btn-icon" title="新建文件夹" @click="openCreateFolderDialog">
+              📁+
+            </button>
+          </div>
         </div>
         <div class="sidebar-content">
           <FileTree
@@ -839,138 +1381,105 @@ onMounted(() => {
       <!-- 右侧：编辑区 -->
       <div class="editor-content">
         <!-- 文件选择器 -->
-        <div v-if="showFileSelector" class="file-selector">
-          <!-- 选项卡 -->
-          <div class="tabs">
-            <button
-              class="tab"
-              :class="{ active: activeTab === 'published' }"
-              @click="activeTab = 'published'"
-            >
-              📚 已发布 ({{ files.length }})
-            </button>
-            <button
-              class="tab"
-              :class="{ active: activeTab === 'drafts' }"
-              @click="activeTab = 'drafts'"
-            >
-              📝 草稿箱 ({{ drafts.length }})
-            </button>
+        <!-- 编辑器区域 -->
+        <div class="editor-wrapper">
+          <!-- 文章元数据表单 -->
+          <div v-if="content" class="article-metadata-form">
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label">📝 文章标题</label>
+                <input
+                  v-model="articleTitle"
+                  type="text"
+                  class="form-input-text"
+                  placeholder="请输入文章标题"
+                >
+              </div>
+              <div class="form-field">
+                <label class="form-label">✍️ 作者</label>
+                <input
+                  v-model="articleAuthor"
+                  type="text"
+                  class="form-input-text"
+                  placeholder="请输入作者名称"
+                >
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field full-width">
+                <label class="form-label">📄 文章描述</label>
+                <textarea
+                  v-model="articleDescription"
+                  class="form-textarea"
+                  placeholder="请输入文章描述"
+                  rows="2"
+                />
+              </div>
+            </div>
           </div>
 
-          <div class="selector-header">
-            <h3>{{ activeTab === 'drafts' ? '选择草稿' : '选择文章' }}</h3>
-            <div class="search-box">
+          <!-- 封面和标签区域 - 横向布局 -->
+          <div v-if="content" class="file-and-cover-section">
+            <!-- 左侧：封面图片 -->
+            <div class="cover-upload-area">
               <input
-                v-model="searchKeyword"
-                type="text"
-                placeholder="🔍 搜索文章名称或路径..."
-                class="search-input"
+                ref="coverFileInput"
+                type="file"
+                accept="image/*"
+                style="display: none"
+                @change="handleCoverFileSelect"
               >
-              <span v-if="searchKeyword" class="clear-search" @click="searchKeyword = ''">
-                ✕
-              </span>
-            </div>
-          </div>
-          <div class="file-count">
-            共找到 {{ activeTab === 'drafts' ? drafts.length : filteredFiles.length }} 篇文章
-          </div>
-
-          <!-- 草稿箱：按日期分组显示 -->
-          <div v-if="activeTab === 'drafts'" class="file-list">
-            <div v-if="groupedDrafts.length === 0" class="no-results">
-              <p>📝 还没有草稿</p>
-              <p class="hint">
-                点击"新增"开始创建
-              </p>
-            </div>
-            <div v-for="group in groupedDrafts" :key="group.label" class="file-group">
-              <div class="group-header">
-                <span class="group-icon">📅</span>
-                <span class="group-label">{{ group.label }}</span>
-                <span class="group-count">({{ group.files.length }})</span>
+              <div
+                v-if="coverImage && coverImage.trim()"
+                class="cover-preview clickable"
+                title="点击更换封面"
+                @click="coverFileInput?.click()"
+              >
+                <img
+                  :src="coverImage"
+                  alt="封面预览"
+                  class="cover-image"
+                  @error="handleCoverImageError"
+                >
+                <div class="cover-overlay">
+                  <span class="overlay-text">点击更换</span>
+                </div>
               </div>
               <div
-                v-for="file in group.files"
-                :key="file.path"
-                class="file-item"
-                :class="{ active: currentFile === file.path }"
-                @click="openFile(file.path, true)"
+                v-else
+                class="cover-placeholder clickable"
+                title="点击上传封面"
+                @click="coverFileInput?.click()"
               >
-                <span class="file-icon">📄</span>
-                <div class="file-info">
-                  <div class="file-name">
-                    {{ file.name }}
-                  </div>
-                  <div class="file-path">
-                    {{ file.path }}
-                  </div>
-                  <div class="file-meta">
-                    <span class="meta-item">
-                      <span class="meta-icon">📅</span>
-                      {{ formatDate(file.modifiedAt) }}
-                    </span>
-                    <span class="meta-item">
-                      <span class="meta-icon">📦</span>
-                      {{ formatSize(file.size) }}
-                    </span>
-                  </div>
-                </div>
+                <span class="placeholder-icon">🖼️</span>
+                <span class="placeholder-text">点击上传封面</span>
               </div>
             </div>
-          </div>
 
-          <!-- 已发布文章：列表显示 -->
-          <div v-else class="file-list">
-            <div
-              v-for="file in filteredFiles"
-              :key="file.path"
-              class="file-item"
-              :class="{ active: currentFile === file.path }"
-              @click="openFile(file.path, false)"
-            >
-              <span class="file-icon">📄</span>
-              <div class="file-info">
-                <div class="file-name">
-                  {{ file.name }}
-                </div>
-                <div class="file-path">
-                  {{ file.path }}
-                </div>
-                <div class="file-meta">
-                  <span class="meta-item">
-                    <span class="meta-icon">📅</span>
-                    {{ formatDate(file.modifiedAt) }}
-                  </span>
-                  <span class="meta-item">
-                    <span class="meta-icon">📦</span>
-                    {{ formatSize(file.size) }}
-                  </span>
-                </div>
+            <!-- 右侧：标签管理区域 -->
+            <div class="tags-management-area">
+              <button class="btn-manage-tags" @click="showTagSelector = true">
+                🏷️ 管理标签 ({{ selectedTags.length }})
+              </button>
+              <div v-if="selectedTags.length > 0" class="selected-tags-display">
+                <span
+                  v-for="tag in selectedTags"
+                  :key="tag"
+                  class="tag-badge"
+                >
+                  {{ tag }}
+                  <button class="tag-remove" @click="removeTag(tag)">×</button>
+                </span>
               </div>
             </div>
-            <div v-if="filteredFiles.length === 0" class="no-results">
-              <p>😔 没有找到匹配的文章</p>
-              <p class="hint">
-                试试其他关键词
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 编辑器区域 -->
-        <div v-if="!showFileSelector">
-          <!-- 当前文件信息 -->
-          <div v-if="currentFile" class="current-file">
-            <span class="file-icon">📄</span>
-            <span class="file-path">{{ currentFile }}</span>
           </div>
 
           <!-- Markdown编辑器 -->
           <MdEditor
-            v-model="content"
+            v-model="editorContent"
             language="zh-CN"
             :preview="true"
+            :transform-img-url="transformImgUrl"
             :toolbars="[
               'bold',
               'underline',
@@ -1045,15 +1554,24 @@ onMounted(() => {
           </div>
         </div>
         <div class="dialog-footer">
-          <button class="btn-secondary" @click="cancelSave">
+          <button type="button" class="btn-secondary" @click="cancelSave">
             取消
           </button>
-          <button class="btn-success" @click="confirmSave">
+          <button type="button" class="btn-success" @click="confirmSave">
             确认保存
           </button>
         </div>
       </div>
     </div>
+
+    <!-- 确认对话框 -->
+    <ConfirmDialog
+      v-model="showConfirmDialog"
+      :title="confirmTitle"
+      :message="confirmMessage"
+      :type="confirmType"
+      @confirm="handleConfirmAction"
+    />
 
     <!-- 发布对话框 -->
     <div v-if="showPublishDialog" class="dialog-overlay" @click="cancelPublish">
@@ -1092,11 +1610,47 @@ onMounted(() => {
           </div>
         </div>
         <div class="dialog-footer">
-          <button class="btn-secondary" @click="cancelPublish">
+          <button type="button" class="btn-secondary" @click="cancelPublish">
             取消
           </button>
-          <button class="btn-success" @click="confirmPublish">
+          <button type="button" class="btn-success" @click="confirmPublish">
             确认发布
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 标签选择器对话框 -->
+    <div v-if="showTagSelector" class="dialog-overlay" @click="showTagSelector = false">
+      <div class="dialog-content" @click.stop>
+        <div class="dialog-header">
+          <h3>🏷️ 选择标签</h3>
+        </div>
+        <div class="dialog-body">
+          <div class="tag-selector-grid">
+            <label
+              v-for="tag in availableTags"
+              :key="tag"
+              class="tag-option"
+              :class="{ active: selectedTags.includes(tag) }"
+            >
+              <input
+                type="checkbox"
+                :checked="selectedTags.includes(tag)"
+                @change="toggleTag(tag)"
+              >
+              <span>{{ tag }}</span>
+            </label>
+          </div>
+          <div v-if="availableTags.length === 0" class="empty-tags">
+            暂无可用标签，请先在
+            <a href="/tools/admin" target="_blank">标签管理</a>
+            中添加标签
+          </div>
+        </div>
+        <div class="dialog-footer">
+          <button type="button" class="btn-secondary" @click="showTagSelector = false">
+            关闭
           </button>
         </div>
       </div>
@@ -1126,10 +1680,10 @@ onMounted(() => {
           </div>
         </div>
         <div class="dialog-footer">
-          <button class="btn-secondary" @click="cancelCreateFolder">
+          <button type="button" class="btn-secondary" @click="cancelCreateFolder">
             取消
           </button>
-          <button class="btn-success" @click="confirmCreateFolder">
+          <button type="button" class="btn-success" @click="confirmCreateFolder">
             创建
           </button>
         </div>
@@ -1159,10 +1713,10 @@ onMounted(() => {
           </div>
         </div>
         <div class="dialog-footer">
-          <button class="btn-secondary" @click="cancelRename">
+          <button type="button" class="btn-secondary" @click="cancelRename">
             取消
           </button>
-          <button class="btn-success" @click="confirmRename">
+          <button type="button" class="btn-success" @click="confirmRename">
             确定
           </button>
         </div>
@@ -1274,6 +1828,11 @@ onMounted(() => {
   font-size: 16px;
   font-weight: 600;
   color: var(--vp-c-text-1);
+}
+
+.sidebar-actions {
+  display: flex;
+  gap: 8px;
 }
 
 .btn-icon {
@@ -1615,15 +2174,106 @@ onMounted(() => {
   color: var(--vp-c-text-3);
 }
 
+/* 文章元数据表单 */
+.article-metadata-form {
+  padding: 16px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.form-row:last-child {
+  margin-bottom: 0;
+}
+
+.form-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field.full-width {
+  width: 100%;
+}
+
+.form-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--vp-c-text-2);
+}
+
+.form-input-text {
+  padding: 8px 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.form-input-text:focus {
+  outline: none;
+  border-color: var(--vp-c-brand);
+  box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
+}
+
+.form-textarea {
+  padding: 8px 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  transition: all 0.2s;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--vp-c-brand);
+  box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
+}
+
+/* 文件信息和封面区域 - 横向布局 */
+.file-and-cover-section {
+  display: flex;
+  gap: 24px;
+  padding: 16px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/* 左侧区域 - 文件信息和标签 */
+.left-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 300px;
+  max-width: 450px;
+  flex-shrink: 0;
+  padding-right: 24px;
+  border-right: 1px solid var(--vp-c-divider);
+}
+
 /* 当前文件 */
 .current-file {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 12px;
-  background: var(--vp-c-bg-soft);
-  border-radius: 6px;
-  margin-bottom: 16px;
   font-size: 14px;
   color: var(--vp-c-text-2);
 }
@@ -1632,6 +2282,115 @@ onMounted(() => {
   color: #ef4444;
   font-weight: 600;
   margin-left: auto;
+}
+
+/* 封面上传区域 - 左侧 */
+.cover-upload-area {
+  flex-shrink: 0;
+}
+
+/* 标签管理区域 - 右侧 */
+.tags-management-area {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cover-preview {
+  flex-shrink: 0;
+  width: 150px;
+  height: 90px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  position: relative;
+}
+
+.cover-preview.clickable {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cover-preview.clickable:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: var(--vp-c-brand);
+}
+
+.cover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cover-preview.clickable:hover .cover-overlay {
+  opacity: 1;
+}
+
+.overlay-text {
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cover-placeholder {
+  flex-shrink: 0;
+  width: 150px;
+  height: 90px;
+  border-radius: 6px;
+  background: var(--vp-c-bg-alt);
+  border: 1px dashed var(--vp-c-divider);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--vp-c-text-3);
+}
+
+.cover-placeholder.clickable {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cover-placeholder.clickable:hover {
+  border-color: var(--vp-c-brand);
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand);
+  transform: scale(1.02);
+}
+
+.placeholder-icon {
+  font-size: 24px;
+  opacity: 0.5;
+}
+
+.placeholder-text {
+  font-size: 12px;
+}
+
+.cover-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 /* 编辑器主体 */
@@ -1688,6 +2447,12 @@ onMounted(() => {
   overflow-y: auto;
   color: var(--vp-c-text-1);
   line-height: 1.7;
+}
+
+/* 修复预览区域 H1 被全局样式隐藏的问题 */
+:deep(.md-editor-preview h1:first-of-type),
+:deep(.md-editor-preview-wrapper h1:first-of-type) {
+  display: block !important;
 }
 
 /* 预览内容样式 */
@@ -1933,5 +2698,206 @@ onMounted(() => {
     width: 95%;
     max-width: none;
   }
+
+  /* 小屏幕上改为竖向布局 */
+  .file-and-cover-section {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .current-file {
+    width: 100%;
+    min-width: auto;
+    padding-right: 0;
+    border-right: none; /* 小屏幕隐藏竖线 */
+  }
+
+  .cover-upload-area {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cover-content {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cover-preview,
+  .cover-placeholder {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* 封面上传区域的分隔符和标签按钮 */
+.cover-actions .divider {
+  margin: 0 12px;
+  color: var(--vp-c-divider);
+  font-size: 18px;
+}
+
+.btn-manage-tags {
+  padding: 8px 16px;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.btn-manage-tags:hover {
+  border-color: var(--vp-c-brand);
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand);
+}
+
+/* 已选标签显示 - 垂直多列布局，每列最多3个 */
+.selected-tags-display {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  gap: 8px 12px;
+  flex: 1;
+  max-height: 150px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  align-items: start;
+}
+
+.tags-label {
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+  font-weight: 500;
+}
+
+.tag-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand);
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.tag-remove {
+  margin-left: 6px;
+  background: none;
+  border: none;
+  color: var(--vp-c-brand);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.tag-remove:hover {
+  opacity: 1;
+}
+
+/* 标签选择器对话框 - 每列3个标签 */
+.tag-selector-grid {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: column;
+  gap: 12px;
+  margin: 16px 0;
+  max-height: 300px;
+}
+
+.tag-option {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  background: var(--vp-c-bg-soft);
+  border: 2px solid var(--vp-c-divider);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.tag-option:hover {
+  border-color: var(--vp-c-brand);
+  background: var(--vp-c-brand-soft);
+}
+
+.tag-option.active {
+  background: var(--vp-c-brand-soft);
+  border-color: var(--vp-c-brand);
+}
+
+.tag-option input[type="checkbox"] {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.tag-option span {
+  font-size: 14px;
+  color: var(--vp-c-text-1);
+  font-weight: 500;
+}
+
+.tag-option.active span {
+  color: var(--vp-c-brand);
+}
+
+.empty-tags {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--vp-c-text-2);
+}
+
+.empty-tags a {
+  color: var(--vp-c-brand);
+  text-decoration: none;
+}
+
+.empty-tags a:hover {
+  text-decoration: underline;
+}
+
+/* 标签选择器 */
+.tag-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.tag-checkbox {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.tag-checkbox:hover {
+  border-color: var(--vp-c-brand);
+  background: var(--vp-c-brand-soft);
+}
+
+.tag-checkbox input[type="checkbox"] {
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+.tag-checkbox input[type="checkbox"]:checked + span {
+  color: var(--vp-c-brand);
+  font-weight: 500;
 }
 </style>

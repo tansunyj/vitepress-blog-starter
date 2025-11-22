@@ -1,18 +1,18 @@
 ---
-name: 杰哥
-avatar: https://api.dicebear.com/7.x/avataaars/svg?seed=jie
-title: 全栈开发者
-organization: 杰哥的技术小站
-organizationUrl: /
-location: 中国
+name: "杰哥"
+avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=jie"
+title: "全栈开发者"
+organization: "杰哥的技术小站"
+organizationUrl: "/"
+location: "中国"
 github: ''
-website: /
-bio: 热爱技术分享，专注于 VPN、AI、Web 开发等领域
+website: "/"
+bio: "热爱技术分享，专注于 VPN、AI、Web 开发等领域"
 social:
   - icon: github
-    link: https://github.com
+    link: "https://github.com"
   - icon: twitter
-    link: https://twitter.com
+    link: "https://twitter.com"
 ---
 
 # 关于杰哥

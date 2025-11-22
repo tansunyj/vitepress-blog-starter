@@ -11,6 +11,7 @@ const views = {
   articles: defineAsyncComponent(() => import('./ArticleManager.vue')),
   trash: defineAsyncComponent(() => import('./TrashManager.vue')),
   fetch: defineAsyncComponent(() => import('./FetchArticleTool.vue')),
+  tags: defineAsyncComponent(() => import('./TagManager.vue')),
   menu: defineAsyncComponent(() => import('./MenuManager.vue')),
   site: defineAsyncComponent(() => import('./SiteConfigExtended.vue')),
 }
@@ -26,6 +27,7 @@ const menuItems = [
       { id: 'drafts', icon: '📝', label: '草稿箱', desc: 'Markdown编辑器' },
       { id: 'articles', icon: '📰', label: '已上线', desc: '管理已发布文章' },
       { id: 'trash', icon: '🗑️', label: '垃圾箱', desc: '已删除的文章' },
+      { id: 'tags', icon: '🏷️', label: '标签管理', desc: '管理文章标签' },
       { id: 'fetch', icon: '📥', label: '文章爬取', desc: '爬取网页文章' },
     ],
   },

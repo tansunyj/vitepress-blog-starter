@@ -6,6 +6,7 @@ import * as cheerio from 'cheerio'
 import cors from 'cors'
 import express from 'express'
 import multer from 'multer'
+import matter from 'gray-matter'
 import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
 import remarkStringify from 'remark-stringify'
@@ -22,10 +23,118 @@ app.use(express.json())
 app.use(express.json({ limit: '50mb' }))
 app.use(express.urlencoded({ extended: true, limit: '50mb' }))
 
+// Multer配置 - Banner图片上传
+const bannerStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const uploadDir = path.join(__dirname, '../docs/public/images/banner')
+    // 确保目录存在
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true })
+    }
+    cb(null, uploadDir)
+  },
+  filename: (req, file, cb) => {
+    // 使用时间戳生成唯一文件名
+    const ext = path.extname(file.originalname)
+    const filename = `banner-${Date.now()}${ext}`
+    cb(null, filename)
+  }
+})
+
+const bannerUpload = multer({
+  storage: bannerStorage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB限制
+  fileFilter: (req, file, cb) => {
+    // 只允许图片格式
+    const allowedTypes = /jpeg|jpg|png|gif|webp/
+    const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase())
+    const mimetype = allowedTypes.test(file.mimetype)
+
+    if (extname && mimetype) {
+      cb(null, true)
+    } else {
+      cb(new Error('只允许上传图片文件 (jpeg, jpg, png, gif, webp)'))
+    }
+  }
+})
+
+// Multer配置 - 文章封面图片上传
+const coverStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const uploadDir = path.join(__dirname, '../docs/public/images/covers')
+    // 确保目录存在
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true })
+    }
+    cb(null, uploadDir)
+  },
+  filename: (req, file, cb) => {
+    // 使用草稿ID作为文件名，确保封面和草稿对应
+    const draftId = req.body.draftId || `draft-${Date.now()}`
+    const ext = path.extname(file.originalname)
+    const filename = `cover-${draftId}${ext}`
+    cb(null, filename)
+  }
+})
+
+const coverUpload = multer({
+  storage: coverStorage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB限制
+  fileFilter: (req, file, cb) => {
+    // 只允许图片格式
+    const allowedTypes = /jpeg|jpg|png|gif|webp/
+    const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase())
+    const mimetype = allowedTypes.test(file.mimetype)
+
+    if (extname && mimetype) {
+      cb(null, true)
+    } else {
+      cb(new Error('只允许上传图片文件 (jpeg, jpg, png, gif, webp)'))
+    }
+  }
+})
+
+// Multer配置 - 通用图片上传 (Markdown编辑器用)
+const uploadStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const uploadDir = path.join(__dirname, '../docs/public/images/uploads')
+    // 确保目录存在
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true })
+    }
+    cb(null, uploadDir)
+  },
+  filename: (req, file, cb) => {
+    // 使用时间戳生成唯一文件名
+    const ext = path.extname(file.originalname)
+    const filename = `upload-${Date.now()}${ext}`
+    cb(null, filename)
+  }
+})
+
+
+
+const generalUpload = multer({
+  storage: uploadStorage,
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB限制
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = /jpeg|jpg|png|gif|webp/
+    const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase())
+    const mimetype = allowedTypes.test(file.mimetype)
+
+    if (extname && mimetype) {
+      cb(null, true)
+    } else {
+      cb(new Error('只允许上传图片文件 (jpeg, jpg, png, gif, webp)'))
+    }
+  }
+})
+
 const CONFIG = {
   imagesBaseDir: path.join(__dirname, '../docs/public/images/articles'),
   postsBaseDir: path.join(__dirname, '../docs/posts'),
   draftsBaseDir: path.join(__dirname, '../drafts/articles'),
+  trashBaseDir: path.join(__dirname, '../trash'),
   draftImagesBaseDir: path.join(__dirname, '../docs/public/images/drafts'),
   publicImagesBaseDir: path.join(__dirname, '../docs/public/images'),
   defaultAuthor: '杰哥',
@@ -356,17 +465,31 @@ async function fetchArticle(url, articleId) {
   }
 }
 
+// 辅助函数：转义YAML字符串值
+function escapeYamlString(str) {
+  if (!str) {
+    return '""'
+  }
+  // 如果包含特殊字符，使用双引号包裹并转义内部的双引号
+  const needsQuotes = /[:#\-\[\]{}\n\r\t]/.test(str) || str.startsWith(' ') || str.endsWith(' ')
+  if (needsQuotes || str.includes('"')) {
+    return `"${str.replace(/"/g, '\\"')}"`
+  }
+  // 简单字符串也用引号包裹，更安全
+  return `"${str}"`
+}
+
 function saveArticle(articleData, category, tags, articleId) {
   const { title, author, publishTime, markdown } = articleData
 
   const frontmatter = `---
-title: ${title}
-description: ${title}
-date: ${publishTime}
-author: ${author}
-category: ${category}
+title: ${escapeYamlString(title)}
+description: ${escapeYamlString(title)}
+date: ${escapeYamlString(publishTime)}
+author: ${escapeYamlString(author)}
+category: ${escapeYamlString(category)}
 tags:
-${tags.map(tag => `  - ${tag}`).join('\n')}
+${tags.map(tag => `  - ${escapeYamlString(tag)}`).join('\n')}
 ---
 
 `
@@ -419,12 +542,35 @@ app.post('/api/fetch-article', async (req, res) => {
         filepath,
       },
     })
-  }
-  catch (error) {
+  } catch (error) {
     console.error('爬取失败:', error)
     res.status(500).json({
       success: false,
       error: error.message || '爬取失败',
+    })
+  }
+})
+
+// 通用图片上传API
+app.post('/api/upload/image', generalUpload.single('image'), (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ success: false, error: '请选择要上传的图片' })
+    }
+
+    // 返回相对于public目录的路径
+    const url = `/images/uploads/${req.file.filename}`
+
+    res.json({
+      success: true,
+      url,
+      filename: req.file.filename
+    })
+  } catch (error) {
+    console.error('图片上传失败:', error)
+    res.status(500).json({
+      success: false,
+      error: error.message || '图片上传失败'
     })
   }
 })
@@ -631,6 +777,50 @@ app.get('/api/drafts/tree', (_req, res) => {
       })
     }
     sortByTimeDesc(tree)
+
+    res.json({
+      success: true,
+      tree,
+    })
+  }
+  catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    })
+  }
+})
+
+// 获取已发布文章的树形结构
+app.get('/api/posts/tree', (_req, res) => {
+  try {
+    if (!fs.existsSync(CONFIG.postsBaseDir)) {
+      fs.mkdirSync(CONFIG.postsBaseDir, { recursive: true })
+    }
+
+    const tree = buildTree(CONFIG.postsBaseDir)
+
+    res.json({
+      success: true,
+      tree,
+    })
+  }
+  catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    })
+  }
+})
+
+// 获取垃圾箱的树形结构
+app.get('/api/trash/tree', (_req, res) => {
+  try {
+    if (!fs.existsSync(CONFIG.trashBaseDir)) {
+      fs.mkdirSync(CONFIG.trashBaseDir, { recursive: true })
+    }
+
+    const tree = buildTree(CONFIG.trashBaseDir)
 
     res.json({
       success: true,
@@ -994,7 +1184,7 @@ app.post('/api/draft/publish', (req, res) => {
     // 读取草稿内容
     let content = fs.readFileSync(draftPath, 'utf-8')
 
-    // 提取草稿ID（假设草稿文件名格式：draft-xxx.md）
+    // 提取草稿ID（假设草稿文件名格式：draft-xxx.md 或 articles/draft-xxx.md）
     const draftId = path.basename(draftFile, '.md')
     const draftImageDir = path.join(CONFIG.draftImagesBaseDir, draftId)
 
@@ -1077,7 +1267,7 @@ const storage = multer.diskStorage({
   },
 })
 
-const upload = multer({
+const draftUpload = multer({
   storage,
   limits: { fileSize: 10 * 1024 * 1024 }, // 10MB
   fileFilter(req, file, cb) {
@@ -1089,13 +1279,13 @@ const upload = multer({
       cb(null, true)
     }
     else {
-      cb(new Error('只支持图片格式: jpg, jpeg, png, gif, webp, svg'))
+      cb(new Error('只允许上传图片文件'))
     }
   },
 })
 
 // 上传图片到草稿箱
-app.post('/api/draft/upload-image', upload.single('image'), (req, res) => {
+app.post('/api/draft/upload-image', draftUpload.single('image'), (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ success: false, error: '没有上传文件' })
@@ -1256,7 +1446,7 @@ app.post('/api/config/menus/create-folders', (req, res) => {
           if (!fs.existsSync(indexPath)) {
             const indexContent = `---
 layout: doc
-title: ${menu.text}
+title: ${escapeYamlString(menu.text)}
 ---
 
 # ${menu.text}
@@ -1305,20 +1495,130 @@ title: ${menu.text}
   }
 })
 
+// 修复所有草稿的 YAML frontmatter
+app.post('/api/drafts/fix-yaml', (_req, res) => {
+  try {
+    if (!fs.existsSync(CONFIG.draftsBaseDir)) {
+      return res.json({ success: true, message: '草稿箱为空', fixed: [] })
+    }
+
+    const files = fs.readdirSync(CONFIG.draftsBaseDir)
+      .filter(f => f.endsWith('.md'))
+
+    const fixed = []
+    const errors = []
+
+    for (const file of files) {
+      try {
+        const filepath = path.join(CONFIG.draftsBaseDir, file)
+        const content = fs.readFileSync(filepath, 'utf-8')
+
+        // 匹配 frontmatter
+        const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)
+        if (!match) {
+          continue
+        }
+
+        const [, frontmatterStr, markdown] = match
+
+        // 解析 frontmatter 的每一行
+        const lines = frontmatterStr.split('\n')
+        const fixedLines = []
+
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i]
+
+          // 匹配 key: value 格式
+          const keyValueMatch = line.match(/^(\s*)([\w]+):\s*(.*)$/)
+          if (keyValueMatch) {
+            const [, indent, key, value] = keyValueMatch
+
+            // 跳过已经有引号的值
+            if (value.startsWith('"') || value.startsWith("'") || key === 'tags' || !value) {
+              fixedLines.push(line)
+              continue
+            }
+
+            // 添加引号
+            fixedLines.push(`${indent}${key}: ${escapeYamlString(value)}`)
+          }
+          else {
+            fixedLines.push(line)
+          }
+        }
+
+        // 重建文件内容
+        const newContent = `---\n${fixedLines.join('\n')}\n---\n${markdown}`
+
+        // 只有内容改变时才写入
+        if (newContent !== content) {
+          fs.writeFileSync(filepath, newContent, 'utf-8')
+          fixed.push(file)
+          console.log(`✅ 修复草稿: ${file}`)
+        }
+      }
+      catch (error) {
+        errors.push({ file, error: error.message })
+        console.error(`❌ 修复失败: ${file} - ${error.message}`)
+      }
+    }
+
+    res.json({
+      success: true,
+      message: `成功修复 ${fixed.length} 个草稿`,
+      fixed,
+      errors: errors.length > 0 ? errors : undefined,
+    })
+  }
+  catch (error) {
+    console.error('❌ 修复草稿失败:', error)
+    res.status(500).json({ success: false, error: error.message })
+  }
+})
+
 // 读取网站配置
 app.get('/api/config/site', (_req, res) => {
   try {
     const configContent = fs.readFileSync(configPath, 'utf-8')
-    
+
     // 提取网站标题
     const titleMatch = configContent.match(/title:\s*'([^']+)'/)
     const descMatch = configContent.match(/description:\s*'([^']+)'/)
-    
+
+    // 提取页脚配置（直接匹配字段）
+    const footerMessageMatch = configContent.match(/message:\s*'([^']+)'/)
+    const footerCopyrightMatch = configContent.match(/copyright:\s*'([^']+)'/)
+
     const config = {
       title: titleMatch ? titleMatch[1] : '',
       description: descMatch ? descMatch[1] : '',
+      footerMessage: footerMessageMatch ? footerMessageMatch[1] : '',
+      footerCopyright: footerCopyrightMatch ? footerCopyrightMatch[1] : '',
     }
-    
+
+    // 读取 banner 配置
+    const bannerConfigPath = path.join(__dirname, '../docs/banner-config.json')
+    if (fs.existsSync(bannerConfigPath)) {
+      const bannerConfig = JSON.parse(fs.readFileSync(bannerConfigPath, 'utf-8'))
+      config.bannerTitle = bannerConfig.title || ''
+      config.bannerSubtitle = bannerConfig.subtitle || ''
+      config.bannerImage = bannerConfig.banner || ''
+    }
+
+    // 读取 Google 服务配置
+    const googleConfigPath = path.join(__dirname, '../docs/.vitepress/google-config.json')
+    if (fs.existsSync(googleConfigPath)) {
+      const googleConfig = JSON.parse(fs.readFileSync(googleConfigPath, 'utf-8'))
+      config.googleAnalytics = googleConfig.analytics || ''
+      config.googleSearchConsole = googleConfig.searchConsole || ''
+      config.googleAdsense = googleConfig.adsense || ''
+    }
+    else {
+      config.googleAnalytics = ''
+      config.googleSearchConsole = ''
+      config.googleAdsense = ''
+    }
+
     res.json({ success: true, config })
   }
   catch (error) {
@@ -1329,31 +1629,221 @@ app.get('/api/config/site', (_req, res) => {
 // 保存网站配置
 app.post('/api/config/site', (req, res) => {
   try {
-    const { title, description } = req.body
+    const {
+      title,
+      description,
+      footerMessage,
+      footerCopyright,
+      bannerTitle,
+      bannerSubtitle,
+      bannerImage,
+      googleAnalytics,
+      googleSearchConsole,
+      googleAdsense
+    } = req.body
     let configContent = fs.readFileSync(configPath, 'utf-8')
-    
+
     // 替换标题
-    if (title) {
+    if (title !== undefined) {
       configContent = configContent.replace(
         /title:\s*'[^']*'/,
         `title: '${title}'`,
       )
     }
-    
+
     // 替换描述
-    if (description) {
+    if (description !== undefined) {
       configContent = configContent.replace(
         /description:\s*'[^']*'/,
         `description: '${description}'`,
       )
     }
-    
+
+    // 替换页脚信息
+    if (footerMessage !== undefined) {
+      configContent = configContent.replace(
+        /(message:\s*)'[^']*'/,
+        `$1'${footerMessage}'`,
+      )
+    }
+
+    // 替换版权信息
+    if (footerCopyright !== undefined) {
+      configContent = configContent.replace(
+        /(copyright:\s*)'[^']*'/,
+        `$1'${footerCopyright}'`,
+      )
+    }
+
     fs.writeFileSync(configPath, configContent, 'utf-8')
-    
+
+    // 保存 banner 配置
+    if (bannerTitle !== undefined || bannerSubtitle !== undefined || bannerImage !== undefined) {
+      const bannerConfigPath = path.join(__dirname, '../docs/banner-config.json')
+      let bannerConfig = {}
+
+      // 读取现有配置
+      if (fs.existsSync(bannerConfigPath)) {
+        bannerConfig = JSON.parse(fs.readFileSync(bannerConfigPath, 'utf-8'))
+      }
+
+      // 更新配置
+      if (bannerTitle !== undefined) bannerConfig.title = bannerTitle
+      if (bannerSubtitle !== undefined) bannerConfig.subtitle = bannerSubtitle
+      if (bannerImage !== undefined) bannerConfig.banner = bannerImage
+
+      // 写入文件
+      fs.writeFileSync(bannerConfigPath, JSON.stringify(bannerConfig, null, 2), 'utf-8')
+    }
+
+    // 处理 Google 服务配置
+    if (googleAnalytics !== undefined || googleSearchConsole !== undefined || googleAdsense !== undefined) {
+      const googleConfigPath = path.join(__dirname, '../docs/.vitepress/google-config.json')
+      let googleConfig = {}
+
+      // 读取现有配置
+      if (fs.existsSync(googleConfigPath)) {
+        googleConfig = JSON.parse(fs.readFileSync(googleConfigPath, 'utf-8'))
+      }
+
+      // 更新配置
+      if (googleAnalytics !== undefined) googleConfig.analytics = googleAnalytics
+      if (googleSearchConsole !== undefined) googleConfig.searchConsole = googleSearchConsole
+      if (googleAdsense !== undefined) googleConfig.adsense = googleAdsense
+
+      // 写入配置文件
+      fs.writeFileSync(googleConfigPath, JSON.stringify(googleConfig, null, 2), 'utf-8')
+
+      // 同时复制到 public 目录，供前端访问
+      const publicGoogleConfigPath = path.join(__dirname, '../docs/public/google-config.json')
+      fs.writeFileSync(publicGoogleConfigPath, JSON.stringify(googleConfig, null, 2), 'utf-8')
+
+      // 处理 Google Search Console 验证
+      if (googleSearchConsole) {
+        const verificationCodes = googleSearchConsole.split(',').map(code => code.trim()).filter(code => code)
+
+        // 在 public 文件夹创建验证文件
+        const publicPath = path.join(__dirname, '../docs/public')
+        if (!fs.existsSync(publicPath)) {
+          fs.mkdirSync(publicPath, { recursive: true })
+        }
+
+        verificationCodes.forEach(code => {
+          const verifyFilePath = path.join(publicPath, `${code}.html`)
+          fs.writeFileSync(verifyFilePath, `google-site-verification: ${code}.html`, 'utf-8')
+        })
+      }
+
+      // 处理 Google AdSense ads.txt
+      if (googleAdsense) {
+        const publicPath = path.join(__dirname, '../docs/public')
+        const adsTxtPath = path.join(publicPath, 'ads.txt')
+        const publisherId = googleAdsense.replace('ca-pub-', '')
+        const adsTxtContent = `google.com, pub-${publisherId}, DIRECT, f08c47fec0942fa0`
+        fs.writeFileSync(adsTxtPath, adsTxtContent, 'utf-8')
+      }
+    }
+
+    let message = '✅ 配置保存成功！'
+    if (bannerTitle !== undefined || bannerSubtitle !== undefined || bannerImage !== undefined) {
+      message += ' Banner配置已更新。'
+    }
+    if (googleAnalytics || googleSearchConsole || googleAdsense) {
+      message += ' Google服务已配置，请重启开发服务器生效。'
+    }
+
     res.json({
       success: true,
-      message: '配置保存成功，请重启开发服务器使配置生效',
+      message,
     })
+  }
+  catch (error) {
+    res.status(500).json({ success: false, error: error.message })
+  }
+})
+
+// Banner图片上传
+app.post('/api/upload/banner', bannerUpload.single('banner'), (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ success: false, error: '未选择文件' })
+    }
+
+    // 返回相对路径（用于web访问）
+    const relativePath = `/images/banner/${req.file.filename}`
+
+    // 自动更新banner配置
+    const bannerConfigPath = path.join(__dirname, '../docs/banner-config.json')
+    let bannerConfig = {}
+
+    if (fs.existsSync(bannerConfigPath)) {
+      bannerConfig = JSON.parse(fs.readFileSync(bannerConfigPath, 'utf-8'))
+    }
+
+    bannerConfig.banner = relativePath
+    fs.writeFileSync(bannerConfigPath, JSON.stringify(bannerConfig, null, 2), 'utf-8')
+
+    res.json({
+      success: true,
+      path: relativePath,
+      filename: req.file.filename,
+      message: '✅ 图片上传成功！Banner配置已自动更新。'
+    })
+  }
+  catch (error) {
+    res.status(500).json({ success: false, error: error.message })
+  }
+})
+
+// 文章封面图片上传
+app.post('/api/upload/cover', coverUpload.single('cover'), (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ success: false, error: '未选择文件' })
+    }
+
+    // 获取草稿ID，用于重命名封面文件
+    const draftId = req.body.draftId
+    if (draftId) {
+      const ext = path.extname(req.file.originalname)
+      const newFilename = `cover-${draftId}${ext}`
+      const oldPath = req.file.path
+      const newPath = path.join(path.dirname(oldPath), newFilename)
+
+      // 删除旧的封面（如果存在）
+      const coverDir = path.dirname(oldPath)
+      const oldCovers = fs.readdirSync(coverDir).filter(f => f.startsWith(`cover-${draftId}.`))
+      oldCovers.forEach((oldCover) => {
+        const oldCoverPath = path.join(coverDir, oldCover)
+        if (oldCoverPath !== newPath && fs.existsSync(oldCoverPath)) {
+          fs.unlinkSync(oldCoverPath)
+          console.log(`🗑️ 删除旧封面: ${oldCover}`)
+        }
+      })
+
+      // 重命名为新文件
+      fs.renameSync(oldPath, newPath)
+      console.log(`✅ 封面已保存: ${newFilename}`)
+
+      // 返回新的相对路径
+      const relativePath = `/images/covers/${newFilename}`
+      res.json({
+        success: true,
+        path: relativePath,
+        filename: newFilename,
+        message: '✅ 封面上传成功！',
+      })
+    }
+    else {
+      // 没有 draftId，使用默认文件名
+      const relativePath = `/images/covers/${req.file.filename}`
+      res.json({
+        success: true,
+        path: relativePath,
+        filename: req.file.filename,
+        message: '✅ 封面上传成功！',
+      })
+    }
   }
   catch (error) {
     res.status(500).json({ success: false, error: error.message })
@@ -1412,8 +1902,46 @@ app.post('/api/article/unpublish', (req, res) => {
       return res.status(404).json({ success: false, error: '文章不存在' })
     }
 
-    // 读取文章内容
-    let content = fs.readFileSync(sourcePath, 'utf-8')
+    // 读取文章内容并解析 frontmatter
+    const fileContent = fs.readFileSync(sourcePath, 'utf-8')
+
+    let content = fileContent
+
+    try {
+      // 尝试解析 frontmatter（验证格式）
+      matter(fileContent)
+    }
+    catch (error) {
+      // 解析失败，需要修复
+      console.warn('⚠️ frontmatter 解析失败，将尝试修复:', error.message)
+
+      // 尝试手动提取和修复
+      const frontmatterMatch = fileContent.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)
+      if (frontmatterMatch) {
+        const [, frontmatterStr, markdown] = frontmatterMatch
+        const lines = frontmatterStr.split('\n')
+        const fixedLines = []
+
+        for (const line of lines) {
+          const keyValueMatch = line.match(/^(\s*)(\w+):\s*(.*)$/)
+          if (keyValueMatch) {
+            const [, indent, key, value] = keyValueMatch
+            if (value && !value.startsWith('"') && !value.startsWith("'") && key !== 'tags') {
+              fixedLines.push(`${indent}${key}: ${escapeYamlString(value)}`)
+            }
+            else {
+              fixedLines.push(line)
+            }
+          }
+          else {
+            fixedLines.push(line)
+          }
+        }
+
+        content = `---\n${fixedLines.join('\n')}\n---\n${markdown}`
+        console.log('✅ frontmatter 已修复')
+      }
+    }
 
     // 提取category（从相对路径中获取，如 ai/tools/xxx.md -> ai/tools）
     const pathParts = relativePath.split(/[/\\]/)
@@ -1639,7 +2167,7 @@ app.post('/api/trash/empty', (_req, res) => {
     if (fs.existsSync(trashDir)) {
       const files = fs.readdirSync(trashDir)
       files.forEach((file) => {
-        fs.unlinkSync(path.join(trashDir, file))
+        fs.rmSync(path.join(trashDir, file), { recursive: true, force: true })
       })
     }
 
@@ -1664,6 +2192,83 @@ app.get('/api/nav-config', (req, res) => {
   catch (error) {
     console.error('读取导航配置失败:', error)
     res.status(500).json({ error: error.message })
+  }
+})
+
+// ========================================
+// 标签管理API
+// ========================================
+
+const tagsFilePath = path.join(__dirname, '../tags.json')
+
+// 读取所有标签
+function readTags() {
+  if (!fs.existsSync(tagsFilePath)) {
+    return []
+  }
+  const content = fs.readFileSync(tagsFilePath, 'utf-8')
+  return JSON.parse(content)
+}
+
+// 保存标签
+function saveTags(tags) {
+  fs.writeFileSync(tagsFilePath, JSON.stringify(tags, null, 2), 'utf-8')
+}
+
+// 获取所有标签
+app.get('/api/tags', (_req, res) => {
+  try {
+    const tags = readTags()
+    res.json({ success: true, tags })
+  }
+  catch (error) {
+    res.status(500).json({ success: false, error: error.message })
+  }
+})
+
+// 添加新标签
+app.post('/api/tags', (req, res) => {
+  try {
+    const { name } = req.body
+    if (!name || !name.trim()) {
+      return res.status(400).json({ success: false, error: '标签名称不能为空' })
+    }
+
+    const tags = readTags()
+    const trimmedName = name.trim()
+
+    if (tags.includes(trimmedName)) {
+      return res.status(400).json({ success: false, error: '标签已存在' })
+    }
+
+    tags.push(trimmedName)
+    saveTags(tags)
+
+    res.json({ success: true, message: '标签添加成功', tags })
+  }
+  catch (error) {
+    res.status(500).json({ success: false, error: error.message })
+  }
+})
+
+// 删除标签
+app.delete('/api/tags/:name', (req, res) => {
+  try {
+    const tagName = decodeURIComponent(req.params.name)
+    const tags = readTags()
+
+    const index = tags.indexOf(tagName)
+    if (index === -1) {
+      return res.status(404).json({ success: false, error: '标签不存在' })
+    }
+
+    tags.splice(index, 1)
+    saveTags(tags)
+
+    res.json({ success: true, message: '标签删除成功', tags })
+  }
+  catch (error) {
+    res.status(500).json({ success: false, error: error.message })
   }
 })
 

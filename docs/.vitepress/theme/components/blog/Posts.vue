@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
 import { useData } from 'vitepress'
-import { computed, inject, ref } from 'vue'
+import { computed, inject, onMounted, ref } from 'vue'
 import usePosts from '../../composables/usePosts'
 import Post from './Post.vue'
 
@@ -10,6 +10,29 @@ const { theme } = useData()
 
 // 注入选中的tags
 const selectedTags = inject<Ref<string[]>>('selectedTags', ref([]))
+
+// Banner 配置
+const bannerConfig = ref({
+  title: '欢迎来到杰哥的技术小站',
+  subtitle: '',
+  banner: '/images/banner.jpg'
+})
+
+// 加载 Banner 配置
+async function loadBannerConfig() {
+  try {
+    const response = await fetch('http://localhost:3456/api/config/site')
+    const data = await response.json()
+    if (data.success && data.config) {
+      if (data.config.bannerTitle) bannerConfig.value.title = data.config.bannerTitle
+      if (data.config.bannerSubtitle) bannerConfig.value.subtitle = data.config.bannerSubtitle
+      if (data.config.bannerImage) bannerConfig.value.banner = data.config.bannerImage
+    }
+  }
+  catch (error) {
+    console.error('Failed to load banner config:', error)
+  }
+}
 
 // 获取首页显示的20篇最新文章
 const recentPosts = computed(() => allPosts.value.slice(0, 20))
@@ -62,21 +85,26 @@ const filteredPosts = computed(() => {
     return selectedTags.value.some(tag => postTags.includes(tag))
   })
 })
+
+// 组件挂载时加载配置
+onMounted(() => {
+  loadBannerConfig()
+})
 </script>
 
 <template>
   <div>
     <!-- Banner 区域容器 -->
-    <div v-if="theme.blog?.banner" class="banner-wrapper">
+    <div v-if="bannerConfig.banner" class="banner-wrapper">
       <div class="banner-container">
         <img
-          :src="theme.blog?.banner"
-          :alt="theme.blog?.title"
+          :src="bannerConfig.banner"
+          :alt="bannerConfig.title"
           class="banner-image"
         >
         <div style="position: absolute !important; inset: 0 !important; background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6)) !important; z-index: 10 !important; display: flex !important; align-items: flex-start !important; justify-content: center !important; padding-top: 8rem !important;">
           <span style="color: #ffffff !important; font-size: 3.2rem !important; font-weight: 700 !important; text-shadow: 2px 2px 8px rgba(0,0,0,0.8) !important; font-family: -apple-system, BlinkMacSystemFont, sans-serif !important; display: block !important; text-align: center !important; letter-spacing: 0.05em !important;">
-            {{ theme.blog?.title || '欢迎来到杰哥的技术小站' }}
+            {{ bannerConfig.title }}
           </span>
         </div>
       </div>
@@ -85,11 +113,8 @@ const filteredPosts = computed(() => {
     <!-- 传统标题（如果没有 banner） -->
     <div v-else class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8 pt-16">
       <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-[color:var(--vp-c-brand-light)] dark:text-[color:var(--vp-c-brand-dark)]">
-        {{ theme.blog?.title }}
+        {{ bannerConfig.title }}
       </h2>
-      <p class="font-light sm:text-xl text-gray-600 dark:text-gray-300">
-        {{ theme.blog?.description }}
-      </p>
     </div>
 
     <!-- Tags过滤器 - 首页横向展示 -->

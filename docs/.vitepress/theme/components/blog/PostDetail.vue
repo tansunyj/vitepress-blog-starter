@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { formatDistance } from 'date-fns'
+import { zhCN } from 'date-fns/locale'
 import { useData } from 'vitepress'
-import { computed } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import useAuthors from '../../composables/useAuthors'
 import usePosts from '../../composables/usePosts'
 
@@ -40,12 +42,34 @@ const currentDate = computed(() => {
     return {
       string: frontmatter.value.date,
       since: frontmatter.value.date,
+      time: new Date(frontmatter.value.date).getTime(),
     }
   }
   return null
 })
 
 const author = findByName(currentAuthorName.value)
+
+// 客户端动态计算相对时间
+const relativeSince = ref('')
+
+onMounted(() => {
+  if (currentDate.value?.time) {
+    const postDate = new Date(currentDate.value.time)
+    relativeSince.value = formatDistance(postDate, new Date(), { addSuffix: true, locale: zhCN })
+
+    // 每分钟更新一次
+    const interval = setInterval(() => {
+      relativeSince.value = formatDistance(postDate, new Date(), { addSuffix: true, locale: zhCN })
+    }, 60000)
+
+    // 组件卸载时清除定时器
+    return () => clearInterval(interval)
+  }
+  else if (currentDate.value?.since) {
+    relativeSince.value = currentDate.value.since
+  }
+})
 </script>
 
 <template>
@@ -59,11 +83,7 @@ const author = findByName(currentAuthorName.value)
     <div class="post-meta">
       <PostAuthor :author="author" />
       <span class="meta-separator">|</span>
-      <span v-if="currentDate" class="meta-date">{{ currentDate.since }}</span>
-      <span v-if="post" class="meta-separator">|</span>
-      <span v-if="post" class="meta-category">
-        <PostIcon :post="post" />
-      </span>
+      <span v-if="currentDate" class="meta-date">{{ relativeSince || currentDate.since }}</span>
     </div>
 
     <!-- 标签列表 -->

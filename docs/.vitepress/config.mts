@@ -12,6 +12,11 @@ export default defineConfig(({ command }: { command: 'serve' | 'build' }) => ({
   description: '专注VPN科学上网、AI人工智能、Web开发教程和免费资源分享的技术博客。提供免费VPN节点、AI工具推荐、编程教程等优质内容。',
   ignoreDeadLinks: true, // 忽略死链接检查，允许构建成功
   appearance: false, // 禁用外观切换按钮
+  
+  // Sitemap 配置 - 构建时自动生成 sitemap.xml
+  sitemap: {
+    hostname: 'https://your-domain.com', // 替换为你的网站域名
+  },
   head: [
     ['meta', { name: 'keywords', content: 'VPN,科学上网,免费节点,AI工具,ChatGPT,人工智能,Web开发,编程教程,免费资源,技术博客' }],
     ['meta', { name: 'author', content: '杰哥' }],
@@ -52,7 +57,7 @@ export default defineConfig(({ command }: { command: 'serve' | 'build' }) => ({
   ],
   markdown: {
     headers: {
-      level: [0, 0],
+      level: [2, 3],
     },
   },
   themeConfig: {
@@ -64,14 +69,7 @@ export default defineConfig(({ command }: { command: 'serve' | 'build' }) => ({
       provider: 'local',
     },
     nav: nav(command),
-    sidebar: {
-      '/posts/vpn-proxy/': sidebarVpn(),
-      '/posts/ai/': sidebarAi(),
-      '/posts/blog/': sidebarBlog(),
-      '/posts/resources/': sidebarResources(),
-      '/about/': sidebarAbout(),
-    },
-    // @ts-expect-error 自定义配置字段
+    sidebar: generateSidebar(),
     blog: {
       title: '欢迎来到杰哥的技术小站',
       description: '',
@@ -84,21 +82,32 @@ export default defineConfig(({ command }: { command: 'serve' | 'build' }) => ({
         configFile: '../../unocss.config.ts',
       }),
     ],
+    server: {
+      watch: {
+        // 忽略草稿箱和文章目录的文件变化，避免触发 HMR 刷新
+        ignored: [
+          '**/drafts/**',
+          '**/docs/posts/**/*.md',
+        ],
+      },
+    },
   },
 }))
 
-function nav(command: 'serve' | 'build') {
-  // 从JSON文件读取导航配置
+function getNavConfig() {
   const navConfigPath = path.join(__dirname, '../../nav-config.json')
-  let navConfig = []
-
   try {
     const configContent = fs.readFileSync(navConfigPath, 'utf-8')
-    navConfig = JSON.parse(configContent)
+    return JSON.parse(configContent)
   }
   catch (error) {
     console.error('❌ 读取导航配置失败:', error)
+    return []
   }
+}
+
+function nav(command: 'serve' | 'build') {
+  const navConfig = getNavConfig()
 
   // 转换为VitePress格式
   const navItems = navConfig
@@ -163,63 +172,34 @@ function nav(command: 'serve' | 'build') {
   return navItems
 }
 
-function sidebarVpn() {
-  return [
-    {
-      text: '🚀 网络加速',
-      collapsed: false,
-      items: [
-        { text: '免费节点', link: '/posts/vpn-proxy/free-nodes/' },
-        { text: 'VPN教程', link: '/posts/vpn-proxy/tutorial/' },
-        { text: '机场', link: '/posts/vpn-proxy/airport-review/' },
-      ],
-    },
-  ]
-}
+function generateSidebar() {
+  const navConfig = getNavConfig()
+  const sidebar: any = {}
 
-function sidebarAi() {
-  return [
-    {
-      text: '🤖 AI探索',
-      items: [
-        { text: 'AI工具', link: '/posts/ai/tools/ai-tools-navigation', activeMatch: '/posts/ai/tools/' },
-        { text: '提示词', link: '/posts/ai/prompts/', activeMatch: '/posts/ai/prompts/' },
-        { text: 'AI教程', link: '/posts/ai/tutorial/', activeMatch: '/posts/ai/tutorial/' },
-        { text: '进阶', link: '/posts/ai/advanced/', activeMatch: '/posts/ai/advanced/' },
-        { text: '大模型', link: '/posts/ai/llm/', activeMatch: '/posts/ai/llm/' },
-        { text: '工作流', link: '/posts/ai/workflow/', activeMatch: '/posts/ai/workflow/' },
-      ],
-    },
-  ]
-}
+  navConfig.forEach((item: any) => {
+    // 只有带有 folder 且有子项的菜单才生成侧边栏
+    if (item.folder && item.items && item.items.length > 0) {
+      const sidebarKey = `/posts/${item.folder}/`
 
-function sidebarBlog() {
-  return [
-    {
-      text: '📚 博客',
-      items: [
-        { text: '教程', link: '/posts/blog/tutorials/', activeMatch: '/posts/blog/tutorials/' },
-        { text: '白嫖', link: '/posts/blog/freebies/', activeMatch: '/posts/blog/freebies/' },
-        { text: '推荐', link: '/posts/blog/recommendations/', activeMatch: '/posts/blog/recommendations/' },
-      ],
-    },
-  ]
-}
+      sidebar[sidebarKey] = [
+        {
+          text: item.text, // 使用菜单名称作为侧边栏标题
+          collapsed: false,
+          items: item.items.map((subItem: any) => {
+            const link = subItem.link || `/posts/${subItem.folder}/`
+            return {
+              text: subItem.text,
+              link: link,
+              activeMatch: link
+            }
+          })
+        }
+      ]
+    }
+  })
 
-function sidebarResources() {
-  return [
-    {
-      text: '📦 资源宝库',
-      items: [
-        { text: '夸克资料', link: '/posts/resources/quark/', activeMatch: '/posts/resources/quark/' },
-        { text: '学习资料', link: '/posts/resources/learning-materials/', activeMatch: '/posts/resources/learning-materials/' },
-      ],
-    },
-  ]
-}
-
-function sidebarAbout() {
-  return [
+  // 添加关于页面的侧边栏
+  sidebar['/about/'] = [
     {
       text: 'ℹ️ 关于',
       items: [
@@ -227,4 +207,6 @@ function sidebarAbout() {
       ],
     },
   ]
+
+  return sidebar
 }

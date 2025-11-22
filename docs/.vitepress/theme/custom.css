@@ -26,52 +26,76 @@
   /* ========================================
      网站布局尺寸
      ======================================== */
-  --site-max-width: 1200px;           /* 网站最大宽度 */
-  --site-padding-x: 32px;             /* 左右内边距 */
-  --site-padding-y: 32px;             /* 上下内边距 */
-  
+  --site-max-width: 1200px;
+  /* 网站最大宽度 */
+  --site-padding-x: 32px;
+  /* 左右内边距 */
+  --site-padding-y: 32px;
+  /* 上下内边距 */
+
   /* ========================================
      主题色板 - 科技蓝 + 活力橙
      ======================================== */
   /* 主色调 - 科技蓝 */
-  --vp-c-brand: #3b82f6;              /* 主蓝色 */
-  --vp-c-brand-light: #60a5fa;        /* 浅蓝色 */
-  --vp-c-brand-dark: #2563eb;         /* 深蓝色 */
-  --vp-c-brand-darker: #1d4ed8;       /* 更深蓝 */
-  
+  --vp-c-brand: #3b82f6;
+  /* 主蓝色 */
+  --vp-c-brand-light: #60a5fa;
+  /* 浅蓝色 */
+  --vp-c-brand-dark: #2563eb;
+  /* 深蓝色 */
+  --vp-c-brand-darker: #1d4ed8;
+  /* 更深蓝 */
+
   /* 辅助色 - 活力橙 */
-  --accent-orange: #f97316;           /* 主橙色 */
-  --accent-orange-light: #fb923c;     /* 浅橙色 */
-  --accent-orange-dark: #ea580c;      /* 深橙色 */
-  
+  --accent-orange: #f97316;
+  /* 主橙色 */
+  --accent-orange-light: #fb923c;
+  /* 浅橙色 */
+  --accent-orange-dark: #ea580c;
+  /* 深橙色 */
+
   /* 背景色系 - 柔和灰 */
-  --bg-primary: #ffffff;              /* 主背景 - 纯白 */
-  --bg-secondary: #f8fafc;            /* 次级背景 - 极浅灰 */
-  --bg-tertiary: #f1f5f9;             /* 第三背景 - 浅灰 */
-  --bg-soft: #f5f7fa;                 /* 柔和背景 */
-  
+  --bg-primary: #ffffff;
+  /* 主背景 - 纯白 */
+  --bg-secondary: #f8fafc;
+  /* 次级背景 - 极浅灰 */
+  --bg-tertiary: #f1f5f9;
+  /* 第三背景 - 浅灰 */
+  --bg-soft: #f5f7fa;
+  /* 柔和背景 */
+
   /* 文字颜色 - 避免纯黑 */
-  --text-primary: #1e293b;            /* 主文字 - 深灰蓝 */
-  --text-secondary: #475569;          /* 次级文字 - 灰色 */
-  --text-tertiary: #94a3b8;           /* 第三文字 - 浅灰 */
-  --text-muted: #cbd5e1;              /* 弱化文字 */
-  
+  --text-primary: #1e293b;
+  /* 主文字 - 深灰蓝 */
+  --text-secondary: #475569;
+  /* 次级文字 - 灰色 */
+  --text-tertiary: #94a3b8;
+  /* 第三文字 - 浅灰 */
+  --text-muted: #cbd5e1;
+  /* 弱化文字 */
+
   /* ========================================
      文章卡片配置
      ======================================== */
-  --card-bg: #ffffff;                 /* 卡片背景 */
-  --card-radius: 12px;                /* 卡片圆角 */
-  --card-border: transparent;         /* 卡片边框（透明，用阴影代替） */
+  --card-bg: #ffffff;
+  /* 卡片背景 */
+  --card-radius: 12px;
+  /* 卡片圆角 */
+  --card-border: transparent;
+  /* 卡片边框（透明，用阴影代替） */
   --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
   --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
-  
+
   /* ========================================
      Banner 配置
      ======================================== */
-  --banner-height: 500px;             /* Banner 高度 - 增大以容纳大字体 */
-  --banner-overlay-start: rgba(0, 0, 0, 0.5);  /* 渐变开始色 - 加深 */
-  --banner-overlay-end: rgba(0, 0, 0, 0.7);    /* 渐变结束色 - 加深 */
-  
+  --banner-height: 500px;
+  /* Banner 高度 - 增大以容纳大字体 */
+  --banner-overlay-start: rgba(0, 0, 0, 0.5);
+  /* 渐变开始色 - 加深 */
+  --banner-overlay-end: rgba(0, 0, 0, 0.7);
+  /* 渐变结束色 - 加深 */
+
   /* ========================================
      字体系统
      ======================================== */
@@ -79,54 +103,74 @@
   --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
   --font-family-heading: 'Inter', 'Noto Sans SC', sans-serif;
   --font-family-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-  
+
   /* 字号 */
-  --font-size-xs: 0.75rem;            /* 12px */
-  --font-size-sm: 0.875rem;           /* 14px */
-  --font-size-base: 1rem;             /* 16px */
-  --font-size-lg: 1.125rem;           /* 18px */
-  --font-size-xl: 1.25rem;            /* 20px */
-  --font-size-2xl: 1.5rem;            /* 24px */
-  --font-size-3xl: 1.875rem;          /* 30px */
-  --font-size-4xl: 2.25rem;           /* 36px */
-  
+  --font-size-xs: 0.75rem;
+  /* 12px */
+  --font-size-sm: 0.875rem;
+  /* 14px */
+  --font-size-base: 1rem;
+  /* 16px */
+  --font-size-lg: 1.125rem;
+  /* 18px */
+  --font-size-xl: 1.25rem;
+  /* 20px */
+  --font-size-2xl: 1.5rem;
+  /* 24px */
+  --font-size-3xl: 1.875rem;
+  /* 30px */
+  --font-size-4xl: 2.25rem;
+  /* 36px */
+
   /* 字重 */
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
-  
+
   /* 行高 */
   --line-height-tight: 1.25;
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.75;
-  
+
   /* Banner 字体 */
-  --banner-title-size: 3rem;          /* Banner 标题字号 */
-  --banner-desc-size: 1.5rem;         /* Banner 描述字号 */
-  
+  --banner-title-size: 3rem;
+  /* Banner 标题字号 */
+  --banner-desc-size: 1.5rem;
+  /* Banner 描述字号 */
+
   /* ========================================
      间距系统
      ======================================== */
-  --spacing-xs: 0.25rem;              /* 4px */
-  --spacing-sm: 0.5rem;               /* 8px */
-  --spacing-md: 1rem;                 /* 16px */
-  --spacing-lg: 1.5rem;               /* 24px */
-  --spacing-xl: 2rem;                 /* 32px */
-  --spacing-2xl: 3rem;                /* 48px */
-  
+  --spacing-xs: 0.25rem;
+  /* 4px */
+  --spacing-sm: 0.5rem;
+  /* 8px */
+  --spacing-md: 1rem;
+  /* 16px */
+  --spacing-lg: 1.5rem;
+  /* 24px */
+  --spacing-xl: 2rem;
+  /* 32px */
+  --spacing-2xl: 3rem;
+  /* 48px */
+
   /* ========================================
      导航栏配置
      ======================================== */
-  --nav-menu-spacing: 8px;            /* 导航菜单间距 */
-  
+  --nav-menu-spacing: 8px;
+  /* 导航菜单间距 */
+
   /* ========================================
      搜索框配置
      ======================================== */
-  --search-width-mobile: 200px;       /* 移动端搜索框宽度 */
-  --search-width-tablet: 300px;       /* 平板端搜索框宽度 */
-  --search-width-desktop: 400px;      /* 桌面端搜索框宽度 */
-  
+  --search-width-mobile: 150px;
+  /* 移动端搜索框宽度 (减少1/4) */
+  --search-width-tablet: 225px;
+  /* 平板端搜索框宽度 (减少1/4) */
+  --search-width-desktop: 300px;
+  /* 桌面端搜索框宽度 (减少1/4) */
+
   /* ========================================
      阴影效果
      ======================================== */
@@ -135,7 +179,7 @@
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
   --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.16);
-  
+
   /* ========================================
      过渡动画
      ======================================== */
@@ -158,13 +202,15 @@
     --banner-title-size: 2rem;
     --banner-desc-size: 1.2rem;
   }
-  
+
   .banner-overlay {
-    padding-top: 2rem; /* 平板端向上偏移 */
+    padding-top: 2rem;
+    /* 平板端向上偏移 */
   }
-  
+
   .banner-title {
-    font-size: 5rem; /* 平板端字体大小（2倍：2.5rem → 5rem） */
+    font-size: 5rem;
+    /* 平板端字体大小（2倍：2.5rem → 5rem） */
   }
 }
 
@@ -176,13 +222,15 @@
     --banner-title-size: 1.5rem;
     --banner-desc-size: 1rem;
   }
-  
+
   .banner-overlay {
-    padding-top: 1.5rem; /* 手机端向上偏移 */
+    padding-top: 1.5rem;
+    /* 手机端向上偏移 */
   }
-  
+
   .banner-title {
-    font-size: 3.5rem; /* 手机端字体大小（2倍：1.75rem → 3.5rem） */
+    font-size: 3.5rem;
+    /* 手机端字体大小（2倍：1.75rem → 3.5rem） */
   }
 }
 
@@ -199,8 +247,7 @@ body {
 }
 
 /* 全局布局样式 - 最大化宽度 */
-.VPDoc,
-.vp-doc,
+/* 全局布局样式 - 最大化宽度 */
 .custom-home-page {
   max-width: 100% !important;
   margin: 0 !important;
@@ -208,9 +255,56 @@ body {
   box-sizing: border-box !important;
 }
 
+/* 文章详情容器 - 卡片化样式 */
+.VPDoc,
+.vp-doc {
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 40px 48px !important;
+  /* 增加内边距，让文字呼吸 */
+  box-sizing: border-box !important;
+  background-color: var(--bg-primary) !important;
+  /* 确保白色背景 */
+  border-radius: 16px;
+  /* 圆角 */
+  box-shadow: var(--shadow-sm);
+  /* 轻微阴影 */
+  min-height: 600px;
+  /* 最小高度 */
+}
+
+/* 确保文章内容区域也有足够的内边距 */
+.vp-doc .content,
+.vp-doc .content-container,
+.VPDoc .content,
+.VPDoc .content-container {
+  padding: 0 !important;
+  /* 重置内部padding，使用外层的padding */
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+
+  .VPDoc,
+  .vp-doc {
+    padding: 24px 20px !important;
+    /* 移动端减小内边距 */
+    border-radius: 0 !important;
+    /* 移动端铺满 */
+    box-shadow: none !important;
+  }
+}
+
 /* 主内容区域背景 */
 .VPContent {
   background-color: transparent !important;
+  padding-top: 0 !important;
+  /* 移除默认的顶部内边距，因为导航栏已经是 sticky 的了 */
+}
+
+/* 针对首页的额外调整，确保 Banner 紧贴导航栏但留有少量呼吸空间 */
+.VPHome {
+  padding-top: 12px !important;
 }
 
 /* ============================================
@@ -223,7 +317,7 @@ body {
   border: none !important;
 }
 
-.vp-doc > div {
+.vp-doc>div {
   border: none !important;
 }
 
@@ -348,10 +442,14 @@ article span {
   max-width: var(--vp-layout-max-width, 1440px);
   margin: 0 auto 3rem;
   min-height: var(--banner-height);
-  height: auto; /* 改为auto，允许内容撑开 */
-  overflow: visible !important; /* 改为visible，确保文字不被裁剪 */
+  height: auto;
+  /* 改为auto，允许内容撑开 */
+  overflow: hidden;
+  /* 改为hidden，防止内容溢出 */
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1 !important;
+  /* 设置一个低的正数值 */
 }
 
 .banner-image {
@@ -362,7 +460,8 @@ article span {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  z-index: 0; /* 图片在底层 */
+  z-index: 0;
+  /* 图片在底层 */
 }
 
 .banner-overlay {
@@ -371,36 +470,43 @@ article span {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    to bottom,
-    var(--banner-overlay-start) 0%,
-    var(--banner-overlay-end) 100%
-  );
+  background: linear-gradient(to bottom,
+      var(--banner-overlay-start) 0%,
+      var(--banner-overlay-end) 100%);
   display: flex !important;
-  align-items: center; /* 改为居中 */
+  align-items: center;
+  /* 改为居中 */
   justify-content: center;
-  padding-top: 3rem; /* 向上偏移一点，实现"中间偏上" */
-  z-index: 2; /* 遮罩层在中间 */
-  pointer-events: none; /* 允许点击穿透到图片 */
+  padding-top: 3rem;
+  /* 向上偏移一点，实现"中间偏上" */
+  z-index: 2;
+  /* 遮罩层在中间 */
+  pointer-events: none;
+  /* 允许点击穿透到图片 */
 }
 
 .banner-content {
   position: relative;
-  z-index: 3; /* 内容在最上层 */
+  z-index: 3;
+  /* 内容在最上层 */
   text-align: center;
   color: white !important;
   padding: 2rem;
   max-width: 800px;
-  pointer-events: auto; /* 恢复内容区域的点击 */
+  pointer-events: auto;
+  /* 恢复内容区域的点击 */
 }
 
 .banner-title {
-  font-size: 7rem !important; /* 扩大2倍：从3.5rem到7rem (112px) */
+  font-size: 7rem !important;
+  /* 扩大2倍：从3.5rem到7rem (112px) */
   font-family: var(--font-family-heading) !important;
-  font-weight: 900 !important; /* 超粗体 */
+  font-weight: 900 !important;
+  /* 超粗体 */
   margin: 0 !important;
   margin-bottom: var(--spacing-lg) !important;
-  text-shadow: 3px 6px 16px rgba(0, 0, 0, 0.8) !important; /* 更强的阴影 */
+  text-shadow: 3px 6px 16px rgba(0, 0, 0, 0.8) !important;
+  /* 更强的阴影 */
   line-height: 1.2 !important;
   letter-spacing: -0.02em !important;
   color: white !important;
@@ -506,7 +612,7 @@ article span {
   .VPNavBarSearch {
     width: var(--search-width-tablet) !important;
   }
-  
+
   .VPNavBarSearch .DocSearch-Button {
     min-width: var(--search-width-tablet) !important;
   }
@@ -517,10 +623,134 @@ article span {
   .VPNavBarSearch {
     width: var(--search-width-desktop) !important;
   }
-  
+
   .VPNavBarSearch .DocSearch-Button {
     min-width: var(--search-width-desktop) !important;
   }
+}
+
+/* 修复搜索框下拉菜单的 z-index，防止遮挡导航菜单 */
+.VPNavBarSearch .VPLocalSearchBox {
+  z-index: 100 !important;
+}
+
+/* 如果使用 DocSearch (Algolia) */
+.DocSearch-Container {
+  z-index: 100 !important;
+}
+
+/* 修复导航栏层级和高度问题 - 使用超高 z-index */
+.VPNav {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(8px) !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  pointer-events: auto !important;
+  /* 确保可点击 */
+  width: 100% !important;
+  /* 始终占满屏幕宽度 */
+  left: 0 !important;
+  /* 始终从左边开始 */
+}
+
+.VPNavBar {
+  position: relative !important;
+  z-index: 9999 !important;
+  height: 64px !important;
+  /* 减少导航栏高度 */
+  padding: 0 24px !important;
+  pointer-events: auto !important;
+  /* 确保可点击 */
+  width: 100% !important;
+  /* 占满容器宽度 */
+}
+
+/* 导航栏内容容器 - 强制居中布局 v2 */
+.VPNav .VPNavBar .container,
+.VPNav .VPNavBar .content,
+.VPNav .VPNavBar .content-body,
+div.VPNavBar .container,
+div.VPNavBar .content {
+  height: 64px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  /* 内容居中 */
+  gap: 16px !important;
+  /* 元素之间的间距 */
+  padding: 0 !important;
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+  /* 确保可点击 */
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  flex-wrap: nowrap !important;
+}
+
+/* 导航栏标题 */
+.VPNavBarTitle {
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+  /* 不允许缩小 */
+}
+
+/* 导航栏标题链接 - 确保可点击 */
+.VPNavBarTitle a {
+  z-index: 10000 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+/* 导航栏菜单容器 */
+.VPNavBarMenu {
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+  flex-shrink: 0 !important;
+  /* 不允许缩小 */
+}
+
+/* 隐藏默认的导航栏标题 */
+.VPNavBarTitle {
+  display: none !important;
+}
+
+/* 自定义导航栏标题样式 */
+.custom-nav-title {
+  font-family: var(--font-family-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary) !important;
+  margin-right: 16px;
+  white-space: nowrap;
+  text-decoration: none !important;
+  transition: color var(--transition-fast);
+  display: flex;
+  align-items: center;
+}
+
+.custom-nav-title:hover {
+  color: var(--vp-c-brand) !important;
+}
+
+/* 导航栏搜索框 */
+.VPNavBarSearch {
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+  flex-shrink: 0 !important;
+  /* 不允许缩小 */
+}
+
+/* 下拉菜单 */
+.VPFlyout,
+.VPMenu {
+  z-index: 10000 !important;
+  pointer-events: auto !important;
 }
 
 /* ============================================
@@ -528,8 +758,18 @@ article span {
    ============================================ */
 
 /* 隐藏 VitePress 自带的上下篇导航 */
-.VPDocFooter {
+/* 隐藏 VitePress 自带的上下篇导航 (VPDocFooter) */
+/* 注意：如果用户需要上下篇导航，请取消注释下面的代码 */
+/* .VPDocFooter {
   display: none !important;
+} */
+
+/* 确保全局页脚 (Copyright) 始终显示 */
+.VPFooter {
+  display: block !important;
+  z-index: 10 !important;
+  /* 确保在最上层 */
+  position: relative !important;
 }
 
 .pager-link {
@@ -543,15 +783,15 @@ article span {
 }
 
 /* 侧边栏激活项高亮样式 */
-.VPSidebarItem.is-active > .item .link,
-.VPSidebarItem.has-active > .item .link,
+.VPSidebarItem.is-active>.item .link,
+.VPSidebarItem.has-active>.item .link,
 .VPSidebarItem.is-active .link,
 .VPSidebarItem.has-active .link {
   color: var(--vp-c-brand) !important;
   font-weight: 600 !important;
 }
 
-.VPSidebarItem.is-active > .item .link,
+.VPSidebarItem.is-active>.item .link,
 .VPSidebarItem.is-active .link {
   background-color: var(--vp-c-brand-soft) !important;
   border-radius: 4px !important;
@@ -589,23 +829,31 @@ article span {
 
 /* 自定义提示框样式 - 更柔和的视觉效果 */
 .vp-doc .custom-block.warning {
-  border: 1px solid #d1e7f8 !important; /* 柔和的浅蓝色边框 */
-  background-color: #f8fbfd !important; /* 极浅的蓝灰色背景 */
-  color: #5a6c7d !important; /* 柔和的文字颜色 */
-  border-radius: 8px !important; /* 圆角 */
-  padding: 1.25rem 1.5rem !important; /* 舒适的内边距 */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important; /* 轻微的阴影 */
+  border: 1px solid #d1e7f8 !important;
+  /* 柔和的浅蓝色边框 */
+  background-color: #f8fbfd !important;
+  /* 极浅的蓝灰色背景 */
+  color: #5a6c7d !important;
+  /* 柔和的文字颜色 */
+  border-radius: 8px !important;
+  /* 圆角 */
+  padding: 1.25rem 1.5rem !important;
+  /* 舒适的内边距 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  /* 轻微的阴影 */
 }
 
 .vp-doc .custom-block.warning .custom-block-title {
-  display: none !important; /* 隐藏"注意"标题 */
+  display: none !important;
+  /* 隐藏"注意"标题 */
 }
 
 .vp-doc .custom-block.warning p {
   color: #5a6c7d !important;
   line-height: 1.7 !important;
   margin: 0 !important;
-  font-size: 0.9375rem !important; /* 稍小的字号 */
+  font-size: 0.9375rem !important;
+  /* 稍小的字号 */
 }
 
 /* 暗色主题下的提示框样式 */
@@ -641,43 +889,56 @@ article span {
 .VPSidebar {
   background-color: var(--vp-c-bg-alt) !important;
   border-right: 1px solid var(--vp-c-divider);
+  z-index: 1 !important;
 }
 
 /* 主体内容区域 */
 .VPDoc.has-sidebar .content-container {
   margin-left: 0 !important;
-  padding-left: 8px !important; /* 从32px减少50%到16px */
-  padding-right: 8px !important; /* 从32px减少50%到16px */
-  padding-top: 24px !important; /* 添加顶部间距 */
+  padding-left: 8px !important;
+  /* 从32px减少50%到16px */
+  padding-right: 8px !important;
+  /* 从32px减少50%到16px */
+  padding-top: 24px !important;
+  /* 添加顶部间距 */
 }
 
 /* 有右侧大纲时的布局 */
 .VPDoc.has-aside .content-container {
   margin-left: 0 !important;
-  padding-left: 8px !important; /* 从32px减少50%到16px */
-  padding-top: 24px !important; /* 添加顶部间距 */
+  padding-left: 8px !important;
+  /* 从32px减少50%到16px */
+  padding-top: 24px !important;
+  /* 添加顶部间距 */
   max-width: 100% !important;
 }
 
 .VPDoc.has-aside .content {
   max-width: 100% !important;
-  padding-right: 8px !important; /* 从16px减少50%到8px */
+  padding-right: 8px !important;
+  /* 从16px减少50%到8px */
 }
 
 /* 文章正文背景色区分 */
 .vp-doc {
-  background-color: #ffffff !important; /* 纯白色，与浅灰页面背景形成对比 */
+  background-color: #ffffff !important;
+  /* 纯白色，与浅灰页面背景形成对比 */
   padding: 2rem !important;
   border-radius: 12px !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important; /* 增强阴影 */
-  border: 1px solid var(--vp-c-divider) !important; /* 添加边框 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  /* 增强阴影 */
+  border: 1px solid var(--vp-c-divider) !important;
+  /* 添加边框 */
 }
 
 /* 深色模式下的正文背景 */
 .dark .vp-doc {
-  background-color: #1e1e1e !important; /* 更深的背景色 */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important; /* 更强的阴影 */
-  border: 1px solid rgba(255, 255, 255, 0.1) !important; /* 深色模式边框 */
+  background-color: #1e1e1e !important;
+  /* 更深的背景色 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  /* 更强的阴影 */
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  /* 深色模式边框 */
 }
 
 /* 所有文档页面添加顶部间距 */
@@ -778,7 +1039,8 @@ code {
 
 /* 右侧大纲美化 */
 .VPDocAside {
-  padding-left: 8px !important; /* 减少左侧padding，让大纲更靠近正文 */
+  padding-left: 8px !important;
+  /* 减少左侧padding，让大纲更靠近正文 */
 }
 
 .VPDocAsideOutline {

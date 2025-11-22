@@ -1,6 +1,13 @@
 ---
-title: AI教程
-description: <strong>📖 学习路径</strong> | 系统化的AI学习教程，<strong>从零开始</strong>掌握AI工具。入门到精通，助你快速上手！
+layout: doc
+title: "AI教程"
+description: "📖 AI教程 | 系统化的AI学习教程"
 ---
 
-<CategoryPosts />
+# 📖 AI教程
+
+系统化的AI学习教程
+
+## 📚 文章列表
+
+<PostList folder="ai/tutorial" />

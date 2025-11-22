@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: 导航菜单管理
+title: "导航菜单管理"
 ---
 
 <script setup>

@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import type { Author } from '../../composables/authors.data'
-import { useData } from 'vitepress'
 
 defineProps<{
   author: Author
 }>()
-
-const { site } = useData()
 </script>
 
 <template>
@@ -16,13 +13,9 @@ const { site } = useData()
       :src="author.data.avatar"
       :alt="author.name"
     >
-    <a
-      :href="`${site.base}blog${author.href}`"
-      class="inline-flex items-center font-medium hover:text-[color:var(--vp-c-brand-dark)]"
-    ><span class="font-medium dark:text-white">
+    <span class="inline-flex items-center font-medium dark:text-white">
       {{ author.name }}
     </span>
-    </a>
   </div>
   <div v-else />
 </template>

@@ -1,10 +1,35 @@
 <script setup>
 import { onMounted, ref } from 'vue'
+import ConfirmDialog from './ConfirmDialog.vue'
 
 const trashedArticles = ref([])
 const message = ref('')
 const messageType = ref('success')
 const selectedArticle = ref(null) // 当前选中的文章
+
+// 确认对话框状态
+const showConfirmDialog = ref(false)
+const confirmTitle = ref('')
+const confirmMessage = ref('')
+const confirmType = ref('warning')
+const pendingAction = ref(null)
+
+// 显示确认对话框
+function showConfirm(title, msg, action, type = 'warning') {
+  confirmTitle.value = title
+  confirmMessage.value = msg
+  pendingAction.value = action
+  confirmType.value = type
+  showConfirmDialog.value = true
+}
+
+// 执行确认的操作
+function handleConfirmAction() {
+  if (pendingAction.value) {
+    pendingAction.value()
+    pendingAction.value = null
+  }
+}
 
 // 加载垃圾箱文章
 async function loadTrash() {
@@ -57,56 +82,65 @@ async function restoreSelected() {
 }
 
 // 永久删除选中的文章
-async function deleteSelected() {
+function deleteSelected() {
   if (!selectedArticle.value)
     return
 
-  // eslint-disable-next-line no-alert
-  if (!window.confirm(`确定要永久删除"${selectedArticle.value.name}"吗？\n此操作无法撤销！`)) {
-    return
-  }
+  showConfirm(
+    '永久删除',
+    `确定要永久删除"${selectedArticle.value.name}"吗？\n此操作无法撤销！`,
+    async () => {
+      try {
+        const response = await fetch('http://localhost:3456/api/trash/delete-permanent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ file: selectedArticle.value.path }),
+        })
 
-  try {
-    const response = await fetch('http://localhost:3456/api/trash/delete-permanent', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ file: selectedArticle.value.path }),
-    })
-
-    const data = await response.json()
-    if (data.success) {
-      showMessage('✅ 文章已永久删除', 'success')
-      selectedArticle.value = null
-      loadTrash()
-    }
-    else {
-      showMessage(`❌ 删除失败: ${data.error}`, 'error')
-    }
-  }
-  catch (error) {
-    showMessage(`❌ 删除失败: ${error.message}`, 'error')
-  }
+        const data = await response.json()
+        if (data.success) {
+          showMessage('✅ 文章已永久删除', 'success')
+          selectedArticle.value = null
+          loadTrash()
+        }
+        else {
+          showMessage(`❌ 删除失败: ${data.error}`, 'error')
+        }
+      }
+      catch (error) {
+        showMessage(`❌ 删除失败: ${error.message}`, 'error')
+      }
+    },
+    'danger'
+  )
 }
 
 // 清空垃圾箱
-async function emptyTrash() {
-  try {
-    const response = await fetch('http://localhost:3456/api/trash/empty', {
-      method: 'POST',
-    })
+function emptyTrash() {
+  showConfirm(
+    '清空垃圾箱',
+    '确定要清空垃圾箱吗？\n此操作将永久删除所有文件，无法撤销！',
+    async () => {
+      try {
+        const response = await fetch('http://localhost:3456/api/trash/empty', {
+          method: 'POST',
+        })
 
-    const data = await response.json()
-    if (data.success) {
-      showMessage('✅ 垃圾箱已清空', 'success')
-      loadTrash()
-    }
-    else {
-      showMessage(`❌ 清空失败: ${data.error}`, 'error')
-    }
-  }
-  catch (error) {
-    showMessage(`❌ 清空失败: ${error.message}`, 'error')
-  }
+        const data = await response.json()
+        if (data.success) {
+          showMessage('✅ 垃圾箱已清空', 'success')
+          loadTrash()
+        }
+        else {
+          showMessage(`❌ 清空失败: ${data.error}`, 'error')
+        }
+      }
+      catch (error) {
+        showMessage(`❌ 清空失败: ${error.message}`, 'error')
+      }
+    },
+    'danger'
+  )
 }
 
 function formatDate(dateString) {
@@ -220,6 +254,15 @@ onMounted(() => {
       共 {{ trashedArticles.length }} 个项目在垃圾箱
     </div>
 
+    <!-- 确认对话框 -->
+    <ConfirmDialog
+      v-model="showConfirmDialog"
+      :title="confirmTitle"
+      :message="confirmMessage"
+      :type="confirmType"
+      @confirm="handleConfirmAction"
+    />
+
     <div v-if="message" class="message" :class="messageType">
       {{ message }}
     </div>
@@ -236,8 +279,9 @@ onMounted(() => {
 
 .manager-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 32px;
   margin-bottom: 24px;
 }
 

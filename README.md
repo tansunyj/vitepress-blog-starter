@@ -1,7 +1,7 @@
 # 杰哥的技术小站 | VitePress Blog Starter
 
 <p align="center">
-  <img src="./docs/public/images/banner.png" alt="Banner" width="800">
+  <img src="./docs/public/images/banner/banner.png" alt="Banner" width="800">
 </p>
 
 <p align="center">
@@ -30,11 +30,14 @@
 
 ### 🚀 真正的开箱即用
 
-- ✅ **克隆即用** - 无需复杂配置，3分钟启动博客
+- ✅ **一键启动** - 双击启动脚本，3秒启动博客
+- ✅ **可视化管理** - 浏览器内编辑，Markdown实时预览
+- ✅ **文章爬取** - 一键爬取微信公众号等平台文章
+- ✅ **草稿管理** - 草稿箱、发布、撤回、垃圾箱完整流程
+- ✅ **菜单配置** - 可视化管理导航菜单和标签
 - ✅ **SEO预配置** - GA4、AdSense、Search Console已集成
-- ✅ **关键词库** - 500+精选SEO关键词，直接导入SEMrush
-- ✅ **Sitemap自动生成** - 每次构建自动更新sitemap.xml
-- ✅ **完整文档** - CONFIGURATION.md详细配置指南
+- ✅ **关键词库** - 500+精选SEO关键词
+- ✅ **Sitemap自动生成** - 每次构建自动更新
 
 ### 📊 SEO优化到位
 
@@ -52,13 +55,26 @@
 - 📱 **响应式** - 完美适配PC/平板/手机
 - 🎯 **易定制** - CSS变量系统，一键换主题
 
-### ⚡ 开发体验优秀
+### ⚡ 内容管理优秀
 
+- 🖊️ **在线编辑** - 浏览器内Markdown编辑器，实时预览
+- 📁 **草稿管理** - 草稿保存、编辑、发布、撤回
+- 🕷️ **文章爬取** - 支持微信公众号、知乎等平台
+- 🗂️ **分类管理** - 可视化管理菜单和标签
+- 🗑️ **垃圾箱** - 删除的文章可恢复
 - 🔥 **热更新** - 修改即刷新，秒速预览
-- 🛠️ **TypeScript** - 类型安全，减少错误
-- 📦 **pnpm** - 快速安装，节省空间
-- 🧹 **自动清理** - 一键清理缓存脚本
-- 📝 **Markdown** - 专注内容创作
+- 📦 **一键部署** - 自动化部署脚本
+
+### 💬 加入社区
+
+<p align="center">
+  <img src="./docs/public/images/qq.png" alt="QQ群二维码" width="200">
+</p>
+
+<p align="center">
+  <strong>扫码加入 QQ 交流群</strong><br>
+  一起交流博客搭建、SEO优化、内容创作等话题
+</p>
 
 ---
 
@@ -78,21 +94,29 @@
 
 ---
 
-## ✨ 特性
+## ✨ 核心特性
 
-- 🚀 **VitePress** - 基于 Vite 的静态站点生成器，极速构建
+### 🎯 内容管理（普通用户）
+
+- 📝 **在线编辑器** - 浏览器内Markdown编辑，实时预览
+- 📁 **草稿管理** - 草稿箱保存、编辑、发布、撤回
+- 🕷️ **文章爬取** - 一键爬取微信公众号、知乎等平台文章
+- 🖼️ **图片上传** - 拖拽上传图片，自动生成封面
+- 🏷️ **标签管理** - 可视化选择和管理文章标签
+- 🗂️ **菜单配置** - 浏览器内管理导航菜单，无需改代码
+- 🗑️ **垃圾箱** - 删除的文章可恢复，防止误删
+- 📋 **文章结构** - 自动将一级标题转为二级标题（VitePress目录规范）
+
+### 🚀 技术特性（开发者）
+
+- 🏗️ **VitePress** - 基于 Vite 的静态站点生成器，极速构建
 - 🎨 **UnoCSS** - 即时按需的原子化 CSS 引擎
-- 📝 **Markdown** - 完整的 Markdown 支持，包含 frontmatter
-- 🔍 **SEO 优化** - 内置完整的 SEO meta 标签支持
-- 🎯 **分类管理** - 自动根据文件夹路径生成分类
-- 👤 **作者系统** - 支持多作者文章管理
-- 📱 **响应式设计** - 完美支持移动端和平板
-- 🔧 **自定义组件** - 丰富的自定义 Vue 组件
-- 🎭 **Banner横幅** - 可自定义的首页横幅
-- 🏷️ **标签系统** - 文章标签分类和筛选
-- 📊 **SEO完善** - 支持GA4、AdSense、Search Console、sitemap
-- 🤖 **爬虫友好** - robots.txt、sitemap.xml自动生成
-- ⚙️ **开箱即用** - 预配置所有SEO工具，只需填入你的ID
+- 🔍 **SEO 优化** - 完整的 meta 标签、sitemap、robots.txt
+- 📊 **Google 集成** - GA4、AdSense、Search Console 预配置
+- 👤 **多作者系统** - 支持多作者文章管理
+- 📱 **响应式设计** - 完美适配PC/平板/手机
+- 🔧 **TypeScript** - 类型安全，减少错误
+- ⚙️ **开箱即用** - 克隆即用，无需复杂配置
 
 ---
 
@@ -172,9 +196,46 @@ pnpm dev
 
 ---
 
-## 📝 新增/修改文章
+## 📝 内容管理
 
-### 📂 文章目录结构
+### 🎯 快速开始（普通用户）
+
+#### 1. 启动管理后台
+
+访问博客后，点击右上角 **「管理工具」** 进入管理后台。
+
+#### 2. 创建新文章
+
+**方法一：草稿箱新建**
+1. 进入「草稿箱」
+2. 点击「新建草稿」
+3. 填写标题、描述、选择标签
+4. 在编辑器中撰写文章
+5. 点击「保存草稿」
+6. 编辑完成后点击「发布文章」
+
+**方法二：爬取文章**
+1. 进入「爬取文章」
+2. 粘贴文章链接（支持微信公众号、知乎等）
+3. 点击「开始爬取」
+4. 文章自动保存到草稿箱
+5. 在草稿箱中编辑和发布
+
+#### 3. 管理文章
+
+- **草稿箱**：编辑未发布的文章
+- **已发布**：查看和编辑已发布的文章，可撤回到草稿箱
+- **垃圾箱**：查看已删除的文章，可恢复或永久删除
+
+#### 4. 管理菜单和标签
+
+- **菜单管理**：可视化添加/编辑/删除导航菜单
+- **标签管理**：统一管理所有文章标签
+- **网站配置**：修改网站名称、Banner、页脚等
+
+### 📂 文章目录结构（开发者参考）
+
+> **注意**：普通用户通过管理后台操作，无需关心文件结构。以下内容供开发者参考。
 
 所有文章都存放在 `docs/posts/` 目录下，按照以下结构组织：
 
@@ -200,59 +261,57 @@ docs/posts/
     └── learning-materials/ #└─ 学习资料
 ```
 
-### ✍️ 文章格式规范
+### ✍️ 文章编写规范
 
-每篇文章都是一个 `.md` 文件，必须包含 frontmatter 头部信息：
+#### 📝 用户须知
 
-#### 基础模板
+**你只需要专注写文章内容！**
 
-```markdown
----
-title: 文章标题（必填，用于SEO和显示）
-description: 文章描述（必填，用于SEO和卡片展示）
-date: 2024-01-01（必填，文章日期，格式：YYYY-MM-DD）
-author: 杰哥（必填，作者名称）
-category: 教程（可选，分类标签）
-tags:（可选，标签数组）
-  - VPN
-  - 科学上网
-cover: /images/cover.jpg（可选，封面图片）
----
+系统会自动处理以下内容：
+- ✅ **Frontmatter 头部信息**（标题、描述、日期、作者、标签、封面）
+- ✅ **发布时间**（自动更新为当前时间）
+- ✅ **标题层级**（自动将一级标题 `#` 转为二级标题 `##`）
+- ✅ **文件末尾换行符**（自动规范化）
+- ✅ **图片路径**（上传的图片自动生成正确路径）
 
-# 文章标题
+**你需要做的：**
+1. 在编辑器中填写文章标题和描述
+2. 选择标签（可选）
+3. 上传封面图片（可选）
+4. 在编辑器中撰写 Markdown 内容
+5. 点击「保存草稿」或「发布文章」
 
-这里开始写文章内容...
-```
+#### 🔧 开发者参考：Frontmatter 格式
 
-#### 完整 SEO 模板
+> **注意**：以下内容由系统自动生成，用户无需手动编写。供开发者了解技术细节。
 
-如果你想要更好的 SEO 效果，使用完整模板：
+每篇文章的 `.md` 文件包含 frontmatter 头部信息：
 
 ```markdown
 ---
-title: 2024年最佳免费VPN节点推荐 | 科学上网完全指南
-description: 详细介绍2024年最新免费VPN节点获取方法，包括V2Ray、Shadowsocks等协议配置教程。
-keywords:
-  - 免费VPN
-  - 科学上网
-  - V2Ray节点
-date: 2024-01-01
-author: 杰哥
-category: 教程
-tags:
-  - VPN
-  - V2Ray
-  - Shadowsocks
-cover: /images/vpn-cover.jpg
-canonical: https://your-domain.com/posts/vpn-proxy/tutorial/article
-og:image: /images/vpn-og.jpg
-twitter:card: summary_large_image
+title: 文章标题
+description: 文章描述
+date: 2024-11-22 18:04:25  # 系统自动生成
+author: 杰哥  # 从管理后台配置
+cover: /images/covers/cover-xxx.png  # 上传图片自动生成
+tags:  # 从标签管理中选择
+  - AI工具
+  - ChatGPT
 ---
 
-# 文章内容开始...
+## 文章标题
+
+文章内容从这里开始...
 ```
 
-### 📋 Frontmatter 字段说明
+**系统自动处理的规则：**
+- 发布时自动更新 `date` 为当前时间
+- 上传封面时自动设置 `cover` 路径
+- 选择标签时自动更新 `tags` 数组
+- 发布时将所有 `#` 标题转为 `##`（VitePress 目录生成规范）
+- 确保文件末尾有且只有一个换行符
+
+### 📋 Frontmatter 字段说明（开发者参考）
 
 | 字段 | 必填 | 说明 | 示例 |
 |------|------|------|------|
@@ -268,60 +327,43 @@ twitter:card: summary_large_image
 | `og:image` | ❌ | Open Graph 图片 | `/images/og.jpg` |
 | `twitter:card` | ❌ | Twitter 卡片类型 | `summary_large_image` |
 
-### 🎯 添加新文章的步骤
+### 💡 使用技巧
 
-#### 步骤 1: 选择分类目录
+#### 快捷操作
 
-根据文章主题，在 `docs/posts/` 下选择或创建对应的分类文件夹。
+- **Ctrl + S**：保存草稿
+- **拖拽上传**：直接拖拽图片到编辑器
+- **实时预览**：编辑器右侧实时预览文章效果
+- **多列标签**：标签显示为多列布局，每列最多3个
 
-#### 步骤 2: 创建 Markdown 文件
+#### Markdown 语法支持
 
-在分类文件夹下创建 `.md` 文件，文件名建议使用英文：
+编辑器支持完整的 Markdown 语法：
+- 标题、加粗、斜体、删除线
+- 列表、任务列表
+- 代码块、引用
+- 链接、图片
+- 表格
 
-```bash
-# 例如：创建一篇VPN教程
-docs/posts/vpn-proxy/tutorial/v2ray-setup-guide.md
+#### 图片管理
+
+- **封面图片**：点击「上传封面」按钮
+- **文章图片**：在编辑器中点击图片按钮或拖拽上传
+- **爬取图片**：爬取文章时自动下载所有图片到本地
+
+#### 文章状态流转
+
 ```
-
-#### 步骤 3: 添加 Frontmatter
-
-复制上面的模板，填写文章信息：
-
-```markdown
----
-title: V2Ray 完整配置指南
-description: 从零开始学习 V2Ray 的安装、配置和使用，包含详细的图文教程。
-date: 2024-11-16
-author: 杰哥
-category: 教程
-tags:
-  - V2Ray
-  - 科学上网
-  - 教程
----
+新建草稿 → 编辑 → 保存草稿 → 发布 → 已发布
+                                    ↓
+                              撤回到草稿箱
+                                    ↓
+                                  删除
+                                    ↓
+                                 垃圾箱
+                                ↙     ↘
+                            恢复    永久删除
 ```
-
-#### 步骤 4: 编写文章内容
-
-在 frontmatter 后开始编写 Markdown 内容：
-
-```markdown
-# V2Ray 完整配置指南
-
-## 什么是 V2Ray？
-
-V2Ray 是一个...
-
-## 安装步骤
-
-### 1. 下载客户端
-
-...
-```
-
-#### 步骤 5: 预览文章
-
-保存文件后，开发服务器会自动刷新，访问对应的 URL 预览文章。
 
 ---
 
@@ -376,6 +418,8 @@ vitepress-blog-starter/
 │   ├── keyword-tracker-template.md # 数据追踪模板
 │   └── README.md                  # 使用指南
 ├── clean.ps1                      # 缓存清理脚本
+├── 推送文章.bat              # 一键推送脚本（Windows）⭐
+├── 推送文章.sh               # 一键推送脚本（Linux/Mac）⭐
 ├── package.json                   # 项目配置
 ├── pnpm-lock.yaml                 # 依赖锁定文件
 ├── CONFIGURATION.md               # 配置指南（SEO、Google服务等）
@@ -388,117 +432,105 @@ vitepress-blog-starter/
 
 ## 🎯 导航菜单配置
 
-导航菜单位于网站顶部，在 `docs/.vitepress/config.mts` 的 `nav()` 函数中配置。
+### 🎨 用户操作（推荐）
 
-### 📍 配置文件位置
+#### 通过管理后台配置
 
-```
-docs/.vitepress/config.mts  →  nav() 函数
-```
+1. 访问博客，点击右上角「管理工具」
+2. 进入「菜单管理」
+3. 点击「新增导航菜单」或「新增子菜单」
+4. 填写以下信息：
+   - **菜单文本**：如 `🚀 网络加速`
+   - **链接地址**：如 `/posts/vpn-proxy/`
+   - **文件夹路径**：如 `vpn-proxy`（决定文章发布位置）
+5. 点击「保存」
 
-### 🔧 基本结构
+**智能路径继承：**
+- 添加一级菜单：只需填写 `blog`
+- 添加子菜单：系统自动继承父级路径，只需填写子路径 `tutorials`
+- 最终路径：`blog/tutorials`
 
-```typescript
-function nav() {
-  return [
-    {
-      text: '🚀 菜单名称',               // 顶部导航显示的文字
-      activeMatch: '/posts/category/',   // 激活高亮的路径匹配
-      items: [                           // 下拉子菜单
-        { text: '子菜单1', link: '/posts/category/sub1/' },
-        { text: '子菜单2', link: '/posts/category/sub2/' },
-      ],
-    },
-    {
-      text: 'ℹ️ 单页面',                 // 无下拉的单个链接
-      link: '/about/',
-    },
-  ]
-}
-```
+**无需重启：**
+- 配置保存后立即生效
+- 刷新页面即可看到新菜单
 
-### ✅ 添加新的导航菜单
+### 🔧 开发者操作（手动配置）
 
-#### 步骤 1：编辑 config.mts
+> **注意**：建议使用管理后台配置菜单。手动配置需要修改代码文件。
 
-打开 `docs/.vitepress/config.mts`，找到 `nav()` 函数，添加新菜单：
+导航菜单配置文件：`nav-config.json`（由管理后台自动维护）
 
-```typescript
-function nav() {
-  return [
-    // ... 现有菜单
+#### 配置文件结构
 
-    // 添加新菜单
-    {
-      text: '📖 文档',                   // 菜单名称（支持emoji）
-      activeMatch: '/posts/docs/',       // 路径匹配规则
-      items: [
-        { text: '快速开始', link: '/posts/docs/quick-start/' },
-        { text: 'API参考', link: '/posts/docs/api/' },
-        { text: '常见问题', link: '/posts/docs/faq/' },
-      ],
-    },
-  ]
-}
+`nav-config.json` 文件格式：
+
+```json
+[
+  {
+    "text": "🚀 网络加速",
+    "link": "/posts/vpn-proxy/",
+    "folder": "vpn-proxy",
+    "items": [
+      {
+        "text": "每日免费节点",
+        "link": "/posts/vpn-proxy/free-nodes/",
+        "folder": "vpn-proxy/free-nodes"
+      }
+    ]
+  }
+]
 ```
 
-#### 步骤 2：创建对应文件夹
+**字段说明：**
+- `text`：菜单显示文本（支持 Emoji）
+- `link`：菜单链接地址
+- `folder`：文件夹路径（决定文章发布位置）
+- `items`：子菜单数组（可选）
 
-```bash
-# 创建分类目录
-mkdir docs/posts/docs
-mkdir docs/posts/docs/quick-start
-mkdir docs/posts/docs/api
-mkdir docs/posts/docs/faq
-```
-
-#### 步骤 3：创建列表页
-
-在每个子分类下创建 `index.md`：
-
-```bash
-# docs/posts/docs/quick-start/index.md
----
-title: 快速开始
-description: <strong>📖 新手指南</strong> | 从零开始学习使用本系统
----
-
-<CategoryPosts />
-```
-
-### 🎨 菜单配置说明
-
-| 字段 | 必填 | 说明 | 示例 |
-|------|------|------|------|
-| `text` | ✅ | 菜单显示文字 | `'🚀 网络加速'` |
-| `link` | ❌ | 单页面链接（无下拉菜单时使用） | `'/about/'` |
-| `items` | ❌ | 下拉子菜单数组 | `[{text,link}]` |
-| `activeMatch` | ❌ | 高亮激活规则（正则） | `'/posts/vpn-proxy/'` |
-
-### 💡 实用技巧
-
-**1. 使用 Emoji 图标**
-```typescript
-text: '🚀 网络加速'  // 让菜单更生动
-```
-
-**2. activeMatch 激活规则**
-```typescript
-activeMatch: '/posts/ai/'  // 访问/posts/ai/*都会高亮这个菜单
-```
-
-**3. 外部链接**
-```typescript
-{ 
-  text: 'GitHub', 
-  link: 'https://github.com/your-repo',
-  target: '_blank'  // 新标签打开
-}
-```
+**自动处理：**
+- 系统自动读取 `nav-config.json`
+- VitePress 配置自动同步
+- 子菜单路径自动继承父级
 
 ---
 
-## 📂 侧边栏配置
+## 🏷️ 标签管理
+
+### 🎨 用户操作（推荐）
+
+#### 通过管理后台管理标签
+
+1. 访问博客，点击右上角「管理工具」
+2. 进入「标签管理」
+3. 查看所有已使用的标签
+4. 可以：
+   - 添加新标签
+   - 查看标签使用次数
+   - 删除未使用的标签
+
+#### 在文章中使用标签
+
+编辑文章时：
+1. 在右侧「标签管理」区域
+2. 点击「管理标签」按钮
+3. 勾选需要的标签（支持多选）
+4. 标签会以多列布局显示（每列最多3个）
+5. 保存草稿或发布文章时自动应用标签
+
+**标签筛选：**
+- 首页文章列表支持标签筛选
+- 点击任意标签查看相关文章
+- 支持多标签 OR 筛选（选中任一标签即可）
+
+### 🔧 开发者参考
+
+标签数据存储在 `tags-config.json`（由系统自动维护）
+
+---
+
+## 📂 侧边栏配置（开发者参考）
+
+> **注意**：侧边栏目前需要手动配置。建议使用导航菜单替代侧边栏功能。
 
 侧边栏显示在页面左侧，在 `docs/.vitepress/config.mts` 中配置。
 
@@ -861,6 +893,28 @@ pnpm clean
 - `docs/.vitepress/cache/`
 - `docs/.vitepress/dist/`
 
+### 一键推送文章
+
+发布文章后，使用脚本快速推送到 GitHub：
+
+```bash
+# Windows 用户（双击运行）
+推送文章.bat
+
+# Linux/Mac 用户
+chmod +x 推送文章.sh  # 首次需要添加执行权限
+./推送文章.sh
+```
+
+**功能：**
+- 🔍 自动检测已发布文章（`docs/posts/`）
+- 🖼️ 自动检测相关图片资源（封面、上传图片）
+- 🚫 **自动排除草稿箱和垃圾箱**
+- 📝 自动提取文章标题生成提交信息
+- 📊 显示统计信息（文章数量、图片数量）
+- 🚀 一键执行 `git add` + `git commit` + `git push`
+- ✅ 显示详细的推送进度和结果
+
 ---
 
 ## 🚀 部署指南
@@ -971,6 +1025,78 @@ git push
 
 部署完成后访问：`https://tansunyj.github.io/vitepress-blog-starter/`
 
+### 部署到 Cloudflare Pages
+
+#### 1. 推送代码到 GitHub
+
+```bash
+git add .
+git commit -m "Update blog"
+git push origin main
+```
+
+#### 2. 连接到 Cloudflare Pages
+
+1. 访问 [dash.cloudflare.com](https://dash.cloudflare.com)
+2. 进入 **Pages** → **Create a project**
+3. 连接你的 GitHub 账户并选择仓库
+4. 配置构建设置：
+   - **Framework preset**: None（手动配置）
+   - **Build command**: `pnpm install && pnpm build`
+   - **Build output directory**: `docs/.vitepress/dist`
+   - **Root directory**: `/`（默认）
+   - **Environment variables**（可选）:
+     - `NODE_VERSION`: `18`
+
+#### 3. 自动部署
+
+Cloudflare Pages 会自动部署：
+- ✅ 每次推送到 `main` 分支自动触发构建
+- ✅ 提供免费 CDN 加速
+- ✅ 自动 HTTPS 证书
+- ✅ 支持自定义域名
+
+#### 4. 本地发布文章后的流程
+
+**方法一：使用一键推送脚本（推荐）** 🚀
+
+```bash
+# Windows 用户（双击运行或命令行执行）
+推送文章.bat
+
+# Linux/Mac 用户（首次需要添加执行权限）
+chmod +x 推送文章.sh
+./推送文章.sh
+```
+
+**脚本会自动：**
+- ✅ 检测 `docs/posts/` 下的已发布文章
+- ✅ 检测已发布文章相关的图片资源（封面、上传图片）
+- ✅ **自动排除草稿箱和垃圾箱**（`drafts/`、`trash/`、`docs/public/images/drafts/`）
+- ✅ 提取文章标题生成提交信息（格式：`Add: 文章1, 文章2, ...`）
+- ✅ 显示统计信息（文章数量、图片资源数量）
+- ✅ 执行 `git add` + `git commit` + `git push`
+- ✅ 显示详细的推送进度和结果
+
+**方法二：手动推送**
+
+```bash
+# 1. 发布文章（在管理后台操作）
+# 系统会提示：✅ 发布成功！请重启服务查看效果。
+
+# 2. 重启开发服务器查看效果（可选）
+# 关闭当前服务器（Ctrl+C）
+pnpm dev
+
+# 3. 推送到 GitHub 触发自动部署
+git add .
+git commit -m "Add: 新文章标题"
+git push origin main
+
+# 4. 等待 Cloudflare Pages 自动部署完成（约1-2分钟）
+# 访问你的 Cloudflare Pages 域名查看在线效果
+```
+
 ---
 
 ## 💡 常见问题
@@ -1072,4 +1198,31 @@ MIT License
 
 ---
 
-**最后更新时间**：2025-11-17
+**最后更新时间**：2025-11-22
+
+---
+
+## 🎥 功能演示
+
+### 管理后台功能
+
+| 功能 | 说明 |
+|------|------|
+| 📝 **在线编辑器** | Markdown编辑器，实时预览，支持拖拽上传图片 |
+| 📁 **草稿管理** | 新建、编辑、保存、发布、撤回 |
+| 🕷️ **文章爬取** | 一键爬取微信公众号、知乎等平台文章 |
+| 🗂️ **菜单管理** | 可视化管理导航菜单，智能路径继承 |
+| 🏷️ **标签管理** | 统一管理标签，多列布局显示 |
+| 🗑️ **垃圾箱** | 已删除文章可恢复 |
+| ⚙️ **网站配置** | Banner、页脚、Google服务配置 |
+
+### 系统自动化
+
+| 自动化功能 | 说明 |
+|-----------|------|
+| ✅ **Frontmatter生成** | 自动生成文章头部信息 |
+| ✅ **日期更新** | 发布时自动更新为当前时间 |
+| ✅ **标题转换** | 自动将 `#` 转为 `##`（VitePress规范） |
+| ✅ **图片路径** | 自动生成正确的图片路径 |
+| ✅ **文件规范化** | 自动规范文件末尾换行符 |
+| ✅ **目录生成** | 自动生成文章目录 |

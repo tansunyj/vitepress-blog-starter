@@ -3,6 +3,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 import { formatDistance } from 'date-fns'
+import { zhCN } from 'date-fns/locale'
 import { createMarkdownRenderer } from 'vitepress'
 import useBlogFile from './useBlogFile'
 
@@ -102,18 +103,53 @@ function getPost(file: string, postDir: string, relativePath = ''): Post | null 
 }
 
 function formatDate(date: string | Date): Post['date'] {
-  if (!(date instanceof Date))
-    date = new Date(date)
+  let parsedDate: Date
 
-  date.setUTCHours(12)
+  if (date instanceof Date) {
+    parsedDate = date
+  }
+  else {
+    // 解析 "yyyy-MM-dd HH:mm:ss" 格式为本地时间
+    // 使用手动解析以确保正确处理时区（假设输入时间为 UTC+8）
+    const dateStr = String(date).trim()
+    const match = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2}):(\d{2})$/)
+
+    if (match) {
+      // 手动构造日期对象，使用本地时区
+      const [, year, month, day, hour, minute, second] = match
+      parsedDate = new Date(
+        Number.parseInt(year),
+        Number.parseInt(month) - 1, // 月份从0开始
+        Number.parseInt(day),
+        Number.parseInt(hour),
+        Number.parseInt(minute),
+        Number.parseInt(second),
+      )
+      console.warn('[posts.data] 解析时间:', {
+        input: dateStr,
+        parsed: parsedDate.toISOString(),
+        local: parsedDate.toString(),
+        now: new Date().toString(),
+      })
+    }
+    else {
+      // 回退到原始解析方式
+      parsedDate = new Date(date)
+    }
+
+    // 如果解析失败，尝试直接解析
+    if (Number.isNaN(parsedDate.getTime())) {
+      parsedDate = new Date(date)
+    }
+  }
 
   return {
-    time: +date,
-    string: date.toLocaleDateString('en-US', {
+    time: +parsedDate,
+    string: parsedDate.toLocaleDateString('zh-CN', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
     }),
-    since: formatDistance(date, new Date(), { addSuffix: true }),
+    since: formatDistance(parsedDate, new Date(), { addSuffix: true, locale: zhCN }),
   }
 }

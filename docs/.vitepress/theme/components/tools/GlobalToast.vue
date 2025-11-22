@@ -3,10 +3,9 @@ import { onMounted, onUnmounted, ref } from 'vue'
 
 const toasts = ref([])
 let toastId = 0
+const toastTimers = new Map() // 存储每个toast的定时器
 
-function addToast(message, type = 'success', duration = 3000) {
-  const id = toastId++
-
+function addToast(message, type = 'success', duration = 3000, key = null) {
   // 清理消息中的emoji图标（Toast组件会统一添加）
   let cleanMessage = message
   const emojis = ['✅', '❌', '⚠️', 'ℹ️', '⏳', '📝', '🗑️', '💾', '🚀', '📂', '🖼️', '👁️']
@@ -15,23 +14,58 @@ function addToast(message, type = 'success', duration = 3000) {
   })
   cleanMessage = cleanMessage.trim()
 
+  // 如果指定了 key，检查是否已存在相同 key 的 toast
+  if (key) {
+    const existingIndex = toasts.value.findIndex(t => t.key === key)
+    if (existingIndex > -1) {
+      // 更新现有 toast
+      const existingToast = toasts.value[existingIndex]
+      existingToast.message = cleanMessage
+      existingToast.type = type
+
+      // 清除旧的定时器
+      if (toastTimers.has(existingToast.id)) {
+        clearTimeout(toastTimers.get(existingToast.id))
+      }
+
+      // 设置新的定时器
+      const timer = setTimeout(() => {
+        removeToast(existingToast.id)
+      }, duration)
+      toastTimers.set(existingToast.id, timer)
+
+      return existingToast.id
+    }
+  }
+
+  // 创建新 toast
+  const id = toastId++
   const toast = {
     id,
     message: cleanMessage,
     type,
+    key,
   }
 
   toasts.value.push(toast)
 
-  setTimeout(() => {
+  const timer = setTimeout(() => {
     removeToast(id)
   }, duration)
+  toastTimers.set(id, timer)
+
+  return id
 }
 
 function removeToast(id) {
   const index = toasts.value.findIndex(t => t.id === id)
   if (index > -1) {
     toasts.value.splice(index, 1)
+    // 清除定时器
+    if (toastTimers.has(id)) {
+      clearTimeout(toastTimers.get(id))
+      toastTimers.delete(id)
+    }
   }
 }
 
