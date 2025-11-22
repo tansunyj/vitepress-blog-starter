@@ -259,39 +259,51 @@ body {
 .VPDoc,
 .vp-doc {
   max-width: 100% !important;
-  margin: 0 !important;
-  padding: 40px 48px !important;
-  /* 增加内边距，让文字呼吸 */
+  margin: 0 auto !important;
+  padding: 0 !important;
   box-sizing: border-box !important;
   background-color: var(--bg-primary) !important;
-  /* 确保白色背景 */
   border-radius: 16px;
-  /* 圆角 */
   box-shadow: var(--shadow-sm);
-  /* 轻微阴影 */
   min-height: 600px;
-  /* 最小高度 */
 }
 
-/* 确保文章内容区域也有足够的内边距 */
+/* 文章内容区域 - 添加合适的内边距 */
 .vp-doc .content,
 .vp-doc .content-container,
 .VPDoc .content,
-.VPDoc .content-container {
+.VPDoc .content-container,
+.vp-doc > div,
+.VPDoc > div {
+  padding: 40px 64px !important;
+  /* 上下40px，左右64px，让文字远离边界 */
+  box-sizing: border-box !important;
+}
+
+/* VitePress 文档容器 */
+.vp-doc .container,
+.VPDoc .container {
+  max-width: 100% !important;
   padding: 0 !important;
-  /* 重置内部padding，使用外层的padding */
 }
 
 /* 移动端适配 */
 @media (max-width: 768px) {
-
   .VPDoc,
   .vp-doc {
-    padding: 24px 20px !important;
-    /* 移动端减小内边距 */
     border-radius: 0 !important;
-    /* 移动端铺满 */
     box-shadow: none !important;
+  }
+
+  /* 移动端文章内容区域 */
+  .vp-doc .content,
+  .vp-doc .content-container,
+  .VPDoc .content,
+  .VPDoc .content-container,
+  .vp-doc > div,
+  .VPDoc > div {
+    padding: 24px 20px !important;
+    /* 移动端减小内边距，但仍保留足够空间 */
   }
 }
 
@@ -324,6 +336,69 @@ body {
 /* 移除水平分隔线 */
 hr {
   display: none !important;
+}
+
+/* 文章内容排版 - 增加段落间距 */
+.vp-doc p,
+.VPDoc p {
+  margin-bottom: 1.5rem !important;
+  line-height: 1.8 !important;
+  color: var(--text-primary);
+}
+
+/* 标题间距优化 */
+.vp-doc h1,
+.VPDoc h1 {
+  margin-top: 2.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.vp-doc h2,
+.VPDoc h2 {
+  margin-top: 2rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.vp-doc h3,
+.VPDoc h3 {
+  margin-top: 1.75rem !important;
+  margin-bottom: 1rem !important;
+}
+
+/* 列表间距 */
+.vp-doc ul,
+.vp-doc ol,
+.VPDoc ul,
+.VPDoc ol {
+  margin-bottom: 1.5rem !important;
+  padding-left: 2rem !important;
+}
+
+.vp-doc li,
+.VPDoc li {
+  margin-bottom: 0.5rem !important;
+}
+
+/* 代码块间距 */
+.vp-doc pre,
+.VPDoc pre,
+.vp-doc div[class*="language-"],
+.VPDoc div[class*="language-"] {
+  margin: 1.5rem 0 !important;
+}
+
+/* 引用块间距 */
+.vp-doc blockquote,
+.VPDoc blockquote {
+  margin: 1.5rem 0 !important;
+  padding: 1rem 1.5rem !important;
+  border-left: 4px solid var(--vp-c-brand);
+}
+
+/* 表格间距 */
+.vp-doc table,
+.VPDoc table {
+  margin: 1.5rem 0 !important;
 }
 
 /* ============================================
