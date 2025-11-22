@@ -151,6 +151,25 @@ coverage/
 .gitconfig
 
 # ============================================
+# 项目特定忽略文件 (Project specific)
+# ============================================
+# 测试文件
+test-draft-upload.js
+test-upload.js
+
+# 草稿和垃圾箱（不上传到 GitHub）
+drafts/
+trash/
+
+# 测试文章目录
+docs/posts/test/
+docs/posts/test02/
+docs/posts/test03/
+
+# 草稿图片（如果存在）
+docs/public/images/drafts/
+
+# ============================================
 # 可选：不忽略的文件 (Optional: files to include)
 # ============================================
 # 如果你想保留某些通常被忽略的文件，使用 ! 前缀
