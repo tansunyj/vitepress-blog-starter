@@ -15,7 +15,7 @@ const selectedTags = inject<Ref<string[]>>('selectedTags', ref([]))
 const bannerConfig = ref({
   title: '欢迎来到杰哥的技术小站',
   subtitle: '',
-  banner: '/images/banner.jpg'
+  banner: '/images/banner/banner.png'
 })
 
 // 加载 Banner 配置

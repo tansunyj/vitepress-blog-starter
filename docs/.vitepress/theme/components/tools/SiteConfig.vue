@@ -118,7 +118,7 @@ onMounted(() => {
           <input
             type="text"
             class="form-input"
-            placeholder="/images/banner.jpg"
+            placeholder="/images/banner.png"
             disabled
           >
           <span class="form-hint">请直接编辑 Banner.vue 文件</span>

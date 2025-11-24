@@ -12,7 +12,7 @@ export default defineConfig(({ command }: { command: 'serve' | 'build' }) => ({
   description: '字段专注VPN科学上网、AI人工智能、Web开发教程和免费资源分享的技术博客。提供免费VPN节点、AI工具推荐、编程教程等优质内容。',
   ignoreDeadLinks: true, // 忽略死链接检查，允许构建成功
   appearance: false, // 禁用外观切换按钮
-  
+
   // Sitemap 配置 - 构建时自动生成 sitemap.xml
   sitemap: {
     hostname: 'https://your-domain.com', // 替换为你的网站域名
@@ -73,7 +73,7 @@ export default defineConfig(({ command }: { command: 'serve' | 'build' }) => ({
     blog: {
       title: '欢迎来到杰哥的技术小站',
       description: '',
-      banner: '/images/banner.png',
+      banner: '/images/banner/banner.png',
     },
   },
   vite: {
