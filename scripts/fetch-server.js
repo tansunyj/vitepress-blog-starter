@@ -141,8 +141,8 @@ const CONFIG = {
   userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
 }
 
-// 导航配置（与config.mts保持同步）
-const NAV_CONFIG = [
+// 导航配置（默认配置，会被nav-config.json覆盖）
+let NAV_CONFIG = [
   {
     text: '🚀 网络加速',
     items: [
@@ -179,6 +179,23 @@ const NAV_CONFIG = [
   },
 ]
 
+// 从nav-config.json加载配置（如果存在）
+const navConfigPath = path.join(__dirname, '../nav-config.json')
+if (fs.existsSync(navConfigPath)) {
+  try {
+    const configContent = fs.readFileSync(navConfigPath, 'utf-8')
+    const loadedConfig = JSON.parse(configContent)
+    NAV_CONFIG = loadedConfig
+    console.log('✅ 已从 nav-config.json 加载导航配置，共', NAV_CONFIG.length, '个菜单')
+  }
+  catch (error) {
+    console.error('❌ 加载 nav-config.json 失败，使用默认配置:', error.message)
+  }
+}
+else {
+  console.log('⚠️ nav-config.json 不存在，使用默认导航配置')
+}
+
 // 从导航配置构建树结构
 function buildNavTree(baseDir) {
   const navTree = []
@@ -196,6 +213,16 @@ function buildNavTree(baseDir) {
       }
 
       navItem.items.forEach((subItem) => {
+        // 跳过外部链接或没有folder的子项
+        if (!subItem.folder || subItem.folder.trim() === '') {
+          return
+        }
+
+        // 跳过外部链接（http/https开头）
+        if (subItem.link && (subItem.link.startsWith('http://') || subItem.link.startsWith('https://'))) {
+          return
+        }
+
         const folderPath = subItem.folder
         const fullPath = path.join(baseDir, folderPath)
 
@@ -300,23 +327,59 @@ async function cleanMarkdown(markdown) {
  * @param {string} url - 图片URL
  * @param {string} filename - 文件名
  * @param {string} imageDir - 本地保存目录
+ * @param {number} retries - 重试次数
  * @returns {Promise<boolean>} 返回是否成功
  */
-async function downloadImage(url, filename, imageDir) {
-  const response = await axios({
-    url,
-    method: 'GET',
-    responseType: 'arraybuffer',
-    headers: {
-      'User-Agent': CONFIG.userAgent,
-      'Referer': 'https://mp.weixin.qq.com/',
-    },
-    timeout: 30000,
-  })
+async function downloadImage(url, filename, imageDir, retries = 3) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      console.log(`  📥 正在下载图片 (${i + 1}/${retries}): ${url}`)
+      
+      const response = await axios({
+        url,
+        method: 'GET',
+        responseType: 'arraybuffer',
+        headers: {
+          'User-Agent': CONFIG.userAgent,
+          'Referer': url.includes('weixin.qq.com') ? 'https://mp.weixin.qq.com/' : undefined,
+          'Accept': 'image/webp,image/apng,image/*,*/*;q=0.8',
+          'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+          'Cache-Control': 'no-cache',
+        },
+        timeout: 45000,
+        maxRedirects: 5,
+      })
 
-  const filepath = path.join(imageDir, filename)
-  fs.writeFileSync(filepath, response.data)
-  return true
+      if (!response.data || response.data.length === 0) {
+        throw new Error('图片数据为空')
+      }
+
+      const filepath = path.join(imageDir, filename)
+      fs.writeFileSync(filepath, response.data)
+      
+      // 验证文件是否写入成功
+      const stats = fs.statSync(filepath)
+      if (stats.size === 0) {
+        throw new Error('图片文件写入失败，文件大小为0')
+      }
+      
+      console.log(`  ✅ 图片下载成功: ${filename} (${Math.round(stats.size / 1024)}KB)`)
+      return true
+    }
+    catch (error) {
+      console.error(`  ❌ 图片下载失败 (尝试 ${i + 1}/${retries}): ${error.message}`)
+      
+      if (i === retries - 1) {
+        console.error(`  💥 图片下载彻底失败，跳过: ${url}`)
+        return false
+      }
+      
+      // 等待一段时间后重试
+      await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)))
+    }
+  }
+  
+  return false
 }
 
 async function fetchArticle(url, articleId) {
@@ -391,25 +454,38 @@ async function fetchArticle(url, articleId) {
 
   console.log(`  找到 ${images.length} 张图片`)
 
+  let successCount = 0
+  let failCount = 0
+
   for (const { elem, src } of images) {
     try {
       const ext = path.extname(new URL(src).pathname) || '.jpg'
       const filename = `${imageIndex}${ext}`
 
-      // 下载图片到草稿图片目录
-      await downloadImage(src, filename, articleImageDir)
+      // 尝试下载图片到草稿图片目录
+      const success = await downloadImage(src, filename, articleImageDir)
 
-      // 使用草稿图片路径（在public/images/drafts下）
-      const imagePath = `/images/drafts/${articleId}/${filename}`
-      $content(elem).attr('src', imagePath)
+      if (success) {
+        // 下载成功，使用本地路径
+        const imagePath = `/images/drafts/${articleId}/${filename}`
+        $content(elem).attr('src', imagePath)
+        successCount++
+      }
+      else {
+        // 下载失败，保留原始URL，但添加提示
+        console.log(`  ⚠️  保留原始图片链接: ${src}`)
+        failCount++
+      }
+
       imageIndex++
-      console.log(`  📸 已下载图片: ${filename}`)
     }
     catch (error) {
-      console.error(`  ❌ 图片下载失败 ${src}:`, error.message)
-      // 下载失败时跳过该图片，继续处理其他图片
+      console.error(`  ❌ 处理图片时出错 ${src}:`, error.message)
+      failCount++
     }
   }
+
+  console.log(`\n📊 图片处理统计: 成功 ${successCount} 张，失败 ${failCount} 张`)
 
   content = $content.html()
 
@@ -1356,7 +1432,7 @@ app.post('/api/draft/upload-image-base64', (req, res) => {
 // ========================================
 
 const configPath = path.join(__dirname, '../docs/.vitepress/config.mts')
-const navConfigPath = path.join(__dirname, '../nav-config.json')
+// navConfigPath 已在文件顶部定义
 
 // 读取菜单配置（从JSON文件）
 app.get('/api/config/menus', (_req, res) => {
@@ -1435,16 +1511,18 @@ app.post('/api/config/menus/create-folders', (req, res) => {
 
       const folderPath = path.join(postsDir, menu.folder)
       try {
-        // 创建文件夹
+        // 创建文件夹（如果不存在）
+        let folderCreated = false
         if (!fs.existsSync(folderPath)) {
           fs.mkdirSync(folderPath, { recursive: true })
-          createdFolders.push(menu.folder)
+          folderCreated = true
           console.log(`  ✅ 创建文件夹: ${menu.folder}`)
+        }
 
-          // 创建 index.md
-          const indexPath = path.join(folderPath, 'index.md')
-          if (!fs.existsSync(indexPath)) {
-            const indexContent = `---
+        // 创建 index.md（如果不存在）
+        const indexPath = path.join(folderPath, 'index.md')
+        if (!fs.existsSync(indexPath)) {
+          const indexContent = `---
 layout: doc
 title: ${escapeYamlString(menu.text)}
 ---
@@ -1457,9 +1535,18 @@ title: ${escapeYamlString(menu.text)}
 
 <PostList folder="${menu.folder}" />
 `
-            fs.writeFileSync(indexPath, indexContent, 'utf-8')
-            console.log(`  ✅ 创建索引页: ${menu.folder}/index.md`)
+          fs.writeFileSync(indexPath, indexContent, 'utf-8')
+          console.log(`  ✅ 创建索引页: ${menu.folder}/index.md`)
+
+          // 记录创建的文件夹（包括已存在但创建了index.md的）
+          if (!folderCreated) {
+            createdFolders.push(menu.folder)
           }
+        }
+
+        // 记录新创建的文件夹
+        if (folderCreated) {
+          createdFolders.push(menu.folder)
         }
       }
       catch (error) {

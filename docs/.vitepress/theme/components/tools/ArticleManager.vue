@@ -227,8 +227,9 @@ onMounted(() => {
 
 .manager-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start; /* Move buttons to left */
   align-items: center;
+  gap: 32px; /* Add spacing between title and buttons */
   margin-bottom: 24px;
 }
 

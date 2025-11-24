@@ -295,6 +295,7 @@ onMounted(() => {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  margin-top: 4px; /* Move buttons down slightly */
 }
 
 .btn-restore-top,

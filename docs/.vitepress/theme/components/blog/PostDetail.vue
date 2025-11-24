@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { formatDistance } from 'date-fns'
-import { zhCN } from 'date-fns/locale'
 import { useData } from 'vitepress'
-import { computed, onMounted, ref } from 'vue'
+import { computed } from 'vue'
 import useAuthors from '../../composables/useAuthors'
 import usePosts from '../../composables/usePosts'
 
@@ -33,43 +31,102 @@ const currentTitle = computed(() => {
   return frontmatter.value.title || page.value.title
 })
 
+// 格式化日期为 yyyy-MM-dd HH:mm:ss
+function formatDateString(date: Date): string {
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  const hour = String(date.getHours()).padStart(2, '0')
+  const minute = String(date.getMinutes()).padStart(2, '0')
+  const second = String(date.getSeconds()).padStart(2, '0')
+  return `${year}-${month}-${day} ${hour}:${minute}:${second}`
+}
+
+// 手动解析 yyyy-MM-dd HH:mm:ss 格式的日期字符串为本地时间
+function parseLocalDateTime(dateStr: string): Date {
+  const match = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2}):(\d{2})$/)
+  if (match) {
+    const [, year, month, day, hour, minute, second] = match
+    return new Date(
+      Number.parseInt(year),
+      Number.parseInt(month) - 1, // 月份从0开始
+      Number.parseInt(day),
+      Number.parseInt(hour),
+      Number.parseInt(minute),
+      Number.parseInt(second),
+    )
+  }
+  return new Date(dateStr)
+}
+
 const currentDate = computed(() => {
   if (post?.value?.date) {
     return post.value.date
   }
   // 为 frontmatter 的日期创建一个简单的显示格式
   if (frontmatter.value.date) {
+    const dateValue = frontmatter.value.date
+    let parsedDate: Date
+    let dateString: string
+
+    // 如果是字符串格式
+    if (typeof dateValue === 'string') {
+      // 检查是否已经是 yyyy-MM-dd HH:mm:ss 格式
+      if (/^\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2}$/.test(dateValue)) {
+        dateString = dateValue
+        parsedDate = parseLocalDateTime(dateValue) // 使用手动解析
+      }
+      // 检查是否是 ISO 8601 格式 (如 2025-11-24T16:50:15.000Z)
+      // VitePress 可能将 "2025-11-24 16:50:15" (北京时间) 解析为 "2025-11-24T16:50:15.000Z"
+      // 这里需要提取 UTC 时间的数值，并作为北京时间使用
+      else if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/.test(dateValue)) {
+        const isoDate = new Date(dateValue)
+        // 使用 getUTC* 方法提取时间数值（避免时区转换）
+        const year = isoDate.getUTCFullYear()
+        const month = isoDate.getUTCMonth()
+        const day = isoDate.getUTCDate()
+        const hour = isoDate.getUTCHours()
+        const minute = isoDate.getUTCMinutes()
+        const second = isoDate.getUTCSeconds()
+        // 将提取的数值作为本地时间（北京时间）创建 Date 对象
+        parsedDate = new Date(year, month, day, hour, minute, second)
+        dateString = formatDateString(parsedDate)
+      }
+      else {
+        // 其他格式，先解析再格式化
+        parsedDate = new Date(dateValue)
+        dateString = formatDateString(parsedDate)
+      }
+    }
+    // 如果是 Date 对象（gray-matter 解析的）
+    else if (dateValue instanceof Date) {
+      // 使用 getUTC* 方法提取时间数值，作为北京时间使用
+      const year = dateValue.getUTCFullYear()
+      const month = dateValue.getUTCMonth()
+      const day = dateValue.getUTCDate()
+      const hour = dateValue.getUTCHours()
+      const minute = dateValue.getUTCMinutes()
+      const second = dateValue.getUTCSeconds()
+
+      parsedDate = new Date(year, month, day, hour, minute, second)
+      dateString = formatDateString(parsedDate)
+    }
+    // 其他情况，尝试转换
+    else {
+      parsedDate = new Date(String(dateValue))
+      dateString = formatDateString(parsedDate)
+    }
+
     return {
-      string: frontmatter.value.date,
-      since: frontmatter.value.date,
-      time: new Date(frontmatter.value.date).getTime(),
+      string: dateString,
+      since: dateString,
+      time: +parsedDate,
     }
   }
   return null
 })
 
 const author = findByName(currentAuthorName.value)
-
-// 客户端动态计算相对时间
-const relativeSince = ref('')
-
-onMounted(() => {
-  if (currentDate.value?.time) {
-    const postDate = new Date(currentDate.value.time)
-    relativeSince.value = formatDistance(postDate, new Date(), { addSuffix: true, locale: zhCN })
-
-    // 每分钟更新一次
-    const interval = setInterval(() => {
-      relativeSince.value = formatDistance(postDate, new Date(), { addSuffix: true, locale: zhCN })
-    }, 60000)
-
-    // 组件卸载时清除定时器
-    return () => clearInterval(interval)
-  }
-  else if (currentDate.value?.since) {
-    relativeSince.value = currentDate.value.since
-  }
-})
 </script>
 
 <template>
@@ -83,7 +140,7 @@ onMounted(() => {
     <div class="post-meta">
       <PostAuthor :author="author" />
       <span class="meta-separator">|</span>
-      <span v-if="currentDate" class="meta-date">{{ relativeSince || currentDate.since }}</span>
+      <span v-if="currentDate" class="meta-date">{{ currentDate.string }}</span>
     </div>
 
     <!-- 标签列表 -->
@@ -106,7 +163,7 @@ onMounted(() => {
   border-bottom: 1px solid var(--vp-c-divider);
 }
 
-/* 标题 - 第一行，大而醒目 */
+/* 标题 - 第一行，大而醒目，居中显示 */
 .post-title {
   font-size: 2.5rem;
   font-weight: 700;
@@ -114,12 +171,14 @@ onMounted(() => {
   color: var(--text-primary);
   margin: 0 0 1rem 0;
   font-family: var(--font-family-heading);
+  text-align: center;
 }
 
-/* 元信息 - 小字，灰色 */
+/* 元信息 - 小字，灰色，居中显示 */
 .post-meta {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
   font-size: 0.875rem;
   color: var(--text-tertiary);
@@ -142,10 +201,11 @@ onMounted(() => {
   align-items: center;
 }
 
-/* 标签列表 */
+/* 标签列表 - 居中显示 */
 .post-tags {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.5rem;
   margin-top: 1rem;
 }

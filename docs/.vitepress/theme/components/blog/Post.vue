@@ -1,8 +1,6 @@
 <script setup lang='ts'>
 import type { Post } from '../../composables/posts.data'
-import { formatDistance } from 'date-fns'
-import { zhCN } from 'date-fns/locale'
-import { computed, onMounted, ref } from 'vue'
+import { computed } from 'vue'
 import useAuthors from '../../composables/useAuthors'
 import PostAuthor from './PostAuthor.vue'
 
@@ -11,23 +9,6 @@ const props = defineProps<{
 }>()
 const { findByName } = useAuthors()
 const author = findByName(props.post.author || '杰哥')
-
-// 客户端动态计算相对时间
-const relativeSince = ref(props.post.date.since)
-
-onMounted(() => {
-  // 在客户端重新计算相对时间
-  const postDate = new Date(props.post.date.time)
-  relativeSince.value = formatDistance(postDate, new Date(), { addSuffix: true, locale: zhCN })
-
-  // 每分钟更新一次
-  const interval = setInterval(() => {
-    relativeSince.value = formatDistance(postDate, new Date(), { addSuffix: true, locale: zhCN })
-  }, 60000)
-
-  // 组件卸载时清除定时器
-  return () => clearInterval(interval)
-})
 
 // 将预览图URL转换为缩略图URL（用于列表卡片）
 const thumbnailUrl = computed(() => {
@@ -104,7 +85,7 @@ const thumbnailUrl = computed(() => {
                 clip-rule="evenodd"
               />
             </svg>
-            {{ relativeSince }}
+            {{ post.date.string }}
           </div>
         </div>
       </div>

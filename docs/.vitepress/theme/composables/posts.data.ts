@@ -104,14 +104,24 @@ function getPost(file: string, postDir: string, relativePath = ''): Post | null 
 
 function formatDate(date: string | Date): Post['date'] {
   let parsedDate: Date
+  let rawDateString = ''
 
   if (date instanceof Date) {
     parsedDate = date
+    // 将 Date 对象格式化为 yyyy-MM-dd HH:mm:ss
+    const year = parsedDate.getFullYear()
+    const month = String(parsedDate.getMonth() + 1).padStart(2, '0')
+    const day = String(parsedDate.getDate()).padStart(2, '0')
+    const hour = String(parsedDate.getHours()).padStart(2, '0')
+    const minute = String(parsedDate.getMinutes()).padStart(2, '0')
+    const second = String(parsedDate.getSeconds()).padStart(2, '0')
+    rawDateString = `${year}-${month}-${day} ${hour}:${minute}:${second}`
   }
   else {
     // 解析 "yyyy-MM-dd HH:mm:ss" 格式为本地时间
     // 使用手动解析以确保正确处理时区（假设输入时间为 UTC+8）
     const dateStr = String(date).trim()
+    rawDateString = dateStr // 保存原始字符串
     const match = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2}):(\d{2})$/)
 
     if (match) {
@@ -125,12 +135,6 @@ function formatDate(date: string | Date): Post['date'] {
         Number.parseInt(minute),
         Number.parseInt(second),
       )
-      console.warn('[posts.data] 解析时间:', {
-        input: dateStr,
-        parsed: parsedDate.toISOString(),
-        local: parsedDate.toString(),
-        now: new Date().toString(),
-      })
     }
     else {
       // 回退到原始解析方式
@@ -145,11 +149,7 @@ function formatDate(date: string | Date): Post['date'] {
 
   return {
     time: +parsedDate,
-    string: parsedDate.toLocaleDateString('zh-CN', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    }),
+    string: rawDateString, // 直接使用 yyyy-MM-dd HH:mm:ss 格式
     since: formatDistance(parsedDate, new Date(), { addSuffix: true, locale: zhCN }),
   }
 }

@@ -1773,6 +1773,7 @@ onMounted(() => {
   pointer-events: auto !important;
   isolation: isolate;
   flex-wrap: wrap;
+  margin-top: 4px; /* Move buttons down slightly */
 }
 
 /* 主体布局：左右结构 */

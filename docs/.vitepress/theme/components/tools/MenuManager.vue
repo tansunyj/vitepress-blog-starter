@@ -53,6 +53,7 @@ async function loadMenus(showSuccessMsg = false) {
 // 保存菜单配置
 async function saveMenus() {
   try {
+    // 第一步：保存配置
     const response = await fetch('http://localhost:3456/api/config/menus', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -60,53 +61,43 @@ async function saveMenus() {
     })
 
     const data = await response.json()
-    if (data.success) {
-      showMessage(data.message, 'success')
-    }
-    else {
+    if (!data.success) {
       showMessage(`保存失败: ${data.error}`, 'error')
+      return
+    }
+
+    // 第二步：自动创建文件夹和index.md
+    try {
+      const createResponse = await fetch('http://localhost:3456/api/config/menus/create-folders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ menus: menuItems.value }),
+      })
+      const createData = await createResponse.json()
+      
+      if (createData.success) {
+        let message = '✅ 保存成功！'
+        if (createData.createdFolders && createData.createdFolders.length > 0) {
+          message += `\n\n📁 已自动创建 ${createData.createdFolders.length} 个文件夹：\n${createData.createdFolders.map(f => `  • ${f}`).join('\n')}`
+        }
+        if (createData.errors && createData.errors.length > 0) {
+          message += `\n\n⚠️ 部分文件夹创建失败：\n${createData.errors.map(e => `  • ${e.folder}: ${e.error}`).join('\n')}`
+        }
+        message += '\n\n💡 请重启开发服务器使配置生效'
+        showMessage(message, 'success')
+      } else {
+        // 创建文件夹失败，但配置已保存
+        showMessage(`✅ 配置已保存，但文件夹创建失败: ${createData.error}\n\n⚠️ 请检查文件夹权限或手动创建文件夹`, 'error')
+      }
+    }
+    catch (createError) {
+      // 创建文件夹出错，但配置已保存
+      showMessage(`✅ 配置已保存，但自动创建文件夹时出错\n\n⚠️ 请检查文件夹权限或手动创建文件夹`, 'error')
     }
   }
   catch (error) {
     showMessage(`保存失败: ${error.message}`, 'error')
   }
-}
-
-// 创建文件夹
-function createFolders() {
-  showConfirm(
-    '创建文件夹',
-    '确定要为所有菜单创建对应的文件夹吗？\n\n这将为每个配置了 folder 的菜单项创建文件夹和 index.md 文件。',
-    async () => {
-      showMessage('正在创建文件夹...', 'info')
-
-      try {
-        const response = await fetch('http://localhost:3456/api/config/menus/create-folders', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ menus: menuItems.value }),
-        })
-        const data = await response.json()
-        if (data.success) {
-          let message = data.message
-          if (data.createdFolders && data.createdFolders.length > 0) {
-            message += `\n\n创建的文件夹：\n${data.createdFolders.map(f => `📁 ${f}`).join('\n')}`
-          }
-          if (data.errors && data.errors.length > 0) {
-            message += `\n\n错误：\n${data.errors.map(e => `❌ ${e.folder}: ${e.error}`).join('\n')}`
-          }
-          showMessage(message, 'success')
-        }
-        else {
-          showMessage(`创建失败: ${data.error}`, 'error')
-        }
-      }
-      catch (error) {
-        showMessage(`创建失败: ${error.message}`, 'error')
-      }
-    },
-    'info'
-  )
 }
 
 // 编辑菜单项
@@ -247,9 +238,6 @@ onMounted(() => {
         </button>
         <button class="btn-primary" @click="addMenu(-1)">
           ➕ 添加一级菜单
-        </button>
-        <button class="btn-warning" @click="createFolders">
-          📁 创建文件夹
         </button>
         <button class="btn-success" @click="saveMenus">
           💾 保存配置
@@ -490,12 +478,16 @@ onMounted(() => {
   margin: 0;
   margin-right: 8px;
   color: var(--vp-c-text-1);
+  line-height: 1; /* Ensure line-height doesn't cause misalignment */
+  display: flex;
+  align-items: center;
 }
 
 .header-actions {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  margin-top: 4px; /* Move buttons down slightly */
 }
 
 .btn-primary,
