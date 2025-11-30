@@ -1,7 +1,7 @@
 ---
 title: 移动端设置clash verge，以便实现正常翻墙上网
 description: 文章描述
-date: 2025-11-30 13:38:50
+date: 2025-11-30 13:54:56
 author: 杰哥
 cover: /images/covers/cover-draft-1764479127210.png
 tags:
@@ -15,7 +15,7 @@ tags:
 在这里输入内容...
 下面是clash verge在配置好之后的样子！
 
-![](/images/uploads/upload-1764479314411.png)
+![](/images/vpn-proxy/tutorial/upload-1764479314411.png)
 
 
 ## 下载clash verge
@@ -31,33 +31,34 @@ tags:
 
 ## 配置
 ## 点击配置
-![](/images/uploads/upload-1764480133130.png)
+![](/images/vpn-proxy/tutorial/upload-1764480133130.png)
 
 ## 新增配置
-![](/images/uploads/upload-1764480154642.png)
+![](/images/vpn-proxy/tutorial/upload-1764480154642.png)
 
 ## 创建配置
-![](/images/uploads/upload-1764480723488.png)
+![](/images/vpn-proxy/tutorial/upload-1764480723488.png)
 
 ## 粘贴订阅地址
 这里像自己搭建的或者购买的订阅地址都行
-![](/images/uploads/upload-1764480739159.png)
+![](/images/vpn-proxy/tutorial/upload-1764480739159.png)
 
 ## 保存配置
-![](/images/uploads/upload-1764480770018.png)
+![](/images/vpn-proxy/tutorial/upload-1764480770018.png)
 
 ## 刷新配置，让clash verge拉取配置
-![](/images/uploads/upload-1764480788734.png)
+![](/images/vpn-proxy/tutorial/upload-1764480788734.png)
 
 ## 启动梯子
-![](/images/uploads/upload-1764480824971.png)
-![](/images/uploads/upload-1764480844229.png)
+![](/images/vpn-proxy/tutorial/upload-1764480824971.png)
+![](/images/vpn-proxy/tutorial/upload-1764480844229.png)
 
 ## 切换节点
-![](/images/uploads/upload-1764480865326.png)
+![](/images/vpn-proxy/tutorial/upload-1764480865326.png)
 需要看底下这里哪个节点的位置能满足自己的实际要求，就选择哪个
-![](/images/uploads/upload-1764480874565.png)
+![](/images/uploads/upload-1764482072196.png)
+
 
 ## 查看自己位置
 模拟器中自己的位置在泰国！
-![](/images/uploads/upload-1764481059708.png)
+![](/images/vpn-proxy/tutorial/upload-1764481059708.png)
