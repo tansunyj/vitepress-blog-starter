@@ -3,168 +3,84 @@
   <!-- 首页 -->
   <url>
     <loc>https://yourdomain.com/</loc>
-    <lastmod>2025-11-17</lastmod>
+    <lastmod>2025-12-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://yourdomain.com/posts/ai/llm/gpt4-vs-claude.html</loc>
-    <lastmod>2025-11-16</lastmod>
+    <loc>https://yourdomain.com/posts/blog/recommendations/chinese-name-generator-free.html</loc>
+    <lastmod>2025-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://yourdomain.com/posts/ai/llm/llm-comparison-2024.html</loc>
-    <lastmod>2025-11-16</lastmod>
+    <loc>https://yourdomain.com/posts/blog/recommendations/edu-domain-registration-2025.html</loc>
+    <lastmod>2025-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://yourdomain.com/posts/ai/prompts/chatgpt-prompts.html</loc>
-    <lastmod>2025-11-16</lastmod>
+    <loc>https://yourdomain.com/posts/blog/recommendations/edu-mail-server-domain-dns-nginx-2025.html</loc>
+    <lastmod>2025-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://yourdomain.com/posts/ai/prompts/chatgpt-work-prompts.html</loc>
-    <lastmod>2025-11-16</lastmod>
+    <loc>https://yourdomain.com/posts/blog/recommendations/edu-mail-server-lnmp-centos9-2025.html</loc>
+    <lastmod>2025-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://yourdomain.com/posts/ai/tools/ai-tools-navigation.html</loc>
-    <lastmod>2025-11-16</lastmod>
+    <loc>https://yourdomain.com/posts/blog/recommendations/edu-mail-server-postfix-dovecot-centos9-2025.html</loc>
+    <lastmod>2025-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://yourdomain.com/posts/ai/tools/cursor-ide-tutorial.html</loc>
-    <lastmod>2025-11-16</lastmod>
+    <loc>https://yourdomain.com/posts/blog/recommendations/edu-mail-server-postfixadmin-roundcube-2025.html</loc>
+    <lastmod>2025-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://yourdomain.com/posts/ai/tutorial/chatgpt-beginner.html</loc>
-    <lastmod>2025-11-16</lastmod>
+    <loc>https://yourdomain.com/posts/blog/recommendations/edu-mail-server-vps-2025-25port.html</loc>
+    <lastmod>2025-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://yourdomain.com/posts/ai/workflow/comfyui-tutorial.html</loc>
-    <lastmod>2025-11-16</lastmod>
+    <loc>https://yourdomain.com/posts/blog/recommendations/global-edu-domain-registration-2025.html</loc>
+    <lastmod>2025-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://yourdomain.com/posts/blog/freebies/free-design-resources.html</loc>
-    <lastmod>2025-11-16</lastmod>
+    <loc>https://yourdomain.com/posts/vpn-proxy/tutorial/vpn-tutor-for-v2rayN.html</loc>
+    <lastmod>2025-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://yourdomain.com/posts/blog/recommendations/productivity-tools.html</loc>
-    <lastmod>2025-11-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/posts/blog/tutorials/gmail-register.html</loc>
-    <lastmod>2025-11-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/posts/blog/tutorials/vscode-setup.html</loc>
-    <lastmod>2025-11-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/posts/resources/learning-materials/web-dev-roadmap.html</loc>
-    <lastmod>2025-11-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/posts/resources/quark/quark-tips.html</loc>
-    <lastmod>2025-11-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/posts/vpn-proxy/airport-review/best-airport-2024.html</loc>
-    <lastmod>2025-11-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/posts/vpn-proxy/free-nodes/2024-11-16-daily.html</loc>
-    <lastmod>2025-11-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/posts/vpn-proxy/free-nodes/2024-11-17-daily.html</loc>
-    <lastmod>2025-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/posts/vpn-proxy/free-nodes/2024-11-18-daily.html</loc>
-    <lastmod>2025-11-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/posts/vpn-proxy/tutorial/clash-tutorial.html</loc>
-    <lastmod>2025-11-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/posts/vpn-proxy/tutorial/SEO-GUIDE.html</loc>
-    <lastmod>2025-11-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/posts/vpn-proxy/tutorial/v2ray-tutorial.html</loc>
-    <lastmod>2025-11-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/posts/vpn-proxy/tutorial/vpn-starter-guide.html</loc>
-    <lastmod>2025-11-16</lastmod>
+    <loc>https://yourdomain.com/posts/vpn-proxy/tutorial/vpn-移动端设置clash-verge，以便实现正常翻墙上网.html</loc>
+    <lastmod>2025-11-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://yourdomain.com/about/</loc>
-    <lastmod>2025-11-17</lastmod>
+    <lastmod>2025-12-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

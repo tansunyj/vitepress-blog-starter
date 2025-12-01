@@ -1798,12 +1798,9 @@ app.post('/api/config/site', (req, res) => {
       if (googleSearchConsole !== undefined) googleConfig.searchConsole = googleSearchConsole
       if (googleAdsense !== undefined) googleConfig.adsense = googleAdsense
 
-      // 写入配置文件
+      // 写入配置文件（单一配置源）
       fs.writeFileSync(googleConfigPath, JSON.stringify(googleConfig, null, 2), 'utf-8')
-
-      // 同时复制到 public 目录，供前端访问
-      const publicGoogleConfigPath = path.join(__dirname, '../docs/public/google-config.json')
-      fs.writeFileSync(publicGoogleConfigPath, JSON.stringify(googleConfig, null, 2), 'utf-8')
+      console.log('✅ Google配置已保存到:', googleConfigPath)
 
       // 处理 Google Search Console 验证
       if (googleSearchConsole) {

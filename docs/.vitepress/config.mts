@@ -3,6 +3,18 @@ import path from 'node:path'
 import Unocss from 'unocss/vite'
 import { defineConfig } from 'vitepress'
 
+// 读取 Google 服务配置
+const googleConfigPath = path.resolve(__dirname, 'google-config.json')
+let googleConfig = { analytics: '', searchConsole: '', adsense: '' }
+if (fs.existsSync(googleConfigPath)) {
+  try {
+    googleConfig = JSON.parse(fs.readFileSync(googleConfigPath, 'utf-8'))
+  }
+  catch (error) {
+    console.warn('无法读取 google-config.json:', error)
+  }
+}
+
 // @ts-expect-error - VitePress支持函数形式的配置
 export default defineConfig(({ command }: { command: 'serve' | 'build' }) => ({
   // command: 'serve' (开发环境 pnpm dev) 或 'build' (构建环境 pnpm build)
@@ -33,24 +45,36 @@ export default defineConfig(({ command }: { command: 'serve' | 'build' }) => ({
     ['link', { rel: 'icon', type: 'image/png', href: '/images/favicon.png' }],
     ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/images/favicon.png' }],
 
-    // Google Analytics (GA4) - 替换为你的测量ID
-    ['script', { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX' }],
-    ['script', {}, `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    `],
+    // Google Analytics (GA4) - 从 google-config.json 读取
+    ...(googleConfig.analytics
+      ? [
+          ['script', { async: '', src: `https://www.googletagmanager.com/gtag/js?id=${googleConfig.analytics}` }],
+          ['script', {}, `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${googleConfig.analytics}');
+      `],
+        ]
+      : []),
 
-    // Google AdSense - 替换为你的发布商ID
-    ['script', {
-      async: '',
-      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX',
-      crossorigin: 'anonymous',
-    }],
+    // Google AdSense - 从 google-config.json 读取
+    ...(googleConfig.adsense
+      ? [
+          ['script', {
+            async: '',
+            src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${googleConfig.adsense}`,
+            crossorigin: 'anonymous',
+          }],
+        ]
+      : []),
 
-    // Google Search Console验证 - 替换为你的验证码
-    ['meta', { name: 'google-site-verification', content: 'your-verification-code-here' }],
+    // Google Search Console验证 - 从 google-config.json 读取
+    ...(googleConfig.searchConsole
+      ? [
+          ['meta', { name: 'google-site-verification', content: googleConfig.searchConsole }],
+        ]
+      : []),
 
     // 百度站长验证（可选）
     // ['meta', { name: 'baidu-site-verification', content: 'code-xxxxx' }],
@@ -91,6 +115,16 @@ export default defineConfig(({ command }: { command: 'serve' | 'build' }) => ({
         ],
       },
     },
+  },
+  // 构建钩子：复制Google配置到public目录
+  buildEnd: async () => {
+    const publicGoogleConfigPath = path.resolve(__dirname, '../public/google-config.json')
+
+    // 复制配置文件到public目录，供运行时访问
+    if (fs.existsSync(googleConfigPath)) {
+      fs.copyFileSync(googleConfigPath, publicGoogleConfigPath)
+      console.warn('✅ Google配置已复制到public目录')
+    }
   },
 }))
 
@@ -189,11 +223,11 @@ function generateSidebar() {
             const link = subItem.link || `/posts/${subItem.folder}/`
             return {
               text: subItem.text,
-              link: link,
-              activeMatch: link
+              link,
+              activeMatch: link,
             }
-          })
-        }
+          }),
+        },
       ]
     }
   })
