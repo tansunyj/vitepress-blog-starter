@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { MdEditor } from 'md-editor-v3'
-import { computed, nextTick, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import ConfirmDialog from './ConfirmDialog.vue'
 
 import FileTree from './FileTree.vue'
@@ -71,6 +71,8 @@ const coverFileInput = ref(null) // 封面文件输入引用
 const availableTags = ref([]) // 所有可用标签
 const selectedTags = ref([]) // 当前选中的标签
 const showTagSelector = ref(false) // 显示标签选择器
+const autoSaveTimer = ref(null) // 自动保存定时器
+const lastAutoSaveTime = ref(0) // 上次自动保存时间
 
 // 确认对话框状态
 const showConfirmDialog = ref(false)
@@ -482,13 +484,26 @@ function transformImgUrl(url: string) {
   return url
 }
 
+// 自动保存草稿（静默模式）
+async function autoSaveDraft() {
+  // 检查是否有内容需要保存
+  if (!content.value.trim() || !isDraft.value) {
+    return
+  }
+
+  // 调用 saveDraft，传入静默模式参数
+  await saveDraft(true)
+}
+
 // 保存草稿
-async function saveDraft() {
+// @param isAutoSave - 是否是自动保存（静默模式，不显示成功提示）
+async function saveDraft(isAutoSave = false) {
   console.warn('[MarkdownEditor] saveDraft调用, 当前状态:', {
     // showFileSelector: showFileSelector.value,
     contentLength: content.value.length,
     hasContent: !!content.value.trim(),
     canSave: canSave.value,
+    isAutoSave,
   })
 
   // 检查是否可以保存
@@ -498,7 +513,9 @@ async function saveDraft() {
   // }
 
   if (!content.value.trim()) {
-    showMessage('内容为空，无法保存', 'error')
+    if (!isAutoSave) {
+      showMessage('内容为空，无法保存', 'error')
+    }
     return false
   }
 
@@ -536,7 +553,8 @@ async function saveDraft() {
   currentDraftId.value = draftId
 
   // 显示保存中提示（使用 key 以便后续更新）
-  if (window.$toast) {
+  // 自动保存时不显示提示
+  if (!isAutoSave && window.$toast) {
     window.$toast('正在保存草稿...', 'info', 3000, 'save-draft')
   }
 
@@ -559,8 +577,13 @@ async function saveDraft() {
     if (data.success) {
       currentFile.value = filename
       isDraft.value = true
+      // 记录自动保存时间
+      if (isAutoSave) {
+        lastAutoSaveTime.value = Date.now()
+      }
       // 更新为成功提示（使用相同的 key，会替换掉"保存中"的提示）
-      if (window.$toast) {
+      // 自动保存时不显示成功提示
+      if (!isAutoSave && window.$toast) {
         window.$toast('草稿保存成功！', 'success', 3000, 'save-draft')
       }
       // 刷新文档树以显示新保存的文件
@@ -1302,6 +1325,23 @@ onMounted(() => {
   loadFileTree()
   loadAvailableTags()
   window.addEventListener('keydown', handleKeydown)
+
+  // 启动自动保存定时器（每30秒）
+  autoSaveTimer.value = setInterval(() => {
+    autoSaveDraft()
+  }, 30000) // 30秒 = 30000毫秒
+
+  console.warn('✅ 自动保存已启动（每30秒）')
+})
+
+// 组件卸载时清除定时器
+onBeforeUnmount(() => {
+  if (autoSaveTimer.value) {
+    clearInterval(autoSaveTimer.value)
+    autoSaveTimer.value = null
+    console.warn('🛑 自动保存已停止')
+  }
+  window.removeEventListener('keydown', handleKeydown)
 })
 </script>
 
@@ -2565,8 +2605,8 @@ onMounted(() => {
   border-radius: 12px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
   width: 90%;
-  max-width: 800px;
-  max-height: 80vh;
+  max-width: 1000px;
+  max-height: 120vh;
   overflow: auto;
 }
 
