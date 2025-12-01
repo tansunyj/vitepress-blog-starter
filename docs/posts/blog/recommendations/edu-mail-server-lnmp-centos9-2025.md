@@ -90,7 +90,7 @@ nginx进程处于运行状态，jobs done！
 
 在nginx与php都安装配置好之后，我们可以使用如下的命令来检查，看看它们是否运行正常，如下：
 
-把 <?php phpinfo(); ?> 添加到test.php文件中，再使用php test.php来运行它，效果如下：
+把添加到test.php文件中，再使用php test.php来运行它，效果如下：
 
 ![图片](/images/blog/recommendations/16.jpg)
 
