@@ -345,6 +345,13 @@
   </url>
 
   <url>
+    <loc>https://yourdomain.com/posts/blog/recommendations/vitepress-boke-03-guanli-houtai-yijian-pawen.html</loc>
+    <lastmod>2025-12-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
     <loc>https://yourdomain.com/posts/blog/recommendations/vitepress-boke-04-wanzheng-shiyong-shouce.html</loc>
     <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -550,13 +557,6 @@
   <url>
     <loc>https://yourdomain.com/posts/blog/tutorials/zoneabc-free-subdomain-2025.html</loc>
     <lastmod>2025-12-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/posts/vpn-proxy/free-nodes/vitepress-boke-03-guanli-houtai-yijian-pawen.html</loc>
-    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>

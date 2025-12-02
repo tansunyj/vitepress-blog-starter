@@ -14,7 +14,7 @@ category: "blog"
 
 ---
 
-![Image](/images/drafts/article-1764659969702/1.jpg)***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***
+![Image](/images/blog/recommendations/article-1764659969702/1.jpg)***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***
 
 静态博客搭建系列教程：
 
@@ -36,35 +36,35 @@ category: "blog"
 
 我们可以在管理后台"外观"-->"主题"这个子菜单这里找主题
 
-![图片](/images/drafts/article-1764659969702/3.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/3.jpg)
 
 打开主题后，需要选择"添加主题"，如下图：
 
-![图片](/images/drafts/article-1764659969702/4.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/4.jpg)
 
 如果自己本地已经有了一个好看的主题文件，那么在这里点击"上传主题"按钮也可以
 
-![图片](/images/drafts/article-1764659969702/5.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/5.jpg)
 
 在右边搜索主题的框中输入如astra、或者blog之类的，就会得到如下的一个列表：
 
-![图片](/images/drafts/article-1764659969702/6.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/6.jpg)
 
 假如我们已经选中了某个主题，那么就可以鼠标放到该卡片上，看到有查看详情、安装、预览按钮，如下图：
 
-![图片](/images/drafts/article-1764659969702/7.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/7.jpg)
 
 查看预览：
 
-![图片](/images/drafts/article-1764659969702/8.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/8.jpg)
 
 注：这里对于博客主题，如果说自己没有好的选择，我们可以询问AI，让它告诉我，我可以选什么样的主题
 
-![图片](/images/drafts/article-1764659969702/9.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/9.jpg)
 
 不过AI可能会推荐一些不是那么符合我们要求的主题，这个需要我们自己鉴别；这里我安装的是blog-x主题，如：
 
-![图片](/images/drafts/article-1764659969702/10.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/10.jpg)
 
 从它的封面录上看，有页眉的横向菜单、主体部分都是列表式的文章，右侧有一个窄窄的侧边栏，有搜索框、列表和tags，大体满足我的要求；
 
@@ -76,11 +76,11 @@ category: "blog"
 
 ##### 01规划模块
 
-![图片](/images/drafts/article-1764659969702/11.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/11.jpg)
 
 最终，我得到了如下得功能板块划分建议：
 
-![图片](/images/drafts/article-1764659969702/12.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/12.jpg)
 
 ##### 02新建菜单
 
@@ -88,29 +88,29 @@ category: "blog"
 
 ###### 1.新建组件：点击"外观"-->"自定义"
 
-![图片](/images/drafts/article-1764659969702/13.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/13.jpg)
 
-![图片](/images/drafts/article-1764659969702/14.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/14.jpg)
 
-![图片](/images/drafts/article-1764659969702/15.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/15.jpg)
 
-![图片](/images/drafts/article-1764659969702/16.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/16.jpg)
 
 ###### 2.新建分类：在"文章"-->"分类目录"中新建菜单和子菜单，如：
 
-![图片](/images/drafts/article-1764659969702/17.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/17.jpg)
 
 这里根据前面和AI讨论得结果，新建了5个大菜单，各大菜单下有很多子菜单；
 
 ###### 3.把菜单绑定要页眉组件：打开"外观"-->"菜单"
 
-![图片](/images/drafts/article-1764659969702/18.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/18.jpg)
 
 菜单名称"页眉得菜单"就是新建得那个组件；
 
 分类目录：因为我是想在页眉这里添加多个大菜单和子菜单，所以这里就要添加它们得层级关系，接着把"查看所有"这里得层级关系全部悬赏，点击"添加至菜单"，再点击"保存菜单"，接着我们就可以在前端页面上看到页眉上得菜单了，如：
 
-![图片](/images/drafts/article-1764659969702/19.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/19.jpg)
 
 ##### 03文章分类
 
@@ -118,11 +118,11 @@ category: "blog"
 
 进入"文章"-->"所有文章"菜单中
 
-![图片](/images/drafts/article-1764659969702/20.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/20.jpg)
 
 文章挂在一个二级子菜单下，如：
 
-![图片](/images/drafts/article-1764659969702/21.jpg)
+![图片](/images/blog/recommendations/article-1764659969702/21.jpg)
 
 这样就可以实现按菜单对文章进行筛选了！
 

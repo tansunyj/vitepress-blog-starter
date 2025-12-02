@@ -14,7 +14,7 @@ category: "blog"
 
 ---
 
-![Image](/images/drafts/article-1764665188926/1.jpg)***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***![图片](/images/drafts/article-1764665188926/2.jpg)
+![Image](/images/blog/recommendations/article-1764665188926/1.jpg)***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***![图片](/images/blog/recommendations/article-1764665188926/2.jpg)
 
 经过2天的优化和改造，终于把开源的vitepress-blog-starter改造成了一个可以使用并且外观还过得去的静态博客了！
 
@@ -34,13 +34,13 @@ category: "blog"
 
 经过2天努力，我把一个开源的vitepress博客改造成了当前的静态博客（相当于把一个只有几个柱子的房屋装修成了一个精装房，希望有兴趣的朋友可以把它变成大别墅
 
-![图片](/images/drafts/article-1764665188926/3.png)
+![图片](/images/blog/recommendations/article-1764665188926/3.png)
 
 ）
 
 ### 01项目概要
 
-![图片](/images/drafts/article-1764665188926/4.jpg)
+![图片](/images/blog/recommendations/article-1764665188926/4.jpg)
 
 它是一个基于vitepress库构建的个人博客系统，里面的页面都是静态页面，并且都是SEO友好的页面。
 
@@ -52,7 +52,7 @@ category: "blog"
 
 个人博客系统临时访问网址：<https://vitepress-blog-starter.pages.dev/>
 
-![图片](/images/drafts/article-1764665188926/5.jpg)
+![图片](/images/blog/recommendations/article-1764665188926/5.jpg)
 
 ### 02特性
 

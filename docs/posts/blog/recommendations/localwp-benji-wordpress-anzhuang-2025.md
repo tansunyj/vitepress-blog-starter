@@ -14,7 +14,7 @@ category: "blog"
 
 ---
 
-![Image](/images/drafts/article-1764659975347/1.jpg)***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***![图片](/images/drafts/article-1764659975347/2.jpg)
+![Image](/images/blog/recommendations/article-1764659952822/1.jpg)***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***![图片](/images/blog/recommendations/article-1764659952822/2.jpg)
 
 静态博客搭建系列教程：
 
@@ -34,15 +34,15 @@ category: "blog"
 
 点击绿色的"download for free"按钮，如下：
 
-![图片](/images/drafts/article-1764659975347/3.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/3.jpg)
 
 接着它会弹出来一个对话框，这里选择需要下载的操作系统输入用户名和邮箱，然后点击"GET IT NOW"按钮，如下：
 
-![图片](/images/drafts/article-1764659975347/4.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/4.jpg)
 
 然后哦等待下载完成，下载后会有一个700多MB的安装包
 
-![图片](/images/drafts/article-1764659975347/5.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/5.jpg)
 
 ### 02安装
 
@@ -52,63 +52,63 @@ category: "blog"
 
 启动Local并进入如下的界面，再点击界面中央的按钮"create a new site"：
 
-![图片](/images/drafts/article-1764659975347/6.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/6.jpg)
 
 这里选择"Create a new site"，就是创建一个新的网站，然后点击continue按钮：
 
-![图片](/images/drafts/article-1764659975347/7.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/7.jpg)
 
 然后进入如下界面，这里要求我们输入一个网站名称，个人根据实际情况来输入就好了：
 
-![图片](/images/drafts/article-1764659975347/8.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/8.jpg)
 
 在这个界面中选择prefered，它是localwp推荐的配置，如果需要自定义，那么可以选择custom，就可以自定义php、web server、database版本；
 
-![图片](/images/drafts/article-1764659975347/9.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/9.jpg)
 
-![图片](/images/drafts/article-1764659975347/10.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/10.jpg)
 
 进入如下界面我们可以设置wordpress的用户名和访问密码，如：
 
-![图片](/images/drafts/article-1764659975347/11.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/11.jpg)
 
 然后静静的等待localwp做好最后的各种配置，嗯，我想静静！你想不想静静？
 
-![图片](/images/drafts/article-1764659975347/12.png)
+![图片](/images/blog/recommendations/article-1764659952822/12.png)
 
-![图片](/images/drafts/article-1764659975347/13.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/13.jpg)
 
 Localwp配置完毕后，该工具页面显示如下：
 
-![图片](/images/drafts/article-1764659975347/14.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/14.jpg)
 
 ### 04其他设置
 
 如果localwp启动过程中报告该应用无权限访问host之类的，那么可以右键以管理员权限启动localWP，如：
 
-![图片](/images/drafts/article-1764659975347/15.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/15.jpg)
 
 在该界面中，右上角红色框内的按钮可以访问wordpress管理后台和前端页面，如：
 
-![图片](/images/drafts/article-1764659975347/16.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/16.jpg)
 
 下面截图是前端页面：
 
-![图片](/images/drafts/article-1764659975347/17.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/17.jpg)
 
 这里是管理后台：
 
-![图片](/images/drafts/article-1764659975347/18.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/18.jpg)
 
 如果说我不习惯看管理后台中的英文，那么我可以把当前这里的英文改成中文，如：
 
-![图片](/images/drafts/article-1764659975347/19.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/19.jpg)
 
 如果觉得时间格式不对，可以把时区设置成上海，如下：
 
-![图片](/images/drafts/article-1764659975347/20.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/20.jpg)
 
-![图片](/images/drafts/article-1764659975347/21.jpg)
+![图片](/images/blog/recommendations/article-1764659952822/21.jpg)
 
 接下来，我需要在wordpress插件库选择我这个网站的插件和选择一个好看的主题了。
 

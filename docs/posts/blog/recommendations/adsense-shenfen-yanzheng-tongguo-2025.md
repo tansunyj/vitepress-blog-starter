@@ -13,7 +13,7 @@ category: "blog"
 
 ---
 
-![Image](/images/drafts/article-1764665208861/1.jpg)
+![Image](/images/blog/recommendations/article-1764665208861/1.jpg)
 
 ***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***
 
@@ -33,7 +33,7 @@ category: "blog"
 
 打开google ads就会看到如下的界面，这里就有相应的提示，如：
 
-![图片](/images/drafts/article-1764665208861/2.jpg)
+![图片](/images/blog/recommendations/article-1764665208861/2.jpg)
 
 这里点击上面红色框的这个卡片，进入如下的身份验证流程
 
@@ -41,9 +41,9 @@ category: "blog"
 
 会进入到如下的操作步骤，仔细阅读上面的文字后，点击"采取措施"，进入下一个步骤：
 
-![图片](/images/drafts/article-1764665208861/3.jpg)
+![图片](/images/blog/recommendations/article-1764665208861/3.jpg)
 ### 02第二步：采取措施
-![图片](/images/drafts/article-1764665208861/4.jpg)
+![图片](/images/blog/recommendations/article-1764665208861/4.jpg)
 
 这里有红色的提示，要求"立即验证"，我们可以点击它
 
@@ -51,7 +51,7 @@ category: "blog"
 
 点击后进入如下的页面：
 
-![图片](/images/drafts/article-1764665208861/5.jpg)
+![图片](/images/blog/recommendations/article-1764665208861/5.jpg)
 
 这里勾选checkbox，然后点击蓝色按钮"开始验证"
 
@@ -59,7 +59,7 @@ category: "blog"
 
 点击后进入如下的dialog对话框，确认身份信息是否正确：
 
-![图片](/images/drafts/article-1764665208861/6.jpg)
+![图片](/images/blog/recommendations/article-1764665208861/6.jpg)
 
 当然这里也可以修改地址信息等，确认没有问题后，点击下一步
 
@@ -67,11 +67,11 @@ category: "blog"
 
 点击后进入如下页面，这里需要上传证件
 
-![图片](/images/drafts/article-1764665208861/7.jpg)
+![图片](/images/blog/recommendations/article-1764665208861/7.jpg)
 
 上传自己的身份证照片,注意身份证照片需要非常清晰，否则这里会有一些橙色的文字提示，要求重新上传：
 
-![图片](/images/drafts/article-1764665208861/8.jpg)
+![图片](/images/blog/recommendations/article-1764665208861/8.jpg)
 
 身份证上传没错误提示后，接着继续点击下一步。
 
@@ -79,21 +79,21 @@ category: "blog"
 
 这里是这个身份验证的最后一步，它会提示1--3天内会有审核结果，并且以邮件形式进行通知：
 
-![图片](/images/drafts/article-1764665208861/9.jpg)
+![图片](/images/blog/recommendations/article-1764665208861/9.jpg)
 
 点击完成后回到身份核验界面，如下：
 
-![图片](/images/drafts/article-1764665208861/10.jpg)
+![图片](/images/blog/recommendations/article-1764665208861/10.jpg)
 
 到这里，身份验证的流程就提交完了，我需要耐心的等待google ads的审核结果，如果有问题，那还需要重新来一遍！
 
 没想到上午写完，下午就审批通过了，审批通过后界面/邮件如下：
 
-![图片](/images/drafts/article-1764665208861/11.jpg)
+![图片](/images/blog/recommendations/article-1764665208861/11.jpg)
 
 邮件通知如下：
 
-![图片](/images/drafts/article-1764665208861/12.jpg)
+![图片](/images/blog/recommendations/article-1764665208861/12.jpg)
 
 ## 写在最后
 

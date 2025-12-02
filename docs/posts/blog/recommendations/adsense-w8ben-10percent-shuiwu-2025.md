@@ -13,7 +13,7 @@ category: "blog"
 
 ---
 
-![Image](/images/drafts/article-1764665191585/1.jpg)
+![Image](/images/blog/recommendations/article-1764665191585/1.jpg)
 ***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***
 
 [【躺赚刀乐】Google AdSense申请通过！低流量站如何接入，狂赚7\*24小时被动收入的秘密！](https://mp.weixin.qq.com/s?__biz=MzUyMjEyMDcyOQ==\&mid=2247496712\&idx=1\&sn=f4365b7bb2f6e25cfb5746d431612ab6\&scene=21#wechat_redirect)
@@ -34,21 +34,21 @@ category: "blog"
 
 登陆google ads后，点击下图红色库的"添加税务信息"
 
-![图片](/images/drafts/article-1764665191585/2.jpg)
+![图片](/images/blog/recommendations/article-1764665191585/2.jpg)
 
 接着弹出对话框如图：
 
-![图片](/images/drafts/article-1764665191585/3.jpg)
+![图片](/images/blog/recommendations/article-1764665191585/3.jpg)
 
 正式开始填表，google ads会弹出对话框要我输入google账号的访问密码，如：
 
-![图片](/images/drafts/article-1764665191585/4.jpg)
+![图片](/images/blog/recommendations/article-1764665191585/4.jpg)
 
 然后正式进入表单的填写过程：
 
 ### 02选管理税务信息
 
-![图片](/images/drafts/article-1764665191585/5.jpg)
+![图片](/images/blog/recommendations/article-1764665191585/5.jpg)
 
 注意：这里一定要选W-8BEN，后续就可以只被美国扣除10%的税！
 
@@ -60,51 +60,51 @@ category: "blog"
 
 所属国家可以选择我们中国，外国人纳税人识别号就填写身份证号：
 
-![图片](/images/drafts/article-1764665191585/6.jpg)
+![图片](/images/blog/recommendations/article-1764665191585/6.jpg)
 
 ### 04填写地址信息
 
 这里注意需要填写真实的地址方便后续google ads邮寄一封激活邮件，否则google ads里面的钱会无法顺利拿到！
 
-![图片](/images/drafts/article-1764665191585/7.jpg)
+![图片](/images/blog/recommendations/article-1764665191585/7.jpg)
 
 ### 05填写税务协定信息
 
 这里注意需要认真填写，因为我国和美国有税务协定，所以为什么可以只用扣10%的税，就是这个协定规定的！
 
-![图片](/images/drafts/article-1764665191585/8.jpg)
+![图片](/images/blog/recommendations/article-1764665191585/8.jpg)
 
 ### 06填写服务所在地信息
 
 这里注意也需要认真填写，因为我在国内，我网站的用户是美国人，这种也不属于在他们本土开设公司等的情况，所以需要向美国政府承诺：
 
-![图片](/images/drafts/article-1764665191585/9.jpg)
+![图片](/images/blog/recommendations/article-1764665191585/9.jpg)
 
 ### 07填写报税信息
 
 这里注意需要选择无纸化，以便他们发送税务文件到邮箱
 
-![图片](/images/drafts/article-1764665191585/10.jpg)
+![图片](/images/blog/recommendations/article-1764665191585/10.jpg)
 
 ### 08预览W-8BEN信息
 
 这里几个pdf文件都是预览，只读状态，可以直接勾选后点击下一步就好了
 
-![图片](/images/drafts/article-1764665191585/11.jpg)
+![图片](/images/blog/recommendations/article-1764665191585/11.jpg)
 
 ### 09确认并签名
 
 这里需要选择第一个和后面我自己是受益人的选项，如：
 
-![图片](/images/drafts/article-1764665191585/12.jpg)
+![图片](/images/blog/recommendations/article-1764665191585/12.jpg)
 
 接着点击提交按钮就好了，那么这个税务信息就提交了！
 
 提交后，界面如下：
 
-![图片](/images/drafts/article-1764665191585/13.jpg)
+![图片](/images/blog/recommendations/article-1764665191585/13.jpg)
 
-![图片](/images/drafts/article-1764665191585/14.jpg)
+![图片](/images/blog/recommendations/article-1764665191585/14.jpg)
 
 这个表单是批准状态，说明我的税务信息都是正确的了！
 

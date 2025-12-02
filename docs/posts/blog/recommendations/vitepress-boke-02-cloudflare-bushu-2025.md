@@ -15,7 +15,7 @@ category: "blog"
 
 ---
 
-![Image](/images/drafts/article-1764665202664/1.jpg)
+![Image](/images/blog/recommendations/article-1764665202664/1.jpg)
 ***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***
 
 距离上次发布静态博客系统已经过了几天了，经过几天的努力终于把博客系统的管理后台优化完成。当前可以在本地启动并编辑文章等，但是部署到服务器上之后这个管理后台是不显示的。
@@ -30,13 +30,13 @@ category: "blog"
 
 首先从github：<https://github.com/tansunyj/vitepress-blog-starter下载源代码，如：>
 
-![图片](/images/drafts/article-1764665202664/2.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/2.jpg)
 
 这种就可以直接下载一个zip包，包括当前项目的最新的源代码；
 
 也可以使用命令：git clone <https://github.com/tansunyj/vitepress-blog-starter.git> 来把代码拉到本地，如：
 
-![图片](/images/drafts/article-1764665202664/3.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/3.jpg)
 
 这样就可以把所有代码都下载到本地啦！
 
@@ -46,13 +46,13 @@ category: "blog"
 
 1.nodejs:可以在<https://nodejs.org/en/download下载比较新的版本，如：>
 
-![图片](/images/drafts/article-1764665202664/4.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/4.jpg)
 
 下载完毕后安装，一路next下去就完事了！
 
 2.检查nodejs安装:安装完毕后打开一个新的命令行窗口，输入命令：
 
-![图片](/images/drafts/article-1764665202664/5.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/5.jpg)
 
 这样就可以看到版本，就是按照成功了！
 
@@ -64,11 +64,11 @@ npm install -g pnpm #全局安装pnpm工具
 
 4.git，访问网站：<https://git-scm.com/install/windows下载>
 
-![图片](/images/drafts/article-1764665202664/6.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/6.jpg)
 
 个人根据自己实际情况下载这个工具就好了，安装完毕后如数命令如：
 
-![图片](/images/drafts/article-1764665202664/7.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/7.jpg)
 
 好了，现在整个项目的基础软件都具备了，下面还要安装一些依赖库！
 
@@ -76,7 +76,7 @@ npm install -g pnpm #全局安装pnpm工具
 
 进入到项目根目录下，执行如下命令： pnpm install
 
-![图片](/images/drafts/article-1764665202664/8.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/8.jpg)
 
 耐心等待这些都下载完毕就完事了。
 
@@ -84,23 +84,23 @@ npm install -g pnpm #全局安装pnpm工具
 
 这个最简单了，直接点击根目录下的""就启动了：
 
-![图片](/images/drafts/article-1764665202664/9.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/9.jpg)
 
-![图片](/images/drafts/article-1764665202664/10.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/10.jpg)
 
 接着在浏览器访问<http://localhost:5173/，就可以打开这个静态博客系统啦，界面如下：>
 
-![图片](/images/drafts/article-1764665202664/11.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/11.jpg)
 
 ## fork项目
 
 如果你有github账号，那么直接fork我这个项目到你自己的个人仓库就好了！
 
-![图片](/images/drafts/article-1764665202664/12.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/12.jpg)
 
-![图片](/images/drafts/article-1764665202664/13.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/13.jpg)
 
-![图片](/images/drafts/article-1764665202664/14.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/14.jpg)
 
 好了，到了这里这个项目就到了自己的个人仓库了！
 
@@ -112,35 +112,35 @@ npm install -g pnpm #全局安装pnpm工具
 
 登陆cloudflare打开计算和AI菜单，选择workers和pages，点击右上角的蓝色按钮，创建一个应用
 
-![图片](/images/drafts/article-1764665202664/15.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/15.jpg)
 
 这里选择"get started"。
 
-![图片](/images/drafts/article-1764665202664/16.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/16.jpg)
 
 然后进入如下页面
 
-![图片](/images/drafts/article-1764665202664/17.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/17.jpg)
 
 这里点击"开始使用"，进入如下页面：
 
-![图片](/images/drafts/article-1764665202664/18.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/18.jpg)
 
 选择好之后，点击"开始设置"按钮，如下：
 
-![图片](/images/drafts/article-1764665202664/19.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/19.jpg)
 
 框架选择vitepress，构建命令输入pnpm build，输出目录输入docs/.vitepress/dist，然后点击部署，如下：
 
-![图片](/images/drafts/article-1764665202664/20.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/20.jpg)
 
 然后点击继续处理项目回到设置：
 
-![图片](/images/drafts/article-1764665202664/21.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/21.jpg)
 
 就能够打开如下的页面了，这就是我们部署的博客系统啦！
 
-![图片](/images/drafts/article-1764665202664/22.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/22.jpg)
 
 你看它各个页面是不是都是静态页面？右上角是不是满足预期（没有看到"管理工具"菜单吧？）
 
@@ -148,11 +148,11 @@ npm install -g pnpm #全局安装pnpm工具
 
 接着进入自定义域名页面，把自己托管在cloudflare的域名解析到这里就完啦！
 
-![图片](/images/drafts/article-1764665202664/23.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/23.jpg)
 
 配置好之后就像我这个域名这样（需添加2条）：
 
-![图片](/images/drafts/article-1764665202664/24.jpg)
+![图片](/images/blog/recommendations/article-1764665202664/24.jpg)
 
 你们照着这个操作，那么就需要配置你自己的域名哈，配置好之后，就可以像我自己的博客那样访问了！
 

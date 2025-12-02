@@ -13,7 +13,8 @@ category: "blog"
 
 ---
 
-![Image](/images/drafts/article-1764665197112/1.jpg)***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***[给美国人起中文名：SEO新手做关键词挖掘+独立站冷启动实战复盘！](https://mp.weixin.qq.com/s?__biz=MzUyMjEyMDcyOQ==\&mid=2247491903\&idx=1\&sn=61483bfde8dfdbecb80a717b91102e40\&scene=21#wechat_redirect)
+![Image](/images/blog/recommendations/article-1764665157918/1.jpg)
+***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***[给美国人起中文名：SEO新手做关键词挖掘+独立站冷启动实战复盘！](https://mp.weixin.qq.com/s?__biz=MzUyMjEyMDcyOQ==\&mid=2247491903\&idx=1\&sn=61483bfde8dfdbecb80a717b91102e40\&scene=21#wechat_redirect)
 
 [【AI取名站】0到3400/月访问！4个月流量狂飙100倍？一个SEO新手从0到1的冷启动实战复盘！](https://mp.weixin.qq.com/s?__biz=MzUyMjEyMDcyOQ==\&mid=2247495883\&idx=1\&sn=02eb23d0e53b4f42c45aacbd75c35265\&scene=21#wechat_redirect)
 
@@ -29,41 +30,41 @@ category: "blog"
 
 在google ads申请提交后，尽量每日登陆google ads来查看审批状态，在看到审批通过，那么我们可以打开该网站的ads菜单页来进行广告方面的设置
 
-![图片](/images/drafts/article-1764665197112/2.jpg)
+![图片](/images/blog/recommendations/article-1764665157918/2.jpg)
 
 点击右侧的笔图标进入广告的开启设置页面：
 
-![图片](/images/drafts/article-1764665197112/3.jpg)
+![图片](/images/blog/recommendations/article-1764665157918/3.jpg)
 
 ### 02广告设置
 
 如果说对于我个人当前不知道该怎么设置广告，那么最简单的办法就是下图这样，直接把auto ads广告开关打开就好了。
 
-![图片](/images/drafts/article-1764665197112/4.jpg)
+![图片](/images/blog/recommendations/article-1764665157918/4.jpg)
 
 如果个人对google ads里面这些广告设置比较熟悉，那么我们可以设置一下，提高用户体验并且提高广告收入！
 
 一般来说对于个人网站，用户可以通过移动端、电脑端等来访问，那么这里就可以看到mobile/desktop设置后的预览效果
 
-![图片](/images/drafts/article-1764665197112/5.jpg)
+![图片](/images/blog/recommendations/article-1764665157918/5.jpg)
 
 这里可以看到移动端有7个内页广告，图中移动端浏览器底部有一个悬浮广告；
 
-![图片](/images/drafts/article-1764665197112/6.jpg)
+![图片](/images/blog/recommendations/article-1764665157918/6.jpg)
 
 这里可以看到打开主页后在底部有一个底部广告，电脑端有8个内页广告！
 
 接着，我们再看右边的设置：
 
-![图片](/images/drafts/article-1764665197112/7.jpg)
+![图片](/images/blog/recommendations/article-1764665157918/7.jpg)
 
 这里的overlay formats里面就是广告的样式，一般来说像我们看到的广告有页眉广告、页脚广告、侧边栏广告，如：
 
-![图片](/images/drafts/article-1764665197112/8.jpg)
+![图片](/images/blog/recommendations/article-1764665157918/8.jpg)
 
 还有最重要的是，如果我想要排除某些地区的用户，那么我可以再底下设置exclude XX，把目标地区、页面添加到里面就好了：
 
-![图片](/images/drafts/article-1764665197112/9.jpg)
+![图片](/images/blog/recommendations/article-1764665157918/9.jpg)
 
 ### 03收入数据
 
@@ -73,7 +74,7 @@ category: "blog"
 
 打开ads的home页面就可以看到每日广告收益、累计收益这些数据了：
 
-![图片](/images/drafts/article-1764665197112/10.jpg)
+![图片](/images/blog/recommendations/article-1764665157918/10.jpg)
 
 这里，例如说：$0.27，是当日到现在为止的广告收入；yesterday $0.63指昨日收益，$2.89指这个月的累计收入
 
@@ -85,29 +86,29 @@ category: "blog"
 
 这里在右边countries中看到广告收益主要来自于美国，我的网站主要定位用户也是为美国用户提供服务，这个也是符合我的预期的，另外还有第三名、第四名是加拿大、英国，也是我期望的，这些都是高收入国家，也是看后续这些国家的用户多，也可以看看它们这几个国家的SEO关键词，有针对性的加进来！
 
-![图片](/images/drafts/article-1764665197112/11.jpg)
+![图片](/images/blog/recommendations/article-1764665157918/11.jpg)
 
 ##### 详细统计报告
 
 回到ads菜单，点击那个笔形状左边的图标，可以进入如下页面
 
-![图片](/images/drafts/article-1764665197112/12.jpg)
+![图片](/images/blog/recommendations/article-1764665157918/12.jpg)
 
-![图片](/images/drafts/article-1764665197112/13.jpg)
+![图片](/images/blog/recommendations/article-1764665157918/13.jpg)
 
 例如这个top pages，就可以看到当前网站主页和英文名字翻译成中文名是主要收入来源！
 
-![图片](/images/drafts/article-1764665197112/14.jpg)
+![图片](/images/blog/recommendations/article-1764665157918/14.jpg)
 
 例如看这个countries分类，发现像美国、葡萄牙、英国、加拿大等等国家的RPM会比较高，我的网站想赚更多钱，那么就一定要多获得这些发达国家得流量！
 
-![图片](/images/drafts/article-1764665197112/15.jpg)
+![图片](/images/blog/recommendations/article-1764665157918/15.jpg)
 
 从这个Content platform菜单可以看出，我当前收入主要来源是高端移动设备，确实移动端上很容易导致广告误点，同时也说明我想要提高收入，得对移动端得适配做的更好，增加移动端得用户！
 
 回到analytics看网站流量，例如在8月份、9月份、10月份、11月份，发现网站流量也是在以倍数得方式在增长（当然总量也是比较小，其他大佬们别见笑哈），不过未来可期：
 
-![图片](/images/drafts/article-1764665197112/16.jpg)
+![图片](/images/blog/recommendations/article-1764665157918/16.jpg)
 
 ## 写在最后
 

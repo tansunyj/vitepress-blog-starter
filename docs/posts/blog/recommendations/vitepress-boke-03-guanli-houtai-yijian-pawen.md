@@ -15,7 +15,7 @@ category: "blog"
 
 ---
 
-![Image](/images/drafts/article-1764665216436/1.jpg)
+![Image](/images/blog/recommendations/article-1764665216436/1.jpg)
 ***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***
 
 昨天我这个[静态博客系统发布](https://mp.weixin.qq.com/s?__biz=MzUyMjEyMDcyOQ==\&mid=2247496874\&idx=1\&sn=7a10628aa8e7f0981c69030ea787a790\&scene=21#wechat_redirect)了，接着我亲身体验使用visual  studio code来在里面写文章，结果真是一言难尽！好像要求有点高啊，在markdown里面直接写，并且还在visual  studio code里面。
@@ -34,7 +34,7 @@ category: "blog"
 
 幸好现在有AI，把自己的需求扔给他，吭哧吭哧，他就给我写好了，测试/修改几轮就搞定，你看，现在我本地启动博客系统鼠标点一下就完事！
 
-![图片](/images/drafts/article-1764665216436/2.jpg)
+![图片](/images/blog/recommendations/article-1764665216436/2.jpg)
 
 看到这里输出界面跟我这个差不多一样，那就是启动成功啦！接着就是复制<http://localhost:5173/到浏览器访问就好了！>
 
@@ -46,7 +46,7 @@ category: "blog"
 
 启动后，在页面右上角有一个菜单"管理工具"，点击后进入如下页面：
 
-![图片](/images/drafts/article-1764665216436/3.jpg)
+![图片](/images/blog/recommendations/article-1764665216436/3.jpg)
 
 注：这个管理后端只会在本地启动时会显示，博客文章推送到服务器后页面是看不到它的！
 
@@ -58,11 +58,11 @@ category: "blog"
 
 例如，我把文章[年底冲刺：年前拿下 AI Agent，拒绝空手跨年！(Day 1)](https://mp.weixin.qq.com/s?__biz=MzUyMjEyMDcyOQ==\&mid=2247496860\&idx=1\&sn=3a59baaa88c91ade759cac6cfdbeb3ab\&scene=21#wechat_redirect)
 
-![图片](/images/drafts/article-1764665216436/4.jpg)
+![图片](/images/blog/recommendations/article-1764665216436/4.jpg)
 
 放到如下功能页面中，如：
 
-![图片](/images/drafts/article-1764665216436/5.jpg)
+![图片](/images/blog/recommendations/article-1764665216436/5.jpg)
 
 爬取完毕，这个文章就进入到我的草稿箱啦！
 
@@ -72,15 +72,15 @@ ps：杰哥偷偷的告诉你，这里可以一次爬取多篇文章哦！一行
 
 点击上面的草稿箱，我就会看到这篇文章，点击它可以进行编辑和预览，边改边看效果，是不是很爽？
 
-![图片](/images/drafts/article-1764665216436/6.jpg)
+![图片](/images/blog/recommendations/article-1764665216436/6.jpg)
 
 当我们把文章编辑时我们可以保存草稿，也可以发布到指定子菜单下，如：
 
-![图片](/images/drafts/article-1764665216436/7.jpg)
+![图片](/images/blog/recommendations/article-1764665216436/7.jpg)
 
 好了，它发布到博客->推荐目录下了，我们去看看：
 
-![图片](/images/drafts/article-1764665216436/8.jpg)
+![图片](/images/blog/recommendations/article-1764665216436/8.jpg)
 
 立刻就可以在博客->推荐 这里看到它啦！
 
@@ -88,17 +88,17 @@ ps：杰哥偷偷的告诉你，这里可以一次爬取多篇文章哦！一行
 
 当然对于已经发布的文章，也可以点击下架，把文档退回到草稿箱中来！
 
-![图片](/images/drafts/article-1764665216436/9.jpg)
+![图片](/images/blog/recommendations/article-1764665216436/9.jpg)
 
-![图片](/images/drafts/article-1764665216436/10.jpg)
+![图片](/images/blog/recommendations/article-1764665216436/10.jpg)
 
 ### 06垃圾箱
 
 还有对于不想要的文章，我们可以把它删除，删除后文章就进入到垃圾箱，如下：
 
-![图片](/images/drafts/article-1764665216436/11.jpg)
+![图片](/images/blog/recommendations/article-1764665216436/11.jpg)
 
-![图片](/images/drafts/article-1764665216436/12.jpg)
+![图片](/images/blog/recommendations/article-1764665216436/12.jpg)
 
 这里可以选择删除它或者是恢复到草稿箱中去！
 
@@ -108,7 +108,7 @@ ps：杰哥偷偷的告诉你，这里可以一次爬取多篇文章哦！一行
 
 在该页面中，只需要新增导航菜单或者子菜单就可以成功建立主页的那些菜单和子菜单，后续只需要发布文章时指定到目标菜单就好了！
 
-![图片](/images/drafts/article-1764665216436/13.jpg)
+![图片](/images/blog/recommendations/article-1764665216436/13.jpg)
 
 你看，这里新增了一个测试菜单，导航栏就正常显示了！子菜单同理，在底下新增就好了！
 
@@ -116,7 +116,7 @@ ps：杰哥偷偷的告诉你，这里可以一次爬取多篇文章哦！一行
 
 对于当前网站的banner、欢迎词、页脚、接入google等配置等等都可以使用该功能进行管理，如下：
 
-![图片](/images/drafts/article-1764665216436/14.jpg)
+![图片](/images/blog/recommendations/article-1764665216436/14.jpg)
 
 好了，接下来就是对这个管理后端的页面共进行完善，提高用户体验，最好是能够做到发布文章后自动提交文章、图片等资源到github，这样就更方便了！
 

@@ -13,9 +13,9 @@ category: "blog"
 
 ---
 
-![Image](/images/drafts/article-1764665200940/1.jpg)
+![Image](/images/blog/recommendations/article-1764665200940/1.jpg)
 ***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***
-![图片](/images/drafts/article-1764665200940/2.jpg)
+![图片](/images/blog/recommendations/article-1764665200940/2.jpg)
 
 [给美国人起中文名：SEO新手做关键词挖掘+独立站冷启动实战复盘！](https://mp.weixin.qq.com/s?__biz=MzUyMjEyMDcyOQ==\&mid=2247491903\&idx=1\&sn=61483bfde8dfdbecb80a717b91102e40\&scene=21#wechat_redirect)
 
@@ -125,25 +125,25 @@ category: "blog"
 
 在google ads网站注册好之后，新增站点，接着需要在网站页面中嵌入广告代码，广告代码有一段js代码，还有一个ads.txt文件，如：
 
-![图片](/images/drafts/article-1764665200940/3.jpg)
+![图片](/images/blog/recommendations/article-1764665200940/3.jpg)
 
 ### 02js代码、ads.txt
 
 在这个页面中，会有一段js代码还有ads.txt，都需要复制下来：
 
-![图片](/images/drafts/article-1764665200940/4.jpg)
+![图片](/images/blog/recommendations/article-1764665200940/4.jpg)
 
 接着回到cursor，需要把上面的这些放到项目代码中，如：
 
-![图片](/images/drafts/article-1764665200940/5.jpg)
+![图片](/images/blog/recommendations/article-1764665200940/5.jpg)
 
-![图片](/images/drafts/article-1764665200940/6.jpg)
+![图片](/images/blog/recommendations/article-1764665200940/6.jpg)
 
 接着就是把代码推送到github，cloudflare会自动部署，再在google ads上进行验证，验证完毕后等待审批，一般三两天就会有结果！
 
 审批通过后效果如下：
 
-![图片](/images/drafts/article-1764665200940/7.jpg)
+![图片](/images/blog/recommendations/article-1764665200940/7.jpg)
 
 注：我第一次申请时，当时网站流量比较少，所以被拒了，然后等待网站流量提升，现在是那个时候的几倍了，所以重新提交就审批通过了！
 
