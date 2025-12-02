@@ -1260,36 +1260,75 @@ app.post('/api/draft/publish', (req, res) => {
     // 读取草稿内容
     let content = fs.readFileSync(draftPath, 'utf-8')
 
-    // 提取草稿ID（假设草稿文件名格式：draft-xxx.md 或 articles/draft-xxx.md）
-    const draftId = path.basename(draftFile, '.md')
-    const draftImageDir = path.join(CONFIG.draftImagesBaseDir, draftId)
+    // 从MD内容中提取所有草稿图片路径（/images/drafts/xxx/yyy）
+    const draftImagePattern = /\/images\/drafts\/([^\/]+)\/([^)\s"']+)/g
+    const foundImages = new Set()
+    let match
 
-    // 处理图片：复制并替换路径
-    if (fs.existsSync(draftImageDir)) {
-      const targetImageDir = path.join(CONFIG.publicImagesBaseDir, category)
+    while ((match = draftImagePattern.exec(content)) !== null) {
+      const draftDirName = match[1] // 例如：article-1764659952737
+      const imageName = match[2] // 例如：1.jpg
+      foundImages.add({ draftDirName, imageName, fullPath: match[0] })
+    }
+
+    console.log(`📸 从MD中找到 ${foundImages.size} 个草稿图片`)
+
+    // 按草稿目录分组处理图片
+    const imagesByDraftDir = {}
+    foundImages.forEach(({ draftDirName, imageName, fullPath }) => {
+      if (!imagesByDraftDir[draftDirName]) {
+        imagesByDraftDir[draftDirName] = []
+      }
+      imagesByDraftDir[draftDirName].push({ imageName, fullPath })
+    })
+
+    // 处理每个草稿目录下的图片
+    Object.keys(imagesByDraftDir).forEach((draftDirName) => {
+      const draftImageDir = path.join(CONFIG.draftImagesBaseDir, draftDirName)
+      console.log(`📂 处理草稿目录: ${draftDirName}`)
+
+      if (!fs.existsSync(draftImageDir)) {
+        console.warn(`⚠️ 草稿图片目录不存在: ${draftImageDir}`)
+        return
+      }
+
+      // 保留草稿目录结构：/images/{category}/{draftDirName}/
+      const targetImageDir = path.join(CONFIG.publicImagesBaseDir, category, draftDirName)
       console.log('📸 图片源目录:', draftImageDir)
       console.log('📸 图片目标目录:', targetImageDir)
       ensureDir(targetImageDir)
 
-      const images = fs.readdirSync(draftImageDir)
-      console.log('📸 找到图片:', images)
+      // 复制整个草稿目录下的所有图片
+      const allImages = fs.readdirSync(draftImageDir)
+      allImages.forEach((imageName) => {
+        const srcPath = path.join(draftImageDir, imageName)
+        const destPath = path.join(targetImageDir, imageName)
 
-      for (const image of images) {
-        const srcPath = path.join(draftImageDir, image)
-        const destPath = path.join(targetImageDir, image)
-        fs.copyFileSync(srcPath, destPath)
-        console.log(`📸 复制图片: ${image} -> ${destPath}`)
+        if (fs.existsSync(srcPath) && fs.statSync(srcPath).isFile()) {
+          fs.copyFileSync(srcPath, destPath)
+          console.log(`✅ 复制图片: ${imageName}`)
+        }
+      })
 
-        // 替换MD中的图片路径（从草稿图片路径到正式图片路径）
-        const draftImagePath = `/images/drafts/${draftId}/${image}`
-        const publicImagePath = `/images/${category}/${image}`
-        content = content.replace(new RegExp(draftImagePath, 'g'), publicImagePath)
-        console.log(`📸 替换路径: ${draftImagePath} -> ${publicImagePath}`)
+      // 替换MD中的图片路径（保留目录结构）
+      // 从 /images/drafts/{draftDirName}/ 替换为 /images/{category}/{draftDirName}/
+      const draftPathPrefix = `/images/drafts/${draftDirName}/`
+      const publicPathPrefix = `/images/${category}/${draftDirName}/`
+      content = content.replace(
+        new RegExp(draftPathPrefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'),
+        publicPathPrefix
+      )
+      console.log(`✅ 替换路径前缀: ${draftPathPrefix} -> ${publicPathPrefix}`)
+
+      // 删除草稿图片目录
+      try {
+        fs.rmSync(draftImageDir, { recursive: true, force: true })
+        console.log(`🗑️ 已删除草稿图片目录: ${draftImageDir}`)
       }
-    }
-    else {
-      console.log('📸 无图片目录')
-    }
+      catch (err) {
+        console.warn(`⚠️ 删除草稿图片目录失败: ${err.message}`)
+      }
+    })
 
     // 保存到正式目录
     const targetFilePath = path.join(CONFIG.postsBaseDir, targetPath)
@@ -1303,12 +1342,6 @@ app.post('/api/draft/publish', (req, res) => {
     // 删除草稿文件
     fs.unlinkSync(draftPath)
     console.log('🗑️ 草稿文件已删除:', draftPath)
-
-    // 删除草稿图片目录
-    if (fs.existsSync(draftImageDir)) {
-      fs.rmSync(draftImageDir, { recursive: true, force: true })
-      console.log('🗑️ 草稿图片目录已删除:', draftImageDir)
-    }
 
     res.json({
       success: true,

@@ -14,7 +14,9 @@ category: "blog"
 
 ---
 
-![Image](/images/drafts/article-1764659952737/1.jpg)***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***![图片](/images/drafts/article-1764659952737/2.jpg)
+![Image](/images/blog/recommendations/article-1764659952737/1.jpg)
+***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***
+![图片](/images/blog/recommendations/article-1764659952737/2.jpg)
 
 每天刷公众号、头条还有各种短视频的朋友都知道一个事情就是——文章、视频在发表时都会涉及到一个关键的问题——敏感词检测！
 
