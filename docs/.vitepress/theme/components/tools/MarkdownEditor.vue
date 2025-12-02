@@ -2606,7 +2606,7 @@ onBeforeUnmount(() => {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
   width: 90%;
   max-width: 1000px;
-  max-height: 120vh;
+  max-height: 800px;
   overflow: auto;
 }
 
@@ -2845,14 +2845,15 @@ onBeforeUnmount(() => {
   opacity: 1;
 }
 
-/* 标签选择器对话框 - 每列3个标签 */
+/* 标签选择器对话框 - 自动换行显示标签 */
 .tag-selector-grid {
   display: grid;
-  grid-template-rows: repeat(3, auto);
-  grid-auto-flow: column;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 12px;
   margin: 16px 0;
-  max-height: 300px;
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .tag-option {
