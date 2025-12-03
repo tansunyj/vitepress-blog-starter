@@ -19,7 +19,7 @@ category: "blog"
 
 这几天恰好有一些时间，我就专门找到了这个细分领域的视频深入的学习了一下，发现确实，我自己作为IT从业者，我自己可以搭建这种教育类的邮箱服务器，给有需要的朋友提供服务！
 
-![图片](/images/blog/recommendations/2.jpg)
+![图片](/images/blog/recommendations/article-1764763704156/2.jpg)
 
 ## 思路
 
@@ -49,48 +49,43 @@ category: "blog"
 
 对于XX.edu.YY这样的教育类域名来说，像国内的域名供应商、国外的常见供应商之类的基本上都无法提供域名注册服务，如下图：例如，我在namecheap上搜索.edu.的域名
 
-![图片](/images/blog/recommendations/5.jpg)
+![图片](/images/blog/recommendations/article-1764763704156/5.jpg)
 
-![图片](/images/blog/recommendations/6.jpg)
+![图片](/images/blog/recommendations/article-1764763704156/6.jpg)
 
 基本上当前主流的这些域名供应商都不提供.edu教育类域名的注册服务，那么我们该怎么做才能注册到教育类的域名呢？
 
 这里，我们可以找一些小国家、细小的域名供应商，我们可以在他们的网站上注册类似的域名，例如：
 
-1.<https://cctld.kg/ru>
+### 1.<https://cctld.kg/ru>
 
-![图片](/images/blog/recommendations/7.jpg)
+![图片](/images/blog/recommendations/article-1764763704156/7.jpg)
 
 注：该网站支持国际化，如果当前无法阅读俄文，可以转换成英文或者使用浏览器翻译成中文。
 
-![图片](/images/blog/recommendations/8.jpg)
+![图片](/images/blog/recommendations/article-1764763704156/8.jpg)
 
 可见，该域名的价格是262索姆！后续需要使用信用卡进行支付！
 
 注：通过咨询AI 262索姆合大约0.15元人民币，真是白菜价！
 
-2.<https://regery.com/>
+### 2.<https://regery.com/>
 
 注册后登陆该网站，选择英语，
 
-![图片](/images/blog/recommendations/9.jpg)
+![图片](/images/blog/recommendations/article-1764763704156/9.jpg)
 
 搜索教育域名，如下：
 
-![图片](/images/blog/recommendations/10.jpg)
+![图片](/images/blog/recommendations/article-1764763704156/10.jpg)
 
-注：1.这个网站是波兰的网站，所以我们可以在它上面注册波兰的教育类网站域名！
+注：
+1.这个网站是波兰的网站，所以我们可以在它上面注册波兰的教育类网站域名！
 
 2.该网站最重要的好处是它支持支付宝，所以各位想要自行购买教育类域名的朋友可以很方便的进行支付了！
 
 好了，在我们已经购买好了域名的情况下，我们可以继续后续的步骤了，下篇文章继续，喜欢的朋友可以继续关注！
 
-**最后**
+## **最后**
 
 总的来说，文章中所列举的这2个域名供应商，对于我们来说：1.如果就是需要kg后缀的网站，那使用<https://cctld.kg/来进行注册，主要就是价格便宜；2.如果当前没有信用卡，那么使用https://regery.com/来进行注册也可以，主要就是方便；>
-
-希望这篇文章对您有所收获，请不要吝惜您的支持——**点赞、转发、在看**，都是对我最大的鼓励与认可。
-
-感谢您的陪伴与共鸣，让我们共同期待更多优秀的作品诞生！
-
-好文

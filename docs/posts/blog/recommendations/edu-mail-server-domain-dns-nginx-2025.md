@@ -16,7 +16,7 @@ category: "blog"
 
 您好，我是Hellos AI，一个10年+互联网从业者，现在专注于自媒体。希望我的文章能够为您带来更多精彩。如果您觉得我的文章对您有帮助，可以关注、点赞，谢谢！
 
-![图片](/images/blog/recommendations/2.jpg)
+![图片](/images/blog/recommendations/article-1764763267324/2.jpg)
 
 [教育邮件服务器搭建手把手教程：购买云服务器](https://mp.weixin.qq.com/s?__biz=MzUyMjEyMDcyOQ==\&mid=2247491930\&idx=1\&sn=58f9ff698c414ce729c9b618fc4c1230\&scene=21#wechat_redirect)
 
@@ -30,7 +30,7 @@ category: "blog"
 
 对于域名的解析，我们一般会优先选择放到cloudflare上，毕竟它是全球性的大公司。但是当前这个是教育域名，我尝试配置在cloudflare上配置，但是一直报告无效(可能是有什么潜在限制之类的)。所以这里我是直接配置在域名供应商配置的。
 
-## 1.<https://regery.com/配置>
+### 1.<https://regery.com/配置>
 
 在前面已经购买了服务器的前提下，我们当前是可以来配置域名了。
 
@@ -38,17 +38,17 @@ category: "blog"
 
 a.在页面中点击右下角的logo，会打开在线帮助机器人
 
-![图片](/images/blog/recommendations/3.jpg)
+![图片](/images/blog/recommendations/article-1764763267324/3.jpg)
 
-![图片](/images/blog/recommendations/4.jpg)
+![图片](/images/blog/recommendations/article-1764763267324/4.jpg)
 
 仔细理解和机器人中这里的文档，就知道我们需要配置A类型的域名解析和MX类型的域名解析。
 
 b.打开域名解析
 
-![图片](/images/blog/recommendations/5.jpg)
+![图片](/images/blog/recommendations/article-1764763267324/5.jpg)
 
-![图片](/images/blog/recommendations/6.jpg)
+![图片](/images/blog/recommendations/article-1764763267324/6.jpg)
 
 选择上面的DNS Records，在底下添加A类型的域名解析2条、MX类型的域名解析1条，如下：
 
@@ -60,7 +60,7 @@ CNAME：将域名指向另外一个域名（不需要配置，配置不配置无
 
 注：像ALIAS是默认的一条配置，懒得管他；TTL指查询一条域名后缓存的时间！
 
-## 2.nginx配置
+### 2.nginx配置
 
 因为我的机器上使用的nginx服务器，所以对于用户端web、管理后端web都需要配置配置好nginx域解析才能让用户、管理员正常使用；
 
@@ -80,23 +80,16 @@ postfixadmin-3.3.15：管理员邮件web应用
 
 只有nginx域配置完成后，才可以让管理员、用户正常访问邮箱的web应用，如：
 
-## 3.用户端web
+### 3.用户端web
 
-![图片](/images/blog/recommendations/8.jpg)
+![图片](/images/blog/recommendations/article-1764763267324/8.jpg)
 
 当前用户我使用某个用户登陆后，该邮件账号能够正常接收邮件并激活例如navticat账号！
 
-## 4.管理员web
+### 4.管理员web
 
-![图片](/images/blog/recommendations/9.jpg)
+![图片](/images/blog/recommendations/article-1764763267324/9.jpg)
 
-![图片](/images/blog/recommendations/10.jpg)
+![图片](/images/blog/recommendations/article-1764763267324/10.jpg)
 
 后续章节会详细叙述服务器上各组件的安装过程！
-
-希望这篇文章对您有所收获，请不要吝惜您的支持——**点赞、转发、在看**，都是对我最大的鼓励与认可。
-
-感谢您的陪伴与共鸣，让我们共同期待更多优秀的作品诞生！
-
-
-阅读更多好文

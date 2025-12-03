@@ -12,14 +12,13 @@ category: "blog"
 
 ---
 
-![Image](/images/blog/recommendations/1.jpg)
-***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***
+![Image](/images/blog/recommendations/article-1764759443451/1.jpg)***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***
 
 前些天gemini3.0发布，网上铺天盖地的gemini3.0怎么样开发应用、怎么样开发网站等等，都说牛逼plus，只需一句话告诉它你的需求，它就能轻轻松松把你要的东西开发出来。它真有那么神奇嘛？
 
 我也来凑个热闹，试试它的斤两！
 
-## 整体流程
+## 一、整体流程
 
 小时候，我很喜欢玩一个叫狼吃羊的游戏，今天我就用Gemini3来实现这个儿时的游戏，看看能不能做出来，效果怎么样？
 
@@ -29,11 +28,11 @@ category: "blog"
 
 下面是我的需求沟通：
 
-![图片](/images/blog/recommendations/2.jpg)
+![图片](/images/blog/recommendations/article-1764759443451/2.jpg)
 
 经过多轮沟通之后，把该游戏的规则、角色、棋盘、主题/皮肤、音效设置、游戏hero区、游戏难度、页脚、游戏回放、棋局等等整理好之后，作为需求发送给aistudio，它根据需求生成初始代码。如：
 
-![图片](/images/blog/recommendations/3.jpg)
+![图片](/images/blog/recommendations/article-1764759443451/3.jpg)
 
 从它生成的界面，可以看出gemini3.0对于游戏hero区的设计审美实在是太不敢恭维了，反复经过多轮对话，它还是不知道怎么进行UI方面的美化！
 
@@ -59,42 +58,43 @@ category: "blog"
 
 这个过程持续了2天才逐步把这些功能都添加到游戏中来！
 
-![图片](/images/blog/recommendations/4.jpg)
+![图片](/images/blog/recommendations/article-1764759443451/4.jpg)
 
 也就是说整个游戏从aistudio中的一个demo到最终开发完毕（包括接入GA4、gsc、bing收录等）大约3天半时间；
 
 总体来说对于简单点的小网站aistudio可以通过模板等快速的建立一个demo，但是想要让你的网站等具备比较好的可用性，还需要继续人工干预和优化！
 
-## 游戏介绍
+## 二、游戏介绍
 
 当前游戏访问网址：<https://game.hellosai.cc/，支持移动端、电脑端使用。>
 
 ### 01游戏界面
 
-![图片](/images/blog/recommendations/5.jpg)
+![图片](/images/blog/recommendations/article-1764759443451/5.jpg)
 
 从截图我们也能看得出来现在这个界面与aistudio 中的demo相比，界面美观、用户体验都有很大的提升！
 
 设置菜单：点击settings后弹出如下的dialog，这里可以设置谁先手、游戏难度、音效开关、作者信息、游戏版本；
 
-![图片](/images/blog/recommendations/6.jpg)
+![图片](/images/blog/recommendations/article-1764759443451/6.jpg)
 
 倒计时：为加强游戏的趣味性，在点击了"start game"按钮后游戏立刻进行倒计时模式，给用户以一种马上要开始的感觉：
 
-![图片](/images/blog/recommendations/7.jpg)
+![图片](/images/blog/recommendations/article-1764759443451/7.jpg)
+
 ### 02游戏阶段
 
 倒计时结束之后正式进入游戏棋盘界面，如下：
 
-![图片](/images/blog/recommendations/8.jpg)
+![图片](/images/blog/recommendations/article-1764759443451/8.jpg)
 
 这里棋子需要鼠标点击后才能显示有哪些位置可以移动或者吃子，其中只有狼(或者赏金猎人)可以吃子，对方只能围堵，如：
 
-![图片](/images/blog/recommendations/9.jpg)
+![图片](/images/blog/recommendations/article-1764759443451/9.jpg)
 
 例如，这里我走棋这次棋局我失败了，那么会弹出如下的dialog
 
-![图片](/images/blog/recommendations/10.jpg)
+![图片](/images/blog/recommendations/article-1764759443451/10.jpg)
 
 我点击share按钮可以复制一个链接，如：
 
@@ -108,23 +108,23 @@ https://game.hellosai.cc/classic-wolf-vs-sheep-strategy?s=classic&d=CASUAL&r=WOL
 
 在游戏的hero区，点击左右箭头或者右上角点击按钮都可以切换主题/皮肤，如：
 
-![图片](/images/blog/recommendations/11.jpg)
+![图片](/images/blog/recommendations/article-1764759443451/11.jpg)
 
-![图片](/images/blog/recommendations/12.jpg)
+![图片](/images/blog/recommendations/article-1764759443451/12.jpg)
 
 切换主题/皮肤，可以点击圆圈旁边的箭头
 
-![图片](/images/blog/recommendations/13.jpg)
+![图片](/images/blog/recommendations/article-1764759443451/13.jpg)
 
-![图片](/images/blog/recommendations/14.jpg)
+![图片](/images/blog/recommendations/article-1764759443451/14.jpg)
 
 ### 04游戏回放
 
 把上面的游戏分享链接粘贴到浏览器，然后点击播放箭头一步一步的回放整个过程，如：
 
-![图片](/images/blog/recommendations/15.jpg)
+![图片](/images/blog/recommendations/article-1764759443451/15.jpg)
 
-![图片](/images/blog/recommendations/16.jpg)
+![图片](/images/blog/recommendations/article-1764759443451/16.jpg)
 
 当前游戏中的图片是由AI生成，音效资源文件都是从网上找的，然后告诉claude sonnet4.5让它在合适的位置显示图片、播放音效即可，这就是整个游戏的开发过程。
 
@@ -135,14 +135,6 @@ https://game.hellosai.cc/classic-wolf-vs-sheep-strategy?s=classic&d=CASUAL&r=WOL
 
 虽然Gemini3没有像大家说的通过一句话就能开发出一个APP或者应用那么夸张，但是它能开发出一个demo,这确实大大提高了我们的开发效率。
 
-诚挚邀请您体验我们使用 Gemini3 开发的游戏：<https://game.hellosai.cc/>
+诚挚邀请您体验我们使用 Gemini3 开发的游戏：
+<https://game.hellosai.cc/>
 期待您的宝贵意见与反馈！
-
-
-我不生产工具，我只是好工具的搬运工。
-
-**关注杰哥不迷路**，每天给你分享不一样的实用好工具。
-
-免责声明：本公众号分享的内容以及软件等来自互联网，仅供大家学习交流，同时请遵守你当地的法律法规，否则造成的一切后果自负，与本公众号无关。如有侵权联删！部分知识难免有时效性，若内容过期失效，请见谅,感谢！
-
-******喜欢这篇干货？如果觉得不错，请帮我一键三连，转发给您的朋友，都是对我最大的鼓励与认可。******如果想第一时间收到推送，可以把我的公众号加个星标🌟方便后面我们一起探讨AI或有意思的东西，还能够快速找到我！我们明天见！******—*****END*****—******图 | 来源网络侵删******欢迎点赞，在看，转发给我鼓励\~******👇👇关注我👇👇******👇👇扫码加入粉丝群领取福利👇👇***

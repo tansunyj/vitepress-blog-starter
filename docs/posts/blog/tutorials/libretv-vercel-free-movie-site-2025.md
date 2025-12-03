@@ -15,7 +15,7 @@ category: "blog"
 
 您好，我是Hellos AI，一个10年+互联网从业者，现在专注于自媒体。希望我的文章能够为您带来更多精彩。如果您觉得我的文章对您有帮助，可以关注、点赞，谢谢！
 
-![图片](/images/blog/tutorials/2.jpg)
+![图片](/images/blog/tutorials/article-1764753988193/2.jpg)
 
 当我们打开一些视频网站想放松一下享受片刻的闲暇时，开屏广告、视频中广告还有一些会员专属会打断我们的观影体验；
 
@@ -27,23 +27,23 @@ category: "blog"
 
 ## LibreTV
 
-## 一、概述
+### 一、概述
 
 对于我们一般人来说，可能想象的是一个视频网站那可是无数的视频资源，那可得多大呀，而实际上，它可以很小，这个LibreTV就是一个纯前端技术开发得开源视频聚合平台。
 
 我们可以在LibreTV里面随意搜索我们想要得东西，无需注册/完全免费，想看就看，并且还支持多种访问方式（电脑、手机）
 
-## 二、特点
+### 二、特点
 
-### 1.不需要在不同的网站之间跳跃；
+1.不需要在不同的网站之间跳跃；
 
-### 2.一个纯前端应用，资源占用少，运行速度快；
+2.一个纯前端应用，资源占用少，运行速度快；
 
-### 3.纯净无广告，无需注册；
+3.纯净无广告，无需注册；
 
-### 4.轻松添加最佳播放资源；
+4.轻松添加最佳播放资源；
 
-## 三、地址
+### 三、地址
 
 代码：<https://github.com/yangjerry2025/LibreTV>
 
@@ -55,53 +55,53 @@ category: "blog"
 
 <https://vercel.com/>
 
-![图片](/images/blog/tutorials/5.jpg)
+![图片](/images/blog/tutorials/article-1764753988193/5.jpg)
 
 ### 二、新建项目
 
-![图片](/images/blog/tutorials/6.jpg)
+![图片](/images/blog/tutorials/article-1764753988193/6.jpg)
 
 选择底下红色框内的"Select repositories"，从里面选择这个LibreTV
 
-![图片](/images/blog/tutorials/7.jpg)
+![图片](/images/blog/tutorials/article-1764753988193/7.jpg)
 
-![图片](/images/blog/tutorials/8.jpg)
+![图片](/images/blog/tutorials/article-1764753988193/8.jpg)
 
 选择好之后，点击底下绿色的"Save"按钮，效果如下
 
-![图片](/images/blog/tutorials/9.jpg)
+![图片](/images/blog/tutorials/article-1764753988193/9.jpg)
 
 ### 三、设置vercel
 
 点击上图红色框中的"Import"进入设置页面
 
-![图片](/images/blog/tutorials/10.jpg)
+![图片](/images/blog/tutorials/article-1764753988193/10.jpg)
 
 接着点击黑色的"Deploy"按钮进行项目的部署，很快就部署完毕，接着我们回到个人项目看板
 
-![图片](/images/blog/tutorials/11.jpg)
+![图片](/images/blog/tutorials/article-1764753988193/11.jpg)
 
-![图片](/images/blog/tutorials/12.jpg)
+![图片](/images/blog/tutorials/article-1764753988193/12.jpg)
 
 注：如果我们想要该视频网站访问时输入密码，那么我们可以在Settings-->Environment Variables 中添加环境变量，如下图
 
-![图片](/images/blog/tutorials/13.jpg)
+![图片](/images/blog/tutorials/article-1764753988193/13.jpg)
 
 注：我在发布当前文章时已经删除了这个密码，所以大家如果访问底下的链接，那么就不需要密码了！
 
 ## 体验
 
-## 设置
+### 设置
 
 访问<https://libre-tv-zeta-sooty.vercel.app/，如下：>
 
-![图片](/images/blog/tutorials/15.jpg)
+![图片](/images/blog/tutorials/article-1764753988193/15.jpg)
 
-![图片](/images/blog/tutorials/16.jpg)
+![图片](/images/blog/tutorials/article-1764753988193/16.jpg)
 
 这里我们需要点击右上角的设置图标，设置资源，添加一些自定义API，如下：
 
-### 1.添加自定义API
+1.添加自定义API
 
 虎牙资源：
 
@@ -115,28 +115,24 @@ category: "blog"
 
 地址：<https://svip.ffzyplay.com/?url=>
 
-### 2.数据源：全部选上
+2.数据源：全部选上
 
-![图片](/images/blog/tutorials/17.jpg)
+![图片](/images/blog/tutorials/article-1764753988193/17.jpg)
 
 打开"豆瓣热门推荐"然后就能看到页面主体中刷新出大量视频了！
 
-![图片](/images/blog/tutorials/18.jpg)
+![图片](/images/blog/tutorials/article-1764753988193/18.jpg)
 
 这是我们就能愉快的观影了！例如我们打开"浪浪山小妖怪"
 
-![图片](/images/blog/tutorials/19.jpg)
+![图片](/images/blog/tutorials/article-1764753988193/19.jpg)
 
-![图片](/images/blog/tutorials/20.jpg)
+![图片](/images/blog/tutorials/article-1764753988193/20.jpg)
 
-![图片](/images/blog/tutorials/21.jpg)
+![图片](/images/blog/tutorials/article-1764753988193/21.jpg)
 
 ## **最后**
 
 这个搭建过程是不是很简单呢？有手就行，不用花一分钱，我们就拥有了自己的私人影院！
 
 当然了这个私人影院最重要的是找到一些影视资源添加到自定义API中，有了这些，我们就能实现观影自由啦！
-
-希望这篇文章对您有所收获，请不要吝惜您的支持——**点赞、转发、在看**，都是对我最大的鼓励与认可。
-
-感谢您的陪伴与共鸣，让我们共同期待更多优秀的作品诞生！

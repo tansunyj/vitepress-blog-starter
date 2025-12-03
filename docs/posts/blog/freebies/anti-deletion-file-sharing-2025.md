@@ -13,9 +13,9 @@ category: "blog"
 
 ---
 
-![Image](/images/blog/freebies/1.jpg)
+![Image](/images/blog/freebies/article-1764758468077/1.jpg)
 
-![图片](/images/blog/freebies/2.jpg)
+![图片](/images/blog/freebies/article-1764758468077/2.jpg)
 
 经常需要分享图像、视频文件，特别是可能涉及到一些敏感文件的人最头疼的问题——文件被删除！
 
@@ -23,12 +23,12 @@ category: "blog"
 
 我觉得至少应该有如下的3种，下面我给大家一一分享一下！
 
-## 方法一
+## 01方法一
 [不注册！不限速！无限存储空间！这个永久免费的临时网盘，5GB大文件直接发，简直是白嫖党的天堂！](https://mp.weixin.qq.com/s?__biz=MzUyMjEyMDcyOQ==\&mid=2247495681\&idx=1\&sn=e7917af8e1b696c633a3c9da3e7ac0d6\&scene=21#wechat_redirect)
 
 因为这个临时网盘不需要注册不限速无限存储空间，所以对于某些敏感文件（特别是NSFW文件）相当友好了！
 
-## 方法二
+## 02方法二
 
 方法二是我现在用到的一种方法，在我的群文件里面不是共享着一个敏感文件，我是这么做的！
 
@@ -40,7 +40,7 @@ a.前面我是直接放夸克中，结果过了几天有粉丝朋友反馈说XXX
 
 b.接着没办法，我就只能把这个文件使用压缩软件进行分卷压缩，并且在压缩时设置密码，嗯，该文件经过存储，现在还稳稳的存储在夸克上！
 
-![图片](/images/blog/freebies/3.jpg)
+![图片](/images/blog/freebies/article-1764758468077/3.jpg)
 
 说明当前这种方式是有效且安全的，因为它改变了单个文件的md5值。如果说夸克改进扫描方法，那后续可以把敏感文件改名后再添加干扰文件，再分卷压缩！
 
@@ -52,13 +52,13 @@ b.接着没办法，我就只能把这个文件使用压缩软件进行分卷压
 
 如果把文件直接放这里，它也会被很快检测出来，同样的套路，我把文件分卷压缩+设置解压密码等，拆分成多个文件后，文件顺利上传并存储于gitee上，如：
 
-![图片](/images/blog/freebies/4.jpg)
+![图片](/images/blog/freebies/article-1764758468077/4.jpg)
 
-![图片](/images/blog/freebies/5.jpg)
+![图片](/images/blog/freebies/article-1764758468077/5.jpg)
 
 这里的这个文件也是存储了1年多都没事，说明这种方法也是有效的！
 
-## 方法三
+## 03方法三
 
 如果说有一天前面两种方法都失效了，那么我们可以采取下面这种办法了，那就是白嫖cloudflare的R2存储桶！
 
@@ -74,101 +74,101 @@ b.接着没办法，我就只能把这个文件使用压缩软件进行分卷压
 
 这里我们一起来把这个项目搭建起来，接着上传几张图片上去看看！
 
-##### a.访问<https://dash.cloudflare.com/（注册就略过了，自己注册去）>
+a.访问<https://dash.cloudflare.com/（注册就略过了，自己注册去）>
 
-##### b.打开work
+b.打开work
 
-![图片](/images/blog/freebies/6.jpg)
+![图片](/images/blog/freebies/article-1764758468077/6.jpg)
 
-![图片](/images/blog/freebies/7.jpg)
+![图片](/images/blog/freebies/article-1764758468077/7.jpg)
 
-##### c.点击右上角的蓝色按钮：
+c.点击右上角的蓝色按钮：
 
-![图片](/images/blog/freebies/8.jpg)
+![图片](/images/blog/freebies/article-1764758468077/8.jpg)
 
-![图片](/images/blog/freebies/9.jpg)
+![图片](/images/blog/freebies/article-1764758468077/9.jpg)
 
 填写了名字后，点击部署按钮，就把它部署起来了！
 
-##### d.R2存储桶
+d.R2存储桶
 
 部署完毕后打开R2存储桶，如下：
 
-![图片](/images/blog/freebies/10.jpg)
+![图片](/images/blog/freebies/article-1764758468077/10.jpg)
 
-![图片](/images/blog/freebies/11.jpg)
+![图片](/images/blog/freebies/article-1764758468077/11.jpg)
 
 点击创建存储桶，填写名字"imgnaondo"必须是这个名字
 
-![图片](/images/blog/freebies/12.jpg)
+![图片](/images/blog/freebies/article-1764758468077/12.jpg)
 
-![图片](/images/blog/freebies/13.jpg)
+![图片](/images/blog/freebies/article-1764758468077/13.jpg)
 
 创建成功后就是上面这样的了！
 
-##### e.回到worker那里，编辑worker
+e.回到worker那里，编辑worker
 
-![图片](/images/blog/freebies/14.jpg)
+![图片](/images/blog/freebies/article-1764758468077/14.jpg)
 
-![图片](/images/blog/freebies/15.jpg)
+![图片](/images/blog/freebies/article-1764758468077/15.jpg)
 
-##### f.复制前面github图床项目的worker.js代码内容并粘贴
+f.复制前面github图床项目的worker.js代码内容并粘贴
 
-![图片](/images/blog/freebies/16.jpg)
+![图片](/images/blog/freebies/article-1764758468077/16.jpg)
 
-![图片](/images/blog/freebies/17.jpg)
+![图片](/images/blog/freebies/article-1764758468077/17.jpg)
 
 点击部署。。。。
 
-##### g.绑定R2存储桶
+g.绑定R2存储桶
 
 回到当前worker的绑定标签中，点击添加绑定
 
-![图片](/images/blog/freebies/18.jpg)
+![图片](/images/blog/freebies/article-1764758468077/18.jpg)
 
-![图片](/images/blog/freebies/19.jpg)
+![图片](/images/blog/freebies/article-1764758468077/19.jpg)
 
 把R2存储桶绑定到该worker项目中，这里会弹出配置如下：
 
-![图片](/images/blog/freebies/20.jpg)
+![图片](/images/blog/freebies/article-1764758468077/20.jpg)
 
 变量名称配置如下，R2存储桶则使用下拉框中列出来的值，如：
 
-![图片](/images/blog/freebies/21.jpg)
+![图片](/images/blog/freebies/article-1764758468077/21.jpg)
 
 点击底部的确定按钮就好了！
 
-##### h.添加访问密码
+h.添加访问密码
 
 当前我们部署的是一个web服务，它具备一些文件操作的界面，我需要配置一个访问密码，如：
 
-![图片](/images/blog/freebies/22.jpg)
+![图片](/images/blog/freebies/article-1764758468077/22.jpg)
 
 点击添加按钮，添加一个环境变量存放密码：
 
-![图片](/images/blog/freebies/23.jpg)
+![图片](/images/blog/freebies/article-1764758468077/23.jpg)
 
 配置完毕后该worker就可以正常使用了！（上面截图右下角有按钮，就是重新部署）
 
-##### g.访问：点击这里的"访问"按钮，打开页面
+g.访问：点击这里的"访问"按钮，打开页面
 
-![图片](/images/blog/freebies/24.jpg)
+![图片](/images/blog/freebies/article-1764758468077/24.jpg)
 
-![图片](/images/blog/freebies/25.jpg)
+![图片](/images/blog/freebies/article-1764758468077/25.jpg)
 
 再这里输入前面设置的密码，就可以进入图片上传页面中啦！
 
-![图片](/images/blog/freebies/26.jpg)
+![图片](/images/blog/freebies/article-1764758468077/26.jpg)
 
-##### h.上传图片
+h.上传图片
 
-![图片](/images/blog/freebies/27.jpg)
+![图片](/images/blog/freebies/article-1764758468077/27.jpg)
 
-![图片](/images/blog/freebies/28.jpg)
+![图片](/images/blog/freebies/article-1764758468077/28.jpg)
 
 这里复制这个图片的url地址，我们再浏览器中访问该图片，看看效果！
 
-![图片](/images/blog/freebies/29.jpg)
+![图片](/images/blog/freebies/article-1764758468077/29.jpg)
 
 好了，一个能够存储图片并且还能对图片进行分享的图床就部署成功啦！
 
@@ -185,13 +185,3 @@ b.接着没办法，我就只能把这个文件使用压缩软件进行分卷压
 3.第三种最复杂，不过也是比较安全的，分享给国内其他朋友和下载也很方便，也不用担心上门查水表；
 
 不过，对于涉及机密的文件还是不建议以上面任何一种方式存储，还是以存储于本地电脑、移动硬盘等来存储最好！
-
-好了，你觉得除了上面的这些存储和分享方式，还有哪些又快又好又安全的方法呢？欢迎大家在评论区讨论讨论！
-
-我不生产工具，我只是好工具的搬运工。
-
-**关注杰哥不迷路**，每天给你分享不一样的实用好工具。
-
-免责声明：本公众号分享的内容以及软件等来自互联网，仅供大家学习交流，同时请遵守你当地的法律法规，否则造成的一切后果自负，与本公众号无关。如有侵权联删！部分知识难免有时效性，若内容过期失效，请见谅,感谢！
-
-******喜欢这篇干货？如果觉得不错，请帮我一键三连，转发给您的朋友，都是对我最大的鼓励与认可。******如果想第一时间收到推送，可以把我的公众号加个星标🌟方便后面我们一起探讨AI或有意思的东西，还能够快速找到我！我们明天见！******—*****END*****—******图 | 来源网络侵删******欢迎点赞，在看，转发给我鼓励\~******👇👇关注我👇👇******👇👇扫码加入粉丝群领取福利👇👇***

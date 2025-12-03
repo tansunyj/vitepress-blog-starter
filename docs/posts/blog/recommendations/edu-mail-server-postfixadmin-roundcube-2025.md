@@ -28,11 +28,11 @@ category: "blog"
 
 [教育邮件服务器搭建手把手教程：postfix、dovecot安装配置](https://mp.weixin.qq.com/s?__biz=MzUyMjEyMDcyOQ==\&mid=2247492003\&idx=1\&sn=10b10b34f3c0a16a3fe0041ad16b2890\&scene=21#wechat_redirect)
 
-## 今天我们继续后续搭建过程：
+今天我们继续后续搭建过程：
 
 在前面我们已经把postfix、dovecot等搭建完毕，那么接下来我们可以部署postfixadmin-3.3.15、roundcubemail-1.5.11，这2个开源软件是邮件服务器的用户端和管理员端。
 
-思路
+## 思路
 
 前面文章中部署postfix、dovecot，主要是邮件传输和邮件访问，但是邮件投递到具体的邮箱账号之后，我们还需要有界面去查看邮件、收发邮件。
 当然，也有朋友会说，我可以使用outlook、foxmail等邮件客户端，嗯，没错，但是对于各个不同的邮件账户，每次新注册邮箱，还需要管理员手动在服务器上操作了再把邮箱给你么？
@@ -43,7 +43,7 @@ category: "blog"
 
 ## roundcubemail-1.5.11安装配置
 
-## 一、介绍
+### 一、介绍
 
 简介：roundcubemail是一款基于浏览器的邮件客户端，它支持多语言，提供邮件收发、MIME支持、通讯录、文件夹管理等等功能。该项目使用php+js+mysql/postgresql/sqlite等进行开发，支持很多插件和皮肤功能扩展。
 
@@ -55,11 +55,11 @@ release：<https://github.com/roundcube/roundcubemail/releases>
 
 当前最新版本是1.7-beta，但是最稳定版本是这个1.5.11，我们可以根据自己实际环境来下载最合适的版本。
 
-![图片](/images/blog/recommendations/4.jpg)
+![图片](/images/blog/recommendations/article-1764761429052/4.jpg)
 
-## 二、安装
+### 二、安装
 
-### 1.nginx域配置
+1.nginx域配置
 
 因为前面已经购买过域名，所以这里在nginx中直接配置域配置如下：
 
@@ -67,7 +67,7 @@ release：<https://github.com/roundcube/roundcubemail/releases>
 server {
 ```
 
-### 2.安装
+2.安装
 
 在配置完域后，我们可以使用域名来对该应用进行安装，例如：访问<http://mydomain.edu/installer.php或者直接配置config.inc.php，但是注意安装完后需要在/usr/local/roundcubemail-1.5.11/public\\_html文件夹底下删除installer。>
 
@@ -79,13 +79,13 @@ server {
 
 该配置文件我们需要配置数据库访问链接串db\_dsnw、表前缀db\_prefix、des加密密钥des\_key、在线安装开关enable\_installer、管理员账号admin\_username就这些！
 
-![图片](/images/blog/recommendations/5.jpg)
+![图片](/images/blog/recommendations/article-1764761429052/5.jpg)
 
 接下来，我们可以安装后端管理员页面
 
 ## postfixadmin-3.3.15安装
 
-## 一、介绍
+### 一、介绍
 
 简介：postfixadmin是一款基于web的开源邮件服务器管理工具，专门为postfix邮件系统设计，提供web管理页面，降低管理员工作难度、提高工作效率，能轻松对邮件域名、邮件账户、邮件别名和转发规则进行管理。
 
@@ -95,13 +95,13 @@ server {
 
 release:<https://github.com/postfixadmin/postfixadmin/releases>
 
-![图片](/images/blog/recommendations/7.jpg)
+![图片](/images/blog/recommendations/article-1764761429052/7.jpg)
 
-## 二、安装
+### 二、安装
 
 注：该管理后端的部署就比较麻烦了，它没办法直接建表、并且php代码中还存在一定的bug，所以我在部署过程中还结合cursor对项目代码进行编辑才能顺利部署完成。
 
-### 1.nginx域配置
+1.nginx域配置
 
 因为这个是一个管理后端，访问用户少并且安全等级要求比较高，所以域配置中我不会直接在nginx中配置简单的地址，如下：
 
@@ -111,7 +111,7 @@ release:<https://github.com/postfixadmin/postfixadmin/releases>
 
 注：qkxjnUIn8TjKHmCEhAqNafwvfV1APbqzjLCURgTA1Tjd2MPPJs这个东西就不能简单的配置一个admin，让脚本简单的就扫描到admin的入口
 
-### 2.部署
+2.部署
 
 安装过程中，因为这个postfixadmin没有单独的提供sql建库建表脚本，它都是随着版本进行升级的升级脚本，你要想后面稳定版本安装，那么你数据库得跟随着它得升级脚本不断得升级。
 
@@ -125,27 +125,22 @@ release:<https://github.com/postfixadmin/postfixadmin/releases>
 $CONF['database_type'] = 'mysqli';
 ```
 
-![图片](/images/blog/recommendations/8.jpg)
+![图片](/images/blog/recommendations/article-1764761429052/8.jpg)
 
 总的来说，原始发布包中MailboxHandler.php代码文件存在一些问题导致无法正常部署，另外就是没有完整的建库建表脚本。
 
 ## **最后**
 
-在postfix、dovecot等配置成虚拟邮件账号并使用MySQL鉴权后，我们就可以在postfixadmin中批量创建邮箱账号了，最终这个邮件服务器的体验如下：
-## 1.用户端
+在postfix、dovecot等配置成虚拟邮件账号并使用MySQL鉴权后，我们就可以在postfixadmin中批量创建邮箱账号了，最终这个邮件服务器的体验如下：1.用户端
 
-![图片](/images/blog/recommendations/10.jpg)
+![图片](/images/blog/recommendations/article-1764761429052/10.jpg)
 
-![图片](/images/blog/recommendations/11.jpg)
+![图片](/images/blog/recommendations/article-1764761429052/11.jpg)
 
-![图片](/images/blog/recommendations/12.jpg)
+![图片](/images/blog/recommendations/article-1764761429052/12.jpg)
 
-## 2.管理员端
+2.管理员端
 
-![图片](/images/blog/recommendations/13.jpg)
+![图片](/images/blog/recommendations/article-1764761429052/13.jpg)
 
-![图片](/images/blog/recommendations/14.jpg)
-
-希望这篇文章对您有所收获，请不要吝惜您的支持——**点赞、转发、在看**，都是对我最大的鼓励与认可。
-
-感谢您的陪伴与共鸣，让我们共同期待更多优秀的作品诞生！
+![图片](/images/blog/recommendations/article-1764761429052/14.jpg)

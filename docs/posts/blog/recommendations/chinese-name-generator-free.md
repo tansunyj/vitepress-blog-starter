@@ -18,9 +18,9 @@ category: "blog"
 
 这里我把从找到这个点子到网站最终上线的整个过程分享如下。
 
-![图片](/images/blog/recommendations/2.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/2.jpg)
 
-背景、思路
+## 背景、思路
 
 因为现在AI技术的发展和现在出海的火热，所以我就萌生了做一个个人小网站的想法。
 
@@ -40,19 +40,19 @@ category: "blog"
 
 开发：cursor
 
-需求分析
+## 需求分析
 
 对于取中文名字——chinese name 这个主关键词，当然它是一个比较大的关键词，那它值不值得做，我们可以进行如下的分析。
 
-## 一、google trends
+### 一、google trends
 
 网址：<https://trends.google.com/>
 
 这是google的关键词搜索趋势分析工具，我们可以使用上面的网站分析一下这个搜索关键词的变化趋势。
 
-![图片](/images/blog/recommendations/5.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/5.jpg)
 
-![图片](/images/blog/recommendations/6.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/6.jpg)
 
 分析：
 
@@ -60,39 +60,39 @@ category: "blog"
 
 2.上图右下角跟chinese name相关的关键词也有不少，热度也还可以，例如：name in chinese、chinese name meaning、chinese names等等。
 
-## 二、semrush
+### 二、semrush
 
 网址：<https://zh.semrush.com/>
 
 在该网站Magic keyword tool中，我们分析如下：
 
-![图片](/images/blog/recommendations/7.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/7.jpg)
 
-这里我们发现当前：关键词有62W，一周的搜索量也有62W。chinese names这个关键词竞争程度有63。（属于竞争比较激烈的关键词了，按理来说该关键词不太适合做的，不过因为我练手嘛，那就随便了）
+这里我们发现当前：关键词有45000多个，一个月的搜索量也有62W。chinese names这个关键词竞争程度有63。（属于竞争比较激烈的关键词了，按理来说该关键词不太适合做的，不过因为我练手嘛，那就随便了）
 
 当然，如果要仔细的找到一个新词，我们可以使用如下的一些搜索条件，如下：
 
-![图片](/images/blog/recommendations/8.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/8.jpg)
 
-注：这里KD可以选择30%以下，CPC可以选择大于0，这里我们就过滤到了一些关键词，如：chinese name translation、chinese names into english等等（这些属于细分关键词）。一周的搜索量大约在8890，搜索量确实有点小。
+注：这里KD可以选择30%以下，CPC可以选择大于0，这里我们就过滤到了一些关键词，如：chinese name translation、chinese names into english等等（这些属于细分关键词）。一个月的搜索量大约在8890，搜索量确实有点小。
 
 通过这个semrush我们可以找到很多这种关键词，并把这些关键词都记录下来。
 
-## 三、google
+### 三、google
 
-这里我们也可以通过google来针对这个主关键词、细分关键词来进行搜索，看看有哪些网站获得了这些关键词的排名；
+这里我们可以通过google来针对这个主关键词、细分关键词来进行搜索，看看有哪些网站获得了这些关键词的排名；
 
-![图片](/images/blog/recommendations/9.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/9.jpg)
 
 在google中搜索chinese name（它不是一个目标明确的关键词），我们发现目标明确的关键词有chinese name for female、chinese name for body、chinese name generator from english、chinese name meaning等等。
 
 当然这里我们也可以在chrome浏览器中安装一个插件：keywords everywhere。我们还能够看到该关键词相关的意图明确的长尾关键词、其他关键词列表
 
-![图片](/images/blog/recommendations/10.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/10.jpg)
 
 这里我们通过搜索chinese name、chinese names into english.....。得到了如下的一些跟中文取名、翻译相关的网站
 
-![图片](/images/blog/recommendations/11.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/11.jpg)
 
 ```
 chinese name关键词:
@@ -112,17 +112,17 @@ chinese name关键词:
 
 也就上面这些网站会排在第一页，并且还有一些youtube、reddit的视频和贴文；
 
-## 四、semrush
+### 四、semrush
 
 在确定了竞争对手后，我们可以使用上面的域名，在semrush中对域名进行分析，看看他们是通过什么关键词获得的流量。
 
 <https://laoshi.io/name/>
 
-![图片](/images/blog/recommendations/12.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/12.jpg)
 
 分析：从该域名的分析数据来看，它的流量主要是美国、菲律宾、英国；
 
-![图片](/images/blog/recommendations/13.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/13.jpg)
 
 在对前面这几个取名网站分析后得到如下的这些关键词：
 
@@ -136,7 +136,7 @@ chinese names into english
 =========================================================================
 ```
 
-## 五、需求分析
+### 五、需求分析
 
 通过总结前面的关键词和功能，我们想要做的网站需要具备如下的功能：
 
@@ -152,7 +152,7 @@ chinese names into english
 
 在需求分析结束之后，接下来我们可以进行网站的开发了。
 
-网站开发
+## 网站开发
 
 网站功能的开发就比较纯粹了。
 
@@ -190,22 +190,21 @@ npm install
 
 3.需要让网站用户行为数据能够有图标展现，我们需要在index.html中添加gtag；
 
-![图片](/images/blog/recommendations/15.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/15.jpg)
 
-部署
+## 部署
 
 在网站开发完毕后，我们需要部署，这里我采用的是：vercel部署，步骤如下：
 
-
-## 一、namecheap购买域名
+### 一、namecheap购买域名
 
 因为当前关键词是chinese name，所以我们可以在<https://namecheap.com中搜索域名chinesename，当然最好的域名是.com的域名了，但是需要1W多刀，太贵了，那就只能购买其他便宜的了。>
 
-![图片](/images/blog/recommendations/17.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/17.jpg)
 
 最终，我在这里购买的<https://www.chinesename.us/域名，经济实惠且后缀为美国国内域名，与我的网站目标人群是美国人比较符合，所以就是他了。>
 
-## 二、vercel部署
+### 二、vercel部署
 
 1.先把项目上传到github上，把项目作为私有项目存在个人私有仓库中；
 
@@ -213,56 +212,55 @@ npm install
 
 3.在填写好一些表单页面后，就可以在vercel中部署完成，部署完成后，我们可以通过vercel提供的域名进行访问，此时可以测试网站的各个功能是否正确；
 
-## 三、域名配置
+### 三、域名配置
 
 配置网站的域名也很简单，我们可以使用cloudflare来解析域名，如下：
 
-## 1.cloudflare中新增域名
+1.cloudflare中新增域名
 
 在DNS配置页面中会看到dns域名服务器的域名；
 
-## 2.namecheap配置域名服务器
+2.namecheap配置域名服务器
 
 在namecheap中增加dns域名服务器配置
 
-![图片](/images/blog/recommendations/18.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/18.jpg)
 
-## 3.vercel配置
+3.vercel配置
 
-![图片](/images/blog/recommendations/19.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/19.jpg)
 
 需要在设置中增加chinesename.us域名，并保存；
 
-## 4.cloudflaredns配置
+4.cloudflaredns配置
 
-![图片](/images/blog/recommendations/20.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/20.jpg)
 
-## ssl证书配置
+ssl证书配置
 
-![图片](/images/blog/recommendations/21.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/21.jpg)
 
 在配置好ssl证书之后，我们就能够使用域名房屋内我们的网站了。
 
 如下：<https://www.chinesename.us/>
 
-![图片](/images/blog/recommendations/22.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/22.jpg)
 
-## 5.网站收录
+5.网站收录
 
 在网站能够通过域名正常访问后，我们就需要把网站收录到google search console、bing中，以便爬虫能够爬取到我们网站各个页面。
 
 这里我们需要在google search console中注册账号，再把网站的sitemap.xml收录到google中，以便它能够根据配置爬取页面。
 
-![图片](/images/blog/recommendations/23.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/23.jpg)
 
-![图片](/images/blog/recommendations/24.jpg)
+![图片](/images/blog/recommendations/article-1764763825829/24.jpg)
 
-## 6.google analytics
+6.google analytics
 
 略。
 
 再上面这些步骤都走完后，基本上也就是说我们部署完毕了，接下来就是在各个网站上去推广了。
-
 
 ## 推广
 
@@ -288,7 +286,7 @@ npm install
 
 **DZone**- <https://dzone.com/>
 
-### 社交媒体
+ 社交媒体
 
 **Twitter/X**- <https://twitter.com/>
 
@@ -300,7 +298,6 @@ npm install
 **Quora**- <https://www.quora.com/>
 
 **WIP**- <https://wip.co/>
-
 
 
 ## 国内平台
@@ -323,26 +320,8 @@ npm install
 
 3.Quora：该网站流量也很大，有大量的全球用户；
 
-我这个网站从4月30号晚上上线，到今天总共3天，在cloudflare上面从0开始有如下的一些流量数据了：
-
-![图片](/images/blog/recommendations/26.jpg)
-
-独立访客有495，总请求有5000多，个人从0开始独立做网站，冷启动到现在有这个成绩感觉还算是一个比较好的开头了。
-
 后续看过一段时间流量上来之后，再不断的对该网站的关键词、页面、内容做出优化，争取该网站独立访客早点过万、总请求数过10万！再接入到google adsense！
 
-**最后**
+## **最后**
 
 总的来说，我们除了上班之外，也要搞一些自己的睡后收入的事情，像趁着当前AI洪流，做一些个人网站、工具等早做准备和打算，开展自己的第二职业！
-
-希望这篇文章对您有所收获，请不要吝惜您的支持——**点赞、转发、在看**，都是对我最大的鼓励与认可。
-
-感谢您的陪伴与共鸣，让我们共同期待更多优秀的作品诞生！
-
-图 | 来源网络侵删
-
-欢迎点赞，在看，转发给我鼓励\~
-
-👇👇关注我👇👇
-
-阅读更多好文

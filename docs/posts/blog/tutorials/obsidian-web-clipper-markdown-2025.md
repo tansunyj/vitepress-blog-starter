@@ -13,7 +13,7 @@ category: "blog"
 
 ---
 
-![图片](/images/blog/tutorials/2.jpg)
+![图片](/images/blog/tutorials/article-1764749249266/2.jpg)
 
 想象一下大家在打开一些飞书文档、看一些小说、或者某些星球得分享链接干货，在看完后都是想把它们保存到本地，但是一个令人尴尬得问题是，我还要从文章开头拖动鼠标拖到文章结尾！
 
@@ -25,11 +25,11 @@ category: "blog"
 
 下面我们一起来看看它吧！
 
+## 介绍
 
+### 一、简介
 
-## 一、简介
-
-简介：
+##### 简介：
 
 1.obsidian web clipper是一款免费开源的浏览器插件，它的主要功能是帮助用户将网页内容保存到obsidian笔记中，不过它也支持将文档保存为markdown格式文档。
 
@@ -43,7 +43,7 @@ category: "blog"
 
 注：带chrome的是chrome插件，带safari的是safari插件，其他类似！
 
-## 二、功能
+### 二、功能
 
 网页剪辑：快速保存页面内容到obsidian笔记中；
 
@@ -57,27 +57,27 @@ category: "blog"
 
 多浏览器支持：支持chrome、firefox、safari浏览器；
 
-## 三、安装
+### 三、安装
 
 由于我这里使用的是chrome浏览器，所以就以chrome浏览器为例进行演示安装：
 
 1.打开扩展程序
 
-![图片](/images/blog/tutorials/4.jpg)
+![图片](/images/blog/tutorials/article-1764749249266/4.jpg)
 
 2.安装插件
 
 把插件从电脑硬盘上拖进到扩展插件页面中
 
-![图片](/images/blog/tutorials/5.jpg)
+![图片](/images/blog/tutorials/article-1764749249266/5.jpg)
 
 3.启用插件
 
-![图片](/images/blog/tutorials/6.jpg)
+![图片](/images/blog/tutorials/article-1764749249266/6.jpg)
 
 把插件常驻到右上角可以点击箭头旁边的图钉图标
 
-![图片](/images/blog/tutorials/7.jpg)
+![图片](/images/blog/tutorials/article-1764749249266/7.jpg)
 
 这样就能够让这个插件一直显示在醒目位置，这样可以方便我们使用！
 
@@ -85,11 +85,11 @@ category: "blog"
 
 既然插件已经安装好了，接下来我们一起来使用看看它是不是有那么好用！
 
-## 一、体验1
+### 一、体验1
 
 看看它是否可以为我们保存网页：例如打开一个有关chatgpt的web页面，然后点击插件，插件那里会自动填充内容如图
 
-![图片](/images/blog/tutorials/9.jpg)
+![图片](/images/blog/tutorials/article-1764749249266/9.jpg)
 
 接着我们选择右上角紫色按钮那里的小箭头，可以把内容全部保存到本地，如下：
 
@@ -99,33 +99,33 @@ ChatGPT 最近悄悄上线的 3 个新功能，真香！.md
 
 这是一个markdown文档，我们找一个在线markdown预览工具看看效果怎么样
 
-![图片](/images/blog/tutorials/10.jpg)
+![图片](/images/blog/tutorials/article-1764749249266/10.jpg)
 
 点评：看着效果还是不错，这就把一个web页面保存到markdown文件了！保存效率是不是非常高？
 
-## 二、体验2
+### 二、体验2
 
 接着我们可以打开一个飞书文档，看看使用效果怎么样！
 
 例如我找到一个只读的飞书链接：<https://tauacgr5lqv.feishu.cn/wiki/KsHrwHmS5ik6sQkxtnUc45k6nvb，它里面的内容只能阅读，无法使用鼠标进行复制，这时我打开后，点击插件，页面内容就自动填充到插件中了！如下：>
 
-![图片](/images/blog/tutorials/11.jpg)
+![图片](/images/blog/tutorials/article-1764749249266/11.jpg)
 
 保存成的文档内容如下：
 
-![图片](/images/blog/tutorials/12.jpg)
+![图片](/images/blog/tutorials/article-1764749249266/12.jpg)
 
 点评：说明它对于只读文档也能够顺利的保存！这就对我们非常的友好和方便了，因为我们通常会搜索到一些共享文档，我们只能打开阅读，却无法复制内容，这就为我们解决大问题了！
 
-## 三、体验3
+### 三、体验3
 
 例如，我随便找了一个网络小说<https://www.readnovel.com/chapter/31940915907088808/85751471336902060，页面中小说正文都是只读的，无法通过鼠标来进行复制，这时打开插件，插件中正常填充小说文本，效果如下：>
 
-![图片](/images/blog/tutorials/13.jpg)
+![图片](/images/blog/tutorials/article-1764749249266/13.jpg)
 
 打开插件后发现按钮上方的输入框中正常填充各种文本，我点击小箭头保存到本地如下：
 
-![图片](/images/blog/tutorials/14.jpg)
+![图片](/images/blog/tutorials/article-1764749249266/14.jpg)
 
 点评：对于网络小说的保存这个也是非常丝滑，小说迷朋友们有福了！
 
@@ -134,7 +134,3 @@ ChatGPT 最近悄悄上线的 3 个新功能，真香！.md
 通过上面的演示，相信大家已经真切感受到了 **Obsidian Web Clipper** 这款插件的强大之处。无论是需要保存日常浏览的文章、处理无法复制内容的飞书文档，还是想收藏网络小说的精彩章节，它都能轻松应对，一键将网页内容转化为结构化的 **Markdown** 文档。
 
 这种高效的知识管理方式，不仅彻底解决了传统“手动复制粘贴”的繁琐和低效，更让我们的信息收集和整理工作变得前所未有的流畅。它不仅仅是一个工具，更是我们个人知识库的得力助手，帮助我们把碎片化的信息系统地沉淀下来。
-
-希望这篇文章对您有所收获，请不要吝惜您的支持——**点赞、转发、在看**，都是对我最大的鼓励与认可。
-
-感谢您的陪伴与共鸣，让我们共同期待更多优秀的作品诞生！

@@ -35,135 +35,135 @@ category: "blog"
 
 ## digitalplat域名注册
 
-## 一、简介
+### 一、简介
 
 网址：<https://digitalplat.org/（最大的优点是访问不需要魔法）>
 
 概要：该公司是一个非营利性组织，致力于创建和支持创新性的开源及非营利项目，以改变世界。
 
-## 二、注册账号
+### 二、注册账号
 
 废话少说，我们一起来看看怎么在上面注册一个账号，详细步骤如下：
 
-### 步骤1
+步骤1
 
-![图片](/images/blog/tutorials/3.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/3.jpg)
 
-### 步骤2
+步骤2
 
 点击截图中左边免费套餐底部的超链接进入域名注册页面
 
-![图片](/images/blog/tutorials/4.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/4.jpg)
 
-### 步骤3
+步骤3
 
 注：这里输入框可以检测域名是否已经注册；左下角按钮可以注册账号
 
-![图片](/images/blog/tutorials/5.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/5.jpg)
 
-### 步骤4
+步骤4
 
 点击"REGISTER A NEW DOMAIN"按钮进入如下的页面，这里我们可以使用2种方式来进行注册
 
-![图片](/images/blog/tutorials/6.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/6.jpg)
 
-### 步骤5
+步骤5
 
 例如我这里点击"Sign up"，在表单中输入用户名、邮箱(任意输入一个自己的邮箱)、密码等等，点击提交
 
 下面表单中各种数据生成可以使用<https://www.fakexy.com/来生成>
 
-![图片](/images/blog/tutorials/7.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/7.jpg)
 
-### 步骤6
+步骤6
 
 打开qq邮箱，会看到一个链接，点击该链接激活此账号即可
 
-![图片](/images/blog/tutorials/8.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/8.jpg)
 
-### 步骤7
+步骤7
 
 在步骤6中激活此账号后，回到步骤4所在的页面，输入邮箱和密码即可登陆成功，接着进入如下的页面，这里需要选择github账号授权
 
-![图片](/images/blog/tutorials/9.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/9.jpg)
 
-![图片](/images/blog/tutorials/10.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/10.jpg)
 
-### 步骤8
+步骤8
 
 回到页面<https://dash.domain.digitalplat.org/panel/main?page=%2Fpanel%2Foverview，如下>
 
-![图片](/images/blog/tutorials/11.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/11.jpg)
 
-### 步骤9
+步骤9
 
 star前面步骤中的开源项目，就是下图中项目，右上角红色框内点击一下
 
-![图片](/images/blog/tutorials/12.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/12.jpg)
 
-### 步骤10
+步骤10
 
 点击步骤8中"click here to verify"进行验证并获得一个免费的域名注册的资格
 
-![图片](/images/blog/tutorials/13.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/13.jpg)
 
-### 步骤11
+步骤11
 
 刷新步骤8中的页面，我们会发现当前我们最大可以获得2个免费的域名
 
-![图片](/images/blog/tutorials/14.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/14.jpg)
 
-## 三、注册域名
+### 三、注册域名
 
-### 步骤1
+步骤1
 
 点击左侧菜单栏的"Domain Registration"，进入域名注册页面
 
-![图片](/images/blog/tutorials/15.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/15.jpg)
 
-### 步骤2
+步骤2
 
 例如在输入框中输入hello，选择合适后缀，点击底下的按钮，发现域名被注册了
 
-![图片](/images/blog/tutorials/16.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/16.jpg)
 
-![图片](/images/blog/tutorials/17.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/17.jpg)
 
-### 步骤3
+步骤3
 
 在上面输入框中输入moontvs，选择后缀，域名未被注册，那么我们就可以进入到域名dns解析配置表单中
 
-![图片](/images/blog/tutorials/18.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/18.jpg)
 
 注：注意如果点击检查域名是否被注册后出现的页面与底下的页面不一致（如果该页面底部按钮上方还多了一行输入什么yg key之类的），那么赶紧退回来重新注册一个域名（那个啥yg key之类的是要付费的）
 
-![图片](/images/blog/tutorials/19.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/19.jpg)
 
-### 步骤4
+步骤4
 
 这里我需要在cloudflare中注册这个域名，如下：
 
-![图片](/images/blog/tutorials/20.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/20.jpg)
 
 选择第一个"免费计划"
 
-![图片](/images/blog/tutorials/21.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/21.jpg)
 
-### 步骤5
+步骤5
 
 在该页面中，我们可以继续点击页面底部的按钮
 
-![图片](/images/blog/tutorials/22.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/22.jpg)
 
-![图片](/images/blog/tutorials/23.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/23.jpg)
 
-### 步骤6
+步骤6
 
 复制上面步骤中红色框内的dns解析服务器地址并粘贴到步骤3的表单中，再点击页面底部的注册按钮
 
-![图片](/images/blog/tutorials/24.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/24.jpg)
 
-![图片](/images/blog/tutorials/25.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/25.jpg)
 
 到这里，这个域名就注册成功啦！接着就是需要等待cloudflare上面dns域名解析生效了
 
@@ -175,35 +175,35 @@ star前面步骤中的开源项目，就是下图中项目，右上角红色框�
 
 打开cloudflare的"计算"菜单，如下
 
-![图片](/images/blog/tutorials/27.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/27.jpg)
 
 访问libreTV的右上角"访问"菜单验证该libreTV，
 
-![图片](/images/blog/tutorials/28.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/28.jpg)
 
 ### 二、设置
 
-#### 步骤1
+步骤1
 
 点击下图红色框内的链接
 
-![图片](/images/blog/tutorials/29.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/29.jpg)
 
-![图片](/images/blog/tutorials/30.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/30.jpg)
 
-#### 步骤2
+步骤2
 
 点击"自定义域"tab，点击右边的蓝色按钮，填写域名如下
 
-![图片](/images/blog/tutorials/31.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/31.jpg)
 
-#### 步骤3
+步骤3
 
 配置好之后，点击右下角的激活域，进入如下页面
 
-![图片](/images/blog/tutorials/33.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/33.jpg)
 
-#### 步骤4
+步骤4
 
 等待域名解析生效即可
 
@@ -211,12 +211,8 @@ star前面步骤中的开源项目，就是下图中项目，右上角红色框�
 
 该免费域名就被绑定到了这个libreTV上了！
 
-![图片](/images/blog/tutorials/34.jpg)
+![图片](/images/blog/tutorials/article-1764752851793/34.jpg)
 
 ## **最后**
 
 好了，到了这里您就知道如果我们在cloudflare上部署了libreTV或者moonTV，我们该怎么样来给它们注册免费域名并配置域名解析了！
-
-希望这篇文章对您有所收获，请不要吝惜您的支持——**点赞、转发、在看**，都是对我最大的鼓励与认可。
-
-感谢您的陪伴与共鸣，让我们共同期待更多优秀的作品诞生！

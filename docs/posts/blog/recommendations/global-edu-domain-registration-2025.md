@@ -15,7 +15,7 @@ category: "blog"
 
 您好，我是Hellos AI，一个10年+互联网从业者，现在专注于自媒体。希望我的文章能够为您带来更多精彩。如果您觉得我的文章对您有帮助，可以关注、点赞，谢谢！
 
-![图片](/images/blog/recommendations/2.jpg)
+![图片](/images/blog/recommendations/article-1764761239283/2.jpg)
 
 前面在<https://regery.com/上面我注册过pl后缀的教育域名，那对于世界上其他国家的教育域名该如何注册呢？>
 
@@ -68,7 +68,3 @@ category: "blog"
 | 26| *.edu.eg| 埃及| <https://regery.com/>|
 | 27| *.edu.kg| 吉尔吉斯斯坦| <https://regery.com/>|
 
-
-希望这篇文章对您有所收获，请不要吝惜您的支持——**点赞、转发、在看**，都是对我最大的鼓励与认可。
-
-感谢您的陪伴与共鸣，让我们共同期待更多优秀的作品诞生！

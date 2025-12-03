@@ -12,7 +12,7 @@ category: "blog"
 
 ---
 
-*您好，我是Hellos AI，一个10年+互联网从业者，现在专注于自媒体。希望我的文章能够为您带来更多精彩。如果您觉得我的文章对您有帮助，可以关注、点赞，谢谢！*![图片](/images/ai/tools/2.jpg)
+*您好，我是Hellos AI，一个10年+互联网从业者，现在专注于自媒体。希望我的文章能够为您带来更多精彩。如果您觉得我的文章对您有帮助，可以关注、点赞，谢谢！*![图片](/images/ai/tools/article-1764743945177/2.jpg)
 
 深夜，我发现ollama在它的openAPI上增加了一些免费顶级大模型！在我白嫖deepseek3分钟后，我发现了AI匿名世界的狂欢！想玩顶级大模型而又怕暴露隐私的朋友们，这波福利简直是为你们量身定做的，你们的春天到了！
 
@@ -20,7 +20,7 @@ category: "blog"
 
 ## ollama
 
-## 首先
+### 首先
 
 我们先来了解一下ollama的一些基本信息：
 
@@ -30,11 +30,11 @@ category: "blog"
 
 访问官网就能看到如下的界面，这个就是它了，一个羊驼！嗯，羊驼！它没有骂人哈！
 
-![图片](/images/ai/tools/4.jpg)
+![图片](/images/ai/tools/article-1764743945177/4.jpg)
 
 在知道了它的基本信息后，我们再来了解一下它有哪些特点哈：
 
-## 特点
+### 特点
 
 本地运行：本来原先ollama这个工具上线时它就是在个人电脑本地运行的，以命令行的方式或者web ui的方式操作；
 
@@ -64,13 +64,13 @@ category: "blog"
 
 进入官网后点击右上角的sign in，接着创建新账号，这里填写用户名、邮箱、密码就好了！
 
-![图片](/images/ai/tools/6.jpg)
+![图片](/images/ai/tools/article-1764743945177/6.jpg)
 
 在注册完成并登陆后，点击右上角的settings，如：
 
-![图片](/images/ai/tools/7.jpg)
+![图片](/images/ai/tools/article-1764743945177/7.jpg)
 
-![图片](/images/ai/tools/8.jpg)
+![图片](/images/ai/tools/article-1764743945177/8.jpg)
 
 在这个keys页面中，点击"Add API key"就可以新增token啦！新增完毕后记住要复制粘贴保存起来！
 
@@ -84,11 +84,11 @@ category: "blog"
 
 点击cherry studio左下角的小齿轮，进入模型服务页面，如：
 
-![图片](/images/ai/tools/10.jpg)
+![图片](/images/ai/tools/article-1764743945177/10.jpg)
 
 在这里选择ollama，进入ollama的设置页面，如下：
 
-![图片](/images/ai/tools/11.jpg)
+![图片](/images/ai/tools/article-1764743945177/11.jpg)
 
 把<https://ollama.com/这个官网域名粘贴到API地址输入框中，当然还有API密钥（就是前面步骤2中复制的api> key）
 
@@ -96,7 +96,7 @@ category: "blog"
 
 注:默认打开该页面时，这里会显示所有可以看到的模型，就是前面链接<https://ollama.com/v1/models返回的内容，就会显示在这里，我们把该页面右侧的加号全部点一下，变成这里看到的样子就好了>
 
-![图片](/images/ai/tools/12.jpg)
+![图片](/images/ai/tools/article-1764743945177/12.jpg)
 
 ### 二、测试
 
@@ -104,7 +104,7 @@ category: "blog"
 
 我可以点击如下截图中"检测"按钮，如果显示对勾就是验证通过，就可以正常使用！
 
-![图片](/images/ai/tools/13.jpg)
+![图片](/images/ai/tools/article-1764743945177/13.jpg)
 
 这样，我们的cherry studio就能够正常的链接到ollama服务器上的模型了
 
@@ -116,15 +116,15 @@ category: "blog"
 
 在聊天对话框上方点击进入模型切换对话框，这里我们可以选择deepseek-v3.1:671b
 
-![图片](/images/ai/tools/15.jpg)
+![图片](/images/ai/tools/article-1764743945177/15.jpg)
 
-![图片](/images/ai/tools/16.jpg)
+![图片](/images/ai/tools/article-1764743945177/16.jpg)
 
 我们给它发送消息后，它能够正常的进行应答，非常好，说明它能够使用了！
 
 ### 二、越狱
 
-![图片](/images/ai/tools/17.jpg)
+![图片](/images/ai/tools/article-1764743945177/17.jpg)
 
 嗯，我只是简单的让它随便写了一段，感觉好像还过得去！这块想要让它写这些必须使用提示词越狱！否则它会拒绝！
 
@@ -137,9 +137,3 @@ category: "blog"
 ollama邪修虽好，可不要贪玩哟！
 
 注：想要越狱提示词的朋友可以关注我的公众号后，回复ollama越狱领取！
-
-喜欢这篇干货？点个赞、在看、转发三连，请不要吝惜您的支持，都是对我最大的鼓励与认可。
-
-后面我们一起探讨AI或一些软件更有意思的玩法，关注不迷路～我们，下次见！🚀
-
-***— END —

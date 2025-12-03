@@ -27,61 +27,57 @@ category: "blog"
 
 ## 操作方法
 
-## 一、打开网站
+### 一、打开网站
 
 网址：<https://wjxz.sh805.cn/index.php>
 
 复制上面的链接并打开，页面如下
 
-![图片](/images/blog/tutorials/3.jpg)
+![图片](/images/blog/tutorials/article-1764752678785/3.jpg)
 
-## 二、下载一个下载器
+### 二、下载一个下载器
 
 点击页面顶部的"教程"菜单，如下
 
-![图片](/images/blog/tutorials/4.jpg)
+![图片](/images/blog/tutorials/article-1764752678785/4.jpg)
 
 这里提供了2种下载客户端：a. windows客户端；b. 安卓客户端。这里我就以windows客户端为例来说明
 
-### 1.点击超链接"Motrix下载器"
+1.点击超链接"Motrix下载器"
 
-![图片](/images/blog/tutorials/5.jpg)
+![图片](/images/blog/tutorials/article-1764752678785/5.jpg)
 
 这里分为windows/macos/linux类型的客户端，点击universal按钮，下载通用型的windows客户端。
 
-### 2.安装
+2.安装
 
 下载到的是一个叫Motrix-Setup-1.8.19.exe的可执行程序，安装后打开就好了
 
-## 三、windows下载
+### 三、windows下载
 
-### 1.解析下载地址：
+1.解析下载地址：
 
 例如我找到了一个比较大的文件，下载链接是<https://pan.baidu.com/s/1g3j4XQ5AYU5N0zW\\_Ygc7Og?pwd=d2tu> ， 我们把这个链接粘贴到输入框种并点击"提取"按钮，得到如下的结果。
 
-![图片](/images/blog/tutorials/6.jpg)
+![图片](/images/blog/tutorials/article-1764752678785/6.jpg)
 
-### 2.设置
+2.设置
 
 底下红色框中有选项"Motrix电脑推荐"和"Aria2手机推荐"，这里我们保持默认即可
 
-![图片](/images/blog/tutorials/7.jpg)
+![图片](/images/blog/tutorials/article-1764752678785/7.jpg)
 
-### 3.下载
+3.下载
 
 点击左侧那一行的"下载"按钮，那么这个文件夹底下的所有文件就都被推送到前面步骤中我们安装的Motrix下载器中。
 
-![图片](/images/blog/tutorials/8.jpg)
+![图片](/images/blog/tutorials/article-1764752678785/8.jpg)
 
 打开"Motrix"的主界面，我们发现下载列表中有我们想要的文件，并且显示它们的下载速度、预估下载时长等等。例如这里所有这些文件它们的总下载速度是11.2MB/s，相比于使用百度网盘客户端那里几十kb的速度那已经是天壤之别了！
 
-![图片](/images/blog/tutorials/9.jpg)
+![图片](/images/blog/tutorials/article-1764752678785/9.jpg)
 
 ## **最后**
 
 你有张良计，我有过墙梯！你想要我们买会员，我就能找到避开你限速的工具。看你能拿我怎么样？
 最后还有一个最重要的要注意的地方就是：这个wjxz.sh805.cn网站它没有对各用户的数据做区分，所以您在下载文件时一定要注意隐私和安全问题！我们可以用它下载电影、音乐、软件等等，但是不要下载那种涉及泄露隐私的文件！切记切记！
-
-希望这篇文章对您有所收获，请不要吝惜您的支持——**点赞、转发、在看**，都是对我最大的鼓励与认可。
-
-感谢您的陪伴与共鸣，让我们共同期待更多优秀的作品诞生！

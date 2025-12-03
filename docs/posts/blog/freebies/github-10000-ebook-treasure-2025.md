@@ -12,7 +12,7 @@ category: "blog"
 
 ---
 
-![图片](/images/blog/freebies/2.jpg)
+![图片](/images/blog/freebies/article-1764759102667/2.jpg)
 
 晚上闲来无事，再github上翻到一个电子书宝库，1万+的免费书籍让我如获至宝！从樊登读书到微信阅读，从京东读书到喜马拉雅，覆盖了市面上几乎所有主流的读书APP，并且全部免费！这可是省下不老少订阅费，爱书又怕剁手的你，这波福利简直是喂到嘴边了！
 
@@ -30,36 +30,34 @@ category: "blog"
 
 当前书籍索引如下：
 
-![图片](/images/blog/freebies/3.jpg)
+![图片](/images/blog/freebies/article-1764759102667/3.jpg)
 
-![图片](/images/blog/freebies/4.jpg)
+![图片](/images/blog/freebies/article-1764759102667/4.jpg)
 
-![图片](/images/blog/freebies/5.jpg)
+![图片](/images/blog/freebies/article-1764759102667/5.jpg)
 
 例如，我想打开看看有哪些童话故事，可以在项目列表中搜索并点击：
 
-![图片](/images/blog/freebies/6.jpg)
+![图片](/images/blog/freebies/article-1764759102667/6.jpg)
 
 在这个页面中，我们可以选择例如《罗塞塔夫人》点击下载按钮；
 
 这里会进入到一个新页面，在该页面中我可以选择普通下载，这样就能够下载到我需要的电子书了！
 
-![图片](/images/blog/freebies/7.jpg)
+![图片](/images/blog/freebies/article-1764759102667/7.jpg)
 
 下载完毕后解压，得到如下的文件，如：
 
-![图片](/images/blog/freebies/8.jpg)
+![图片](/images/blog/freebies/article-1764759102667/8.jpg)
 
 这里我使用readest打开这些文件如：
 
-![图片](/images/blog/freebies/9.jpg)
+![图片](/images/blog/freebies/article-1764759102667/9.jpg)
 
+
+## 写在最后
 好了，到这里我们就能够顺利的阅读这些读书APP上的书籍了！
 
 看到这，相信大家已经知道该怎么从这个宝库中寻找和下载电子书了。
 
 怎么样？这波GitHub电子书宝库，省下千元订阅，打开了阅读的乌托邦！爱书的你，快去解锁属于你的私人图书馆，评论区晒晒你的“战利品”吧！
-
-喜欢这篇干货？点个赞、在看、转发三连，请不要吝惜您的支持，都是对我最大的鼓励与认可
-
-后面我们一起探讨AI或一些软件更有意思的玩法，关注不迷路～我们，下次见！🚀

@@ -12,7 +12,7 @@ category: "blog"
 
 ---
 
-![Image](/images/blog/tutorials/1.jpg)***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***
+![Image](/images/blog/tutorials/article-1764748234505/1.jpg)***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***
 
 问大家一个问题，当你需要某个素材或者想了解某个知识你都去哪里搜？
 
@@ -30,12 +30,11 @@ category: "blog"
 
 这个时候搜索方法就是我们普通人最强外挂，它决定了我们获取信息的效率和质量。
 
-![图片](/images/blog/tutorials/2.jpg)
+![图片](/images/blog/tutorials/article-1764748234505/2.jpg)
 
 今天这篇文章主要讲怎么高效地找到我们想要的内容。一定要看到最后，可以帮你守好钱袋子。
 
-
-## 常用搜索语法
+## 01常用搜索语法
 
 ### 1.用双引号""包裹限定搜索关键词
 
@@ -45,11 +44,11 @@ category: "blog"
 
 举例：在搜索框中输入：苏炳甜，当我不加双引号的时候，它会搜索出苏炳添和苏炳甜的信息共6214条。
 
-![图片](/images/blog/tutorials/3.jpg)
+![图片](/images/blog/tutorials/article-1764748234505/3.jpg)
 
 当我把关键词用双引号扣起来的时候它就优先搜索“苏炳甜”的信息。
 
-![图片](/images/blog/tutorials/4.jpg)
+![图片](/images/blog/tutorials/article-1764748234505/4.jpg)
 
 ### 2.intitle 、allintitle限定标题
 
@@ -59,7 +58,7 @@ allintitle:关键词1 关键词2 限定搜索网页标题中含多个关键词�
 
 举例：在搜索框中输入： intitle:AI时代，就会搜索出标题中包含“AI时代”这个关键词的网页。
 
-![图片](/images/blog/tutorials/5.jpg)
+![图片](/images/blog/tutorials/article-1764748234505/5.jpg)
 
 ### 3. intext 限定内容
 
@@ -67,7 +66,7 @@ allintitle:关键词1 关键词2 限定搜索网页标题中含多个关键词�
 
 举例：在搜索框输入： intext:新白娘子传奇童年回忆，返回所有正文包含”新白娘子传奇 童年 回忆”的网页。
 
-![图片](/images/blog/tutorials/6.jpg)
+![图片](/images/blog/tutorials/article-1764748234505/6.jpg)
 
 ### 4.inurl 限定网址
 
@@ -75,9 +74,9 @@ allintitle:关键词1 关键词2 限定搜索网页标题中含多个关键词�
 
 举例：在搜索框中输入: intext:新白娘子传奇 inurl:cctv,将返回网址中含有cctv网址的关于新白娘子传奇的网页。
 
-![图片](/images/blog/tutorials/7.jpg)
+![图片](/images/blog/tutorials/article-1764748234505/7.jpg)
 
-![图片](/images/blog/tutorials/8.jpg)
+![图片](/images/blog/tutorials/article-1764748234505/8.jpg)
 
 ### 5. site限定网站
 
@@ -87,7 +86,7 @@ allintitle:关键词1 关键词2 限定搜索网页标题中含多个关键词�
 
 如果你想考某个学校的研究生或者了解某个学校的相关信息就可以使用这个搜索语法快速找到自己想要的一手信息。
 
-![图片](/images/blog/tutorials/9.jpg)
+![图片](/images/blog/tutorials/article-1764748234505/9.jpg)
 
 ### 6.filetype 限定文件类型
 
@@ -95,39 +94,39 @@ allintitle:关键词1 关键词2 限定搜索网页标题中含多个关键词�
 
 举例：在搜索框输入： 大语言模型 filetype:pdf 返回大语言模型相关的pdf文档的网页，点击
 
-![图片](/images/blog/tutorials/10.jpg)
+![图片](/images/blog/tutorials/article-1764748234505/10.jpg)
 
 点击“大语言模型算法演进综述”，打开该pdf文档，在右上角点击“下载”或“打印”图标可以直接进行下载或打印。
 
-![图片](/images/blog/tutorials/11.jpg)
+![图片](/images/blog/tutorials/article-1764748234505/11.jpg)
 
 除了pdf文档，还可以搜索word、pdf、 ppt、 excel 、rtf 、png jpge等类型的文档。
 
-## 直奔信息源头
+## 02直奔信息源头
 
 在这个信息爆炸的时代，我们早就不是信息匮乏，而是信息过载。加上各种营销号搬运加工有些信息已经成了十八手信息。那么一手信息就显得尤为重要。
 
 最近我老婆看上一款何首乌眉笔，产品宣传的是这款眉笔融入首乌、忍冬花花植精粹，产品温和无刺激。
 
-![图片](/images/blog/tutorials/12.jpg)
+![图片](/images/blog/tutorials/article-1764748234505/12.jpg)
 
-![图片](/images/blog/tutorials/13.jpg)
+![图片](/images/blog/tutorials/article-1764748234505/13.jpg)
 
 我忍不住手贱就去搜了一下，也想治一治我家那位一听美妆博主吹捧两句就容易上头的队友。
 
 大家都知道化妆品是需要进行备案的，于是我去搜了国产普通化妆品备案信息，找到“国产普通化妆品备案信息”官网以及这款产品的备案编号（一般商品详情页面就可以查到）。
 
-![图片](/images/blog/tutorials/14.jpg)
+![图片](/images/blog/tutorials/article-1764748234505/14.jpg)
 
-![图片](/images/blog/tutorials/15.jpg)
+![图片](/images/blog/tutorials/article-1764748234505/15.jpg)
 
 点击查询就可以查看到这款产品的成分信息。
 
-![图片](/images/blog/tutorials/16.jpg)
+![图片](/images/blog/tutorials/article-1764748234505/16.jpg)
 
 下图是我国化妆品配方填写标准和丁基羟甲苯可添加的最大限量。
 
-![图片](/images/blog/tutorials/17.jpg)
+![图片](/images/blog/tutorials/article-1764748234505/17.jpg)
 
 丁羟甲苯是一种抗氧化剂，按照国家的添加标准是0.15%也就是说这款眉笔的何首乌含量是低于0.15%的，因为丁羟甲苯可添加的上限是0.15%，而在成分表中何首乌排在丁羟甲苯后面。
 
@@ -139,22 +138,8 @@ allintitle:关键词1 关键词2 限定搜索网页标题中含多个关键词�
 
 这个方法同样也适用于其他方面一手源头资料的获取，这样获取到的信息准确性是最高的。
 
-## 写在最后
+## 03写在最后
 
 不要小瞧了这个搜索技能，以后高效、精准地获取信息，将成为一个人最底层的竞争力。
 
 人与人之间的差距，其实是信息差。而信息差的背后，是获取一手信息和获取信息效率的差距。
-
-我不生产工具，我只是好工具的搬运工。
-
-**关注杰哥不迷路**，每天给你分享不一样的实用好工具。
-
-免责声明：本公众号分享的内容以及软件等来自互联网，仅供大家学习交流，同时请遵守你当地的法律法规，否则造成的一切后果自负，与本公众号无关。如有侵权联删！部分知识难免有时效性，若内容过期失效，请见谅,感谢！
-
-******喜欢这篇干货？如果觉得不错，请帮我一键三连，转发给您的朋友，都是对我最大的鼓励与认可。******如果想第一时间收到推送，可以把我的公众号加个星标🌟方便后面我们一起探讨AI或有意思的东西，还能够快速找到我！我们明天见！******—*****END*****—******图 | 来源网络侵删******欢迎点赞，在看，转发给我鼓励\~******👇👇关注我👇👇******👇👇扫码加入粉丝群领取福利👇👇***
-
-长按识别二维码即可免费领取👆体验卡完全免费，进群学习一波肯定不亏。
-
-![图片](/images/blog/tutorials/20.jpg)
-
-![图片](/images/blog/tutorials/21.jpg)

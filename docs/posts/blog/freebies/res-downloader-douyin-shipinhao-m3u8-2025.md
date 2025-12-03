@@ -12,9 +12,9 @@ category: "blog"
 
 ---
 
-![Image](/images/blog/freebies/1.jpg)
+![Image](/images/blog/freebies/article-1764754207240/1.jpg)
 
-![图片](/images/blog/freebies/2.jpg)
+![图片](/images/blog/freebies/article-1764754207240/2.jpg)
 
 什么？这个工具啥都能下载！有这么神奇嘛？
 
@@ -22,112 +22,104 @@ category: "blog"
 
 下面我们一起来看看它是否有描述的这么强大吧！
 
-## 01简介
-### 概要
+## 一、简介
+
+### 01概要
 
 这是一款基于go+wails开发的跨平台下载工具。它界面美观、操作简单，支持多种资源的嗅探和下载，并且源代码开源在github上，到现在为止项目获得11.4k star！这都表明它的受欢迎程度！
 
-项目地址：https://github.com/putyy/res-downloader
-有兴趣的朋友可以下载代码研究研究。
+项目地址：<https://github.com/putyy/res-downloader，有兴趣的朋友可以下载代码研究研究。>
 
-## 02下载
+### 02下载
 
-github地址：https://github.com/putyy/res-downloader/releases
+github地址：<https://github.com/putyy/res-downloader/releases>
 
-夸克地址：https://pan.quark.cn/s/34ec1da35e0e
+夸克地址：<https://pan.quark.cn/s/34ec1da35e0e>
 
-## 03安装
+### 03安装
 
-例如，我是windows电脑，下载res-downloader\_3.1.2\_win\_amd64.exe后，双击进行安装。
+例如，我是windows电脑，下载res-downloader_3.1.2_win_amd64.exe后，双击进行安装。
 
 在桌面上找到快捷方式用鼠标右键选择管理员打开它，然后界面如下：
 
 下面，我们一起来看看它到底怎么使用吧！看看它到底有没有号称的那么神奇呢！
 
-## 04体验
+## 二、体验
 
 这里我以我们大家在娱乐和工作种用得比较多得这些视频等平台为例
 
 ### 01启动设置
 
-###### 启动代理：
+启动代理：
 
-![图片](/images/blog/freebies/4.jpg)
+![图片](/images/blog/freebies/article-1764754207240/4.jpg)
 
 点击该按钮后，就开始抓取资源，它进入工作状态
 
-![图片](/images/blog/freebies/5.jpg)
+![图片](/images/blog/freebies/article-1764754207240/5.jpg)
 
 设置过滤：例如，我只想抓取视频，那么我在"抓取类型"中可以选择抓取所有，在类型中过滤出视频就好了！
 
-![图片](/images/blog/freebies/6.jpg)
+![图片](/images/blog/freebies/article-1764754207240/6.jpg)
 
 好了，它已经设置好了，下面我们开始抓取视频
 
-### 视频号
+### 02视频号
 
 像前几天有一个粉丝朋友说他想下载视频号中得视频，当时我还没有发现这个工具，所以给它推荐得我之前文章中写过得工具。现在这个工具就是一次安装，全平台可用，不用特地安装指定平台得下载工具了，这就方便很多了。
 
-![图片](/images/blog/freebies/7.jpg)
+![图片](/images/blog/freebies/article-1764754207240/7.jpg)
 
 这里，我们可以根据描述中得视频标题找到目标视频，接着点击右侧得"下载"图标，下载到该视频，如：
 
-![图片](/images/blog/freebies/8.jpg)
+![图片](/images/blog/freebies/article-1764754207240/8.jpg)
 
 这样，我们就可以下载到目标视频了，接着我们继续看！
 
-### 抖音
+### 03抖音
 
 例如我发现了一个搞笑的视频，我想下载并保存起来，它同样能大显身手！
 
-![图片](/images/blog/freebies/9.jpg)
+![图片](/images/blog/freebies/article-1764754207240/9.jpg)
 
 抓取后结果如上，接着我们下载看看：
 
-![图片](/images/blog/freebies/10.jpg)
+![图片](/images/blog/freebies/article-1764754207240/10.jpg)
 
 注：不过对于抖音里面的视频，它下载会分开成视频、音频，所以需要我们使用视频剪辑工具把视频、音频合并到一起才行；
 
-### 酷狗音乐
+### 04酷狗音乐
 
 在想听音乐时，我们也可以用它来进行下载，例如：
 
-![图片](/images/blog/freebies/11.jpg)
+![图片](/images/blog/freebies/article-1764754207240/11.jpg)
 
 下载后的音频文件如下：
 
-![图片](/images/blog/freebies/12.jpg)
+![图片](/images/blog/freebies/article-1764754207240/12.jpg)
 
-### 下载小程序内资源
+### 05下载小程序内资源
 
 例如发现某个小程序的视频很好，这里我们想下载，通过这个下载器就抓到了它的视频地址，这里我们复制这个地址后到其他下载器中下载
 
-![图片](/images/blog/freebies/13.jpg)
+![图片](/images/blog/freebies/article-1764754207240/13.jpg)
 
 把它的视频地址复制到如<https://m3u8downloaders.com/start.html>
 
 里面去进行下载，就得到了如下的视频：
 
-![图片](/images/blog/freebies/14.jpg)
+![图片](/images/blog/freebies/article-1764754207240/14.jpg)
 
-### 下载图片
+### 06下载图片
 
 例如我看到一张很漂亮的图片，但是它不允许下载，这里我就可以通过它来抓取（最好在类型中设置图片进行过滤），如：
 
-![图片](/images/blog/freebies/15.jpg)
+![图片](/images/blog/freebies/article-1764754207240/15.jpg)
 
 最终图片如下：
 
-![图片](/images/blog/freebies/16.jpg)
+![图片](/images/blog/freebies/article-1764754207240/16.jpg)
 
 ## 写在最后
 
 在亲身体验了它的神奇之处后，我就把电脑中那些这个专属下载器、那个专属下载器都卸载掉了。从此之后，不管是视频号、抖音视频或者酷狗的音乐、小程序中的视频或图片，只要能打开的，它都能够精准的嗅探到，一键打包带走！
-
-我不生产工具，我只是好工具的搬运工。
-
-**关注杰哥不迷路**，每天给你分享不一样的实用好工具。
-
-免责声明：本公众号分享的内容以及软件等来自互联网，仅供大家学习交流，同时请遵守你当地的法律法规，否则造成的一切后果自负，与本公众号无关。如有侵权联删！部分知识难免有时效性，若内容过期失效，请见谅,感谢！
-
-******喜欢这篇干货？如果觉得不错，请帮我一键三连，转发给您的朋友，都是对我最大的鼓励与认可。******如果想第一时间收到推送，可以把我的公众号加个星标🌟方便后面我们一起探讨AI或有意思的东西，还能够快速找到我！我们明天见！******—*****END*****—******图 | 来源网络侵删******欢迎点赞，在看，转发给我鼓励\~******👇👇关注我👇👇******👇👇扫码加入粉丝群领取福利👇👇***

@@ -13,17 +13,17 @@ category: "blog"
 
 ---
 
-![Image](/images/blog/tutorials/1.jpg)***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***
+![Image](/images/blog/tutorials/article-1764748489161/1.jpg)***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***
 
 今天这篇文章给各位小伙伴分享一个非常不错的用于临时分享一些文件的网盘。
 
 这个网盘它不需要登录，不需要注册，非常适合上传一些临时文件，特别是大文件。
 
-## BestFile介绍
+## 一、BestFile介绍
 
-## **BestFile是国外的一个存储网站，它提供免费文件上传和共享服务，具有无限存储空间，每个文件上传**可**高达 5GB。**
+BestFile是国外的一个存储网站，它提供免费文件上传和共享服务，具有无限存储空间，每个文件上传**可**高达 5GB。
 
-![图片](/images/blog/tutorials/2.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/2.jpg)
 
 
 
@@ -31,23 +31,24 @@ category: "blog"
 
 虽然是国外网站但不需要魔法。
 
-## BestFile不注册如何使用
+
+## 二、BestFile不注册如何使用
 
 打开网址<https://bestfile.io/en> ，我们看到这是一个全英文的网站，可以点击页面又上角的地球图标设置网站语言，但只支持4中语言，没有中文。
 
-![图片](/images/blog/tutorials/3.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/3.jpg)
 
 不过问题不大，我们可以通过浏览器的插件翻译成中文。
 
-### 01 上传单个文件
+### 01上传单个文件
 
 点击页面下方的“upload”上传文件。
 
-![图片](/images/blog/tutorials/4.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/4.jpg)
 
 选择需要上传的文件进行上传。
 
-![图片](/images/blog/tutorials/5.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/5.jpg)
 
 我们发现页面左上角有一个说明:不注册的用户能够上传的最大文件大小是2GB 文件可用时间是25 天；注册用户上传的最大文件大小是 5GB，文件可用时间无限期。
 
@@ -55,21 +56,21 @@ category: "blog"
 
 （ps:时间可以稍微设长一丢丢，不要用默认时间，不然很快文件就被删除了，当别人拿到下载链接的时候文件已经被删除就无法下载了）
 
-![图片](/images/blog/tutorials/6.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/6.jpg)
 
 设置好自动删除时间后，点击“Upload”按钮
 
-![图片](/images/blog/tutorials/7.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/7.jpg)
 
 上传成功之后，会生成两个链接地址，一个是预览地址，一个是下载地址。
 
-![图片](/images/blog/tutorials/8.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/8.jpg)
 
 ### 02预览文件
 
 如果需要预览文件，可以复制预览链接，在一个新的页面中粘贴复制的链接进行预览。
 
-![图片](/images/blog/tutorials/9.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/9.jpg)
 
 点击预览页面右上角的“share”按钮可以将文件分享到Facebook、Twitter（当然这需要魔法）
 
@@ -79,78 +80,72 @@ category: "blog"
 
 如果下载文件就复制下载链接，在一个新的页面中粘贴复制的链接进行下载。
 
-![图片](/images/blog/tutorials/10.jpg)**04**上传多个文件
+![图片](/images/blog/tutorials/article-1764748489161/10.jpg)
+
+### 04上传多个文件
 
 如果需要上传多个文件，在选择了第一上传的文件之后，页面上方会有一个“Upload more”的链接
 
-![图片](/images/blog/tutorials/11.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/11.jpg)
 
 点击这个链接，选择需要上传的第二个文件。（一次最多可上传5个文件）
 
-![图片](/images/blog/tutorials/12.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/12.jpg)
 
 选择自动删除文件的时间后，点击“upload”上传。
 
-![图片](/images/blog/tutorials/13.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/13.jpg)
 
 上传完成后会为每个文件生成下载链接。
 
-![图片](/images/blog/tutorials/14.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/14.jpg)
 
 第二个文件是一个mp4文件，点击“View File ”可以查看文件
 
-![图片](/images/blog/tutorials/15.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/15.jpg)
 
 可以在线观看文件
 
-![图片](/images/blog/tutorials/16.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/16.jpg)
 
 点击视频右下角的三个小点，可以进行下载（下载不会因为不是会员而限速）。
 
 其他操作与单个文件相同，这里就不再赘述。
 
-## BestFile注册用户如何使用
+## 三、BestFile注册用户如何使用
 
 打开网址<https://bestfile.io/en> ，点击页面右上角的“sign up”进行注册。
 
-![图片](/images/blog/tutorials/17.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/17.jpg)
 
 进入注册页面，填写个人信息，点击“continue”。
 
-![图片](/images/blog/tutorials/18.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/18.jpg)
 
 它会给你在注册页面填写的邮箱发送邮件。
 
-![图片](/images/blog/tutorials/19.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/19.jpg)
 
 前往邮箱查看邮件，点击邮件中红框标注的按钮，验证邮箱。
 
-![图片](/images/blog/tutorials/20.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/20.jpg)
 
 邮箱验证通过后进入BestFile的管理页面，可以看到网盘空间是无限大（不要太香，O(∩\_∩)O哈哈\~）。
 
-![图片](/images/blog/tutorials/21.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/21.jpg)
 
 点击页面右上角的“Upload”按钮上传文件。
 
-![图片](/images/blog/tutorials/22.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/22.jpg)
 
 点击“Auto delete file ”下拉列表，设置自动删除文件时长。
 
 在自动删除文件选项中多了文件保存时长1\~6个月和不自动删除的选项。也就是说注册用户可以永久保存文件。
 
-![图片](/images/blog/tutorials/23.jpg)
+![图片](/images/blog/tutorials/article-1764748489161/23.jpg)
 
 后面的上传、下载、预览操作与未注册用户的操作一样，这里就不再赘述。
 
-## 写在最后
+## 四、写在最后
 
 如果你因为没有安装注册网盘而无法分享、下载文件或者你被某度网盘几十KB的下载速度折磨到想砸电脑时；别忘了我们还有一个永远免费、免注册、免登录的“网盘Plan B”。
-
-我不生产工具，我只是好工具的搬运工。
-
-**关注杰哥不迷路**，每天给你分享不一样的实用好工具。
-
-免责声明：本公众号分享的内容以及软件等来自互联网，仅供大家学习交流，同时请遵守你当地的法律法规，否则造成的一切后果自负，与本公众号无关。如有侵权联删！部分知识难免有时效性，若内容过期失效，请见谅,感谢！
-
-******喜欢这篇干货？如果觉得不错，请帮我一键三连，转发给您的朋友，都是对我最大的鼓励与认可。******如果想第一时间收到推送，可以把我的公众号加个星标🌟方便后面我们一起探讨AI或有意思的东西，还能够快速找到我！我们明天见！******—*****END*****—******图 | 来源网络侵删******欢迎点赞，在看，转发给我鼓励\~******👇👇关注我👇👇******👇👇扫码加入粉丝群领取福利👇👇***

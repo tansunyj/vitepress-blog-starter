@@ -14,7 +14,7 @@ category: "blog"
 
 您好，我是Hellos AI，一个10年+互联网从业者，现在专注于自媒体。希望我的文章能够为您带来更多精彩。如果您觉得我的文章对您有帮助，可以关注、点赞，谢谢！
 
-![图片](/images/blog/recommendations/2.jpg)
+![图片](/images/blog/recommendations/article-1764763516283/2.jpg)
 
 [教育邮件服务器搭建手把手教程：购买域名](https://mp.weixin.qq.com/s?__biz=MzUyMjEyMDcyOQ==\&mid=2247491914\&idx=1\&sn=94ef9163116f82e5bbf98b0c8de1de7e\&scene=21#wechat_redirect)
 
@@ -30,11 +30,11 @@ category: "blog"
 
 1.仅接收邮件？2.发送+接收邮件？
 
-## 一、仅接收邮件
+### 一、仅接收邮件
 
 如果说仅接收邮件，在不考虑用户数量的情况下，2C2G的服务器大体上也能用，该邮件服务器的各组件都能正常部署和运行。
 
-## 二、发送+接收邮件
+### 二、发送+接收邮件
 
 如果说还要发送邮件，那就需要考虑另外一个问题，该服务器默认禁用掉25端口了嘛？！该服务器默认禁用掉25端口了嘛？！该服务器默认禁用掉25端口了嘛？！
 
@@ -50,43 +50,43 @@ category: "blog"
 
 当然最好是能白嫖或者有优惠活动，但是这些可遇不可求！
 
-1. 1.阿里云
+### 1.阿里云
 
 阿里云作为国内云厂商NO1，当然我们可以先去看看：
 
-![图片](/images/blog/recommendations/5.jpg)
+![图片](/images/blog/recommendations/article-1764763516283/5.jpg)
 
-![图片](/images/blog/recommendations/6.jpg)
+![图片](/images/blog/recommendations/article-1764763516283/6.jpg)
 
 嗯，价格杠杠的，价格最便宜也要550以上，我们可以继续看其他厂商的！
 
-1. 2.腾讯云
+### 2.腾讯云
 
-![图片](/images/blog/recommendations/7.jpg)
+![图片](/images/blog/recommendations/article-1764763516283/7.jpg)
 
 这个腾讯云的价格更高，所以我们还要继续找！
 
-1. 3.阿里云国际版
+### 3.阿里云国际版
 
-![图片](/images/blog/recommendations/8.jpg)
+![图片](/images/blog/recommendations/article-1764763516283/8.jpg)
 
 嗯，一个月26刀合2200多，更贵了！
 
-1. 4.hetzner
+### 4.hetzner
 
-![图片](/images/blog/recommendations/9.jpg)
+![图片](/images/blog/recommendations/article-1764763516283/9.jpg)
 
 看到这个上面2C4G的机器一个月最低3.79欧，一年大约是384人民币；但是机器在德国和芬兰
 
-1. 5.SIMPLECLOUD
+### 5.SIMPLECLOUD
 
-![图片](/images/blog/recommendations/10.jpg)
+![图片](/images/blog/recommendations/article-1764763516283/10.jpg)
 
 一个月38刀，一年人民币3200多，太贵了，比阿里云那些还要贵！
 
-1. 6.SURFERCLOUD
+### 6.SURFERCLOUD
 
-![图片](/images/blog/recommendations/11.jpg)
+![图片](/images/blog/recommendations/article-1764763516283/11.jpg)
 
 这个云服务器打折后一年42刀，合300多点！
 
@@ -98,30 +98,26 @@ b.支持中文界面；
 
 c.禁用25端口
 
-1. 7.华纳云
+### 7.华纳云
 
-![图片](/images/blog/recommendations/12.jpg)
+![图片](/images/blog/recommendations/article-1764763516283/12.jpg)
 
 打折后一年548人民币！
 
-1. 8.搬瓦工
+### 8.搬瓦工
 
-![图片](/images/blog/recommendations/13.jpg)
+![图片](/images/blog/recommendations/article-1764763516283/13.jpg)
 
 大名鼎鼎的搬瓦工，一年费用也不少也得700多人民币；
 
-1. 9.racknerd
+### 9.racknerd
 
-![图片](/images/blog/recommendations/14.jpg)
+![图片](/images/blog/recommendations/article-1764763516283/14.jpg)
 
 20刀一个月，一年也得1700多人民币；
 
-**最后**
+## **最后**
 
 就是说我们在考虑买服务器时要考虑如下的几个因素：1.目的：仅收邮件？收+发邮件？看是否要咨询25端口情况；2.价格，尽量物美价廉；3.支付方式：根据自己实际情况来；4.稳定性、可靠性、安全性：如果仅收验证码，那这块可以放低要求；5.用户：国内用户？国外用户？
 我自己选择的是surfercloud，因为在部署这个邮件服务器之前就购买了这个机器，不过我部署完邮件服务之后才发现25端口被禁，所以当前只能将错就错了！
 另外想要自己搭建邮件服务器的朋友们，想要发送邮件，那么在购买某服务器之前一定要咨询客服，看25端口是否被禁用！记住了！
-
-希望这篇文章对您有所收获，请不要吝惜您的支持——**点赞、转发、在看**，都是对我最大的鼓励与认可。
-
-感谢您的陪伴与共鸣，让我们共同期待更多优秀的作品诞生！

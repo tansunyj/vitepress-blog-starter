@@ -33,7 +33,7 @@ category: "blog"
 
 这里我们列举一下，看看他们各有什么优缺点，当然最主要的是看他们的价格和支付方式等等服务对我们是否友好！
 
-规模大的
+## 规模大的
 
 我们购买域名当然最主要的是这个域名服务商比较稳定、可靠，不能今天注册了过些天跑路了，那就悲催了！
 
@@ -41,7 +41,7 @@ category: "blog"
 
 ## 一、godaddy
 
-![图片](/images/blog/recommendations/3.jpg)
+![图片](/images/blog/recommendations/article-1764760957101/3.jpg)
 
 官网：<https://www.godaddy.com/>
 
@@ -57,7 +57,7 @@ category: "blog"
 
 ## 二、namecheap
 
-![图片](/images/blog/recommendations/4.jpg)
+![图片](/images/blog/recommendations/article-1764760957101/4.jpg)
 
 官网：<https://www.namecheap.com/>
 
@@ -73,7 +73,7 @@ category: "blog"
 
 ## 三、cloudflare
 
-![图片](/images/blog/recommendations/5.jpg)
+![图片](/images/blog/recommendations/article-1764760957101/5.jpg)
 
 官网：<https://dash.cloudflare.com/>
 
@@ -89,19 +89,19 @@ category: "blog"
 
 ## 四、个人选择：
 
-1. 对于价格不敏感的和技术不是那么好的朋友可以选择godaddy毕竟服务好有中文客服，支付方式完美；
+1.对于价格不敏感的和技术不是那么好的朋友可以选择godaddy毕竟服务好有中文客服，支付方式完美；
 
-2. 对于网站需要全球访问速度快安全性好，那么cloudflare是最好的选择，它强大的CDN实力在这；
+2.对于网站需要全球访问速度快安全性好，那么cloudflare是最好的选择，它强大的CDN实力在这；
 
-3. 另外cloudflare可以提供免费的DNS解析服务、邮件转发服务等，可以白嫖很多服务和功能，真是赛博活菩萨！
+3.另外cloudflare可以提供免费的DNS解析服务、邮件转发服务等，可以白嫖很多服务和功能，真是赛博活菩萨！
 
 注：我因为使用了namecheap（cloudflare仅作为域名解析服务商），所以说说我自己的体验，对于一些域名(某些特定后缀或包括某些关键字的域名)这个网站需要你成为会员用户才行或者根本就禁止注册，所以我个人选择多个域名服务商；
 
-规模中小型的
+## 规模中小型的
 
 ## 一、Porkbun
 
-![图片](/images/blog/recommendations/7.jpg)
+![图片](/images/blog/recommendations/article-1764760957101/7.jpg)
 
 官网：<https://porkbun.com/>
 
@@ -117,7 +117,7 @@ category: "blog"
 
 ## 二、namesilo
 
-![图片](/images/blog/recommendations/8.jpg)
+![图片](/images/blog/recommendations/article-1764760957101/8.jpg)
 
 官网：<https://www.namesilo.com/>
 
@@ -133,7 +133,7 @@ category: "blog"
 
 ## 三、Sav
 
-![图片](/images/blog/recommendations/9.jpg)
+![图片](/images/blog/recommendations/article-1764760957101/9.jpg)
 
 官网：<https://marketing.sav.com/>
 
@@ -149,7 +149,7 @@ category: "blog"
 
 ## 四、whois
 
-![图片](/images/blog/recommendations/10.jpg)
+![图片](/images/blog/recommendations/article-1764760957101/10.jpg)
 
 官网：<https://whois.com/>
 
@@ -165,7 +165,7 @@ category: "blog"
 
 ## 五、hostinger
 
-![图片](/images/blog/recommendations/11.jpg)
+![图片](/images/blog/recommendations/article-1764760957101/11.jpg)
 
 官网：<https://www.hostinger.com/domain-name-results>
 
@@ -179,11 +179,7 @@ category: "blog"
 
 支付：支持支付宝、贝宝、信用卡等多种支付方式；
 
-####
-
-####
-
-## 六、其他
+##六、其他
 
 其他就不一一介绍了，有兴趣的可以自己了解
 
@@ -193,26 +189,22 @@ category: "blog"
 
 官网
 
-1 [www.gandi.net](http://www.gandi.net)
+1[www.gandi.net](http://www.gandi.net)
 
-2 [www.name.com](http://www.name.com)
+2[www.name.com](http://www.name.com)
 
-3 [www.domain.com](http://www.domain.com)
+3[www.domain.com](http://www.domain.com)
 
-4 [www.dynu.com](http://www.dynu.com)
+4[www.dynu.com](http://www.dynu.com)
 
-5 [www.epik.com](http://www.epik.com)
+5[www.epik.com](http://www.epik.com)
 
-6 [www.internet.bs](http://www.internet.bs)
+6[www.internet.bs](http://www.internet.bs)
 
-7 [www.hover.com](http://www.hover.com)
+7[www.hover.com](http://www.hover.com)
 
-8 [www.njalla.com](http://www.njalla.com)
+8[www.njalla.com](http://www.njalla.com)
 
 ## **最后**
 
 当然还有很多域名服务商，这里就不一一列举了，有兴趣的可以自己去google上找！
-
-希望这篇文章对您有所收获，请不要吝惜您的支持——**点赞、转发、在看**，都是对我最大的鼓励与认可。
-
-感谢您的陪伴与共鸣，让我们共同期待更多优秀的作品诞生！

@@ -50,7 +50,7 @@ category: "blog"
 
 最终有play商店，这个APP很关键！
 
-03安装梯子或其他
+### 03安装梯子或其他
 
 安装谷歌安装器和梯子没有顺序，当然你想好一点，可以先安装梯子也可以！
 
@@ -144,7 +144,8 @@ https://policies.google.com/u/1/country-association-form?hl=zh_CN
 
 ```
 I am required to update my region to the new address in order to acquire the applications specific to that area. Thank you.
-```**04****更改年龄**
+```
+## 更改年龄
 
 我们使用邮箱来注册和登陆gemini官网时，偶尔会遇到报错的情况，如：
 
@@ -177,12 +178,3 @@ I am required to update my region to the new address in order to acqui
 好了，当我们个人有大量的gmail邮箱后，我们就可以实现google antigravity的多账号轮流使用了！
 
 毕竟antigravity一个账号能免费使用gemini3.0大模型的tokens有上限，我们有一批gmail邮箱，那么就可以组成账号池，每日轮流使用从而实现gemini3.0自由！
-
-
-我不生产工具，我只是好工具的搬运工。
-
-**关注杰哥不迷路**，每天给你分享不一样的实用好工具。
-
-免责声明：本公众号分享的内容以及软件等来自互联网，仅供大家学习交流，同时请遵守你当地的法律法规，否则造成的一切后果自负，与本公众号无关。如有侵权联删！部分知识难免有时效性，若内容过期失效，请见谅,感谢！
-
-******喜欢这篇干货？如果觉得不错，请帮我一键三连，转发给您的朋友，都是对我最大的鼓励与认可。******如果想第一时间收到推送，可以把我的公众号加个星标🌟方便后面我们一起探讨AI或有意思的东西，还能够快速找到我！我们明天见！******—*****END*****—******图 | 来源网络侵删******欢迎点赞，在看，转发给我鼓励\~******👇👇关注我👇👇******👇👇扫码加入粉丝群领取福利👇👇***

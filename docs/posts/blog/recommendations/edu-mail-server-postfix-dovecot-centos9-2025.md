@@ -30,15 +30,15 @@ category: "blog"
 
 在前面我们已经把centOS服务器上nginx、php、mysql都安装好之后，我们还要安装和配置postfix和dovecot。
 
-![图片](/images/blog/recommendations/2.jpg)
+![图片](/images/blog/recommendations/article-1764762812164/2.jpg)
 
-简介
+## 简介
 
 因为在CentOS/RHEL发行版中，Postfix和Dovecot是不默认安装到服务器中的，不过它们的安装包是包含在软件仓库中，可以很方便的通过rpm命令、yum命令来进行安装。
 
 ## 一、功能特点
 
-## 1、Postfix
+### 1、Postfix
 
 邮件传输代理：负责邮件的接受、路由和发送；
 
@@ -50,7 +50,7 @@ category: "blog"
 
 兼容性强：支持SMTP、SMTPS协议，能与多种MDA配合；
 
-## 2、Dovecot
+### 2、Dovecot
 
 **邮件投递代理(MDA)**：提供IMAP/POP3服务
 
@@ -66,16 +66,17 @@ category: "blog"
 
 ## 二、工作原理
 
-![图片](/images/blog/recommendations/4.jpg)
+![图片](/images/blog/recommendations/article-1764762812164/4.jpg)
 
 ## 1. 发送邮件（SMTP + 鉴权）
-## a.客户端连接 Postfix
+
+### a.客户端连接 Postfix
 
 i.客户端通过 SMTP（端口 25 或 587）连接到 Postfix。
 
 ii.若使用加密，客户端会发起 `STARTTLS` 命令。
 
-## b.Postfix 请求鉴权
+### b.Postfix 请求鉴权
 
 i.客户端发送 `AUTH LOGIN` 或 `AUTH PLAIN` 命令。
 
@@ -84,7 +85,7 @@ ii.Postfix 根据 `/etc/postfix/main.cf` 中的配置，将认证请求转发�
 ```
 smtpd_sasl_type=dovecot
 ```
-## c.Dovecot 处理认证
+### c.Dovecot 处理认证
 
 i.Dovecot 通过 Unix 套接字 `/var/spool/postfix/private/auth` 接收请求。
 
@@ -92,35 +93,36 @@ i.Dovecot 通过 Unix 套接字 `/var/spool/postfix/private/auth` 接收请求
 
 iii.返回认证结果给 Postfix。
 
-## d.邮件投递
+### d.邮件投递
 
 i.认证成功后，Postfix 接收邮件并存入队列。
 
 ii.Postfix 调用 Dovecot 的 LDA（本地投递代理）将邮件写入用户 `~/Maildir` 目录。
 
-####
-
 ## 2. 接收邮件流程（IMAP/POP3）
-
-## a.客户端连接 Dovecot
+  
+### a.客户端连接 Dovecot
 
 客户端通过IMAP（端口143/993）或POP3（端口110/995）链接到Dovecot 
 
 加密将连接会直接使用SSL（如993端口）
 
-## b.Dovecot独立鉴权
+### b.Dovecot独立鉴权
 dovecot直接验证用户身份(与SMTP认证共享同一套密码源)
-认证成功后，从用户\~/Maildir目录读取邮件列表或内容****c.返回邮件数据****dovecot将邮件内容通过IMAP/POP3协议返回给客户端**
+认证成功后，从用户~/Maildir目录读取邮件列表或内容
+
+### c.返回邮件数据
+dovecot将邮件内容通过IMAP/POP3协议返回给客户端
 
 ## Postfix安装配置
 
-## 一、安装
+### 一、安装
 
 ```
 ## 更新系统
 ```
 
-## 二、配置
+### 二、配置
 
 main.cf:配置如下(/etc/postfix/main.cf)
 
@@ -144,39 +146,39 @@ master.cf:配置如下(/etc/postfix/master.cnf)
 
 ## Dovecot安装配置
 
-## 一、安装
+### 一、安装
 
 ```
 ## 安装Dovecot及依赖
 ```
 
-## 二、配置
+### 二、配置
 
-### 1.主配置文件/etc/dovecot/dovecot.conf
+1.主配置文件/etc/dovecot/dovecot.conf
 
 ```
 [root@mydomain dovecot]# cat dovecot.conf 
 ```
 
-### 2.ssl证书配置/etc/dovecot/conf.d/10-ssl.conf
+2.ssl证书配置/etc/dovecot/conf.d/10-ssl.conf
 
 ```
 [root@mydomain conf.d]# cat 10-ssl.conf 
 ```
 
-### 3.邮件存储配置/etc/dovecot/conf.d/10-mail.conf
+3.邮件存储配置/etc/dovecot/conf.d/10-mail.conf
 
 ```
 mail_location = maildir:~/Maildir
 ```
 
-### 4.认证配置/etc/dovecot/conf.d/10-auth.conf
+4.认证配置/etc/dovecot/conf.d/10-auth.conf
 
 ```
 auth_mechanisms = plain login
 ```
 
-### 5.禁用dovecot的明文端口/etc/dovecot/conf.d/10-master.conf
+5.禁用dovecot的明文端口/etc/dovecot/conf.d/10-master.conf
 
 ```
 [root@mydomain conf.d]# cat 10-master.conf 
@@ -188,16 +190,12 @@ auth_mechanisms = plain login
 
 测试效果如下：1.接收邮件：这里我们可以使用gmail向该邮箱发送一封邮件：
 
-![图片](/images/blog/recommendations/8.jpg)
+![图片](/images/blog/recommendations/article-1764762812164/8.jpg)
 
-![图片](/images/blog/recommendations/9.jpg)
+![图片](/images/blog/recommendations/article-1764762812164/9.jpg)
 
 2.发送邮件
 
-![图片](/images/blog/recommendations/10.jpg)
+![图片](/images/blog/recommendations/article-1764762812164/10.jpg)
 
-![图片](/images/blog/recommendations/11.jpg)
-
-希望这篇文章对您有所收获，请不要吝惜您的支持——**点赞、转发、在看**，都是对我最大的鼓励与认可。
-
-感谢您的陪伴与共鸣，让我们共同期待更多优秀的作品诞生！
+![图片](/images/blog/recommendations/article-1764762812164/11.jpg)

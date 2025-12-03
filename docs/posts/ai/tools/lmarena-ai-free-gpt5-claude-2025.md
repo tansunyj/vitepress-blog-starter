@@ -14,7 +14,7 @@ category: "blog"
 
 您好，我是Hellos AI，一个10年+互联网从业者，现在专注于自媒体。希望我的文章能够为您带来更多精彩。如果您觉得我的文章对您有帮助，可以关注、点赞，谢谢！
 
-![图片](/images/ai/tools/2.jpg)
+![图片](/images/ai/tools/article-1764744569192/2.jpg)
 
 [别再到处找了！这个网站聚合了所有顶级AI，GPT-5、Claude免费畅玩，还不用“魔法”！](https://mp.weixin.qq.com/s?__biz=MzUyMjEyMDcyOQ==\&mid=2247492317\&idx=1\&sn=bd8a579bd304eaae0e123651da4a3f7e\&scene=21#wechat_redirect)
 
@@ -24,19 +24,19 @@ category: "blog"
 
 这一点非常遗憾，让大家无法去体验这些功能。这里经过我几天的努力的搜索，我又发现了一个新的网站，下面我将详细的介绍它！
 
-![图片](/images/ai/tools/3.jpg)
+![图片](/images/ai/tools/article-1764744569192/3.jpg)
 
 ## imarena.ai
 
 网址：<https://lmarena.ai/>
 
-## 概述
+### 概述
 
 这个网站可以进行大模型文字聊天、也可以进行文生图绘画，还能够进行多个模型的pk。它集成了常见的主流的大模型，包括：gpt-5、gemini-2.5pro、claude-opus-4、grok-4、flux-1-kontext-pro、flux-1-kontext-max、dall-e-3、seedream-3等等
 
 最重要的特点：访问这个网站不需要注册！不需要注册！不需要注册！可以免费使用！可以免费使用！可以免费使用！不需要魔法!不需要魔法!不需要魔法!
 
-## 工作模式：
+### 工作模式：
 
 1.battle模式：网站会自动为我们挑选两个大模型进行聊天；
 
@@ -44,43 +44,43 @@ category: "blog"
 
 3.direct模式：用户自己选择大模型进行聊天；
 
-## 比较
+比较
 
 相比于我前面介绍的yupp.ai，这个网站集成的模型没有yupp的多，但是它胜在不需要注册、不消耗积分、访问不需要魔法！
 
 下面我们一起来体验一下吧！
 
-## battle模式
+### battle模式
 
 打开此网站后，首页自动会为我们选择该模式，如下：
 
-![图片](/images/ai/tools/6.jpg)
+![图片](/images/ai/tools/article-1764744569192/6.jpg)
 
-## 一、文字聊天
+##### 一、文字聊天
 
-### 1.纯文字聊天
+1.纯文字聊天
 
-![图片](/images/ai/tools/7.jpg)
+![图片](/images/ai/tools/article-1764744569192/7.jpg)
 
 这里同样需要用户对结果进行手动选择后，后续聊天才能正常进行；
 
-### 2.识别图片
+2.识别图片
 
 我们可以上传一个图片，让它帮我理解
 
-![图片](/images/ai/tools/8.jpg)
+![图片](/images/ai/tools/article-1764744569192/8.jpg)
 
-### 3.web搜索
+3.web搜索
 
 例如，我需要它帮我找一下有关面包的制作方法：需要点击上图中那个球形状的logo，结果如下：
 
-![图片](/images/ai/tools/9.jpg)
+![图片](/images/ai/tools/article-1764744569192/9.jpg)
 
-## 二、图片聊天
+##### 二、图片聊天
 
 接下来，我们可以进行文生图聊天，点击纯文字聊天那个界面中那种破图的图标后进入如下的页面：
 
-![图片](/images/ai/tools/10.jpg)
+![图片](/images/ai/tools/article-1764744569192/10.jpg)
 
 根据这里的页面功能，它应该是可以进行文生图、图生图，这里我仅体验一下它的文生图的功能
 
@@ -92,23 +92,23 @@ category: "blog"
 
 结果如下：
 
-![图片](/images/ai/tools/11.jpg)
+![图片](/images/ai/tools/article-1764744569192/11.jpg)
 
-side by side模式
+### side by side模式
 
 选择该模式后页面会显示成如下的模样：
 
-![图片](/images/ai/tools/13.jpg)
+![图片](/images/ai/tools/article-1764744569192/13.jpg)
 
 这里需要我们选择左右两边各自的大模型，以便能够对它们的结果进行对比！例如我选择：gemini-2.5-pro和gpt-5进行对比
 
-### 一、文字聊天
+##### 一、文字聊天
 
 例如我们比较一下电动汽车与燃油汽车的优缺点之类的：
 
-![图片](/images/ai/tools/14.jpg)
+![图片](/images/ai/tools/article-1764744569192/14.jpg)
 
-### 二、图片聊天
+##### 二、图片聊天
 
 我们可以选择flux-1-kontext-max和gpt-image-1，我们进行文生图，看看它们生图的效果对比：
 
@@ -120,21 +120,21 @@ side by side模式
 
 生成结果如下：
 
-![图片](/images/ai/tools/15.jpg)
+![图片](/images/ai/tools/article-1764744569192/15.jpg)
 
-direct模式
+### direct模式
 
 选择该模式后，我们只需要选择一个大模型就好了，页面如下：
 
-![图片](/images/ai/tools/17.jpg)
+![图片](/images/ai/tools/article-1764744569192/17.jpg)
 
-### 一、文字聊天
+##### 一、文字聊天
 
 我们选择claude-opus-4大模型，体验一下它的效果看看：
 
-![图片](/images/ai/tools/18.jpg)
+![图片](/images/ai/tools/article-1764744569192/18.jpg)
 
-### 二、图片聊天
+##### 二、图片聊天
 
 在上图中我们点击破图图标，然后输入文生图提示词，我们可以得到如下的结果：
 
@@ -146,7 +146,7 @@ direct模式
 
 结果如下：
 
-![图片](/images/ai/tools/19.jpg)
+![图片](/images/ai/tools/article-1764744569192/19.jpg)
 
 这里我们使用qwen-image，看着生成的效果比其他的那些文生图效果看起来会更好一些了！
 
@@ -155,7 +155,3 @@ direct模式
 ## **最后**
 
 通过这篇文章您应该知道这个网站的一些主要功能，读了我前面文章没有体验到像grok、claude-opus-4、gpt-5这些大模型的朋友们可以赶紧来体验一下咯，毕竟这个网站不像yupp——它不需要注册、也不需要魔法、也不需要消耗积分，赶紧行动起来吧！
-
-希望这篇文章对您有所收获，请不要吝惜您的支持——**点赞、转发、在看**，都是对我最大的鼓励与认可。
-
-感谢您的陪伴与共鸣，让我们共同期待更多优秀的作品诞生！

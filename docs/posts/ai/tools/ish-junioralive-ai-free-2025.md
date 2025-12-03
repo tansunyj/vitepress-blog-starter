@@ -14,7 +14,7 @@ category: "blog"
 
 ---
 
-![图片](/images/ai/tools/2.jpg)
+![图片](/images/ai/tools/article-1764737248576/2.jpg)
 
 在我前面的文章中，有朋友经常留言说那个<http://imarena.ai/又没法访问了或者https://yupp.ai/访问报错了，或者必须要注册才能进行更多的聊天。>
 
@@ -22,8 +22,9 @@ category: "blog"
 
 下面，就跟我一起探索这个能让你实现“AI自由”的宝藏网站吧！
 
+## 简介
 
-## 一、简介
+### 一、简介
 
 网址：<https://ish.junioralive.in/>
 
@@ -61,67 +62,67 @@ seedream：字节seedream模型
 
 好了，在了解了该网站有哪些基本特点后，我们一起来体验一下，它的文字聊天、图像生成。
 
-## 一、模型选择
+### 一、模型选择
 
 点击页面顶上的图标后，在下拉框中选择目标模型，如：
 
-![图片](/images/ai/tools/6.jpg)
+![图片](/images/ai/tools/article-1764737248576/6.jpg)
 
 注：国产的大模型，大家访问那些就可以用了，这里暂时以国外的大模型为例来演示。
 
-## 二、设置
+### 二、设置
 
 点击上图中""齿轮，则可以进入设置页面，可以设置例如模型、api key等
 
-![图片](/images/ai/tools/7.jpg)
+![图片](/images/ai/tools/article-1764737248576/7.jpg)
 
-![图片](/images/ai/tools/8.jpg)
+![图片](/images/ai/tools/article-1764737248576/8.jpg)
 
 上图设置界面中用户可以自己添加模型等等。
 
-## 三、文本聊天
+### 三、文本聊天
 
 点击左侧的new chat就会新建一个文本聊天！
 
-### 1.gemini 2.5 flash
+##### 1.gemini 2.5 flash
 
-![图片](/images/ai/tools/9.jpg)
+![图片](/images/ai/tools/article-1764737248576/9.jpg)
 
-### 2.gpt-5 chat
+##### 2.gpt-5 chat
 
-![图片](/images/ai/tools/10.jpg)
+![图片](/images/ai/tools/article-1764737248576/10.jpg)
 
-### 3.不受限的模型
+##### 3.不受限的模型
 
-![图片](/images/ai/tools/11.jpg)
+![图片](/images/ai/tools/article-1764737248576/11.jpg)
 
 嗯？这里冒出一个evil AI助手，嘿嘿，有点意思了！
 
-![图片](/images/ai/tools/12.png)
+![图片](/images/ai/tools/article-1764737248576/12.png)
 
-![图片](/images/ai/tools/13.png)
+![图片](/images/ai/tools/article-1764737248576/13.png)
 
 点评：好极了，文本聊天这里，我们可以使用gpt-5 chat、gemini 2.5flash等大模型，都非常不错！
 
 好了，接下来我们一起体验一下它的生图功能
 
-## 四、图像聊天
+### 四、图像聊天
 
 在首页这里选择"gallery"后，就切换到了图像聊天模式，如：
 
-![图片](/images/ai/tools/14.jpg)
+![图片](/images/ai/tools/article-1764737248576/14.jpg)
 
-1. flux模型
+##### 1. flux模型
 
-![图片](/images/ai/tools/15.jpg)
+![图片](/images/ai/tools/article-1764737248576/15.jpg)
 
-2.kontext模型
+##### 2.kontext模型
 
-![图片](/images/ai/tools/16.jpg)
+![图片](/images/ai/tools/article-1764737248576/16.jpg)
 
-3. nano banana模型
+##### 3. nano banana模型
 
-![图片](/images/ai/tools/17.jpg)
+![图片](/images/ai/tools/article-1764737248576/17.jpg)
 
 点评：对于当红炸子鸡nano banana，这里能够免费使用，真是太好了！
 
@@ -136,5 +137,3 @@ seedream：字节seedream模型
 网址：`https://ish.junioralive.in/`
 
 喜欢这篇干货？点个赞、在看、转发三连，请不要吝惜您的支持，都是对我最大的鼓励与认可。
-
-后面我们一起探讨AI或一些软件更有意思的玩法，关注不迷路～我们，明天见！🚀

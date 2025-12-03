@@ -13,7 +13,7 @@ category: "blog"
 
 ---
 
-![Image](/images/blog/tutorials/1.jpg)***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***![图片](/images/blog/tutorials/2.jpg)
+![Image](/images/blog/tutorials/article-1764746957711/1.jpg)***您好，我是Hellos AI，擅长AI编程、分享AI工具资讯等，立志让更多普通人了解AI、学会AI，利用AI找到人生的第二曲线。***![图片](/images/blog/tutorials/article-1764746957711/2.jpg)
 
 你还在用传统搜索嘛？AI搜索已经对它进行降维打击了！
 
@@ -21,7 +21,7 @@ category: "blog"
 
 当然除了这几个AI大模型，我还对比了一下传统搜索引擎在同样问题上的表现，总体比较而言AI搜索的效率更高，值得大家
 
-## 国内大模型
+## 一、国内大模型
 
 首先，我从国内模型开始，看看它们给我的结果到底怎么样？
 
@@ -41,11 +41,11 @@ category: "blog"
 
 首先我们来看看国产的deepseek，打开网络搜索功能，再看看它搜索后得到的结果怎么样？
 
-![图片](/images/blog/tutorials/3.jpg)
+![图片](/images/blog/tutorials/article-1764746957711/3.jpg)
 
 从这里可以看出deepseek给我3个搜索结果，其中第二个1年107人民币，但是是2C1G的机器，那我得看看2C2G得配置一年多少钱呢？
 
-![图片](/images/blog/tutorials/4.jpg)
+![图片](/images/blog/tutorials/article-1764746957711/4.jpg)
 
 嗯，这个云服务商2C1G得配置呢有点低了，不过有一个3C2G得型号，这个倒是可以纳入到备选中，接着我们继续搜索；
 
@@ -53,17 +53,17 @@ category: "blog"
 
 我把同样得提示词（嗯，默认它没法给我以表格形式整理，我加了点东西），接着看看它得搜索结果：
 
-![图片](/images/blog/tutorials/5.jpg)
+![图片](/images/blog/tutorials/article-1764746957711/5.jpg)
 
 这里发现RAKsmart、RackNerd、阿里云，其中阿里云这个是68人民币一年，RackNerd是17.66美元一年，这里我先看看阿里云这个配置得套餐：
 
-![图片](/images/blog/tutorials/6.jpg)
+![图片](/images/blog/tutorials/article-1764746957711/6.jpg)
 
 阿里云这个优惠结束后恢复到400多一年！
 
 接着看RackNerd得套餐：
 
-![图片](/images/blog/tutorials/7.jpg)
+![图片](/images/blog/tutorials/article-1764746957711/7.jpg)
 
 嗯，这个racknerd得首年套餐是17.66美元！
 
@@ -71,21 +71,21 @@ category: "blog"
 
 接着我使用秘塔搜索，它毕竟是号称擅长搜索，接着看搜索结果如下：
 
-![图片](/images/blog/tutorials/8.jpg)
+![图片](/images/blog/tutorials/article-1764746957711/8.jpg)
 
 从搜索结果上看，阿里云得这个经济实惠型得配置也是值得纳入到备选方案得。首年99块，后续1395一年！
 
-![图片](/images/blog/tutorials/9.jpg)
+![图片](/images/blog/tutorials/article-1764746957711/9.jpg)
 
 ### 04百度搜索
 
 接着我使用百度搜索看看有哪些结果：
 
-![图片](/images/blog/tutorials/10.jpg)
+![图片](/images/blog/tutorials/article-1764746957711/10.jpg)
 
 传统的搜索引擎搜索出的结果，我还需要在这海量的信息中继续去做筛选，里面还存在大量的过时信息
 
-## 国外AI大模型
+## 二、国外AI大模型
 
 嗯，国内得大模型都搜索完毕了，那接着来试试看国外比较著名的几个大模型，看看它们的搜索结果：
 
@@ -93,7 +93,7 @@ category: "blog"
 
 还是输入同样的提示词，看看它的搜索结果怎么样？
 
-![图片](/images/blog/tutorials/11.jpg)
+![图片](/images/blog/tutorials/article-1764746957711/11.jpg)
 
 这个openAI没法开启联网搜索并且推荐的价格一般还算是比较高的那种了！打开看阿里云的配置套餐，也是11美元/月起！其他的那些也都是比较贵的那种了！
 
@@ -101,7 +101,7 @@ category: "blog"
 
 接着我们看看gemini的搜索结果，看看这里又会是什么样的呢？
 
-![图片](/images/blog/tutorials/12.jpg)
+![图片](/images/blog/tutorials/article-1764746957711/12.jpg)
 
 这里使用的是gemini3.0，但是无法开启联网搜索，从搜索结果中看搬瓦工和rackNerd这2种还算是满足我的要求；
 
@@ -109,7 +109,7 @@ category: "blog"
 
 号称限制比较少的就是grok了，接下来我来看看它的搜索结果怎么样？
 
-![图片](/images/blog/tutorials/13.jpg)
+![图片](/images/blog/tutorials/article-1764746957711/13.jpg)
 
 从这里也可以看出像我这种情况它推荐的就是hostinger这种服务商，对于我这种也算是比较合适了！
 
@@ -117,11 +117,9 @@ category: "blog"
 
 接着我使用google搜索来搜索，看看它给我哪些信息呢?
 
-![图片](/images/blog/tutorials/14.jpg)
+![图片](/images/blog/tutorials/article-1764746957711/14.jpg)
 
 这里第一页上显示的结果确实比X度的好一些，不过跟AI搜索的结果比较，还是有大量不精准的信息，需要我来一一查看和汇总！
-
-## 汇总
 
 
 从这些AI给我的结果中，可以看出：阿里云、racknerd、搬瓦工、racksmart这些应该都是能够初步纳入我的选择范围的。
@@ -135,12 +133,3 @@ category: "blog"
 所以对于我自己的一些粉丝朋友，他们想找某些资料、购买某些东西时，我都是建议使用deepseek或者grok（找国外资料）等，通过这些AI大模型进行搜索，能够极大的提高效率。
 
 当然对于想找一些NSFW的内容，使用号称内容审核限制宽松的grok、chatgpt等等可能会有意想不到的惊喜哦！
-
-
-我不生产工具，我只是好工具的搬运工。
-
-**关注杰哥不迷路**，每天给你分享不一样的实用好工具。
-
-免责声明：本公众号分享的内容以及软件等来自互联网，仅供大家学习交流，同时请遵守你当地的法律法规，否则造成的一切后果自负，与本公众号无关。如有侵权联删！部分知识难免有时效性，若内容过期失效，请见谅,感谢！
-
-******喜欢这篇干货？如果觉得不错，请帮我一键三连，转发给您的朋友，都是对我最大的鼓励与认可。******如果想第一时间收到推送，可以把我的公众号加个星标🌟方便后面我们一起探讨AI或有意思的东西，还能够快速找到我！我们明天见！******—*****END*****—******图 | 来源网络侵删******欢迎点赞，在看，转发给我鼓励\~******👇👇关注我👇👇******👇👇扫码加入粉丝群领取福利👇👇***

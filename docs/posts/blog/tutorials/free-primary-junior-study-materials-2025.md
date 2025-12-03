@@ -28,9 +28,9 @@ category: "blog"
 
 概要：这个工具是一个下载器，通过它可以下载今年各科（从一年级到初三）各版本的教辅资料，包括语文、数学、英语、道德与法治、科学、化学等等各个学科！这些资料都是免费的，下载和使用没有任何套路！
 
-使用
+## 使用
 
-## 一、使用
+### 一、使用
 
 下载到本地之后解压会得到如下的文件列表：
 
@@ -46,52 +46,48 @@ win7先运行此文件在使用软件
 
 打开底下的"RDJ教辅资源下载器V1.3版本.exe"就能够启动这个软件了，如下：
 
-![图片](/images/blog/tutorials/4.jpg)
+![图片](/images/blog/tutorials/article-1764749461024/4.jpg)
 
 里面的教辅资料包括今年的和明年的，还能够根据年级、学科类别、版本、上下册等进行过滤和筛选。
 
 下面，我们一起来查找一下，再下载个几册的教辅资料看看！
 
-## 二、下载
+### 二、下载
 
-#### 1.例如我想下载一下3年级英语科目的资料，如：
+1.例如我想下载一下3年级英语科目的资料，如：
 
-![图片](/images/blog/tutorials/5.jpg)
+![图片](/images/blog/tutorials/article-1764749461024/5.jpg)
 
 下载序号为19的资料，鼠标右键，选择第一个就可以正常下载了：
 
-![图片](/images/blog/tutorials/6.jpg)
+![图片](/images/blog/tutorials/article-1764749461024/6.jpg)
 
 打开这个文件夹看看里面到底是什么
 
-![图片](/images/blog/tutorials/7.jpg)
+![图片](/images/blog/tutorials/article-1764749461024/7.jpg)
 
 任意打开一个试卷看看：
 
-![图片](/images/blog/tutorials/8.jpg)
+![图片](/images/blog/tutorials/article-1764749461024/8.jpg)
 
-#### 2.下载一下初中二年级物理资料看看
+2.下载一下初中二年级物理资料看看
 
 选择好年级和科目后，在合适的资料下鼠标右键，如下图所示
 
-![图片](/images/blog/tutorials/9.jpg)
+![图片](/images/blog/tutorials/article-1764749461024/9.jpg)
 
 这里选择序号12的资料，看看到底它是什么！
 
-![图片](/images/blog/tutorials/10.jpg)
+![图片](/images/blog/tutorials/article-1764749461024/10.jpg)
 
 这里物理的资料按照章节分为了多个章节，并且只适用于当前某个地区！
 
-![图片](/images/blog/tutorials/11.jpg)
+![图片](/images/blog/tutorials/article-1764749461024/11.jpg)
 
 例如，我打开第一节压强看看：
 
-![图片](/images/blog/tutorials/12.jpg)
+![图片](/images/blog/tutorials/article-1764749461024/12.jpg)
 
 ## **最后**
 
 希望今天分享的这款小工具，能为家有中小学生的你带来实实在在的帮助。与其花时间四处寻找资料，不如把它收入囊中，让孩子的学习之路更高效、更轻松。
-
-希望这篇文章对您有所收获，请不要吝惜您的支持——**点赞、转发、在看**，都是对我最大的鼓励与认可。
-
-感谢您的陪伴与共鸣，让我们共同期待更多优秀的作品诞生！
