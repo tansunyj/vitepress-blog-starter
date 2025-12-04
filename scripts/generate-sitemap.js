@@ -8,9 +8,10 @@ const __dirname = path.dirname(__filename)
 
 // 配置
 const CONFIG = {
-  domain: 'https://yourdomain.com', // ← 替换为你的域名
+  domain: 'https://hellosai.cc', // 正式域名
   outputPath: path.join(__dirname, '../docs/public/sitemap.xml'),
   postsDir: path.join(__dirname, '../docs/posts'),
+  defaultDate: '2025-10-01', // 默认更新日期
 }
 
 // 获取所有markdown文件
@@ -43,9 +44,9 @@ function generateUrl(filePath) {
 }
 
 // 获取文件修改时间
-function getLastModified(filePath) {
-  const stat = fs.statSync(filePath)
-  return stat.mtime.toISOString().split('T')[0]
+function getLastModified(_filePath) {
+  // 使用配置的默认日期，而不是文件实际修改时间
+  return CONFIG.defaultDate
 }
 
 // 生成sitemap.xml
@@ -57,7 +58,7 @@ function generateSitemap() {
   <!-- 首页 -->
   <url>
     <loc>${CONFIG.domain}/</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <lastmod>${CONFIG.defaultDate}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -82,7 +83,7 @@ function generateSitemap() {
   sitemap += `
   <url>
     <loc>${CONFIG.domain}/about/</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <lastmod>${CONFIG.defaultDate}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
