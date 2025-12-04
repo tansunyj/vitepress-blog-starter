@@ -27,7 +27,7 @@ export default defineConfig(({ command }: { command: 'serve' | 'build' }) => ({
 
   // Sitemap 配置 - 构建时自动生成 sitemap.xml
   sitemap: {
-    hostname: 'https://your-domain.com', // 替换为你的网站域名
+    hostname: 'https://hellosai.cc', // 网站域名
   },
   head: [
     ['meta', { name: 'keywords', content: 'VPN,科学上网,免费节点,AI工具,ChatGPT,人工智能,Web开发,编程教程,免费资源,技术博客' }],
