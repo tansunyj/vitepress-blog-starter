@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { useRoute, useData } from 'vitepress'
+import { useData, useRoute } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { computed, provide, ref } from 'vue'
 import PostDetail from './components/blog/PostDetail.vue'
 import PostNav from './components/blog/PostNav.vue'
 import SidebarTagFilter from './components/blog/SidebarTagFilter.vue'
+import CustomFooter from './components/CustomFooter.vue'
 import { useSidebarHighlight } from './composables/sidebarHighlight'
 import usePosts from './composables/usePosts'
 
@@ -104,6 +105,11 @@ useSidebarHighlight()
     <template #doc-after>
       <!-- 如果是文章页面，自动添加底部导航 -->
       <PostNav v-if="isPostPage" />
+    </template>
+
+    <!-- 全局页脚 - Buy Me a Coffee -->
+    <template #layout-bottom>
+      <CustomFooter />
     </template>
   </Layout>
 </template>

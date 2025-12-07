@@ -127,6 +127,15 @@ layout: doc
   <p style="margin-top: 10px; color: #666; font-size: 14px;">扫码关注微信公众号</p>
 </div>
 
+### ☕ 支持我的工作
+
+如果本站内容对你有帮助，欢迎请我喝杯咖啡！你的支持是我持续创作的动力 💪
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="/images/qrcode.webp" alt="Buy Me a Coffee" style="width: 300px; max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+  <p style="margin-top: 10px; color: #666; font-size: 14px;">扫码赞赏支持</p>
+</div>
+
 ## 💬 交流与反馈
 
 如果你有任何问题、建议或资源分享，欢迎通过以下方式联系我：

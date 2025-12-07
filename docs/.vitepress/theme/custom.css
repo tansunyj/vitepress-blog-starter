@@ -265,7 +265,7 @@ body {
   background-color: var(--bg-primary) !important;
   border-radius: 16px;
   box-shadow: var(--shadow-sm);
-  min-height: 600px;
+  min-height: auto; /* 改为auto，让内容决定高度 */
 }
 
 /* 文章内容区域 - 添加合适的内边距 */
@@ -840,12 +840,207 @@ div.VPNavBar .content {
   display: none !important;
 } */
 
-/* 确保全局页脚 (Copyright) 始终显示 */
+/* ============================================
+   页脚样式优化 - Buy Me a Coffee
+   ============================================ */
+
+/* 移除主内容和页脚之间的所有间距 */
+.VPDoc {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.Layout,
+.VPContent,
+.vp-doc,
+.content-container {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* 确保layout-bottom插槽紧贴内容 */
+[class*="layout-bottom"] {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* 移除VitePress内容区域的底部间距 */
+.content,
+.content-container,
+.vp-doc > div {
+  margin-bottom: 0 !important;
+}
+
+/* 移除文章列表和主页的底部间距 */
+.posts-container,
+.post-list,
+main,
+#VPContent {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  min-height: auto !important;
+}
+
+.VPHome {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  min-height: auto !important;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 分类列表页面也需要参与flex布局 */
+.posts-wrapper,
+.category-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 确保页面主体容器没有多余高度，但保持最小视口高度 */
+html,
+body {
+  height: 100%;
+  min-height: 100vh;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.VPNav {
+  flex-shrink: 0; /* 导航栏不压缩 */
+}
+
+.Layout {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.VPContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.VPDoc,
+.vp-doc {
+  min-height: 0 !important;
+  flex: 1 0 auto; /* 允许增长和收缩，但有自动基础大小 */
+}
+
+main {
+  min-height: 0 !important;
+  flex: 1;
+}
+
+/* 确保全局页脚 (Copyright) 始终显示 - 横向布局 */
 .VPFooter {
   display: block !important;
+  width: 100% !important;
+  margin-top: auto !important; /* 关键：让页脚始终在底部 */
+  margin-bottom: 0 !important;
+  padding: 0 !important;
   z-index: 10 !important;
-  /* 确保在最上层 */
   position: relative !important;
+  background-color: var(--vp-c-bg-soft);
+  border-top: 1px solid var(--vp-c-divider);
+  flex-shrink: 0; /* 防止页脚被压缩 */
+}
+
+/* 页脚内容容器 */
+.VPFooter .container {
+  position: relative !important;
+  display: block !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 48px 32px 32px 32px !important;
+  min-height: 120px !important;
+}
+
+/* 隐藏VPFooter原有的内容，我们用自己的 */
+.VPFooter .container > * {
+  display: none !important;
+}
+
+/* 显示我们添加的二维码部分 */
+.VPFooter .container .coffee-qr-section {
+  display: flex !important;
+}
+
+/* 重新创建文字部分 */
+.VPFooter .container::before {
+  content: '杰哥的技术小站' !important;
+  display: block !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  line-height: 24px !important;
+  text-align: center !important;
+  white-space: pre-line !important;
+  z-index: 1 !important;
+}
+
+.VPFooter .container::after {
+  content: 'Copyright © 2025 杰哥' !important;
+  display: block !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, calc(-50% + 28px)) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: var(--vp-c-text-2) !important;
+  text-align: center !important;
+  z-index: 1 !important;
+}
+
+/* 二维码部分 - 绝对定位在右侧 */
+.coffee-qr-section {
+  position: absolute !important;
+  right: 32px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 2 !important;
+}
+
+/* 响应式 - 移动端 */
+@media (max-width: 968px) {
+  .VPFooter .container {
+    padding: 32px 16px 24px 16px !important;
+    min-height: auto !important;
+    text-align: center !important;
+  }
+
+  .VPFooter .container::before {
+    position: static !important;
+    transform: none !important;
+    display: block !important;
+    margin-bottom: 4px !important;
+  }
+
+  .VPFooter .container::after {
+    position: static !important;
+    transform: none !important;
+    display: block !important;
+    margin-bottom: 16px !important;
+  }
+
+  .coffee-qr-section {
+    position: static !important;
+    transform: none !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+  }
 }
 
 .pager-link {

@@ -1190,6 +1190,19 @@ MIT License
 - QQ群：[749827914](https://qm.qq.com/q/rvVkbpLGlc)
 - Telegram：[杰哥的技术小站](https://t.me/jerry_tech_club)
 
+### ☕ 支持我的工作
+
+如果这个项目对你有帮助，欢迎请我喝杯咖啡 ☕
+
+<p align="center">
+  <img src="./docs/public/images/qrcode.webp" alt="Buy Me a Coffee" width="200">
+</p>
+
+<p align="center">
+  <strong>扫码赞赏</strong><br>
+  你的支持是我持续更新的动力！
+</p>
+
 ---
 
 ## ⭐ Star History
