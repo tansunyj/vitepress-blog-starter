@@ -107,6 +107,7 @@ export default defineConfig(({ command }: { command: 'serve' | 'build' }) => ({
       }),
     ],
     server: {
+      host: true, // 绑定到所有接口，包括IPv4，解决localhost无法访问的问题
       watch: {
         // 忽略草稿箱和文章目录的文件变化，避免触发 HMR 刷新
         ignored: [
