@@ -113,9 +113,20 @@ category: "blog"
 
 ![图片](/images/ai/workflow/article-1770690648548/14.jpg)
 
-body参数如：{
-
-`"articles": [`        `{`            `"article_type": "newspic",`            `"title": "{{ $('Code in JavaScript').item.json.original_data.first().data.items.first().fields['标题'].first().text }}",`            `"content": "{{ $('Code in JavaScript').item.json.original_data.first().data.items.first().fields['内容'].first().text.replace(/\r?\n|\r/g, "") }} {{ $('Code in JavaScript').item.json.original_data.first().data.items.first().fields.tags.first().text }}",`            `"image_info": {`                `"image_list": {{ $json.image_list.toJsonString() }}`            `}`        `}`    `]``}`
+```json
+{
+    "articles": [
+        {
+            "article_type": "newspic",
+            "title": "{{ $('Code in JavaScript').item.json.original_data.first().data.items.first().fields['标题'].first().text }}",
+            "content": "{{ $('Code in JavaScript').item.json.original_data.first().data.items.first().fields['内容'].first().text.replace(/\\r?\\n|\\r/g, "") }} {{ $('Code in JavaScript').item.json.original_data.first().data.items.first().fields.tags.first().text }}",
+            "image_info": {
+                "image_list": {{ $json.image_list.toJsonString() }}
+            }
+        }
+    ]
+}
+```
 
 发布草稿：
 

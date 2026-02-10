@@ -9,6 +9,90 @@
   </url>
 
   <url>
+    <loc>https://hellosai.cc/posts/ai/agent/openclaw-10-repository-5000-skills.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/agent/openclaw-4-skills.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/agent/openclaw-antigravity-integration.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/agent/openclaw-custom-docker-install.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/agent/openclaw-docker-install.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/agent/openclaw-india-mission-control-multi-agent.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/agent/openclaw-mobile-install-new-gate.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/agent/openclaw-moltbook-ai-agent-social-media.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/agent/openclaw-moltbook-ai-social-media.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/agent/openclaw-skills-creator-install.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/agent/openclaw-skills-developing.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/agent/openclaw-wechat-skills-creator.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
     <loc>https://hellosai.cc/posts/ai/llm/gemini-3-0-free-6ways-zenmux-antigravity-2025.html</loc>
     <lastmod>2025-10-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -177,6 +261,13 @@
   </url>
 
   <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/install-n8n-with-docker-in-linux.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
     <loc>https://hellosai.cc/posts/ai/workflow/n8n-2000-workflows-local-search-2025.html</loc>
     <lastmod>2025-10-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -184,7 +275,182 @@
   </url>
 
   <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-feishu-register-credential.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-forget-password-tutor.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-github-search-workflow.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-google-oauth-client.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-google-sheet-query.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-hellosai-report-optimization.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-hellosai-report-workflow-01.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-hellosai-report-workflow-02.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-hellosai-report-workflow-03.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-hellosai-report-workflow-04.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-hellosai-report-workflow-05.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-hellosai-report-workflow-06.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-install-community-nodes.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-monitor-google-drive-content-creator.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-monitor-youtube-channel-workflow.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-pinterest-workflow.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-read-local-files.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-reddit-subreddit-week-month-top-01.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-reddit-subreddit-week-month-top-02.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-study-and-learnning.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-study-summary.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-wrapperpackage-install.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-xiaohongshu-content-creator-workflow.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/ai/workflow/n8n-youtube-video-zimu.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
     <loc>https://hellosai.cc/posts/blog/freebies/anti-deletion-file-sharing-2025.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/blog/freebies/antigravity-opus4.6-gemini3.0.html</loc>
     <lastmod>2025-10-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -199,6 +465,13 @@
 
   <url>
     <loc>https://hellosai.cc/posts/blog/freebies/github-10000-ebook-treasure-2025.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/blog/freebies/google-student.html</loc>
     <lastmod>2025-10-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -359,6 +632,13 @@
   </url>
 
   <url>
+    <loc>https://hellosai.cc/posts/blog/recommendations/reddit-karmar-credit.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
     <loc>https://hellosai.cc/posts/blog/recommendations/vercel-free-deploy-nextjs-github-2025.html</loc>
     <lastmod>2025-10-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -395,6 +675,13 @@
 
   <url>
     <loc>https://hellosai.cc/posts/blog/recommendations/wordpress-blogx-duoji-caidan-10min-2025.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/blog/recommendations/噢耶！我的antigravity终于又重生了！终于又可以无限畅玩opus4.5-gemini3.0了.html</loc>
     <lastmod>2025-10-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -542,6 +829,13 @@
 
   <url>
     <loc>https://hellosai.cc/posts/blog/tutorials/openspeedy-baidu-pan-unlimited-2025.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hellosai.cc/posts/blog/tutorials/reddit-5000-karmar.html</loc>
     <lastmod>2025-10-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
