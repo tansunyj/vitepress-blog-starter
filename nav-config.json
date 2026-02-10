@@ -45,6 +45,12 @@
       {
         "text": "工作流",
         "folder": "ai/workflow"
+      },
+      {
+        "text": "ai agent",
+        "link": "",
+        "folder": "ai/agent",
+        "items": null
       }
     ]
   },
